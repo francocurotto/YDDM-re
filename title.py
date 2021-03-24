@@ -11,19 +11,15 @@ subtitle_str = "Dungeon Dice Monsters re-implementation"
 
 # urwid elements
 # title
-title_txt = urwid.Text(title_str, align="center")
+title_txt = urwid.Text(title_str, align="center", wrap="clip")
 title_fill = urwid.Filler(title_txt, "top")
 #subtitle
 subtitle_txt = urwid.Text(subtitle_str, align="center")
 subtitle_fill = urwid.Filler(subtitle_txt, "top")
 #
-palette = [("bg", "white", "black")]
-div = urwid.Divider()
-bottom_fill = urwid.AttrMap(div, "bg")
-pile = urwid.Pile([title_fill, subtitle_fill])
-#pile = urwid.Pile([title_fill, subtitle_fill, bottom_fill])
+pile = urwid.Pile([(6,title_fill), subtitle_fill])
 
 # uwrwid loop
-loop = urwid.MainLoop(pile, palette)
+loop = urwid.MainLoop(pile)
 loop.run()
 
