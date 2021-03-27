@@ -11,9 +11,3 @@ class MainWin(urwid.Frame):
 
         # create main window as a frame
         super().__init__(game_win)
-
-    def keypress(self, size, key):
-        """
-        Handles ctrl-c and ctrl-z as exit program.
-        """
-        return super().keypress(size, key)

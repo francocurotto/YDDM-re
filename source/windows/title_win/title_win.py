@@ -1,4 +1,5 @@
 import urwid
+from title_menu import TitleMenu
 
 class TitleWin(urwid.Pile):
     """
@@ -16,8 +17,12 @@ class TitleWin(urwid.Pile):
             align="center")
         subtitle_fill = urwid.Filler(subtitle_txt, "top")
 
+        # title
+        menu = TitleMenu()
+
         # create filled pile
-        super().__init__([(6,title_fill), subtitle_fill])
+        super().__init__([(6,title_fill), (2, subtitle_fill),
+            menu])
 
 # strings
 title_str = "\

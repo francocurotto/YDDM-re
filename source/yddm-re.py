@@ -9,10 +9,13 @@ modlist = get_all_modules()
 # import local modules
 from main_win import MainWin
 
+# define palette
+palette = [("focused", "standout", "")]
+
 # create main window
 main_win = MainWin()
 
 # urwid loop
-loop = urwid.MainLoop(main_win)
+loop = urwid.MainLoop(main_win, palette)
 loop.run()
 
