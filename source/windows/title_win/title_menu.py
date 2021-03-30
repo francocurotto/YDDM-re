@@ -6,9 +6,8 @@ class TitleMenu(urwid.Padding):
     The menu for the title.
     """
     def __init__(self):
-        menu = Menu(buttons_params)
-        super().__init__(menu, width= menu.get_width(),
-        #super().__init__(menu, width= 16,
+        menu = Menu(buttons_params, "center")
+        super().__init__(menu, width=menu.get_width(),
             align="center") 
 
 def exit_program(button):
