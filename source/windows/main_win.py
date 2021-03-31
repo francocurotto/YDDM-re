@@ -13,8 +13,8 @@ class MainWin(urwid.Frame):
         # create main window as a frame
         super().__init__(game_win)
 
-    def switch_pool_builder():
+    def switch_pool_builder(self):
         """
         Swtich window to pool builder.
         """
-        game_win = PoolBuilderWin()
+        self.contents["body"] = (PoolBuilderWin(), None)

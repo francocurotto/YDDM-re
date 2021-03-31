@@ -1,0 +1,1213 @@
+- ID:      001
+  NAME:    B. eye White Dragon
+  TYPE:    DRAGON
+  LEVEL:   4
+  ATTACK:  40
+  DEFENSE: 30
+  LIFE:    50
+  ABILITY: Fly
+  CRESTS:  SMM2A4DG
+
+- ID:      002
+  NAME:    Mystical Elf
+  TYPE:    SPELLCASTER
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: Restores 1 heart to all allies. (dimension)
+  CRESTS:  SSSSM2G4
+
+- ID:      003
+  NAME:    Hitotsu-me Giant
+  TYPE:    BEAST
+  LEVEL:   2
+  ATTACK:  20
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSA2D2G
+
+- ID:      004
+  NAME:    Baby Dragon
+  TYPE:    DRAGON
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Fly, No family pros or cons.
+  CRESTS:  SSSSAG
+
+- ID:      005
+  NAME:    Ryu-Kishin
+  TYPE:    SPELLCASTER
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSMA2A2
+
+- ID:      006
+  NAME:    Feral Imp
+  TYPE:    SPELLCASTER
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 20
+  LIFE:    10
+  ABILITY: Prevents all flying. (In play)
+  CRESTS:  SSSM3A5D
+
+- ID:      007
+  NAME:    Winged Dragon #1
+  TYPE:    DRAGON
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Fly, Prevents all tunneling. (In play)
+  CRESTS:  SSSM2M3G
+
+- ID:      008
+  NAME:    Mushroom Man
+  TYPE:    BEAST
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSSA2G
+
+- ID:      009
+  NAME:    Shadow Specter
+  TYPE:    UNDEAD
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSSA2G
+
+- ID:      010
+  NAME:    Swamp Battleguard
+  TYPE:    WARRIOR
+  LEVEL:   2
+  ATTACK:  20
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: Attack crests raises attack by 10 once a turn. (on attack) [A X 1]
+  CRESTS:  SSSM2A2T
+
+- ID:      011
+  NAME:    Battle Steer
+  TYPE:    BEAST
+  LEVEL:   2
+  ATTACK:  20
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSSM3DT4
+
+- ID:      012
+  NAME:    Flame Swordsman
+  TYPE:    WARRIOR
+  LEVEL:   2
+  ATTACK:  20
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSSMM2A2
+
+- ID:      013
+  NAME:    Time Wizard
+  TYPE:    SPELLCASTER
+  LEVEL:   1
+  ATTACK:  0
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Destroys monster with least attack. (dimension)
+  CRESTS:  SSSSM2M3
+
+- ID:      014
+  NAME:    R Leg of Forbidden
+  TYPE:    SPELLCASTER
+  LEVEL:   3
+  ATTACK:  10
+  DEFENSE: 0
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSM2M3A2D
+
+- ID:      015
+  NAME:    L Leg of Forbidden
+  TYPE:    SPELLCASTER
+  LEVEL:   3
+  ATTACK:  10
+  DEFENSE: 0
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSM2ADG
+
+- ID:      016
+  NAME:    R Arm of Forbidden
+  TYPE:    SPELLCASTER
+  LEVEL:   3
+  ATTACK:  10
+  DEFENSE: 0
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSM2M3A4D2
+
+- ID:      017
+  NAME:    L Arm of Forbidden
+  TYPE:    SPELLCASTER
+  LEVEL:   3
+  ATTACK:  10
+  DEFENSE: 0
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSMM3AD
+
+- ID:      018
+  NAME:    Exodia of Forbidden
+  TYPE:    SPELLCASTER
+  LEVEL:   4
+  ATTACK:  20
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: Automatic win if the 4 limbs exist. (Dimension)
+  CRESTS:  SMM7A2D4T
+
+- ID:      019
+  NAME:    Summoned Skull
+  TYPE:    SPELLCASTER
+  LEVEL:   4
+  ATTACK:  40
+  DEFENSE: 20
+  LIFE:    40
+  ABILITY: N/A
+  CRESTS:  SM3M4ADG
+
+- ID:      020
+  NAME:    Battle Ox
+  TYPE:    BEAST
+  LEVEL:   2
+  ATTACK:  20
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSSM2DG2
+
+- ID:      021
+  NAME:    Beaver Warrior
+  TYPE:    BEAST
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSSM2A2
+
+- ID:      022
+  NAME:    Rock Ogre Grotto #1
+  TYPE:    SPELLCASTER
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Raises defense of all spellcaster monsters by 10 (in play)
+  CRESTS:  SSSSG2T
+
+- ID:      023
+  NAME:    Zombie Warrior
+  TYPE:    UNDEAD
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Raises attack of all Zombie monsters by 10. (in play)
+  CRESTS:  SSSSAD2
+
+- ID:      024
+  NAME:    Koumori Dragon
+  TYPE:    DRAGON
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSSMAD
+
+- ID:      025
+  NAME:    Saggi the Dark Clown
+  TYPE:    SPELLCASTER
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Reduces damage to one ally by 10. [D X 2]
+  CRESTS:  SSSSDT
+
+- ID:      026
+  NAME:    Dark Magician
+  TYPE:    SPELLCASTER
+  LEVEL:   4
+  ATTACK:  40
+  DEFENSE: 20
+  LIFE:    30
+  ABILITY: N/A
+  CRESTS:  SM2AD2GT
+
+- ID:      027
+  NAME:    The Snake Hair
+  TYPE:    UNDEAD
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Fly, Raises defense of all zombie monsters by 10. (in play)
+  CRESTS:  SSSSMG
+
+- ID:      028
+  NAME:    Gaia the Dragon Champion
+  TYPE:    DRAGON
+  LEVEL:   4
+  ATTACK:  40
+  DEFENSE: 30
+  LIFE:    40
+  ABILITY: Fly
+  CRESTS:  SM4A3DG2T
+
+- ID:      029
+  NAME:    Gaia The Fierce Knight
+  TYPE:    WARRIOR
+  LEVEL:   4
+  ATTACK:  40
+  DEFENSE: 20
+  LIFE:    40
+  ABILITY: Able to attack flying monsters.
+  CRESTS:  SMADG3T
+
+- ID:      030
+  NAME:    Curse of Dragon
+  TYPE:    DRAGON
+  LEVEL:   3
+  ATTACK:  20
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: Fly
+  CRESTS:  SSMM3AD3
+
+- ID:      031
+  NAME:    Dragon Piper
+  TYPE:    SPELLCASTER
+  LEVEL:   1
+  ATTACK:  0
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Limits Dragon monsters 1 move/ 2 turns. (in play)
+  CRESTS:  SSSSDG
+
+- ID:      032
+  NAME:    Celtic Guardian
+  TYPE:    WARRIOR
+  LEVEL:   2
+  ATTACK:  20
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSM3G3T
+
+- ID:      033
+  NAME:    Faceless Mage
+  TYPE:    SPELLCASTER
+  LEVEL:   3
+  ATTACK:  20
+  DEFENSE: 30
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSM3M3AD2
+
+- ID:      034
+  NAME:    Karbonala Warrior
+  TYPE:    WARRIOR
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Raises attack of all warriors by 10. (in play)
+  CRESTS:  SSSSM2T
+
+- ID:      035
+  NAME:    Rogue Doll
+  TYPE:    SPELLCASTER
+  LEVEL:   3
+  ATTACK:  30
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: Restores 1 heart to 2 allied monsters. (Dimension) [P X 3]
+  CRESTS:  SSMAAD
+
+- ID:      036
+  NAME:    Sangan
+  TYPE:    SPELLCASTER
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSSD2G4
+
+- ID:      037
+  NAME:    Killer Needle
+  TYPE:    BEAST
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Able to attack flying monsters
+  CRESTS:  SSSSMA
+
+- ID:      038
+  NAME:    Giant Flea
+  TYPE:    BEAST
+  LEVEL:   1
+  ATTACK:  20
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSSMT
+
+- ID:      039
+  NAME:    Larvae Moth
+  TYPE:    BEAST
+  LEVEL:   1
+  ATTACK:  20
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSSSMD
+
+- ID:      040
+  NAME:    Great Moth
+  TYPE:    BEAST
+  LEVEL:   3
+  ATTACK:  30
+  DEFENSE: 30
+  LIFE:    40
+  ABILITY: Fly
+  CRESTS:  SSMM2AD
+
+- ID:      041
+  NAME:    Kuriboh
+  TYPE:    SPELLCASTER
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSSA4D2
+
+- ID:      042
+  NAME:    Mammoth Graveyard
+  TYPE:    BEAST
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Tunneling, Raises attack of all Beats monsters by 10. (in play)
+  CRESTS:  SSSSM5G2
+
+- ID:      043
+  NAME:    Harpie Lady
+  TYPE:    BEAST
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    20
+  ABILITY: Fly, Destroys one tunneling monster. (Dimension) [P X 3]
+  CRESTS:  SSSMMG3
+
+- ID:      044
+  NAME:    Harpie Lady Sisters
+  TYPE:    BEAST
+  LEVEL:   3
+  ATTACK:  20
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: Destroys all tunnellers. (Dimension) [P X 4]
+  CRESTS:  SSM2A3DT2
+
+- ID:      045
+  NAME:    Perfectly Ultimate
+  TYPE:    BEAST
+  LEVEL:   4
+  ATTACK:  40
+  DEFENSE: 40
+  LIFE:    50
+  ABILITY: Fly
+  CRESTS:  SM4A2DTT2
+
+- ID:      046
+  NAME:    Thousand Dragon
+  TYPE:    DRAGON
+  LEVEL:   2
+  ATTACK:  30
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSSM2A7D
+
+- ID:      047
+  NAME:    Jellyfish
+  TYPE:    BEAST
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Raises defense of all Beast monsters by 10 (In Play)
+  CRESTS:  SSSSMG2
+
+- ID:      048
+  NAME:    Cocoon of Evolution
+  TYPE:    BEAST
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 40
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSSAGT3
+
+- ID:      049
+  NAME:    Giant rock soldier
+  TYPE:    SPELLCASTER
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 30
+  LIFE:    20
+  ABILITY: Removes one obstacle. [P X 2]
+  CRESTS:  SSSM2D2T
+
+- ID:      050
+  NAME:    Red-eyes B. Dragon
+  TYPE:    DRAGON
+  LEVEL:   4
+  ATTACK:  40
+  DEFENSE: 20
+  LIFE:    30
+  ABILITY: Fly
+  CRESTS:  SM2AD2G2T2
+
+- ID:      051
+  NAME:    Castle of D. Magic
+  TYPE:    SPELLCASTER
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: Reduces damage by 20 when attacked. [D X 2]
+  CRESTS:  SSSMDD
+
+- ID:      052
+  NAME:    Metal Guardian
+  TYPE:    SPELLCASTER
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 30
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSSMAD
+
+- ID:      053
+  NAME:    Mystic Horseman
+  TYPE:    BEAST
+  LEVEL:   2
+  ATTACK:  20
+  DEFENSE: 10
+  LIFE:    40
+  ABILITY: Adds damage to attack once per turn. [P X 1]
+  CRESTS:  SSSM2AD
+
+- ID:      054
+  NAME:    Rabid Horseman
+  TYPE:    BEAST
+  LEVEL:   3
+  ATTACK:  30
+  DEFENSE: 20
+  LIFE:    40
+  ABILITY: Attack crest raises attack by 10 up to twice/turn. (In attack) [A X ?]
+  CRESTS:  SSM2A2DG
+
+- ID:      055
+  NAME:    Clown Zombie
+  TYPE:    UNDEAD
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Tunneling, No family pros or cons.
+  CRESTS:  SSSSM2T4
+
+- ID:      056
+  NAME:    Pumpking the King of Ghosts
+  TYPE:    UNDEAD
+  LEVEL:   3
+  ATTACK:  20
+  DEFENSE: 30
+  LIFE:    30
+  ABILITY: Reduces damage by 30 when attacked. [D X 3]
+  CRESTS:  SSMA2D3G2
+
+- ID:      057
+  NAME:    Battle Warrior
+  TYPE:    WARRIOR
+  LEVEL:   1
+  ATTACK:  20
+  DEFENSE: 10
+  LIFE:    20
+  ABILITY: Adds 1 attacks crest to own crest pool. (Dimension) Able to attack flying
+      monsters.
+  CRESTS:  SSSSAG
+
+- ID:      058
+  NAME:    The 13th Grave
+  TYPE:    UNDEAD
+  LEVEL:   2
+  ATTACK:  0
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Tunneling, Removes 1 heart from enemy and self. [P X 2]
+  CRESTS:  SSSM7AG
+
+- ID:      059
+  NAME:    Petit Dragon
+  TYPE:    DRAGON
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Raises attack of dragon monsters by 10. (In Play)
+  CRESTS:  SSSSAT
+
+- ID:      060
+  NAME:    Aqua Madoor
+  TYPE:    SPELLCASTER
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 20
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSSA2T
+
+- ID:      061
+  NAME:    B. Skull Dragon
+  TYPE:    DRAGON
+  LEVEL:   4
+  ATTACK:  40
+  DEFENSE: 40
+  LIFE:    40
+  ABILITY: Fly
+  CRESTS:  SM3AAD3G
+
+- ID:      062
+  NAME:    Beautiful Headhuntress
+  TYPE:    WARRIOR
+  LEVEL:   3
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSM4DDG2
+
+- ID:      063
+  NAME:    Yaranzo
+  TYPE:    UNDEAD
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    20
+  ABILITY: Trades 3 crests in own pool for 1. (Dimension)
+  CRESTS:  SSSM2AD
+
+- ID:      064
+  NAME:    Kanan the Swordmistress
+  TYPE:    WARRIOR
+  LEVEL:   2
+  ATTACK:  20
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSM2DD
+
+- ID:      065
+  NAME:    Stuffed Animal
+  TYPE:    WARRIOR
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSSM2D
+
+- ID:      066
+  NAME:    Three-legged zombies
+  TYPE:    UNDEAD
+  LEVEL:   1
+  ATTACK:  20
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSSAD4
+
+- ID:      067
+  NAME:    Flying Penguin
+  TYPE:    BEAST
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSDGT
+
+- ID:      068
+  NAME:    Millennium Shield
+  TYPE:    WARRIOR
+  LEVEL:   3
+  ATTACK:  0
+  DEFENSE: 40
+  LIFE:    10
+  ABILITY: This item cant move.
+  CRESTS:  SSM3AA3D4
+
+- ID:      069
+  NAME:    Black Luster Soldier
+  TYPE:    WARRIOR
+  LEVEL:   4
+  ATTACK:  40
+  DEFENSE: 30
+  LIFE:    50
+  ABILITY: N/A
+  CRESTS:  SM2ADGT2
+
+- ID:      070
+  NAME:    Fiend's Mirror
+  TYPE:    SPELLCASTER
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSAD2T2
+
+- ID:      071
+  NAME:    Jirai Gumo
+  TYPE:    BEAST
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    20
+  ABILITY: Tunneling
+  CRESTS:  SSSSD6G
+
+- ID:      072
+  NAME:    Sanga of the Thunder
+  TYPE:    SPELLCASTER
+  LEVEL:   4
+  ATTACK:  30
+  DEFENSE: 30
+  LIFE:    30
+  ABILITY: Shifts damage to an ally [T X 3]
+  CRESTS:  SMM3A3DT
+
+- ID:      073
+  NAME:    Kazejin
+  TYPE:    SPELLCASTER
+  LEVEL:   4
+  ATTACK:  30
+  DEFENSE: 30
+  LIFE:    30
+  ABILITY: Shifts damage to an ally [T X 3]
+  CRESTS:  SM3ADGT
+
+- ID:      074
+  NAME:    Suijin
+  TYPE:    BEAST
+  LEVEL:   4
+  ATTACK:  30
+  DEFENSE: 30
+  LIFE:    30
+  ABILITY: Shifts damage to an ally [T X 3]
+  CRESTS:  SMAD2GT
+
+- ID:      075
+  NAME:    Gate Guardian
+  TYPE:    WARRIOR
+  LEVEL:   4
+  ATTACK:  40
+  DEFENSE: 40
+  LIFE:    50
+  ABILITY: Shifts damage to an ally.
+  CRESTS:  SM2AD2G3T2
+
+- ID:      076
+  NAME:    Ryu-kishin Powered
+  TYPE:    SPELLCASTER
+  LEVEL:   2
+  ATTACK:  30
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSSM3AD
+
+- ID:      077
+  NAME:    B. eye Ultimate Dragon
+  TYPE:    DRAGON
+  LEVEL:   4
+  ATTACK:  50
+  DEFENSE: 40
+  LIFE:    60
+  ABILITY: Movement limited to 1 square per turn.
+  CRESTS:  SMADG2T
+
+- ID:      078
+  NAME:    Parrot Dragon
+  TYPE:    DRAGON
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Fly,    Raises defense of all dragon monsters by 10. (In play)
+  CRESTS:  SSSSM2T
+
+- ID:      079
+  NAME:    Mystic Lamp
+  TYPE:    SPELLCASTER
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Raises defense of all spellcaster monsters by    10. (In play)
+  CRESTS:  SSSSGG
+
+- ID:      080
+  NAME:    Pendulum Machine
+  TYPE:    SPELLCASTER
+  LEVEL:   3
+  ATTACK:  20
+  DEFENSE: 30
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSMAG3T
+
+- ID:      081
+  NAME:    Zoa
+  TYPE:    SPELLCASTER
+  LEVEL:   3
+  ATTACK:  30
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSM4ADD2
+
+- ID:      082
+  NAME:    Metal Zoa
+  TYPE:    SPELLCASTER
+  LEVEL:   4
+  ATTACK:  30
+  DEFENSE: 30
+  LIFE:    30
+  ABILITY: N/A
+  CRESTS:  SM8AD8GT4
+
+- ID:      083
+  NAME:    Dancing Elf
+  TYPE:    WARRIOR
+  LEVEL:   1
+  ATTACK:  20
+  DEFENSE: 10
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSSSAT
+
+- ID:      084
+  NAME:    Man-eater Bug
+  TYPE:    BEAST
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSSMA2
+
+- ID:      085
+  NAME:    Gemini Elf
+  TYPE:    SPELLCASTER
+  LEVEL:   3
+  ATTACK:  40
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSMAD3T4
+
+- ID:      086
+  NAME:    Skelengel
+  TYPE:    WARRIOR
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Raises defense of all warrior monsters by 10 (In Play)
+  CRESTS:  SSSSMG
+
+- ID:      087
+  NAME:    Hane-Hane
+  TYPE:    BEAST
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSSD4G
+
+- ID:      088
+  NAME:    Penguin Soldier
+  TYPE:    BEAST
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSSM2M3
+
+- ID:      089
+  NAME:    Twin-headed Thunder Dragon
+  TYPE:    DRAGON
+  LEVEL:   3
+  ATTACK:  40
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSMA2G2T2
+
+- ID:      090
+  NAME:    Witch's Apprentice
+  TYPE:    SPELLCASTER
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSSSM2T
+
+- ID:      091
+  NAME:    Meteor Dragon
+  TYPE:    DRAGON
+  LEVEL:   3
+  ATTACK:  30
+  DEFENSE: 30
+  LIFE:    30
+  ABILITY: Fly
+  CRESTS:  SSM3M4DG
+
+- ID:      092
+  NAME:    Meteor B. Dragon
+  TYPE:    DRAGON
+  LEVEL:   4
+  ATTACK:  40
+  DEFENSE: 20
+  LIFE:    30
+  ABILITY: Fly
+  CRESTS:  SMADGT
+
+- ID:      093
+  NAME:    Dokurorider
+  TYPE:    UNDEAD
+  LEVEL:   3
+  ATTACK:  20
+  DEFENSE: 20
+  LIFE:    20
+  ABILITY: N/A
+  CRESTS:  SSMAD2G2
+
+- ID:      094
+  NAME:    Magician of Black Chaos
+  TYPE:    SPELLCASTER
+  LEVEL:   4
+  ATTACK:  40
+  DEFENSE: 30
+  LIFE:    40
+  ABILITY: N/A
+  CRESTS:  SMA2DGT
+
+- ID:      095
+  NAME:    Slot machine
+  TYPE:    SPELLCASTER
+  LEVEL:   3
+  ATTACK:  20
+  DEFENSE: 20
+  LIFE:    30
+  ABILITY: N/A
+  CRESTS:  SSM2A2DT
+
+- ID:      096
+  NAME:    Red Archery Girl
+  TYPE:    WARRIOR
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY:  N/A
+  CRESTS:  SSSSMD2
+
+- ID:      097
+  NAME:    Dark-eyes Illusionist
+  TYPE:    SPELLCASTER
+  LEVEL:   4
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Negates attack & effect on 1 ally [T X 5]
+  CRESTS:  SMA2D2GT3
+
+- ID:      098
+  NAME:    Relinquished
+  TYPE:    SPELLCASTER
+  LEVEL:   1
+  ATTACK:  0
+  DEFENSE: 0
+  LIFE:    10
+  ABILITY: Sacrifices self to steal 1 enemy. [P X 10]
+  CRESTS:  SSSSDT3
+
+- ID:      099
+  NAME:    Thousand-eyes Restrict
+  TYPE:    SPELLCASTER
+  LEVEL:   4
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Gain control of 1 foe/turn. [P X 8]
+  CRESTS:  SM2AD2G5T
+
+- ID:      100
+  NAME:    Lord of D.
+  TYPE:    SPELLCASTER
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: Protects all dragon monsters. (In Play)
+  CRESTS:  SSSMAG2
+
+- ID:      101
+  NAME:    R. eye B. M. Dragon
+  TYPE:    DRAGON
+  LEVEL:   4
+  ATTACK:  40
+  DEFENSE: 40
+  LIFE:    30
+  ABILITY: Fly
+  CRESTS:  SM2ADG3T2
+
+- ID:      102
+  NAME:    Barrel Dragon
+  TYPE:    DRAGON
+  LEVEL:   4
+  ATTACK:  30
+  DEFENSE: 30
+  LIFE:    40
+  ABILITY: N/A
+  CRESTS:  SM6DGT2T2
+
+- ID:      103
+  NAME:    Jinzo
+  TYPE:    WARRIOR
+  LEVEL:   3
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    10
+  ABILITY: N/A
+  CRESTS:  SSMA3D2T
+
+- ID:      104
+  NAME:    Dark Magician Girl
+  TYPE:    SPELLCASTER
+  LEVEL:   3
+  ATTACK:  20
+  DEFENSE: 10
+  LIFE:    20
+  ABILITY: Obtains Attack and Defense of all destroyed spellcaster monsters. (Dimension)
+  CRESTS:  SSMADT
+
+- ID:      105
+  NAME:    Twin-Headed Dragon
+  TYPE:    DRAGON
+  LEVEL:   1
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    20
+  ABILITY: Tunneling, Adds 1 trap crest to own crest pool. (Dimension)
+  CRESTS:  SSSSDG2
+
+- ID:      106
+  NAME:    Gator Dragon
+  TYPE:    DRAGON
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    30
+  ABILITY: Reduces attack damage by Defense crest X 10. [D X ?]
+  CRESTS:  SSSMDT
+
+- ID:      107
+  NAME:    Blast Lizard
+  TYPE:    BEAST
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    20
+  ABILITY: Destroys 1 foe Add 1 magic crest/level. [P X 3]
+  CRESTS:  SSSADT4
+
+- ID:      108
+  NAME:    Knight of Twin Swords
+  TYPE:    WARRIOR
+  LEVEL:   2
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    30
+  ABILITY: Moves 2 squares for 1 movement crests. Attacks 1 foe up to 3 times/turn.
+      (on attack) [A X ?]
+  CRESTS:  SSSMAD
+
+- ID:      109
+  NAME:    Thunder Ball
+  TYPE:    SPELLCASTER
+  LEVEL:   3
+  ATTACK:  10
+  DEFENSE: 10
+  LIFE:    30
+  ABILITY: Rolls to destroy one foe. Add 1 defense crest per level. [P X 3]
+  CRESTS:  SSMM3A2D2
+
+- ID:      110
+  NAME:    Magician Dragon
+  TYPE:    DRAGON
+  LEVEL:   3
+  ATTACK:  20
+  DEFENSE: 10
+  LIFE:    40
+  ABILITY: Adds enemy defense to own defense. [T X 3] Destroys all within 3 x 3 grid.
+      [P X 3]
+  CRESTS:  SSM4ADD3
+
+- ID:      111
+  NAME:    Strike Ninja
+  TYPE:    WARRIOR
+  LEVEL:   3
+  ATTACK:  20
+  DEFENSE: 10
+  LIFE:    20
+  ABILITY: Moves 3 squares for 1 movement crest. Protects self from attacks and effects.
+      [T X 2]
+  CRESTS:  SSMM3AD
+
+- ID:      112
+  NAME:    Mighty Mage
+  TYPE:    SPELLCASTER
+  LEVEL:   4
+  ATTACK:  30
+  DEFENSE: 20
+  LIFE:    50
+  ABILITY: Attacks an enemy 2 squares away. {P X 1]
+  CRESTS:  SM2M4AGT
+
+- ID:      113
+  NAME:    Crocozaurus
+  TYPE:    BEAST
+  LEVEL:   4
+  ATTACK:  30
+  DEFENSE: 20
+  LIFE:    50
+  ABILITY: Attack crests raises attack by 10 max. 3 times/turn. (on attack) [A X ?]
+  CRESTS:  SMA2DGT3
+
+- ID:      114
+  NAME:    Orgoth the Relentless
+  TYPE:    WARRIOR
+  LEVEL:   3
+  ATTACK:  20
+  DEFENSE: 20
+  LIFE:    30
+  ABILITY: Raises attack by 10.
+  CRESTS:  SSMM3A2D
+
+- ID:      115
+  NAME:    Medical Aid Kit
+  TYPE:    ITEM
+  LEVEL:   2
+  ABILITY: Restores 2 hearts to a monster.
+  CRESTS:  SSSM5AT
+
+- ID:      116
+  NAME:    Exploding Disk
+  TYPE:    ITEM
+  LEVEL:   3
+  ABILITY: Removes 2 hearts from a monster.
+  CRESTS:  SSM2M3D2G2
+
+- ID:      117
+  NAME:    Time Machine
+  TYPE:    ITEM
+  LEVEL:   1
+  ABILITY: Returns monster to its last lactation.
+  CRESTS:  SSSSDT
+
+- ID:      118
+  NAME:    Energy Disk
+  TYPE:    ITEM
+  LEVEL:   1
+  ABILITY: Raises a monsters attack by 20.
+  CRESTS:  SSSSM3M4
+
+- ID:      119
+  NAME:    Trap Bandit
+  TYPE:    ITEM
+  LEVEL:   1
+  ABILITY: Destroys 1 trap crest in own crest pool.
+  CRESTS:  SSSSMT
+
+- ID:      120
+  NAME:    Declaration of Despair
+  TYPE:    ITEM
+  LEVEL:   1
+  ABILITY: Destroys 1 magic crest in own crest pool.
+  CRESTS:  SSSSM2G
+
+- ID:      121
+  NAME:    Gluminizer
+  TYPE:    ITEM
+  LEVEL:   2
+  ABILITY: Doubles movement cost for all. (Dimension)
+  CRESTS:  SSSM2AD2
+
+- ID:      122
+  NAME:    Resurrection Scroll
+  TYPE:    ITEM
+  LEVEL:   2
+  ABILITY: Resurrects 1 destroyed ally.
+  CRESTS:  SSSM2G2T
+
+- ID:      123
+  NAME:    Warp Vortex
+  TYPE:    ITEM
+  LEVEL:   3
+  ABILITY: Moves Monster to another Vortex. (Dimension)
+  CRESTS:  SSMADT
+
+- ID:      124
+  NAME:    Crater Creator
+  TYPE:    ITEM
+  LEVEL:   4
+  ABILITY: Destroys all monsters in the dungeon.
+  CRESTS:  SM4AA2DG4

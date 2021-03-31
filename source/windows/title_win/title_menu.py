@@ -11,7 +11,8 @@ class TitleMenu(urwid.Padding):
             align="center") 
 
 def switch_pool_builder(button):
-    urwid.MainLoop.widget.switch_pool_builder()
+    from globvars import main_win
+    main_win.switch_pool_builder()
 
 def exit_program(button):
     raise urwid.ExitMainLoop()
