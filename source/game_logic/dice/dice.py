@@ -1,3 +1,5 @@
+from globvars import monster_types
+
 class Dice():
     """
     The dice players use to play the game.
@@ -12,8 +14,10 @@ def create_card(card_info):
     """
     Create the appropiate card from the card_info dictionary.
     """
-    card_type = card_info["TYPE"]
-    return card_dict[card_type](card_info)
+    if card_info["TYPE"] in monster_types:
+        return MonsterCard(card_info)
+    elif card_info["TYPE"] == "ITEM":
+        return ItemCard(card_info)
 
 from side import crest_dict
 def create_sides(string, level):
@@ -40,18 +44,3 @@ def create_sides(string, level):
         side_list.append(Side(side_string))
 
     return side_list
-
-from dragon_card import DragonCard
-from spellcaster_card import SpellcasterCard
-from undead_card import UndeadCard
-from beast_card import BeastCard
-from warrior_card import WarriorCard
-from item_card import ItemCard
-card_dict = {
-    "DRAGON"      : DragonCard,
-    "SPELLCASTER" : SpellcasterCard,
-    "UNDEAD"      : UndeadCard,
-    "BEAST"       : BeastCard,
-    "WARRIOR"     : WarriorCard,
-    "ITEM"        : ItemCard}
-
