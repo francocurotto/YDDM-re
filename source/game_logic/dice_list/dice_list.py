@@ -1,4 +1,5 @@
 import yaml
+from dice import Dice
 
 class DiceList():
     """

@@ -1,2 +1,2 @@
 - continue with the pool_builder impolementation
-    - implement: crests, dice_display, dice_list_display
+    - implement: dice_display, dice_list_display

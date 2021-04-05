@@ -13,6 +13,7 @@ from main_win import MainWin
 # define palette
 palette = [("focused", "standout", "")]
 
+
 # create main window
 main_win = MainWin()
 globvars.main_win = main_win

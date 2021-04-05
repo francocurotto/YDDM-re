@@ -1,0 +1,7 @@
+ascii:
+    # type icons
+    TYPE_DRAGON      : D
+    TYPE_SPELLCASTER : S
+    TYPE_UNDEAD      : U
+    TYPE_BEAST       : B
+    TYPE_WARRIOR     : W
