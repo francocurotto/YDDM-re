@@ -1,2 +1,4 @@
-- continue with the pool_builder impolementation
-    - implement: dice_display, dice_list_display
+- implement pool_builder
+    - add emoji chars
+    - fix dice_list_display alignment
+    

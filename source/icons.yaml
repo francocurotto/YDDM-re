@@ -5,3 +5,14 @@ ascii:
     TYPE_UNDEAD      : U
     TYPE_BEAST       : B
     TYPE_WARRIOR     : W
+    TYPE_ITEM        : I
+    # crest icons
+    CREST_SUMMON   : S
+    CREST_MOVEMENT : M
+    CREST_ATTACK   : A
+    CREST_DEFENSE  : D
+    CREST_MAGIC    : G
+    CREST_TRAP     : T
+    # monster icons
+    MONSTER_HEART : L
+

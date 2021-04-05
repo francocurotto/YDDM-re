@@ -6,3 +6,6 @@ class ItemCard(SummonCard):
     """
     def __init__(self, info):
         super().__init__(info)
+
+    def is_item(self):
+        return True

@@ -9,3 +9,6 @@ class MonsterCard(SummonCard):
         self.attack = info["ATTACK"]
         self.defense = info["DEFENSE"]
         self.life = info["LIFE"]
+
+    def is_monster(self):
+        return True
