@@ -41,14 +41,14 @@ emoji:
     TYPE_UNDEAD      : 🧟
     TYPE_BEAST       : 🐺
     TYPE_WARRIOR     : 🥋
-    TYPE_ITEM        : ❔
+    TYPE_ITEM        : 🔘
     # crest icons
     CREST_SUMMON   : ⭐
-    CREST_MOVEMENT : ⬆️
-    CREST_ATTACK   : ⚔️
-    CREST_DEFENSE  : 🛡️
-    CREST_MAGIC    : ✡️
-    CREST_TRAP     : ⚡
+    CREST_MOVEMENT : 🔄
+    CREST_ATTACK   : 🔱
+    CREST_DEFENSE  : 🔰
+    CREST_MAGIC    : 🔯
+    CREST_TRAP     : 💠
     # monster icons
-    MONSTER_HEART : ❤️
+    MONSTER_HEART : 💜
 
