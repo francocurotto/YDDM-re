@@ -41,7 +41,7 @@ emoji:
     TYPE_UNDEAD      : 🧟
     TYPE_BEAST       : 🐺
     TYPE_WARRIOR     : 🥋
-    TYPE_ITEM        : 🔘
+    TYPE_ITEM        : 🧿
     # crest icons
     CREST_SUMMON   : ⭐
     CREST_MOVEMENT : 🔄
