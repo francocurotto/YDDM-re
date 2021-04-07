@@ -17,7 +17,6 @@ class Menu(urwid.ListBox):
         for button in self.body:
             # get button through attribute map
             button = button.original_widget
-            #TODO: fix for emoji sensitive length
             width = max(width, len(button.get_text()[0]))
         return width
         

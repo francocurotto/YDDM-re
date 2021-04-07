@@ -5,10 +5,13 @@ class DiceDisplay(urwid.AttrMap):
     """
     Displays dice information in a single line.
     """
+    _selectable = True
     def __init__(self, dice):
         col_widgets = create_widget_list(dice)
         columns = urwid.Columns(col_widgets, dividechars=1)
-        super().__init__(columns, None)
+        super().__init__(columns, None, focus_map="focused")
+    def keypress(self, key, size):
+        return key
 
 def create_widget_list(dice):
     """

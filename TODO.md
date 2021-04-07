@@ -1,4 +1,3 @@
 - implement pool_builder
-    - add emoji chars
-    - fix dice_list_display alignment
-    
+    - fix dice scroll in list
+    - add id number to library display?
