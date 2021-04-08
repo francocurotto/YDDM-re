@@ -1,3 +1,3 @@
 - implement pool_builder
-    - fix dice scroll in list
     - add id number to library display?
+    - update summon display with selection movement

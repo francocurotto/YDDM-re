@@ -1,7 +1,7 @@
 import urwid
-from dice_display import DiceDisplay
+from dice_disp import DiceDisp
 
-class DiceListDisplay(urwid.ListBox):
+class DiceListDisp(urwid.ListBox):
     """
     Displays a list of dice.
     """
@@ -9,7 +9,7 @@ class DiceListDisplay(urwid.ListBox):
         # generate list of dice display
         display_list = []
         for dice in dice_list.contents:
-            display_list.append(DiceDisplay(dice))
+            display_list.append(DiceDisp(dice))
 
         # create walker
         walker = urwid.SimpleFocusListWalker(display_list)

@@ -1,17 +1,15 @@
 import urwid
 from icon_functions import load_icons
 
-class DiceDisplay(urwid.AttrMap):
+class DiceDisp(urwid.AttrMap):
     """
     Displays dice information in a single line.
     """
-    _selectable = True
     def __init__(self, dice):
-        col_widgets = create_widget_list(dice)
+        self.dice = dice
+        col_widgets = create_widget_list(self.dice)
         columns = urwid.Columns(col_widgets, dividechars=1)
         super().__init__(columns, None, focus_map="focused")
-    def keypress(self, key, size):
-        return key
 
 def create_widget_list(dice):
     """
@@ -24,7 +22,7 @@ def create_widget_list(dice):
     widget_list = []
 
     # name widget
-    widget_list.append(urwid.Text(card.name, wrap="clip"))
+    widget_list.append(DiceName(card.name, wrap="clip"))
 
     # type widget
     string = icons["TYPE_"+card.type]+str(card.level)
@@ -55,8 +53,6 @@ def create_widget_list(dice):
         string = width*" "
         widget_list.append(("pack",urwid.Text(string)))
             
-
-
     # dice widget
     dice_str_list = []
     for side in dice.sides:
@@ -67,3 +63,13 @@ def create_widget_list(dice):
     widget_list.append(("pack",urwid.Text(string)))
 
     return widget_list
+
+class DiceName(urwid.Text):
+    """
+    Makes dice name selectable for proper scrolling in dice 
+    list.
+    """
+    _selectable = True
+
+    def keypress(self, size, key):
+        return key
