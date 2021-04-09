@@ -11,24 +11,32 @@ class PoolBuilderWin(urwid.Frame):
     def __init__(self):
         # create library display
         library = DiceList(library_path)
-        library_disp = urwid.LineBox(DiceListDisp(library), 
-            "Dice Library", "left")
+        self.library_disp = DiceListDisp(library)
 
         # create summon display
-        dice = library_disp.original_widget.focus.dice
-        summon_disp = urwid.LineBox(SummonDisp(dice.card), 
-            "Summon Information", "left")
+        dice = self.library_disp.focus.dice
+        self.summon_disp = SummonDisp(dice.card)
 
         # create right column
-        right_col = urwid.Pile([(10,summon_disp)])
+        right_col = urwid.Pile([
+            (10, urwid.LineBox(self.summon_disp,
+                "Summon Information", "left"))])
 
         # create body
-        body_cols = urwid.Columns([library_disp, 
+        body_cols = urwid.Columns([
+            urwid.LineBox(self.library_disp,
+                "Dice Library", "left"),
             right_col])
         body = urwid.Padding(body_cols, align="center",
-            width=63*2)
+            width=67*2)
     
         # create footer
         footer = urwid.Text("↑,↓:Select dice")
         super().__init__(body, footer=footer)
 
+    def keypress(self, size, key):
+        # if up/down arrows, change summon display
+        if key in ["up", "down"]:
+            self.contents["body"][0].keypress(size, key)
+            dice = self.get_focus_widgets()[-2].dice
+            self.summon_disp.update(dice.card)

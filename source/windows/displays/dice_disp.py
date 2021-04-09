@@ -70,6 +70,5 @@ class DiceName(urwid.Text):
     list.
     """
     _selectable = True
-
     def keypress(self, size, key):
         return key

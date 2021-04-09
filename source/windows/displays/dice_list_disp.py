@@ -14,3 +14,7 @@ class DiceListDisp(urwid.ListBox):
         # create walker
         walker = urwid.SimpleFocusListWalker(display_list)
         super().__init__(walker)
+
+    #def keypress(self, size, key):
+    #    super().keypress(size, key)
+    #    return key
