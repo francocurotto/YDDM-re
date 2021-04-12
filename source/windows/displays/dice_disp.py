@@ -5,21 +5,27 @@ class DiceDisp(urwid.AttrMap):
     """
     Displays dice information in a single line.
     """
-    def __init__(self, dice):
+    def __init__(self, dice, disp_id=False):
         self.dice = dice
-        col_widgets = create_widget_list(self.dice)
+        col_widgets = create_widget_list(self.dice, disp_id)
         columns = urwid.Columns(col_widgets, dividechars=1)
         super().__init__(columns, None, focus_map="focused")
 
-def create_widget_list(dice):
+def create_widget_list(dice, disp_id):
     """
-    Create all the widgets for that display column.
+    Create all the widgets for that display column. If 
+    disp_id is true, add ID to widgets.
     """
     icons = load_icons()
     card = dice.card # for less typing
     
     # initialize list
     widget_list = []
+
+    # id widget
+    if disp_id:
+        dice_id = str(dice.id).zfill(3)
+        widget_list.append(("pack",urwid.Text(dice_id)))
 
     # name widget
     widget_list.append(DiceName(card.name, wrap="clip"))

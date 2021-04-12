@@ -1,5 +1,5 @@
-# library var
-library_path = "library.yaml"
+# library vars
+library_path = "dicesets/library.yaml"
 
 # dice info vars
 monster_types = ["DRAGON", "SPELLCASTER", "UNDEAD", "BEAST",
@@ -14,3 +14,7 @@ crest_dict = {"S" : "SUMMON",
 # icons var
 import yaml
 icons = yaml.full_load(open("icons.yaml"))
+
+# urwid pallete palette
+palette = [("focused", "standout", "")]
+

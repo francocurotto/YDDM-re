@@ -7,12 +7,16 @@ from functions.module_functions import get_all_modules
 modlist = get_all_modules()
 [sys.path.append(modname) for modname in modlist]
 
-# import local modules
+# import modules
+from globvars import palette
+from dicesets_functions import create_dice_library
+
+# load dice library
+library = create_dice_library()
+globvars.library = library
+
+# local imports
 from main_win import MainWin
-
-# define palette
-palette = [("focused", "standout", "")]
-
 
 # create main window
 main_win = MainWin()

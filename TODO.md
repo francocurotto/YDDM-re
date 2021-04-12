@@ -1,3 +1,4 @@
 - implement pool_builder
-    - add id number to library display?
-    - add pool display
+    - make right column shorter without breaking walk
+    - implement change list input
+    - add mouse implementation

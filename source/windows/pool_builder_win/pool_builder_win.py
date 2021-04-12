@@ -1,6 +1,7 @@
 import urwid
-from globvars import library_path
-from dice_list import DiceList
+from globvars import library
+from dicesets_functions import create_dice_list
+from dice_lib_disp import DiceLibDisp
 from dice_list_disp import DiceListDisp
 from summon_disp import SummonDisp
 
@@ -10,8 +11,12 @@ class PoolBuilderWin(urwid.Frame):
     """
     def __init__(self):
         # create library display
-        library = DiceList(library_path)
-        self.library_disp = DiceListDisp(library)
+        self.library_disp = DiceLibDisp(library)
+
+        # create pool display
+        self.pool = create_dice_list(
+            "dicesets/pools/user/starter.yaml")
+        self.pool_disp = DiceListDisp(self.pool)
 
         # create summon display
         dice = self.library_disp.focus.dice
@@ -19,14 +24,18 @@ class PoolBuilderWin(urwid.Frame):
 
         # create right column
         right_col = urwid.Pile([
+            (17, urwid.LineBox(self.pool_disp, 
+                "Pool", "left")),
             (10, urwid.LineBox(self.summon_disp,
-                "Summon Information", "left"))])
+                "Summon Information", "left")),
+            urwid.SolidFill()]) # PileError workaround
 
         # create body
         body_cols = urwid.Columns([
             urwid.LineBox(self.library_disp,
                 "Dice Library", "left"),
             right_col])
+            #right_col], focus_column=1)
         body = urwid.Padding(body_cols, align="center",
             width=67*2)
     
@@ -40,3 +49,18 @@ class PoolBuilderWin(urwid.Frame):
             self.contents["body"][0].keypress(size, key)
             dice = self.get_focus_widgets()[-2].dice
             self.summon_disp.update(dice.card)
+
+        # if control arrows, change focused list
+        elif key == "right":
+            self.contents["body"][0].original_widget.set_focus_column = 1
+        elif key == "left":
+            self.contents["body"][0].original_widget.set_focus_column = 0
+            #self.contents["body"][0].original_widget.set_focus = self.library_disp
+
+    def mouse_event(self, size, event, button, col, row, 
+        focus):
+        self.contents["body"][0].mouse_event(size, event, 
+            button, col, row, focus)
+        dice = self.get_focus_widgets()[-2].dice
+        self.summon_disp.update(dice.card)
+

@@ -7,8 +7,8 @@ class Dice():
     """
     The dice players use to play the game.
     """
-    def __init__(self, dice_dict):
-        self.id = dice_dict["ID"]
+    def __init__(self, dice_id, dice_dict):
+        self.id = dice_id
         self.level = dice_dict["LEVEL"]
         self.card = create_card(dice_dict)
         self.sides = create_sides(dice_dict["CRESTS"], 
