@@ -1,4 +1,5 @@
 - implement pool_builder
-    - make right column shorter without breaking walk
-    - implement change list input
-    - add mouse implementation
+    - add message line
+    - create Pool class separated from PoolDisp?
+    - add finish and save functionality, with safety check of
+        pool completition
