@@ -1,4 +1,3 @@
-import copy
 from dice_list_disp import DiceListDisp
 from dice_disp import DiceDisp
 
@@ -14,9 +13,7 @@ class PoolDisp(DiceListDisp):
         """
         Add dice to pool and update display.
         """
-        # make copy to avoid reference errors
-        dice_copy = copy.deepcopy(dice)
-        success = self.pool.add(dice_copy)
+        success = self.pool.add(dice)
         self.update_add()
         return success
 

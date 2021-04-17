@@ -1,5 +1,7 @@
 # library vars
-library_path = "dicesets/library.yaml"
+library_path      = "dicesets/library.yaml"
+starter_pool_path = "dicesets/pools/player/starter.yaml"
+saved_pool_path   = "dicesets/pools/player/saved.yaml"
 
 # dice info vars
 monster_types = ["DRAGON", "SPELLCASTER", "UNDEAD", "BEAST",

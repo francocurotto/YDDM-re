@@ -32,5 +32,3 @@ title_str = "\
    | |   | |_| | | |_| | | |  | | |_____| | |    |  __/\n\
    |_|   |____/  |____/  |_|  |_|         |_|     \___|"
 subtitle_str = "Dungeon Dice Monsters re-implementation"
-
-
