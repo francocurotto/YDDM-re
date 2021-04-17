@@ -41,35 +41,26 @@ class PoolBuilderWin(urwid.Frame):
         # create footer
         self.message = urwid.Text("")
         controls = urwid.Text("↑,↓:Select dice | " +
-            "←,→: Remove,add dice | " +
-            "CTRL+←,→:Change list")
+            "←,→:Change list | " +
+            "SPACE: Remove,add dice")
         footer = urwid.Pile([self.message, controls])
         super().__init__(body, footer=footer)
 
     def keypress(self, size, key):
+        super().keypress(size, key)
+
         # reset message
         self.message.set_text("")
 
-        # if up/down arrows, change summon display
-        if key in ["up", "down"]:
-            self.contents["body"][0].keypress(size, key)
-
-        # if control arrows, change focused list
-        elif key == "ctrl right" and \
-            not self.pool_disp.pool.empty():
-            self.contents["body"][0].keypress(size, "right")
-        elif key == "ctrl left":
-            self.contents["body"][0].keypress(size, "left")
-
-        # if right and lib focused, add dice to pool
-        elif key == "right" and self.lib_focused():
+        # if space and lib focused, add dice to pool
+        if key == " " and self.lib_focused():
             dice = self.get_focus_widgets()[-2].dice
             success = self.pool_disp.add_dice(dice)
             if not success:
                 self.message.set_text("Pool is full.")
 
-        # if left and pool focused, remove dice
-        elif key == "left" and self.pool_focused():
+        # if space and pool focused, remove dice
+        elif key == " " and self.pool_focused():
             self.pool_disp.remove_dice()
             # if pool is empty, return to library
             if self.pool_disp.pool.empty():
