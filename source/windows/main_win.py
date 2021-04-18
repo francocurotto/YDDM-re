@@ -1,6 +1,7 @@
 import urwid
 from title_win import TitleWin
 from pool_builder_win import PoolBuilderWin
+from options_win import OptionsWin
 
 class MainWin(urwid.Frame):
     """
@@ -24,3 +25,9 @@ class MainWin(urwid.Frame):
         Swtich window to pool builder.
         """
         self.contents["body"] = (PoolBuilderWin(), None)
+
+    def switch_options(self):
+        """
+        Swtich window to options.
+        """
+        self.contents["body"] = (OptionsWin(), None)

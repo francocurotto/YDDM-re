@@ -1,6 +1,7 @@
 import urwid
 import copy
 from globvars import library
+from builder_message import BuilderMessage
 from dice import Dice
 from dicesets_functions import create_player_pool
 from dice_list_disp import DiceListDisp
@@ -41,11 +42,13 @@ class PoolBuilderWin(urwid.Frame):
             width=67*2)
     
         # create footer
-        self.message = urwid.Text("")
+        self.message = BuilderMessage("")
         controls = urwid.Text("↑,↓:Select dice | " +
             "←,→:Change list | " +
-            "SPACE: Remove,add dice")
+            "SPACE: Remove,add dice | " + 
+            "f: finish")
         footer = urwid.Pile([self.message, controls])
+
         super().__init__(body, footer=footer)
 
     def keypress(self, size, key):
@@ -53,10 +56,11 @@ class PoolBuilderWin(urwid.Frame):
 
         # reset message
         self.message.set_text("")
+        if self.focus_position == "footer":
+            self.focus_position = "body"
 
         # if space and lib focused, add dice to pool
         if key == " " and self.lib_focused():
-            #dice = self.get_focus_widgets()[-2].dice
             dice = self.lib_disp.get_focus_widgets()[0].dice
             dice = copy.deepcopy(dice)
             success = self.pool_disp.add_dice(dice)
@@ -69,10 +73,16 @@ class PoolBuilderWin(urwid.Frame):
 
         # if players what to finish
         elif key == "f":
+            # if pool full, finish
             if self.pool_disp.pool.full():
                 self.pool_disp.pool.save()
                 from globvars import main_win
                 main_win.switch_title()
+            # if pool not full, confirm discard
+            else:
+                self.message.set_text("Pool not full. " +
+                    "Discard changes? [y:yes]")
+                self.focus_position = "footer"
 
         # update summon display after any key
         self.update_summon_disp()

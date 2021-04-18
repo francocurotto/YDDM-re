@@ -14,11 +14,15 @@ def switch_pool_builder(button):
     from globvars import main_win
     main_win.switch_pool_builder()
 
+def switch_options(button):
+    from globvars import main_win
+    main_win.switch_options()
+
 def exit_program(button):
     raise urwid.ExitMainLoop()
 
 buttons_params = [
     ("CPU Versus",   exit_program),
     ("Pool Builder", switch_pool_builder),  
-    ("Options",      exit_program), 
+    ("Options",      switch_options), 
     ("Quit",         exit_program)]
