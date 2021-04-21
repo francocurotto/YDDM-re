@@ -6,17 +6,20 @@ class IconOption(urwid.Pile):
     """
     Section for the selection of icons in the game.
     """
-    def __init__(self):
+    def __init__(self, settings):
         # icon test
-        self.test = urwid.Text("")
+        test = urwid.Text("")
+        data = {"test" : test, "settings" : settings}
 
         # create radio buttons
         options = ["emoji", "unicode", "ascii"]
         self.group = []
         for option in options:
-            rb = urwid.RadioButton(self.group, option)
-            urwid.connect_signal(rb, "postchange", set_test,
-                self.test)
+            init_state = option == settings["display_type"]
+            rb = urwid.RadioButton(self.group, option,
+                init_state)
+            urwid.connect_signal(rb, "postchange",  
+                update_icons, data)
 
         # add option text
         text = urwid.Text("Icons: ")
@@ -36,21 +39,30 @@ class IconOption(urwid.Pile):
         "spaces between icons and no ⍰ icon. If not, use " +
         "other setting):")
 
-        #self.set_test()
+        # run test for the first time
+        for rb in self.group:
+            update_icons(rb, rb.state, data)
 
-        super().__init__([pad, desc, self.test])
+        super().__init__([pad, desc, test])
 
-def set_test(rb, state, test):
+def update_icons(rb, state, data):
     """
-    Change the text on the icon test accoring to the
-    radio button activated.
+    Update the icons in the settings and in the icon test,
+    when the player changes the option.
     """
+    # extract data
+    test = data["test"]
+    settings = data["settings"]
+
     # only do this if radio button is activated
     if not rb.state:
         return
 
     # get the selected display type
     sel_display = rb.get_label()
+
+    # update the settings in the window variable
+    settings["display_icons"] = sel_display
 
     # get selected icons
     sel_icons = icons[sel_display]
@@ -61,5 +73,5 @@ def set_test(rb, state, test):
         str_list.append(icon)
     string = "".join(str_list)
 
-    # set tne string to the test text
+    # set the string to the test text
     test.set_text(string)
