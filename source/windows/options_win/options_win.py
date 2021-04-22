@@ -15,7 +15,7 @@ class OptionsWin(urwid.Frame):
         self.icons_opt = IconOption(self.settings)
 
         # return button
-        ret_button = ReturnButton()
+        ret_button = ReturnButton(self.settings)
 
         # divider
         div = urwid.Divider()

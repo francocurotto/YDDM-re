@@ -9,7 +9,6 @@ class IconOption(urwid.Pile):
     def __init__(self, settings):
         # icon test
         test = urwid.Text("")
-        data = {"test" : test, "settings" : settings}
 
         # create radio buttons
         options = ["emoji", "unicode", "ascii"]
@@ -19,7 +18,7 @@ class IconOption(urwid.Pile):
             rb = urwid.RadioButton(self.group, option,
                 init_state)
             urwid.connect_signal(rb, "postchange",  
-                update_icons, data)
+                update_icons, user_args=[settings, test])
 
         # add option text
         text = urwid.Text("Icons: ")
@@ -41,19 +40,15 @@ class IconOption(urwid.Pile):
 
         # run test for the first time
         for rb in self.group:
-            update_icons(rb, rb.state, data)
+            update_icons(settings, test, rb, rb.state)
 
         super().__init__([pad, desc, test])
 
-def update_icons(rb, state, data):
+def update_icons(settings, test, rb, state):
     """
     Update the icons in the settings and in the icon test,
     when the player changes the option.
     """
-    # extract data
-    test = data["test"]
-    settings = data["settings"]
-
     # only do this if radio button is activated
     if not rb.state:
         return
@@ -62,7 +57,7 @@ def update_icons(rb, state, data):
     sel_display = rb.get_label()
 
     # update the settings in the window variable
-    settings["display_icons"] = sel_display
+    settings["display_type"] = sel_display
 
     # get selected icons
     sel_icons = icons[sel_display]

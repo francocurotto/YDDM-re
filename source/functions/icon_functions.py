@@ -5,5 +5,6 @@ def load_icons():
     Load the icon dictionary given the current display 
     settings.
     """
-    display_type = load_settings()
+    from globvars import icons
+    settings = load_settings()
     return icons[settings["display_type"]]
