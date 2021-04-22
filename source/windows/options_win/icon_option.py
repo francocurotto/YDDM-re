@@ -30,6 +30,11 @@ class IconOption(urwid.Pile):
             col_list.append((width+8, rb))
         cols = urwid.Columns(col_list)
 
+        # focus the selected widget
+        for rb in self.group:
+            if rb.state:
+                cols.set_focus(rb)
+
         # option pad
         pad = urwid.Padding(cols)
 

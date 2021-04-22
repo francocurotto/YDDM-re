@@ -1,2 +1,1 @@
-- main_win
-    - remember position at startup
+- Implement CPU Versus!

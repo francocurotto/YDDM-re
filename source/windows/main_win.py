@@ -9,16 +9,19 @@ class MainWin(urwid.Frame):
     """
     def __init__(self):
         # create game window, that starts at title
-        game_win = TitleWin()
+        #game_win = TitleWin()
+        self.title_win = TitleWin()
 
         # create main window as a frame
-        super().__init__(game_win)
+        #super().__init__(game_win)
+        super().__init__(self.title_win)
 
     def switch_title(self):
         """
         Switch window to title.
         """
-        self.contents["body"] = (TitleWin(), None)
+        #self.contents["body"] = (TitleWin(), None)
+        self.contents["body"] = (self.title_win, None)
 
     def switch_pool_builder(self):
         """
