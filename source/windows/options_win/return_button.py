@@ -19,5 +19,6 @@ def ret_main_win(button, settings):
     with open(saved_settings_path, "w") as f:
         yaml.dump(settings, f)
 
+    # now return to main window
     from globvars import main_win
     main_win.switch_title()

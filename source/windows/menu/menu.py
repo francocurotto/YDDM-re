@@ -4,8 +4,8 @@ class Menu(urwid.ListBox):
     """
     Generic menu class used in many windows.
     """
-    def __init__(self, buttons_params, align="left"):
-        buttons = create_buttons(buttons_params, align)
+    def __init__(self, buttons_params):
+        buttons = create_buttons(buttons_params)
         walker = urwid.SimpleFocusListWalker(buttons)
         super().__init__(walker)
 
@@ -53,7 +53,7 @@ class ListEntry(urwid.Text):
         self._emit('click')
         return True
 
-def create_buttons(buttons_params, align):
+def create_buttons(buttons_params):
     """
     Create a list of buttons for the menu. buttons_params is
     a list of tuples containing the the parameters of each 
@@ -64,7 +64,7 @@ def create_buttons(buttons_params, align):
     buttons = []
     for params in buttons_params:
         button = ListEntry(*params)
-        button.set_align_mode(align)
+        button.set_align_mode("center")
         button_map = urwid.AttrMap(button, None, 
             focus_map="focused")
         buttons.append(button_map)

@@ -7,21 +7,20 @@ class IconOption(urwid.Pile):
     Section for the selection of icons in the game.
     """
     def __init__(self, settings):
-        # icon test
+        # create icon test
         test = urwid.Text("")
+
+        # create option text
+        text = urwid.Text("Icons: ")
 
         # create radio buttons
         options = ["emoji", "unicode", "ascii"]
         self.group = []
         for option in options:
-            init_state = option == settings["display_type"]
-            rb = urwid.RadioButton(self.group, option,
-                init_state)
+            state = option == settings["display_type"]
+            rb = urwid.RadioButton(self.group, option, state)
             urwid.connect_signal(rb, "postchange",  
                 update_icons, user_args=[settings, test])
-
-        # add option text
-        text = urwid.Text("Icons: ")
 
         # create columns
         col_list = [("pack", text)]
@@ -29,14 +28,6 @@ class IconOption(urwid.Pile):
             width = len(rb.get_label())
             col_list.append((width+8, rb))
         cols = urwid.Columns(col_list)
-
-        # focus the selected widget
-        for rb in self.group:
-            if rb.state:
-                cols.set_focus(rb)
-
-        # option pad
-        pad = urwid.Padding(cols)
 
         # option desciption
         desc = urwid.Text("Icon test (should show no " +
@@ -47,11 +38,16 @@ class IconOption(urwid.Pile):
         for rb in self.group:
             update_icons(settings, test, rb, rb.state)
 
-        super().__init__([pad, desc, test])
+        # focus the selected widget
+        for rb in self.group:
+            if rb.state:
+                cols.set_focus(rb)
+
+        super().__init__([cols, urwid.Divider(), desc, test])
 
 def update_icons(settings, test, rb, state):
     """
-    Update the icons in the settings and in the icon test,
+    Update the icons in the settings and in the icon test
     when the player changes the option.
     """
     # only do this if radio button is activated

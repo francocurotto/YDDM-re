@@ -21,6 +21,6 @@ crest_dict = {"S" : "SUMMON",
 import yaml
 icons = yaml.full_load(open("icons.yaml"))
 
-# urwid pallete palette
+# urwid pallete
 palette = [("focused", "standout", "")]
 

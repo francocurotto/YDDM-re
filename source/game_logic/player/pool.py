@@ -5,7 +5,7 @@ class Pool():
     """
     The pool of dice of a player.
     """
-    SIZE = 15 # mnumber of dice in the pool
+    SIZE = 15 # number of dice in the pool
     def __init__(self, contents):
         self.contents = contents
 

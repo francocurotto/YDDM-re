@@ -12,12 +12,12 @@ class TitleWin(urwid.Pile):
             wrap="clip")
         title_fill = urwid.Filler(title_txt, "top")
         
-        #subtitle
+        # subtitle
         subtitle_txt = urwid.Text(subtitle_str, 
             align="center")
         subtitle_fill = urwid.Filler(subtitle_txt, "top")
 
-        # title
+        # title menu
         menu = TitleMenu()
 
         # create filled pile
