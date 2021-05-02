@@ -1,20 +1,19 @@
 import urwid
 
-class Menu(urwid.ListBox):
+class Menu(urwid.Pile):
     """
     Generic menu class used in many windows.
     """
     def __init__(self, buttons_params):
         buttons = create_buttons(buttons_params)
-        walker = urwid.SimpleFocusListWalker(buttons)
-        super().__init__(walker)
+        super().__init__(buttons)
 
     def get_width(self):
         """
         Get menu width given by longest button's label width. 
         """
         width = 0
-        for button in self.body:
+        for button,_ in self.contents:
             # get button through attribute map
             button = button.original_widget
             width = max(width, len(button.get_text()[0]))

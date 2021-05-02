@@ -3,7 +3,7 @@ from settings_functions import load_settings
 from icon_option import IconOption
 from return_button import ReturnButton
 
-class OptionsWin(urwid.Frame):
+class OptionsWin(urwid.Filler):
     """
     Window where the player can change the game settings.
     """
@@ -21,7 +21,8 @@ class OptionsWin(urwid.Frame):
         div = urwid.Divider()
 
         # pile of all options
-        options = urwid.Pile([div, self.icons_opt, div, 
+        pile = urwid.Pile([div, self.icons_opt, div, 
             ret_button])
 
-        super().__init__(urwid.Filler(options, valign="top"))
+        super().__init__(pile, valign="top")
+

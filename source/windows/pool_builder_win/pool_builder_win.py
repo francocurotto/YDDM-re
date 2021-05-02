@@ -35,9 +35,9 @@ class PoolBuilderWin(urwid.Frame):
 
         # create right column
         right_col = urwid.Pile([
-            (17, pool_disp),
-            (10, summon_disp),
-            urwid.SolidFill()]) # PileError workaround
+            pool_disp,
+            #summon_disp,
+            ]) # PileError workaround
 
         # create body
         body_cols = urwid.Columns([lib_disp, right_col])

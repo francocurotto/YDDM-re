@@ -1,28 +1,27 @@
 import urwid
 from title_menu import TitleMenu
 
-class TitleWin(urwid.Pile):
+class TitleWin(urwid.Filler):
     """
     Title window presented at the start of the game.
     """
     def __init__(self):
         # create urwid elements for title
         # title
-        title_txt = urwid.Text(title_str, align="center", 
+        title = urwid.Text(title_str, align="center", 
             wrap="clip")
-        title_fill = urwid.Filler(title_txt, "top")
         
         # subtitle
-        subtitle_txt = urwid.Text(subtitle_str, 
-            align="center")
-        subtitle_fill = urwid.Filler(subtitle_txt, "top")
+        subtitle = urwid.Text(subtitle_str, align="center")
 
         # title menu
         menu = TitleMenu()
 
         # create filled pile
-        super().__init__([(6,title_fill), (2, subtitle_fill),
-            menu])
+        div = urwid.Divider()
+        pile = urwid.Pile([title, div, subtitle, div, menu])
+
+        super().__init__(pile, valign="top")
 
 # strings
 title_str = "\
