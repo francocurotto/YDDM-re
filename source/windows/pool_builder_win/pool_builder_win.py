@@ -34,10 +34,7 @@ class PoolBuilderWin(urwid.Frame):
             "Summon Information", "left")
 
         # create right column
-        right_col = urwid.Pile([
-            pool_disp,
-            #summon_disp,
-            ]) # PileError workaround
+        right_col = urwid.Pile([(17,pool_disp), summon_disp])
 
         # create body
         body_cols = urwid.Columns([lib_disp, right_col])
@@ -94,14 +91,14 @@ class PoolBuilderWin(urwid.Frame):
         True if library is currently focused.
         """
         focus = self.get_focus_widgets()[-3].original_widget
-        return self.lib_disp is focus
+        return focus is self.lib_disp
 
     def pool_focused(self):
         """
         True if pool is currently focused.
         """
         focus = self.get_focus_widgets()[-3].original_widget
-        return self.pool_disp is focus
+        return focus is self.pool_disp
 
     def add_dice_to_pool(self):
         """

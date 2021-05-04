@@ -1,18 +1,13 @@
-import urwid
 from dice_list_disp import DiceListDisp
 from dice_disp import DiceDisp
 
-class PoolDisp(urwid.Pile):
+class PoolDisp(DiceListDisp):
     """
     Displays a dice pool.
     """
     def __init__(self, pool):
         self.pool = pool
-        
-        display_list = []
-        for dice in pool.contents:
-            display_list.append(DiceDisp(dice))
-        super().__init__(display_list)
+        super().__init__(self.pool.contents)
 
     def add_dice(self, dice):
         """
