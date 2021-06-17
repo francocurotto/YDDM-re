@@ -46,8 +46,8 @@ class PoolBuilderWin(urwid.Frame):
         controls = urwid.Text(
             "↑,↓:Select dice | " +
             "←,→:Change list | " +
-            "SPACE: Remove,add dice | " + 
-            "f: finish")
+            "SPACE:Remove,add dice | " + 
+            "f:finish")
         footer = urwid.Pile([self.message, controls])
 
         super().__init__(body, footer=footer)
