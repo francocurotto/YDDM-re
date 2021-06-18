@@ -1,0 +1,3 @@
+# display type for icons
+display_type : emoji # other options: ascii, unicode
+
