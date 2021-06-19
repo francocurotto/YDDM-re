@@ -9,11 +9,6 @@ modlist = get_all_modules()
 
 # import modules
 from globvars import palette
-from dicesets_functions import create_dice_library
-
-# load dice library
-library = create_dice_library()
-globvars.library = library
 
 # local imports
 from main_win import MainWin

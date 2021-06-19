@@ -4,5 +4,5 @@ class Player():
     """
     The player that is playing the duel.
     """
-    def __init__(self):
-        self.pool = create_player_pool()
+    def __init__(self, pool):
+        self.pool = pool

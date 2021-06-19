@@ -1,4 +1,4 @@
-from globvars import monster_types, crest_dict
+from dicevars import monster_types, crest_dict
 from monster_card import MonsterCard
 from item_card import ItemCard
 from side import Side
