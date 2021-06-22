@@ -1,7 +1,7 @@
-from dicevars import monster_types, crest_dict
-from monster_card import MonsterCard
-from item_card import ItemCard
-from side import Side
+from dice.dicevars import monster_types, crest_dict
+from dice.cards.monster_card import MonsterCard
+from dice.cards.item_card import ItemCard
+from dice.crests.side import Side
 
 class Dice():
     """

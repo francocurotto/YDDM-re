@@ -1,4 +1,4 @@
-from summon_card import SummonCard
+from dice.cards.summon_card import SummonCard
 
 class MonsterCard(SummonCard):
     """

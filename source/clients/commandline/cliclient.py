@@ -1,13 +1,14 @@
-from engine.engine import Engine
+from engine import Engine
 
 class CliClient():
     """
     Command line interface client.
     """
     def __init__(self, args):
-        self.engine = Engine(args.poolfile1, args.poofile2)
+        self.engine = Engine(args.library, args.poolfile1,
+            args.poolfile2)
         
-    def run():
+    def run(self):
         """
         Run game.
         """

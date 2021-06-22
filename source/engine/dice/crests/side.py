@@ -1,6 +1,6 @@
-from globvars import crest_dict
-from crest import Crest
-from summon_crest import SummonCrest
+from dice.dicevars import crest_dict
+from dice.crests.crest import Crest
+from dice.crests.summon_crest import SummonCrest
 
 class Side():
     """
