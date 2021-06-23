@@ -1,4 +1,4 @@
-class empty_tile():
+class EmptyTile():
     """
     tile with no dungeon path in it.
     """

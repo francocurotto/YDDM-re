@@ -24,6 +24,13 @@ class Engine():
         # duel state machine
         self.dsm = DuelStateMachine(self.duel)
 
+    def update(self, cmd):
+        """
+        Update duel and duel state machine given external 
+        command cmd.
+        """
+        return self.dsm.update(cmd)
+
 def create_library(libraryfile):
     """
     Create the dice library dict by reading the libraryfile

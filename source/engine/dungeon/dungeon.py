@@ -25,16 +25,16 @@ class Dungeon():
             array.append(row)
         return array
 
-    def add_monster_lords(players):
+    def add_monster_lords(self, players):
         """
         Add monster lords from both players into the dungeon
         array.
         """
         # player 1
-        tile = player[0].create_ml_tile()
+        tile = players[0].create_ml_tile()
         self.set_tile(tile, Pos(18,6))
         # player 2
-        tile = player[0].create_ml_tile()
+        tile = players[1].create_ml_tile()
         self.set_tile(tile, Pos(0,6))
 
     def set_tile(self, tile, pos):
@@ -43,5 +43,3 @@ class Dungeon():
         tile.
         """
         self.array[pos.y][pos.x] = tile
-
-
