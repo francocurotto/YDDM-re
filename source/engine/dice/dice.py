@@ -1,7 +1,7 @@
-from dice.dicevars import monster_types, crest_dict
+import random
 from dice.cards.monster_card import MonsterCard
 from dice.cards.item_card import ItemCard
-from dice.crests.side import Side
+from dice.crests.side import Side, crest_dict
 
 class Dice():
     """
@@ -13,6 +13,13 @@ class Dice():
         self.card = create_card(dice_dict)
         self.sides = create_sides(dice_dict["CRESTS"], 
             self.level)
+
+    def roll(self):
+        """
+        Simulates a dice roll by selecting a random element
+        from the dice sides list.
+        """
+        return random.choice(self.sides)
 
 def create_card(card_info):
     """
@@ -47,3 +54,9 @@ def create_sides(string, level):
         side_list.append(Side(side_string))
 
     return side_list
+
+monster_types = ["DRAGON", 
+                 "SPELLCASTER", 
+                 "UNDEAD", 
+                 "BEAST",
+                 "WARRIOR"]

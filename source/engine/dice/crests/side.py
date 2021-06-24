@@ -1,6 +1,10 @@
-from dice.dicevars import crest_dict
 from dice.crests.crest import Crest
 from dice.crests.summon_crest import SummonCrest
+from dice.crests.movement_crest import MovementCrest
+from dice.crests.attack_crest import AttackCrest
+from dice.crests.defense_crest import DefenseCrest
+from dice.crests.magic_crest import MagicCrest
+from dice.crests.trap_crest import TrapCrest
 
 class Side():
     """
@@ -10,12 +14,16 @@ class Side():
     def __init__(self, side_string):
         crest_char = side_string[0]
         # create crest
-        if crest_char == "S":
-            self.crest = SummonCrest()
-        else:
-            self.crest = Crest(crest_dict[crest_char])
+        self.crest = crest_dict[crest_char]()
         # create multiplier
         if len(side_string) > 1:
-            self.multiplier = int(side_string[1:])
+            self.mult = int(side_string[1:])
         else:
-            self.multiplier = 1
+            self.mult = 1
+
+crest_dict = {"S" : SummonCrest,
+              "M" : MovementCrest,
+              "A" : AttackCrest,
+              "D" : DefenseCrest,
+              "G" : MagicCrest,
+              "T" : TrapCrest}
