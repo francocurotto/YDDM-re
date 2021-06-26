@@ -18,14 +18,6 @@ class DuelStateMachine():
         Update state machine given command cmd.
         """
         reply, newstate = self.state.update(cmd)
-        self.check_new_turn(newstate)
+        self.turn += reply["newturn"] # incr turn counter
         self.state = newstate
         return reply
-
-    def check_new_turn(self, newstate):
-        """
-        Check if new turn has passed. Increment turn counter
-        if it has.
-        """
-        if self.state.player != newstate.player:
-            self.turn += 1

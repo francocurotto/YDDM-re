@@ -21,6 +21,14 @@ class Side():
         else:
             self.mult = 1
 
+    def serialize(self):
+        """
+        Return a serialized version of side.
+        """
+        serialized = {"crest" : self.crest.name, 
+            "mult" : self.mult}
+        return serialized
+
 crest_dict = {"S" : SummonCrest,
               "M" : MovementCrest,
               "A" : AttackCrest,

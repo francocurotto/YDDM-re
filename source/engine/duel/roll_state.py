@@ -25,13 +25,12 @@ class RollState(DuelState):
         for i in cmd["dice"]:
             dice = self.player.dicepool.get_dice(i)
             if not dice:
-                reply = {"valid" : False,
-                "message" : "Invalid dice index " + str(i)}
-                return reply
+                self.reply["message"] = "Invalid dice " + \
+                    "index " + str(i)
+                return self.reply
             if dice in self.player.useddice:
-                reply = {"valid" : False,
-                "message" : "Dice " + str(i) + " already \
-                    dimensioned"}
+                self.reply["message"] = "Dice " + str(i) + \
+                    " already dimensioned"
                 return reply
             dicelist.append(dice)
         
@@ -44,28 +43,44 @@ class RollState(DuelState):
         for side in sides:
             self.player.crestpool.add_crests(side)
     
-        # check if can summon and create next state
-        if can_summon(sides):
-            summon_dice = []
-            for dice, side in zip(dicelist, sides):
-                if side.crest.is_summon():
-                    summon_dice.append(dice)
+        # get dice available for dimension
+        dimdice = get_dimdice(dicelist, sides)
+        if dimdice: # can dimension
+            pass
             #TODO: define next state dimension
-
-        else: # cannot summon
+        else: # cannot dimension
             pass
             #TODO: define next state dungeon
 
-        reply = {"valid" : True, "message" : ""}
-        return reply, self
+        # fill success reply
+        self.reply["valid"]   = True
+        self.reply["message"] = "Go dice roll!"
+        self.reply["roll"]    = serialize_sides(sides)
+        return self.reply, self
                     
-def can_summon(sides):
+def get_dimdice(dicelist, sides):
     """
-    Check if a list of sides is a valid summon roll: 2 or
-    more summon crests.
+    Given the dice and the sides rolled (in the same order),
+    return a list of dice available to dimension, that is, if
+    two or more dice of the same level rolled a summon crest.
+    If no dice available, return an empty list.
     """
-    summon_crests = 0
-    for side in sides:
-        if side.crest.is_summon():
-            summon_crests += 1
-    return summon_crests >= 2
+    # check for all levels
+    for level in range(1,5):
+        dimdice = []
+        # check if dice rolled a specific level
+        for dice, side in zip(dicelist, sides):
+            if dice.level==level and side.crest.is_summon():
+                dimdice.append(dice)
+        # if two or more rolled summon, return filled list
+        if len(dimdice) >= 2:
+            return dimdice
+    # no dice available for dimension found
+    return []
+
+def serialize_sides(sides):
+    """
+    Convert list of side objects into a list of serialized 
+    dicts.
+    """
+    return [side.serialize() for side in sides]
