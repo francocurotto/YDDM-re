@@ -2,7 +2,7 @@ from duel.duel_state import DuelState
 
 class RollState(DuelState):
     """
-    State were the roll the dice.
+    State were the player roll the dice.
     """
     def __init__(self, duel, player, opponent):
         super().__init__(duel, player, opponent)
@@ -45,18 +45,35 @@ class RollState(DuelState):
     
         # get dice available for dimension
         dimdice = get_dimdice(dicelist, sides)
-        if dimdice: # can dimension
-            pass
-            #TODO: define next state dimension
+
+        # define next state
+        if self.can_dimension():
+            from duel.dim_state import DimState
+            nextstate = DimState(self.duel, self.player,
+                self.opponent, dimdice)
         else: # cannot dimension
-            pass
-            #TODO: define next state dungeon
+            from duel.dungeon_state import DungeonState
+            nextstate = self
+            #TODO: define dungeon state
+            #nextstate = DungeonState(self.duel, self.player,
+            #    self.opponent)
 
         # fill success reply
         self.reply["valid"]   = True
-        self.reply["message"] = "Go dice roll!"
+        self.reply["message"] = "Go Dice Roll!"
+        if self.player.hit_dim_limit():
+            self.reply["message"] += "\nNo more dice " + \
+                "dimensions allowed"
         self.reply["roll"]    = serialize_sides(sides)
-        return self.reply, self
+        return self.reply, nextstate
+
+    def can_dimension(self, dimdice):
+        """
+        True if player can dimension, that is, there are 
+        available to dimension and  the player has not hit
+        the dice limit.
+        """
+        return dimdice and not self.player.hit_dim_limit()
                     
 def get_dimdice(dicelist, sides):
     """

@@ -6,10 +6,11 @@ class Player():
     """
     The player that is playing the duel.
     """
+    DIM_LIMIT = 15
     def __init__(self, dicepool):
         self.dicepool = dicepool
         self.crestpool = CrestPool()
-        self.useddice = []
+        self.dimdice = []
         self.ml = MonsterLord()
         self.tiles = []
 
@@ -20,3 +21,9 @@ class Player():
         tile = DungeonTile(self.ml)
         self.tiles.append(tile)
         return tile
+
+    def hit_dim_limit(self):
+        """
+        True if player hit the dimension limit.
+        """
+        return len(self.dimdice) >= self.DIM_LIMIT
