@@ -29,6 +29,9 @@ class Engine():
         Update duel and duel state machine given external 
         command cmd.
         """
+        reply = self.cmdchecker.check(cmd)
+        if not reply["valid"]:
+            return reply
         return self.dsm.update(cmd)
 
 def create_library(libraryfile):
