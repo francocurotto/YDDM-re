@@ -4,6 +4,7 @@ from player.dice_pool import DicePool
 from player.player import Player
 from duel.duel import Duel
 from duel.dsm import DuelStateMachine
+from cmdchecker import CmdChecker
 
 class Engine():
     """
@@ -29,7 +30,7 @@ class Engine():
         Update duel and duel state machine given external 
         command cmd.
         """
-        reply = self.cmdchecker.check(cmd)
+        reply = CmdChecker().check(cmd)
         if not reply["valid"]:
             return reply
         return self.dsm.update(cmd)
