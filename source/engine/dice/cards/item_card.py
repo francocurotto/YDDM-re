@@ -1,4 +1,5 @@
 from dice.cards.summon_card import SummonCard
+from dungobj.item import Item
 
 class ItemCard(SummonCard):
     """
@@ -9,3 +10,9 @@ class ItemCard(SummonCard):
 
     def is_item(self):
         return True
+
+    def summon(self):
+        """
+        Return a summon based on card.
+        """
+        return Item(self)
