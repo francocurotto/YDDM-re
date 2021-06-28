@@ -23,15 +23,11 @@ class RollState(DuelState):
         # get the dice from the command
         dicelist = []
         for i in cmd["dice"]:
-            dice = self.player.dicepool.get_dice(i)
-            if not dice:
-                self.reply["message"] = "Invalid dice " + \
-                    "index " + str(i)
-                return self.reply
-            if dice in self.player.useddice:
+            dice = self.player.dicepool.contents[i]
+            if dice in self.player.dimdice:
                 self.reply["message"] = "Dice " + str(i) + \
                     " already dimensioned"
-                return reply
+                return self.reply
             dicelist.append(dice)
         
         # roll the dice and get the rolled sides
@@ -47,24 +43,24 @@ class RollState(DuelState):
         dimdice = get_dimdice(dicelist, sides)
 
         # define next state
-        if self.can_dimension():
+        if self.can_dimension(dimdice):
             from duel.dim_state import DimState
-            nextstate = DimState(self.duel, self.player,
-                self.opponent, dimdice)
-        else: # cannot dimension
-            from duel.dungeon_state import DungeonState
             nextstate = self
+            #nextstate = DimState(self.duel, self.player,
+            #    self.opponent, dimdice)
+        else: # cannot dimension
+            nextstate = self
+            #from duel.dungeon_state import DungeonState
             #TODO: define dungeon state
             #nextstate = DungeonState(self.duel, self.player,
             #    self.opponent)
 
         # fill success reply
-        self.reply["valid"]   = True
         self.reply["message"] = "Go Dice Roll!"
         if self.player.hit_dim_limit():
             self.reply["message"] += "\nNo more dice " + \
                 "dimensions allowed"
-        self.reply["roll"]    = serialize_sides(sides)
+        self.reply["roll"] = serialize_sides(sides)
         return self.reply, nextstate
 
     def can_dimension(self, dimdice):

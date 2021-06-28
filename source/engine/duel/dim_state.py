@@ -43,7 +43,6 @@ class DimState(DuelState):
             self.player, summon)
 
         # fill success reply
-        self.reply["valid"] = True
         self.reply["message"] = "Dimension The Dice!"
         #TODO: define dungeon state
         return self.reply, self

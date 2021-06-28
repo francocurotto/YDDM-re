@@ -7,7 +7,7 @@ class DuelState():
         self.player = player
         self.opponent = opponent
         self.reply = {
-            "valid"   : False,
+            "valid"   : True,
             "newturn" : False,
             "endduel" : False,
             "message" : ""}
@@ -16,6 +16,7 @@ class DuelState():
         """
         By default, the command is invalid.
         """
-        reply["message"] = "Invalid command " + \
+        self.reply["valid"] = False
+        self.reply["message"] = "Invalid command " + \
             cmd["command"] + " at state " + self.name
-        return reply, self
+        return self.reply, self
