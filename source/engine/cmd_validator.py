@@ -30,6 +30,8 @@ class CmdValidator():
         if cmd["command"] == "ROLL":
             self.validate_roll(cmd)
         else:
+            #TODO: change when all commands are implemented
+            self.reply["valid"] = True
             self.reply["message"] = "Unknown command " + \
                 cmd["command"]
 
