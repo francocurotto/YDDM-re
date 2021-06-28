@@ -1,6 +1,6 @@
 class DungeonObject():
     """
-    Generic object in a dungeon (monsters, items, monter 
+    Generic object in a dungeon (monsters, items, monster
     lord).
     """
     # is functions default False
