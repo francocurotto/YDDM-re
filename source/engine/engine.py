@@ -16,8 +16,8 @@ class Engine():
         pool1 = DicePool(poolfile1, self.library)
         pool2 = DicePool(poolfile1, self.library)
         # players
-        player1 = Player(pool1)
-        player2 = Player(pool2)
+        player1 = Player(1, pool1)
+        player2 = Player(2, pool2)
         
         # duel
         self.duel = Duel(player1, player2)

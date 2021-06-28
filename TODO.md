@@ -1,2 +1,1 @@
-- implement cmdchecker
-- start dimension_state
+- start dim_state
