@@ -5,6 +5,7 @@ class DicePool():
     """
     The pool of dice of a player.
     """
+    SIZE = 15
     def __init__(self, poolfile, library):
         self.contents = create_contents(poolfile, library)
 

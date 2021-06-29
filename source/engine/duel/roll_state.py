@@ -45,9 +45,8 @@ class RollState(DuelState):
         # define next state
         if self.can_dimension(dimdice):
             from duel.dim_state import DimState
-            nextstate = self
-            #nextstate = DimState(self.duel, self.player,
-            #    self.opponent, dimdice)
+            nextstate = DimState(self.duel, self.player,
+                self.opponent, dimdice)
         else: # cannot dimension
             nextstate = self
             #from duel.dungeon_state import DungeonState

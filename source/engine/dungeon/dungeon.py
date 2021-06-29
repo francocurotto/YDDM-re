@@ -1,5 +1,5 @@
 from dungeon.empty_tile import EmptyTile
-from dungeon.dice_nets.pos import Pos
+from dungeon.dicenets.pos import Pos
 
 class Dungeon():
     """
@@ -32,10 +32,10 @@ class Dungeon():
         """
         # player 1
         tile = players[0].create_ml_tile()
-        self.set_tile(tile, Pos(18,6))
+        self.set_tile(tile, Pos(0,6))
         # player 2
         tile = players[1].create_ml_tile()
-        self.set_tile(tile, Pos(0,6))
+        self.set_tile(tile, Pos(18,6))
 
     def set_tile(self, tile, pos):
         """

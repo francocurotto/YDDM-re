@@ -1,3 +1,8 @@
+from player.dice_pool import DicePool
+
+# Constants
+POOLSIZE = DicePool.SIZE
+
 class CmdValidator():
     """
     Validate that command dicts are syntactically correct.
@@ -52,7 +57,7 @@ class CmdValidator():
                 self.reply["message"] = "Dice set item " + \
                 "is not int"
                 return
-            if dice < 0 or dice > 14:
+            if dice < 0 or dice >= POOLSIZE:
                 self.reply["message"] = "Dice set item " + \
                     " out of range (" + str(dice) + ")"
                 return

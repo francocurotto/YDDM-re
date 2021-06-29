@@ -4,8 +4,8 @@ class DimState(DuelState):
     """
     State were the player dimension the dice.
     """
-    def __init__(self, duel, player, opponent):
-        super().__init__(duel, player, opponent, dimdice)
+    def __init__(self, duel, player, opponent, dimdice):
+        super().__init__(duel, player, opponent)
         self.name = "DIM"
         self.dimdice = dimdice
 
@@ -19,7 +19,7 @@ class DimState(DuelState):
             return self.run_skip_command(cmd)
         return super().update(cmd)
 
-    def run_dim_command(cmd):
+    def run_dim_command(self, cmd):
         """
         Run dim command.
         """
@@ -47,7 +47,7 @@ class DimState(DuelState):
         #TODO: define dungeon state
         return self.reply, self
 
-    def run_skip_command(cmd):
+    def run_skip_command(self, cmd):
         """
         Run skip command.
         """

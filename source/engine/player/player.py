@@ -13,6 +13,8 @@ class Player():
         self.crestpool = CrestPool()
         self.dimdice = []
         self.ml = MonsterLord()
+        self.monsters = []
+        self.items = []
         self.tiles = []
 
     def create_ml_tile(self):
