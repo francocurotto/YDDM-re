@@ -5,8 +5,14 @@ class DiceNet():
     Positions of the tiles created when a dice is dimensioned
     (unfolded).
     """
+    trans = ["TCW", "TCCW", "FUD", "FLR"]
     def __init__(self):
         self.center = self.get_center()
+        self.trans_dict = {}
+        self.transfunc = [self.turn_cw, self.turn_ccw,
+            self.flip_lr, self.flip_ud]
+        for name, func in zip(self.names, self.transfunc):
+            self.trans_dict[name] = func
 
     def get_center(self):
         """
@@ -22,19 +28,7 @@ class DiceNet():
         strings to the net.
         """
         for trans in translist:
-            if trans == "tcw": # turn clock-wise
-                self.turn_cw()
-            elif trans == "tccw": # turn counter clock-wise
-                self.turn_ccw()
-            elif trans == "flr": # flip left-right
-                self.flip_lr()
-            elif trans == "fud": # flip up-down
-                self.flip_ud()
-            else: # invalid transformation
-                self.log.add("Invalid transformation\n\n")
-                return False
-
-        return True
+            self.trans_dict[trans]()
 
     def offset(self, offset):
         """

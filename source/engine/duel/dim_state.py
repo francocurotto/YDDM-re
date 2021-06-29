@@ -1,4 +1,5 @@
 from duel.duel_state import DuelState
+from dungeon.dicenets.net_dict import net_dict
 
 class DimState(DuelState):
     """
