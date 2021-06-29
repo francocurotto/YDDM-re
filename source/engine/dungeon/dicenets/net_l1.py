@@ -12,4 +12,4 @@ class NetL1(DiceNet):
                         Pos(0,0),Pos(0,1),
                                  Pos(1,1),
                                  Pos(2,1)]
-        super().__init__(self)
+        super().__init__()

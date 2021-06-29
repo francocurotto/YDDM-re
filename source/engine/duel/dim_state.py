@@ -1,5 +1,6 @@
 from duel.duel_state import DuelState
 from dungeon.dicenets.net_dict import net_dict
+from dungeon.dicenets.pos import Pos
 
 class DimState(DuelState):
     """
@@ -25,7 +26,12 @@ class DimState(DuelState):
         Run dim command.
         """
         # get the selected dice
-        dice = self.dimdice[cmd["dice"]]
+        try:
+            dice = self.dimdice[cmd["dice"]]
+        except IndexError:
+            self.reply["message"] = "Invalid dice index " + \
+                str(cmd["dice"])
+            return self.reply, self
 
         # get the summon from the dice
         summon = dice.card.summon()
@@ -39,9 +45,15 @@ class DimState(DuelState):
         # apply transformations to net
         net.apply_trans(cmd["trans"])
 
+        # apply offset
+        net.offset(Pos(*cmd["pos"]))
+
         # dimension the dice
-        self.duel.dungeon.set_net(net, cmd["pos"], 
+        success, message = self.duel.dungeon.set_net(net, 
             self.player, summon)
+        if not success:
+            self.reply["message"] = message
+            return self.reply, self
 
         # fill success reply
         self.reply["message"] = "Dimension The Dice!"

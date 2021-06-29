@@ -11,3 +11,4 @@ class NetT1(DiceNet):
                                    Pos(0,0),
                                    Pos(1,0),
                                    Pos(2,0)]
+        super().__init__()

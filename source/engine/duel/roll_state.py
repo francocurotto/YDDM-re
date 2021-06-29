@@ -27,7 +27,7 @@ class RollState(DuelState):
             if dice in self.player.dimdice:
                 self.reply["message"] = "Dice " + str(i) + \
                     " already dimensioned"
-                return self.reply
+                return self.reply, self
             dicelist.append(dice)
         
         # roll the dice and get the rolled sides

@@ -11,7 +11,7 @@ class DiceNet():
         self.trans_dict = {}
         self.transfunc = [self.turn_cw, self.turn_ccw,
             self.flip_lr, self.flip_ud]
-        for name, func in zip(self.names, self.transfunc):
+        for name, func in zip(self.trans, self.transfunc):
             self.trans_dict[name] = func
 
     def get_center(self):

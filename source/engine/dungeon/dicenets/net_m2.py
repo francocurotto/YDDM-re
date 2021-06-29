@@ -11,3 +11,4 @@ class NetM2(DiceNet):
                          Pos(0,-1),Pos(0,0),
                                    Pos(1,0),Pos(1,1),
                                             Pos(2,1)]
+        super().__init__()

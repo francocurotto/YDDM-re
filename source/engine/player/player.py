@@ -17,13 +17,19 @@ class Player():
         self.items = []
         self.tiles = []
 
+    def create_tile(self, dungobj=None):
+        """
+        Create player tile with dungeon object in it.
+        """
+        tile = DungeonTile(dungobj)
+        self.tiles.append(tile)
+        return tile
+
     def create_ml_tile(self):
         """
         Create a player tile with the monster lord in it.
         """
-        tile = DungeonTile(self.ml)
-        self.tiles.append(tile)
-        return tile
+        return self.create_tile(self.ml)
 
     def hit_dim_limit(self):
         """

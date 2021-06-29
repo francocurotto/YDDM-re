@@ -11,3 +11,4 @@ class NetZ1(DiceNet):
                                    Pos(0,0),
                                    Pos(1,0),
                                    Pos(2,0),Pos(2,1)]
+        super().__init__()

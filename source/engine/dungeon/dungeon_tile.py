@@ -4,8 +4,11 @@ class DungeonTile():
     """
     Tile were monsters can exist and move.
     """
-    def __init__(self, content=DungeonObject()):
-        self.content = content
+    def __init__(self, content=None):
+        if content:
+            self.content = content
+        else: # if no content use default dungeon object
+            self.content = DungeonObject()
 
     def remove_content(self):
         """
