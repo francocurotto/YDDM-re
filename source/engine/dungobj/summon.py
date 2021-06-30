@@ -11,3 +11,6 @@ class Summon(DungeonObject):
         self.level = card.level
         self.ability = card.ability
         self.card = card
+
+    def is_summon(self):
+        return True

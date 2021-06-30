@@ -4,6 +4,9 @@ class DungeonObject():
     lord).
     """
     # is functions default False
+    def is_summon(self):
+        return False
+
     def is_monster(self):
         return False
 

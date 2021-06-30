@@ -7,8 +7,8 @@ class NetM1(DiceNet):
     """
     name = "M1"
     def __init__(self):
-        self.poslist = [Pos(-1,-1),Pos(-1,0),
-                                   Pos(0,0),
-                                   Pos(1,0),Pos(1,1),
-                                            Pos(2,1)]
+        self.poslist = [Pos(1,-1),Pos(1,0),
+                                  Pos(0,0),
+                                  Pos(-1,0),Pos(-1,1),
+                                            Pos(-2,1)]
         super().__init__()
