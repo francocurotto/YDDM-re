@@ -57,8 +57,10 @@ class DimState(DuelState):
 
         # fill success reply
         self.reply["message"] = "Dimension The Dice!"
-        #TODO: define dungeon state
-        return self.reply, self
+        from duel.dungeon_state import DungeonState
+        nextstate = DungeonState(self.duel, self.player, 
+            self.opponent)
+        return self.reply, nextstate
 
     def run_skip_command(self, cmd):
         """
@@ -66,6 +68,8 @@ class DimState(DuelState):
         """
         # fill success reply
         self.reply["valid"] = True
-        self.reply["message"] = "Dimension skiped"
-        #TODO: define dungeon state
-        return self.reply, self
+        self.reply["message"] = "Dimension skipped"
+        from duel.dungeon_state import DungeonState
+        nextstate = DungeonState(self.duel, self.player, 
+            self.opponent)
+        return self.reply, nextstate

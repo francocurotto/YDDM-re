@@ -49,10 +49,9 @@ class RollState(DuelState):
                 self.opponent, dimdice)
         else: # cannot dimension
             nextstate = self
-            #from duel.dungeon_state import DungeonState
-            #TODO: define dungeon state
-            #nextstate = DungeonState(self.duel, self.player,
-            #    self.opponent)
+            from duel.dungeon_state import DungeonState
+            nextstate = DungeonState(self.duel, self.player,
+                self.opponent)
 
         # fill success reply
         self.reply["message"] = "Go Dice Roll!"
