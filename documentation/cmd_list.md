@@ -31,14 +31,14 @@ with monster at position origin
 - origin:  (0..18, 0..12) (tuple of ints)
 - dest:    (0..18, 0..12) (tuple of ints)
 
-## DEF [DUNGEON state]
-Defend attack from opponent monster.
-- command: DEF
-
-## WAIT [DUNGEON state]
-Do not defend attack from opponent monster.
-- command: WAIT
-
 ## ENDTURN [DUNGEON state]
 Finish turn.
 - command: ENDTURN
+
+## DEF [REPLY state]
+Defend attack from opponent monster.
+- command: DEF
+
+## WAIT [REPLY state]
+Do not defend attack from opponent monster.
+- command: WAIT
