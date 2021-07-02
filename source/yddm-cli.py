@@ -24,6 +24,12 @@ parser.add_argument("-p1", "--pool1",
 parser.add_argument("-p2", "--pool2", 
     default="dicesets/starter.yaml", dest="poolfile2",
     help="Player 2 pool file")
+parser.add_argument("-n1", "--name1", 
+    default="Player 1", dest="player1", 
+    help="Player 1 name")
+parser.add_argument("-n2", "--name2", 
+    default="Player 2", dest="player2", 
+    help="Player 2 name")
 parser.add_argument("-i", "--icons", choices=icontypes,
     default="unicode", dest="icontype", 
     help="Type of icons to use.")

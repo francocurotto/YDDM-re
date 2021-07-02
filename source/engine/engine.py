@@ -4,7 +4,6 @@ from player.dice_pool import DicePool
 from player.player import Player
 from duel.duel import Duel
 from duel.dsm import DuelStateMachine
-from cmd_validator import CmdValidator
 
 class Engine():
     """
@@ -30,10 +29,24 @@ class Engine():
         Update duel and duel state machine given external 
         command cmd.
         """
-        reply = CmdValidator().validate(cmd)
-        if not reply["valid"]:
-            return reply
-        return self.dsm.update(cmd)
+        try:
+            return self.dsm.update(cmd)
+        except:
+            return self.get_default_reply()
+
+    def get_default_reply():
+        """
+        Returns the default reply when an exception is found
+        while updating the engine.
+        """
+        reply = {
+            "valid"   : False,
+            "newturn" : False,
+            "endduel" : False,
+            "message" : "Exception at state: " + \
+                dsm.state.name + "\n" + "Command:\n" + \
+                str(cmd)}
+        return reply
 
 def create_library(libraryfile):
     """
