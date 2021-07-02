@@ -5,6 +5,7 @@ import argparse
 
 # add engine to python path
 sys.path.append("./engine")
+sys.path.append("./clients/commandline")
 
 # internal imports
 from clients.commandline.cliclient import CliClient
@@ -25,10 +26,10 @@ parser.add_argument("-p2", "--pool2",
     default="dicesets/starter.yaml", dest="poolfile2",
     help="Player 2 pool file")
 parser.add_argument("-n1", "--name1", 
-    default="Player 1", dest="player1", 
+    default="Player1", dest="player1", 
     help="Player 1 name")
 parser.add_argument("-n2", "--name2", 
-    default="Player 2", dest="player2", 
+    default="Player2", dest="player2", 
     help="Player 2 name")
 parser.add_argument("-i", "--icons", choices=icontypes,
     default="unicode", dest="icontype", 

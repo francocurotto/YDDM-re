@@ -1,4 +1,5 @@
 from engine import Engine
+from human_player import HumanPlayer
 
 class CliClient():
     """
@@ -17,10 +18,31 @@ class CliClient():
         Run game.
         """
         while True:
+            print(self.get_header())
             cmd = self.currplayer.get_command(self.engine)
-            reply = self.engine.update(cmd)
-            if reply["newturn"]:
-                self.currplayer = self.get_next_player()
+
+            # if commmand is generated, update engine
+            if cmd:
+                reply = self.engine.update(cmd)
+
+                # if new turn, update current player
+                if reply["newturn"]:
+                    self.currplayer = self.get_next_player()
+
+    def get_header(self):
+        """
+        Create string of information after every command.
+        """
+        string  = "<"
+        string += self.currplayer.name
+        string += "[p"
+        string += str(self.engine.dsm.state.player.id)
+        string += "] | state:"
+        string += self.engine.dsm.state.name
+        string += " | turn:"
+        string += str(self.engine.dsm.turn)
+        string += "> (l:list command)"
+        return string
 
     def get_next_player(self):
         """
@@ -28,4 +50,3 @@ class CliClient():
         """
         index = not self.players.index(self.currplayer)
         return self.players[index]
-
