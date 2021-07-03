@@ -29,6 +29,8 @@ class PrintGen():
             self.print_crestpool(engine)
         elif split[0]=="oc" and len(split)==1:
             self.print_opponent_crestpool(engine)
+        elif split[0]=="s" and len(split)==1:
+            self.print_summons(engine)
         return None
 
     def print_pool(self, engine):
@@ -36,7 +38,7 @@ class PrintGen():
         Print player pool.
         """
         pool = engine.dsm.state.player.dicepool
-        print(self.stringifier.stringify_pool(pool))
+        print(self.stringifier.stringify_dicelist(pool))
 
     def print_pool_dice(self, engine, i):
         """
@@ -48,11 +50,18 @@ class PrintGen():
         except ValueError:
             print("Cannot convert integer")
             return
-        if i<1 or i>15:
+        try:
+            dice = engine.dsm.state.player.dicepool[i-1]
+        except IndexError:
             print("Integer out of pool bound")
             return
-        dice = engine.dsm.state.player.dicepool.contents[i-1]
         print(self.stringifier.stringify_dice(dice))
+
+    def print_dungeon(self, engine):
+        """
+        Print dungeon.
+        """
+        print(self.stringifier.stringify_dungeon(engine))
 
 desc = "\
 - PRINT COMMANDS: p ARGS\n\
@@ -61,4 +70,5 @@ desc = "\
     - p d:     print dungeon\n\
     - p d XY:  print object in dungeon at position XY\n\
     - p c:     print own crest pool\n\
-    - p oc:    print opponent crest pool"
+    - p oc:    print opponent crest pool\n\
+    - p s:     print summon candidates"

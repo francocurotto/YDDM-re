@@ -1,6 +1,6 @@
 import yaml
+from copy import deepcopy
 from dice.dice import Dice
-from player.dice_pool import DicePool
 from player.player import Player
 from duel.duel import Duel
 from duel.dsm import DuelStateMachine
@@ -12,8 +12,8 @@ class Engine():
     def __init__(self, libraryfile, poolfile1, poolfile2):
         self.library = create_library(libraryfile)
         # pools
-        pool1 = DicePool(poolfile1, self.library)
-        pool2 = DicePool(poolfile1, self.library)
+        pool1 = create_dicepool(poolfile1, self.library)
+        pool2 = create_dicepool(poolfile1, self.library)
         # players
         player1 = Player(1, pool1)
         player2 = Player(2, pool2)
@@ -41,3 +41,7 @@ def create_library(libraryfile):
     for key, item in yamldict.items():
         library[key] = Dice(key, item)
     return library
+
+def create_dicepool(poolfile, library):
+    dice_ids = yaml.full_load(open(poolfile))
+    return [deepcopy(library[id]) for id in dice_ids]

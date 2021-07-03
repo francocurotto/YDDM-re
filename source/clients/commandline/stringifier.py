@@ -8,12 +8,12 @@ class Stringifier():
     def __init__(self, icons):
         self.icons = icons
 
-    def stringify_pool(self, pool):
+    def stringify_dicelist(self, dicelist):
         """
-        Creates string version of pool.
+        Creates string version of a list of dice.
         """
         strlist = []
-        for i, dice in enumerate(pool.contents):
+        for i, dice in enumerate(dicelist):
             dice_string  = str(i+1).rjust(2) + ". "
             dice_string += self.stringify_dice_short(dice)
             strlist.append(dice_string)
@@ -55,7 +55,7 @@ class Stringifier():
 
     def stringify_sides(self, dice):
         """
-        Creates string version of a sides.
+        Creates string version of sides of a dice.
         """
         string = ""
         for side in dice.sides:
@@ -84,3 +84,78 @@ class Stringifier():
         s += "ABILITY: " + dice.card.ability + "\n"
         s += "DICE:    " + self.stringify_sides(dice)
         return s
+
+    def stringify_dungeon(self, engine):
+        """
+        Creates string version of the dungeon.
+        """
+        dungeon = engine.duel.dungeon
+        strlist = []
+
+        # create first row (coordinates)
+        row1 = self.create_coorstr(dungeon)
+        strlist.append("    "+row1+"     ")
+
+        # create second row blocks
+        row2 = self.create_blockstr(dungeon)
+        strlist.append("  "+row2+"  ")
+
+        # create rest of rows
+        for i,row in enumerate(reversed(dungeon.array)):
+            # coordinate and block
+            rowstr = str(dungeon.HEIGHT-i).rjust(2)
+            rowstr += self.icons["TILE_BLOCK"]
+            
+            # create list of row strings
+            for tile in row:
+                rowstr += self.stringify_tile(engine, tile)
+
+            # block and coordinate
+            rowstr += self.icons["TILE_BLOCK"]
+            rowstr += str(dungeon.HEIGHT-i).ljust(2)
+
+            # add to list
+            strlist.append(rowstr)
+
+        # create bottom block row
+        row22 = self.create_blockstr(dungeon)
+        strlist.append("  "+row22+"  ")
+
+        # create last (coordinates)
+        row23 = self.create_coorstr(dungeon)
+        strlist.append("     "+row23+"    ")
+
+        # join all rows
+        string = "\n".join(strlist)
+        return string
+
+    def create_coorstr(self, dungeon):
+        """
+        Create a row of letter coordinates.
+        """
+        clist = [chr(i) for i in range(97, 97+dungeon.WIDTH)]
+        return " ".join(clist)
+        
+    def create_blockstr(self, dungeon):
+        """
+        Create a row of blocks.
+        """
+        return (dungeon.WIDTH+2)*self.icons["TILE_BLOCK"]
+
+    def stringify_tile(self, engine, tile):
+        """
+        Creates string version of a tile.
+        """
+        if not tile.is_dungeon(): # the tile is empty
+            return self.icons["TILE_EMPTY"]
+
+        # the tile is a dungeon tile
+        if tile.content.is_summon():
+            return self.icons["TYPE_"+contents.type]
+        elif tile.content.is_monster_lord():
+            return self.icons["MONSTER_LORD"]
+        else: # no content in tile
+            if tile in engine.duel.player1.tiles:
+                return self.icons["TILE_PATH1"]
+            if tile in engine.duel.player2.tiles:
+                return self.icons["TILE_PATH2"]

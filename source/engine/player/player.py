@@ -6,7 +6,7 @@ class Player():
     """
     The player that is playing the duel.
     """
-    DIM_LIMIT = 15
+    DIM_LIMIT = 12
     def __init__(self, playerid, dicepool):
         self.id = playerid
         self.dicepool = dicepool

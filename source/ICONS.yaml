@@ -1,38 +1,50 @@
 ascii:
     # type icons
-    TYPE_DRAGON      : D
-    TYPE_SPELLCASTER : S
-    TYPE_UNDEAD      : U
-    TYPE_BEAST       : B
-    TYPE_WARRIOR     : W
-    TYPE_ITEM        : I
+    TYPE_DRAGON      : "D"
+    TYPE_SPELLCASTER : "S"
+    TYPE_UNDEAD      : "U"
+    TYPE_BEAST       : "B"
+    TYPE_WARRIOR     : "W"
+    TYPE_ITEM        : "I"
     # crest icons
-    CREST_SUMMON   : S
-    CREST_MOVEMENT : M
-    CREST_ATTACK   : A
-    CREST_DEFENSE  : D
-    CREST_MAGIC    : G
-    CREST_TRAP     : T
+    CREST_SUMMON   : "S"
+    CREST_MOVEMENT : "M"
+    CREST_ATTACK   : "A"
+    CREST_DEFENSE  : "D"
+    CREST_MAGIC    : "G"
+    CREST_TRAP     : "T"
     # monster icons
-    MONSTER_HEART : L
+    MONSTER_HEART : "L"
+    # tile icons
+    TILE_EMPTY   : "[]"
+    TILE_PATH1   : "[]"
+    TILE_PATH2   : "[]"
+    TILE_BLOCK   : "[]"
+    MONSTER_LORD : "ML"
 
 unicode:
     # type icons
-    TYPE_DRAGON      : D
-    TYPE_SPELLCASTER : S
-    TYPE_UNDEAD      : U
-    TYPE_BEAST       : B
-    TYPE_WARRIOR     : W
-    TYPE_ITEM        : I
+    TYPE_DRAGON      : "D"
+    TYPE_SPELLCASTER : "S"
+    TYPE_UNDEAD      : "U"
+    TYPE_BEAST       : "B"
+    TYPE_WARRIOR     : "W"
+    TYPE_ITEM        : "I"
     # crest icons
-    CREST_SUMMON   : ★
-    CREST_MOVEMENT : ⬆
-    CREST_ATTACK   : ⚔
-    CREST_DEFENSE  : ⊝
-    CREST_MAGIC    : ✡
-    CREST_TRAP     : ⊗
+    CREST_SUMMON   : "★"
+    CREST_MOVEMENT : "⬆"
+    CREST_ATTACK   : "⚔"
+    CREST_DEFENSE  : "⊝"
+    CREST_MAGIC    : "✡"
+    CREST_TRAP     : "⊗"
     # monster icons
-    MONSTER_HEART : ♥
+    MONSTER_HEART : "♥"
+    # tile icons
+    TILE_EMPTY   : "[]"
+    TILE_PATH1   : "[]"
+    TILE_PATH2   : "[]"
+    TILE_BLOCK   : "[]"
+    MONSTER_LORD : "♚♛"
 
 emoji:
     # type icons
@@ -51,6 +63,12 @@ emoji:
     CREST_TRAP     : "⚡"
     # monster icons
     MONSTER_HEART : "❤️ "
+    # tile icons
+    TILE_EMPTY   : "⬛"
+    TILE_PATH1   : "🟦"
+    TILE_PATH2   : "🟥"
+    TILE_BLOCK   : "🔲"
+    MONSTER_LORD : "👑"
 
 emoji2:
     # type icons
@@ -69,3 +87,9 @@ emoji2:
     CREST_TRAP     : 💠
     # monster icons
     MONSTER_HEART : 💜
+    # tile icons
+    TILE_EMPTY   : "⬛"
+    TILE_PATH1   : "🟦"
+    TILE_PATH2   : "🟥"
+    TILE_BLOCK   : "🔲"
+    MONSTER_LORD : "👑"
