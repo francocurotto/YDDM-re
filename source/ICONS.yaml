@@ -55,11 +55,11 @@ emoji:
 emoji2:
     # type icons
     TYPE_DRAGON      : 🐲
-    TYPE_SPELLCASTER : 🧙
-    TYPE_UNDEAD      : 🧟
+    TYPE_SPELLCASTER : 🎩
+    TYPE_UNDEAD      : 💀
     TYPE_BEAST       : 🐺
     TYPE_WARRIOR     : 🥋
-    TYPE_ITEM        : 🧿
+    TYPE_ITEM        : ❔
     # crest icons
     CREST_SUMMON   : ⭐
     CREST_MOVEMENT : 🔄
