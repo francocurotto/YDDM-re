@@ -11,7 +11,7 @@ sys.path.append("./clients/commandline")
 from clients.commandline.cliclient import CliClient
 
 # get available icons
-icons = yaml.full_load(open("clients/ICONS.yaml"))
+icons = yaml.full_load(open("ICONS.yaml"))
 icontypes = list(icons.keys())
 
 # create parser
@@ -32,7 +32,7 @@ parser.add_argument("-n2", "--name2",
     default="Player2", dest="player2", 
     help="Player 2 name")
 parser.add_argument("-i", "--icons", choices=icontypes,
-    default="unicode", dest="icontype", 
+    default="emoji", dest="icontype", 
     help="Type of icons to use.")
 args = parser.parse_args()
 

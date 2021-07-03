@@ -1,3 +1,4 @@
+import yaml
 from engine import Engine
 from human_player import HumanPlayer
 
@@ -8,8 +9,14 @@ class CliClient():
     def __init__(self, args):
         self.engine = Engine(args.library, args.poolfile1,
             args.poolfile2)
-        player1 = HumanPlayer(args.player1)
-        player2 = HumanPlayer(args.player2)
+        
+        # icon items
+        allicons = yaml.full_load(open("ICONS.yaml"))
+        icons = allicons[args.icontype]
+        
+        # players 
+        player1 = HumanPlayer(args.player1, icons)
+        player2 = HumanPlayer(args.player2, icons)
         self.players = [player1, player2]
         self.currplayer = self.players[0] # current player
         
@@ -28,6 +35,9 @@ class CliClient():
                 # if new turn, update current player
                 if reply["newturn"]:
                     self.currplayer = self.get_next_player()
+
+            # end command newline
+            print("")
 
     def get_header(self):
         """

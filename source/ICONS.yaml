@@ -36,21 +36,21 @@ unicode:
 
 emoji:
     # type icons
-    TYPE_DRAGON      : 🐲
-    TYPE_SPELLCASTER : 🧙
-    TYPE_UNDEAD      : 🧟
-    TYPE_BEAST       : 🐺
-    TYPE_WARRIOR     : 🥋
-    TYPE_ITEM        : 🧿
+    TYPE_DRAGON      : "🐲"
+    TYPE_SPELLCASTER : "🧙"
+    TYPE_UNDEAD      : "🧟"
+    TYPE_BEAST       : "🐺"
+    TYPE_WARRIOR     : "🥋"
+    TYPE_ITEM        : "❔"
     # crest icons
-    CREST_SUMMON   : ⭐
-    CREST_MOVEMENT : ⬆️
-    CREST_ATTACK   : ⚔️
-    CREST_DEFENSE  : 🛡️
-    CREST_MAGIC    : ✡️
-    CREST_TRAP     : ⚡
+    CREST_SUMMON   : "⭐"
+    CREST_MOVEMENT : "⬆️ "
+    CREST_ATTACK   : "⚔️ "
+    CREST_DEFENSE  : "🛡️ "
+    CREST_MAGIC    : "✡️ "
+    CREST_TRAP     : "⚡"
     # monster icons
-    MONSTER_HEART : ❤️
+    MONSTER_HEART : "❤️ "
 
 emoji2:
     # type icons
@@ -69,4 +69,3 @@ emoji2:
     CREST_TRAP     : 💠
     # monster icons
     MONSTER_HEART : 💜
-
