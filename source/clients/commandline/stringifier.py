@@ -1,4 +1,5 @@
 import yaml
+from termcolor import colored
 
 class Stringifier():
     """
@@ -58,9 +59,10 @@ class Stringifier():
         """
         Creates string version of sides of a dice.
         """
-        string = ""
+        strlist = []
         for side in dice.sides:
-            string += self.stringify_side(side)
+            strlist.append(self.stringify_side(side))
+        string = ",".join(strlist)
         return string
 
     def stringify_side(self, side):
@@ -149,49 +151,114 @@ class Stringifier():
         """
         # the tile is empty
         if not tile.is_dungeon():
-            return self.icons["TILE_EMPTY"]
-
+            return self.stringify_empty_tile()
         # the tile is a dungeon tile
         content = tile.content
         if content.is_summon():
             return self.stringify_summon_tile(duel, content)
         elif tile.content.is_monster_lord():
-            return self.stringify_monster_lord_tile(duel)
+            return self.stringify_ml_tile(duel, content)
         else: # no content in tile
             return self.stringify_path(duel, tile)
 
+    def stringify_empty_tile(self):
+        """
+        Creates a string version of an empty tile.
+        """
+        icon = self.icons["TILE_EMPTY"]
+        colors = self.icons["COLORS_EMPTY"]
+        return colored(icon, *colors)
+
     def stringify_summon_tile(self, duel, summon):
         """
-        Stringify a tile with a summon in it.
+        Creates a string version of a tile with a summon in 
+        it.
         """
         icon = self.icons["TYPE_"+contents.type]
         if summon in duel.player1.summons:
-            fg,bg = self.icons["COLOR_SUMMON_P1"]
+            colors = self.icons["COLORS_SUMMON_P1"]
         if summon in duel.player2.summons:
-            fg,bg = self.icons["COLOR_SUMMON_P2"]
-        return colored(icon, *self.style["p2"])
+            colors = self.icons["COLORS_SUMMON_P2"]
+        return colored(icon, *colors)
 
-    def stringify_monster_lord_tile(self, duel):
+    def stringify_ml_tile(self, duel, monster_lord):
         """
-        Stringify a tile with a monster lord in it.
+        Creates a string version of a tile with a monster 
+        lord in it.
         """
         icon = self.icons["MONSTER_LORD"]
-        if summon in duel.player1.summons:
-            fg,bg = self.icons["COLOR_SUMMON_P1"]
-        if summon in duel.player2.summons:
-            fg,bg = self.icons["COLOR_SUMMON_P2"]
-        return colored(icon, fg, bg)
+        if monster_lord is duel.player1.ml:
+            colors = self.icons["COLORS_SUMMON_P1"]
+        if monster_lord is duel.player2.ml:
+            colors = self.icons["COLORS_SUMMON_P2"]
+        return colored(icon, *colors)
 
     def stringify_path_tile(self, duel, tile):
         """
-        Stringify a dungeon tile with nothing in it.
+        Creates a string version a dungeon tile with no
+        content.
         """
-        if tile in engine.duel.player1.tiles:
+        if tile in duel.player1.tiles:
             icon = self.icons["TILE_PATH_P1"]
-            fg,bg = colored(self.icons["COLOR_PATH_P1"]
-        if tile in engine.duel.player2.tiles:
+            colors = self.icons["COLORS_PATH_P1"]
+        if tile in duel.player2.tiles:
             icon = self.icons["TILE_PATH_P2"]
-            fg,bg = colored(self.icons["COLOR_PATH_P2"]
-        return colored(icon, fg, bg)
+            colors = self.icons["COLORS_PATH_P2"]
+        return colored(icon, *colors)
 
+    def stringify_dungobj(self, duel, dungobj):
+        """
+        Creates a string version of a dungeon object.
+        """
+        if dungobj.is_summon():
+            return self.stringify_summon(dungobj)
+        elif dungobj.is_monster_lord():
+            return self.stringify_monster_lord(duel, dungobj)
 
+    def stringify_summon(self, summon):
+        """
+        Creates a string version of a summon.
+        """
+        s  = "NAME:    " + summon.name + "\n"
+        s += "TYPE:    " + summon.type + "\n"
+        s += "LEVEL:   " + str(summon.level) + "\n"
+        if summon.is_monster():
+            s += "ATTACK:  " + colorize_attr(summon.attack,
+                summon.card.attack) + "\n"
+            s += "DEFENSE: " + colorize_attr(summon.defense,
+                summon.card.defense) + "\n"
+            s += "LIFE:    " + colorize_attr(summon.life,
+                summon.card.life) + "\n"
+        s += "ABILITY: " + summon.ability
+        return s
+
+    def stringify_monster_lord(self, duel, monster_lord):
+        """
+        Creates a string version of a summon.
+        """
+        string = self.icons["MONSTER_LORD"] + " "
+        # current hearts
+        for _ in range(self.hearts):
+            if monster_lord is duel.player1.ml:
+                icon = self.icons["HEART_P1"]
+                colors = self.icons["COLORS_HEART_P1"]
+            if monster_lord is duel.player2.ml:
+                icon = self.icons["HEART_P2"]
+                colors = self.icons["COLORS_HEART_P2"]
+            string += colored(icon, *colors)
+        # dead hearts
+        for _ in range(3 - self.hearts):
+            string += self.icons["NOHEART"]
+        return string
+
+def colorize_attr(attr, original):
+    """
+    Colorize an attribute (attack, defense, life), to
+    indicate disparity with original.
+    """
+    if attr > original:
+        return colored(str(attr),"cyan")+"/"+str(original)
+    elif attr < original:
+        return colored(str(attr),"red")+"/"+str(original)
+    else:
+        return str(attr)+"/"+str(original)

@@ -64,6 +64,30 @@ class PrintGen():
         duel = engine.duel
         print(self.stringifier.stringify_dungeon(duel))
 
+    def print_dungobj(self, engine, coor):
+        """
+        Print object in dungeon at position coor.
+        """
+        # convert and sanitize coor
+        try:
+            # separate coordinates
+            x = coor[0]; y = coor[1:]
+            # convert coordinate to ints
+            x = ord(x)-97; y = int(y)-1
+        except (IndexError, ValueError):
+            print("Cannot interpret coordinates " + coor)
+            return
+        try:
+            tile = engine.duel.dungeon.array[y][x]
+        except IndexError:
+            print("Coordinates out of dungeon bound")
+            return
+        if not tile.is_dungeon() or not tile.is_occupied():
+            print("Nothing to print here")
+            return
+        dungobj = tile.content
+        print(self.stringifier.stringify_dungobj(dungobj))
+
 desc = "\
 - PRINT COMMANDS: p ARGS\n\
     - p p:     print dice pool\n\

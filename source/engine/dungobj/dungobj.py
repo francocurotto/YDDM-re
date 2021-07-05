@@ -18,5 +18,3 @@ class DungeonObject():
 
     def is_target(self):
         return self.is_monster() or self.is_monster_lord() 
-
-

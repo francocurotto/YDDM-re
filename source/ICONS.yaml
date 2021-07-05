@@ -22,10 +22,11 @@ ascii:
     TILE_BLOCK   : "[]"
     MONSTER_LORD : "ML"
     # tile color style
-    COLOR_SUMMON_P1 : ["blue", "on_black"]
-    COLOR_SUMMON_P2 : ["red",  "on_black"]
-    COLOR_PATH_P1   : ["blue", "on_black"]
-    COLOR_PATH_P2   : ["red",  "on_black"]
+    COLORS_EMPTY     : ["grey"]
+    COLORS_SUMMON_P1 : ["blue"]
+    COLORS_SUMMON_P2 : ["red"]
+    COLORS_PATH_P1   : ["blue"]
+    COLORS_PATH_P2   : ["red"]
 
 unicode:
     # type icons
@@ -51,10 +52,12 @@ unicode:
     TILE_BLOCK   : "[]"
     MONSTER_LORD : "♚♛"
     # tile color style
-    COLOR_SUMMON_P1 : ["blue", "on_black"]
-    COLOR_SUMMON_P2 : ["red",  "on_black"]
-    COLOR_PATH_P1   : ["blue", "on_black"]
-    COLOR_PATH_P2   : ["red",  "on_black"]
+    # tile color style
+    COLORS_EMPTY     : ["grey"]
+    COLORS_SUMMON_P1 : ["blue"]
+    COLORS_SUMMON_P2 : ["red"]
+    COLORS_PATH_P1   : ["blue"]
+    COLORS_PATH_P2   : ["red"]
 
 emoji:
     # type icons
@@ -80,10 +83,11 @@ emoji:
     TILE_BLOCK   : "🔲"
     MONSTER_LORD : "👑"
     # tile color style
-    COLOR_SUMMON_P1 : ["white", "on_blue"]
-    COLOR_SUMMON_P2 : ["white", "on_red"]
-    COLOR_PATH_P1   : ["white", "on_black"]
-    COLOR_PATH_P2   : ["white", "on_black"]
+    COLORS_EMPTY     : []
+    COLORS_SUMMON_P1 : ["white", "on_blue"]
+    COLORS_SUMMON_P2 : ["white", "on_red"]
+    COLORS_PATH_P1   : []
+    COLORS_PATH_P2   : []
 
 emoji2:
     # type icons
@@ -109,7 +113,8 @@ emoji2:
     TILE_BLOCK   : "🔲"
     MONSTER_LORD : "👑"
     # tile color style
-    COLOR_SUMMON_P1 : ["white", "on_blue"]
-    COLOR_SUMMON_P2 : ["white", "on_red"]
-    COLOR_PATH_P1   : ["white", "on_black"]
-    COLOR_PATH_P2   : ["white", "on_black"]
+    COLORS_EMPTY     : []
+    COLORS_SUMMON_P1 : ["white", "on_blue"]
+    COLORS_SUMMON_P2 : ["white", "on_red"]
+    COLORS_PATH_P1   : []
+    COLORS_PATH_P2   : []
