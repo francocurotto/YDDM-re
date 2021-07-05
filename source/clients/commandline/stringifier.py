@@ -166,9 +166,10 @@ class Stringifier():
         """
         icon = self.icons["TYPE_"+contents.type]
         if summon in duel.player1.summons:
-            return colored(icon, *self.style["p1"])
+            fg,bg = self.icons["COLOR_SUMMON_P1"]
         if summon in duel.player2.summons:
-            return colored(icon, *self.style["p2"])
+            fg,bg = self.icons["COLOR_SUMMON_P2"]
+        return colored(icon, *self.style["p2"])
 
     def stringify_monster_lord_tile(self, duel):
         """
@@ -176,15 +177,21 @@ class Stringifier():
         """
         icon = self.icons["MONSTER_LORD"]
         if summon in duel.player1.summons:
-            return colored(icon, *self.style["p1"])
+            fg,bg = self.icons["COLOR_SUMMON_P1"]
         if summon in duel.player2.summons:
-            return colored(icon, *self.style["p2"])
+            fg,bg = self.icons["COLOR_SUMMON_P2"]
+        return colored(icon, fg, bg)
 
     def stringify_path_tile(self, duel, tile):
         """
         Stringify a dungeon tile with nothing in it.
         """
         if tile in engine.duel.player1.tiles:
-            return self.icons["TILE_PATH1"]
+            icon = self.icons["TILE_PATH_P1"]
+            fg,bg = colored(self.icons["COLOR_PATH_P1"]
         if tile in engine.duel.player2.tiles:
-            return self.icons["TILE_PATH2"]
+            icon = self.icons["TILE_PATH_P2"]
+            fg,bg = colored(self.icons["COLOR_PATH_P2"]
+        return colored(icon, fg, bg)
+
+

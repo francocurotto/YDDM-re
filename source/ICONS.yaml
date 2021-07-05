@@ -17,10 +17,15 @@ ascii:
     MONSTER_HEART : "L"
     # tile icons
     TILE_EMPTY   : "[]"
-    TILE_PATH1   : "[]"
-    TILE_PATH2   : "[]"
+    TILE_PATH_P1 : "[]"
+    TILE_PATH_P2 : "[]"
     TILE_BLOCK   : "[]"
     MONSTER_LORD : "ML"
+    # tile color style
+    COLOR_SUMMON_P1 : ["blue", "on_black"]
+    COLOR_SUMMON_P2 : ["red",  "on_black"]
+    COLOR_PATH_P1   : ["blue", "on_black"]
+    COLOR_PATH_P2   : ["red",  "on_black"]
 
 unicode:
     # type icons
@@ -41,10 +46,15 @@ unicode:
     MONSTER_HEART : "♥"
     # tile icons
     TILE_EMPTY   : "[]"
-    TILE_PATH1   : "[]"
-    TILE_PATH2   : "[]"
+    TILE_PATH_P1 : "[]"
+    TILE_PATH_P2 : "[]"
     TILE_BLOCK   : "[]"
     MONSTER_LORD : "♚♛"
+    # tile color style
+    COLOR_SUMMON_P1 : ["blue", "on_black"]
+    COLOR_SUMMON_P2 : ["red",  "on_black"]
+    COLOR_PATH_P1   : ["blue", "on_black"]
+    COLOR_PATH_P2   : ["red",  "on_black"]
 
 emoji:
     # type icons
@@ -65,10 +75,15 @@ emoji:
     MONSTER_HEART : "❤️ "
     # tile icons
     TILE_EMPTY   : "⬛"
-    TILE_PATH1   : "🟦"
-    TILE_PATH2   : "🟥"
+    TILE_PATH_P1 : "🟦"
+    TILE_PATH_P2 : "🟥"
     TILE_BLOCK   : "🔲"
     MONSTER_LORD : "👑"
+    # tile color style
+    COLOR_SUMMON_P1 : ["white", "on_blue"]
+    COLOR_SUMMON_P2 : ["white", "on_red"]
+    COLOR_PATH_P1   : ["white", "on_black"]
+    COLOR_PATH_P2   : ["white", "on_black"]
 
 emoji2:
     # type icons
@@ -89,7 +104,12 @@ emoji2:
     MONSTER_HEART : 💜
     # tile icons
     TILE_EMPTY   : "⬛"
-    TILE_PATH1   : "🟦"
-    TILE_PATH2   : "🟥"
+    TILE_PATH_P1 : "🟦"
+    TILE_PATH_P2 : "🟥"
     TILE_BLOCK   : "🔲"
     MONSTER_LORD : "👑"
+    # tile color style
+    COLOR_SUMMON_P1 : ["white", "on_blue"]
+    COLOR_SUMMON_P2 : ["white", "on_red"]
+    COLOR_PATH_P1   : ["white", "on_black"]
+    COLOR_PATH_P2   : ["white", "on_black"]
