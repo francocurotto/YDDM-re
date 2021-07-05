@@ -1,12 +1,14 @@
-from emoji import UNICODE_EMOJI_ENGLISH
+import yaml
 
 class Stringifier():
     """
     Creates string version of YDDM objects.
     """
     NAMECROP = 15
-    def __init__(self, icons):
-        self.icons = icons
+    def __init__(self, icontype):
+        allicons = yaml.full_load(open("ICONS.yaml"))
+        self.icontype = icontype
+        self.icons = allicons[self.icontype]
 
     def stringify_dicelist(self, dicelist):
         """
@@ -45,8 +47,7 @@ class Stringifier():
             # life icon
             string += self.icons["MONSTER_HEART"] + " "
         else: # is item, hence, add align space
-            testicon = self.icons["TYPE_DRAGON"]
-            if testicon in UNICODE_EMOJI_ENGLISH:
+            if self.icontype.startswith("emoji"):
                 string += 15*" "
             else: # if no emoji icons, correct align
                 string += 12*" "
@@ -85,11 +86,11 @@ class Stringifier():
         s += "DICE:    " + self.stringify_sides(dice)
         return s
 
-    def stringify_dungeon(self, engine):
+    def stringify_dungeon(self, duel):
         """
         Creates string version of the dungeon.
         """
-        dungeon = engine.duel.dungeon
+        dungeon = duel.dungeon
         strlist = []
 
         # create first row (coordinates)
@@ -108,7 +109,7 @@ class Stringifier():
             
             # create list of row strings
             for tile in row:
-                rowstr += self.stringify_tile(engine, tile)
+                rowstr += self.stringify_tile(duel, tile)
 
             # block and coordinate
             rowstr += self.icons["TILE_BLOCK"]
@@ -142,20 +143,48 @@ class Stringifier():
         """
         return (dungeon.WIDTH+2)*self.icons["TILE_BLOCK"]
 
-    def stringify_tile(self, engine, tile):
+    def stringify_tile(self, duel, tile):
         """
         Creates string version of a tile.
         """
-        if not tile.is_dungeon(): # the tile is empty
+        # the tile is empty
+        if not tile.is_dungeon():
             return self.icons["TILE_EMPTY"]
 
         # the tile is a dungeon tile
-        if tile.content.is_summon():
-            return self.icons["TYPE_"+contents.type]
+        content = tile.content
+        if content.is_summon():
+            return self.stringify_summon_tile(duel, content)
         elif tile.content.is_monster_lord():
-            return self.icons["MONSTER_LORD"]
+            return self.stringify_monster_lord_tile(duel)
         else: # no content in tile
-            if tile in engine.duel.player1.tiles:
-                return self.icons["TILE_PATH1"]
-            if tile in engine.duel.player2.tiles:
-                return self.icons["TILE_PATH2"]
+            return self.stringify_path(duel, tile)
+
+    def stringify_summon_tile(self, duel, summon):
+        """
+        Stringify a tile with a summon in it.
+        """
+        icon = self.icons["TYPE_"+contents.type]
+        if summon in duel.player1.summons:
+            return colored(icon, *self.style["p1"])
+        if summon in duel.player2.summons:
+            return colored(icon, *self.style["p2"])
+
+    def stringify_monster_lord_tile(self, duel):
+        """
+        Stringify a tile with a monster lord in it.
+        """
+        icon = self.icons["MONSTER_LORD"]
+        if summon in duel.player1.summons:
+            return colored(icon, *self.style["p1"])
+        if summon in duel.player2.summons:
+            return colored(icon, *self.style["p2"])
+
+    def stringify_path_tile(self, duel, tile):
+        """
+        Stringify a dungeon tile with nothing in it.
+        """
+        if tile in engine.duel.player1.tiles:
+            return self.icons["TILE_PATH1"]
+        if tile in engine.duel.player2.tiles:
+            return self.icons["TILE_PATH2"]

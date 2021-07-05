@@ -10,13 +10,9 @@ class CliClient():
         self.engine = Engine(args.library, args.poolfile1,
             args.poolfile2)
         
-        # icon items
-        allicons = yaml.full_load(open("ICONS.yaml"))
-        icons = allicons[args.icontype]
-        
         # players 
-        player1 = HumanPlayer(args.player1, icons)
-        player2 = HumanPlayer(args.player2, icons)
+        player1 = HumanPlayer(args.player1, args.icontype)
+        player2 = HumanPlayer(args.player2, args.icontype)
         self.players = [player1, player2]
         self.currplayer = self.players[0] # current player
         

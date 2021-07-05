@@ -5,10 +5,10 @@ class HumanPlayer():
     """
     Player controled by human.
     """
-    def __init__(self, name, icons):
+    def __init__(self, name, icontype):
         self.name = name
         # list of command generators
-        printgen = PrintGen(icons)
+        printgen = PrintGen(icontype)
         quitgen  = QuitGen()
         self.generators = [printgen, quitgen]
 
@@ -21,6 +21,10 @@ class HumanPlayer():
         # read command from user input
         string = input(">> ")
         split = string.split()
+
+        # if no input
+        if not split:
+            return None
 
         # print command list
         if split[0] == "l":

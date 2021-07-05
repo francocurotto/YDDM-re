@@ -4,10 +4,10 @@ class PrintGen():
     """
     Generator for print command.
     """
-    def __init__(self, icons):
+    def __init__(self, icontype):
         self.key = "p"
         self.desc = desc
-        self.stringifier = Stringifier(icons)
+        self.stringifier = Stringifier(icontype)
 
     def create_command(self, engine, split):
         """
@@ -61,7 +61,8 @@ class PrintGen():
         """
         Print dungeon.
         """
-        print(self.stringifier.stringify_dungeon(engine))
+        duel = engine.duel
+        print(self.stringifier.stringify_dungeon(duel))
 
 desc = "\
 - PRINT COMMANDS: p ARGS\n\
