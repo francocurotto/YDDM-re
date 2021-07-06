@@ -83,10 +83,12 @@ class PrintGen():
             print("Coordinates out of dungeon bound")
             return
         if not tile.is_dungeon() or not tile.is_occupied():
-            print("Nothing to print here")
+            print("Nothing to print there")
             return
+        duel = engine.duel
         dungobj = tile.content
-        print(self.stringifier.stringify_dungobj(dungobj))
+        print(self.stringifier.stringify_dungobj(duel, \
+            dungobj))
 
 desc = "\
 - PRINT COMMANDS: p ARGS\n\

@@ -15,12 +15,20 @@ ascii:
     CREST_TRAP     : "T"
     # monster icons
     MONSTER_HEART : "L"
+    # monster lord icons
+    MONSTER_LORD : "ML"
+    HEART_P1     : "<3"
+    HEART_P2     : "<3"
+    NOHEART      : "<3"
+    # monster lord color style
+    COLORS_HEART_P1 : ["blue"]
+    COLORS_HEART_P2 : ["red"]
+    COLORS_NOHEART  : ["grey"]
     # tile icons
     TILE_EMPTY   : "[]"
     TILE_PATH_P1 : "[]"
     TILE_PATH_P2 : "[]"
     TILE_BLOCK   : "[]"
-    MONSTER_LORD : "ML"
     # tile color style
     COLORS_EMPTY     : ["grey"]
     COLORS_SUMMON_P1 : ["blue"]
@@ -45,12 +53,20 @@ unicode:
     CREST_TRAP     : "⊗"
     # monster icons
     MONSTER_HEART : "♥"
+    # monster lord icons
+    MONSTER_LORD : "♚♛"
+    HEART_P1     : "♥"
+    HEART_P2     : "♥"
+    NOHEART      : "♡"
+    # monster lord color style
+    COLORS_HEART_P1 : ["blue"]
+    COLORS_HEART_P2 : ["red"]
+    COLORS_NOHEART  : []
     # tile icons
     TILE_EMPTY   : "[]"
     TILE_PATH_P1 : "[]"
     TILE_PATH_P2 : "[]"
     TILE_BLOCK   : "[]"
-    MONSTER_LORD : "♚♛"
     # tile color style
     # tile color style
     COLORS_EMPTY     : ["grey"]
@@ -76,12 +92,20 @@ emoji:
     CREST_TRAP     : "⚡"
     # monster icons
     MONSTER_HEART : "❤️ "
+    # monster lord icons
+    MONSTER_LORD : "👑"
+    HEART_P1     : "❤️ "
+    HEART_P2     : "💙"
+    NOHEART      : "🖤"
+    # monster lord color style
+    COLORS_HEART_P1 : []
+    COLORS_HEART_P2 : []
+    COLORS_NOHEART  : []
     # tile icons
     TILE_EMPTY   : "⬛"
     TILE_PATH_P1 : "🟦"
     TILE_PATH_P2 : "🟥"
     TILE_BLOCK   : "🔲"
-    MONSTER_LORD : "👑"
     # tile color style
     COLORS_EMPTY     : []
     COLORS_SUMMON_P1 : ["white", "on_blue"]
@@ -106,12 +130,20 @@ emoji2:
     CREST_TRAP     : 💠
     # monster icons
     MONSTER_HEART : 💜
+    # monster lord icons
+    MONSTER_LORD : "👑"
+    HEART_P1     : "💜"
+    HEART_P2     : "💙"
+    NOHEART      : "🖤"
+    # monster lord color style
+    COLORS_HEART_P1 : []
+    COLORS_HEART_P2 : []
+    COLORS_NOHEART  : []
     # tile icons
     TILE_EMPTY   : "⬛"
     TILE_PATH_P1 : "🟦"
     TILE_PATH_P2 : "🟥"
     TILE_BLOCK   : "🔲"
-    MONSTER_LORD : "👑"
     # tile color style
     COLORS_EMPTY     : []
     COLORS_SUMMON_P1 : ["white", "on_blue"]

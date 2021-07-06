@@ -238,7 +238,7 @@ class Stringifier():
         """
         string = self.icons["MONSTER_LORD"] + " "
         # current hearts
-        for _ in range(self.hearts):
+        for _ in range(monster_lord.hearts):
             if monster_lord is duel.player1.ml:
                 icon = self.icons["HEART_P1"]
                 colors = self.icons["COLORS_HEART_P1"]
@@ -247,7 +247,7 @@ class Stringifier():
                 colors = self.icons["COLORS_HEART_P2"]
             string += colored(icon, *colors)
         # dead hearts
-        for _ in range(3 - self.hearts):
+        for _ in range(3 - monster_lord.hearts):
             string += self.icons["NOHEART"]
         return string
 
