@@ -251,6 +251,27 @@ class Stringifier():
             string += self.icons["NOHEART"]
         return string
 
+    def stringify_crestpool(self, crestpool):
+        """
+        Creates a string version of crestpool.
+        """
+        # movement crest
+        string  = self.icons["CREST_MOVEMENT"] + ":"
+        string += str(crestpool.movement).rjust(2) + "|"
+        # attack crest
+        string += self.icons["CREST_ATTACK"] + ":"
+        string += str(crestpool.attack).rjust(2) + "|"
+        # defense crest
+        string += self.icons["CREST_DEFENSE"] + ":"
+        string += str(crestpool.defense).rjust(2) + "|"
+        # magic crest
+        string += self.icons["CREST_MAGIC"] + ":"
+        string += str(crestpool.magic).rjust(2) + "|"
+        # trap crest
+        string += self.icons["CREST_TRAP"] + ":"
+        string += str(crestpool.trap).rjust(2)
+        return string
+
 def colorize_attr(attr, original):
     """
     Colorize an attribute (attack, defense, life), to

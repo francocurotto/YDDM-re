@@ -17,4 +17,4 @@ class QuitGen():
 
 desc = "\
 - QUIT COMMAND: q\n\
-    - quit game"
+    - q: quit game"

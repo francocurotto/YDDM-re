@@ -90,6 +90,31 @@ class PrintGen():
         print(self.stringifier.stringify_dungobj(duel, \
             dungobj))
 
+    def print_crestpool(self, engine):
+        """
+        Print player crestpool.
+        """
+        cpool = engine.dsm.state.player.crestpool
+        print(self.stringifier.stringify_crestpool(cpool))
+
+    def print_opponent_crestpool(self, engine):
+        """
+        Print opponent crestpool.
+        """
+        cpool = engine.dsm.state.player.crestpool
+        print(self.stringifier.stringify_crestpool(cpool))
+
+    def print_summons(self, engine):
+        """
+        Print player's summoning options after roll.
+        """
+        # check for correct state
+        if engine.dsm.state.name != "DIM":
+            print("Can print summons in DIM state only")
+            return
+        dimdice = engine.dsm.state.dimdice
+        print(self.stringifier.stringify_dicelist(dimdice))
+
 desc = "\
 - PRINT COMMANDS: p ARGS\n\
     - p p:     print dice pool\n\
