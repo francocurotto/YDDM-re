@@ -1,5 +1,6 @@
 import yaml
 from engine import Engine
+from stringifier import Stringifier
 from human_player import HumanPlayer
 from replier import Replier
 
@@ -10,15 +11,16 @@ class CliClient():
     def __init__(self, args):
         self.engine = Engine(args.library, args.poolfile1,
             args.poolfile2)
+        stringifier = Stringifier(args.icontype)
         
         # players 
-        player1 = HumanPlayer(args.player1, args.icontype)
-        player2 = HumanPlayer(args.player2, args.icontype)
+        player1 = HumanPlayer(args.player1, stringifier)
+        player2 = HumanPlayer(args.player2, stringifier)
         self.players = [player1, player2]
         self.currplayer = self.players[0] # current player
         
         # replier
-        self.replier = Replier(args.icontype)
+        self.replier = Replier(stringifier)
         
     def run(self):
         """

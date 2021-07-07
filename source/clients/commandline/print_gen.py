@@ -1,13 +1,11 @@
-from stringifier import Stringifier
-
 class PrintGen():
     """
     Generator for print command.
     """
-    def __init__(self, icontype):
+    def __init__(self, stringifier):
         self.key = "p"
         self.desc = desc
-        self.stringifier = Stringifier(icontype)
+        self.stringifier = stringifier
 
     def create_command(self, engine, split):
         """
