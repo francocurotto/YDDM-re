@@ -12,7 +12,8 @@ class RollGen():
         """
         # check argument number
         if len(split)!=3:
-            print("Number of arguments must be 3.")
+            print("Number of arguments must be 3")
+            return
         # sanitize arguments
         try:
             dice = [int(i)-1 for i in split]
@@ -28,5 +29,5 @@ class RollGen():
         return cmd
 
 desc = "\
-- ROLL COMMAND: r\n\
+- ROLL COMMAND: r D1 D2 D3\n\
     - r D1 D2 D3: roll dice D1, D2 and D3 from dice pool."

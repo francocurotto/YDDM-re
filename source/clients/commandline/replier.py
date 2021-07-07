@@ -12,11 +12,14 @@ class Replier():
         
         # reply has roll result
         if "roll" in reply.keys():
-            message += get_roll_string(reply["roll"])
+            message += " "
+            message += self.get_roll_string(reply["roll"])
 
-        return message
+        # print only if there is a mesage
+        if message:
+            print(message)
 
-    def get_roll_string(roll):
+    def get_roll_string(self, roll):
         """
         Get convert roll list into a string.
         """

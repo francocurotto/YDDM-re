@@ -1,6 +1,7 @@
 import yaml
 from engine import Engine
 from human_player import HumanPlayer
+from replier import Replier
 
 class CliClient():
     """
@@ -30,8 +31,7 @@ class CliClient():
             # if commmand is generated, update engine
             if cmd:
                 reply = self.engine.update(cmd)
-                if reply["message"]:
-                    print(reply["message"])
+                self.replier.print_reply(reply)
 
                 # if new turn, update current player
                 if reply["newturn"]:

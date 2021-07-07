@@ -272,6 +272,19 @@ class Stringifier():
         string += str(crestpool.trap).rjust(2)
         return string
 
+    def stringify_roll(self, roll):
+        """
+        Creates a string from a roll reply.
+        """
+        strlist = []
+        for side in roll:
+            crest = self.icons["CREST_"+side["crest"]]
+            mult  = str(side["mult"])
+            strlist.append(crest+mult)
+        string = " ".join(strlist)
+        return string
+        
+
 def colorize_attr(attr, original):
     """
     Colorize an attribute (attack, defense, life), to
