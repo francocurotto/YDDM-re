@@ -16,6 +16,9 @@ class CliClient():
         self.players = [player1, player2]
         self.currplayer = self.players[0] # current player
         
+        # replier
+        self.replier = Replier(args.icontype)
+        
     def run(self):
         """
         Run game.
@@ -27,6 +30,8 @@ class CliClient():
             # if commmand is generated, update engine
             if cmd:
                 reply = self.engine.update(cmd)
+                if reply["message"]:
+                    print(reply["message"])
 
                 # if new turn, update current player
                 if reply["newturn"]:

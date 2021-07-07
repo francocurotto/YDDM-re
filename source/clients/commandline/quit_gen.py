@@ -1,5 +1,3 @@
-from stringifier import Stringifier
-
 class QuitGen():
     """
     Generator for quit command.

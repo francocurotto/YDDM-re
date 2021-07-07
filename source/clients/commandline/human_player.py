@@ -1,4 +1,5 @@
 from print_gen import PrintGen
+from roll_gen import RollGen
 from quit_gen import QuitGen
 
 class HumanPlayer():
@@ -9,8 +10,9 @@ class HumanPlayer():
         self.name = name
         # list of command generators
         printgen = PrintGen(icontype)
+        rollgen = RollGen()
         quitgen  = QuitGen()
-        self.generators = [printgen, quitgen]
+        self.generators = [printgen, rollgen, quitgen]
 
     def get_command(self, engine):
         """

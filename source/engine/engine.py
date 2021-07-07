@@ -29,7 +29,7 @@ class Engine():
         Update duel and duel state machine given external 
         command cmd.
         """
-        return self.get_default_reply()
+        return self.dsm.update(cmd)
 
 def create_library(libraryfile):
     """
