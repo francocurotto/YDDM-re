@@ -19,15 +19,15 @@ class RollGen():
             dice = [int(i)-1 for i in split]
         except ValueError:
             print("Cannot convert integer")
-            return
+            return None
         for i in dice:
-            if i<0 or i>14:
+            if i<0 or i>engine.POOLSIZE-1:
                 print("Integer out of pool bound")
-                return
+                return None
         # create command
         cmd = {"command" : "ROLL", "dice" : dice}
         return cmd
 
 desc = "\
-- ROLL COMMAND: r D1 D2 D3\n\
-    - r D1 D2 D3: roll dice D1, D2 and D3 from dice pool."
+- ROLL COMMAND [ROLL state]: r D1 D2 D3\n\
+    - r D1 D2 D3: roll dice D1, D2 and D3 from dice pool"
