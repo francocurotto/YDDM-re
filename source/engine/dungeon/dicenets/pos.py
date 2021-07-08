@@ -11,17 +11,13 @@ class Pos():
         """
         Turn position clock-wise 90 degrees.
         """
-        temp_y = self.y
-        self.y = self.x
-        self.x = -1*temp_y
+        self.y, self.x = self.x, -1*self.y
 
     def turn_ccw(self):
         """
         Turn position counter clock-wise 90 degrees.
         """
-        temp_y = self.y
-        self.y = -1*self.x
-        self.x = temp_y
+        self.y, self.x = -1*self.x, self.y
 
     def flip_lr(self):
         """

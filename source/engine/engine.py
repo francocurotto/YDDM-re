@@ -4,11 +4,19 @@ from dice.dice import Dice
 from player.player import Player
 from duel.duel import Duel
 from duel.dsm import DuelStateMachine
+# constants
+from dungeon.dicenets.net_dict import net_dict
+from dungeon.dicenets.dicenet import trans
 
 class Engine():
     """
     Creates and controls a duel.
     """
+    # constants
+    POOLSIZE = 15
+    NETS     = net_dict.keys()
+    TRANS    = trans
+
     def __init__(self, libraryfile, poolfile1, poolfile2):
         self.library = create_library(libraryfile)
         # pools

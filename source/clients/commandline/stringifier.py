@@ -19,6 +19,7 @@ class Stringifier():
         for i, dice in enumerate(dicelist):
             dice_string  = str(i+1).rjust(2) + ". "
             dice_string += self.stringify_dice_short(dice)
+            dice_string  = colored(dice_string, "grey")
             strlist.append(dice_string)
         return "\n".join(strlist)
 

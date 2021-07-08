@@ -1,17 +1,19 @@
 from dungeon.dicenets.pos import Pos
 
+# constants
+trans = ["TCW", "TCCW", "FUD", "FLR"]
+
 class DiceNet():
     """
     Positions of the tiles created when a dice is dimensioned
     (unfolded).
     """
-    trans = ["TCW", "TCCW", "FUD", "FLR"]
     def __init__(self):
         self.center = self.get_center()
         self.trans_dict = {}
         self.transfunc = [self.turn_cw, self.turn_ccw,
             self.flip_lr, self.flip_ud]
-        for name, func in zip(self.trans, self.transfunc):
+        for name, func in zip(trans, self.transfunc):
             self.trans_dict[name] = func
 
     def get_center(self):
