@@ -1,11 +1,12 @@
 ascii:
     # type icons
-    TYPE_DRAGON      : "D"
-    TYPE_SPELLCASTER : "S"
-    TYPE_UNDEAD      : "U"
-    TYPE_BEAST       : "B"
-    TYPE_WARRIOR     : "W"
-    TYPE_ITEM        : "I"
+    TYPE_DRAGON      : "DR"
+    TYPE_SPELLCASTER : "SP"
+    TYPE_UNDEAD      : "UN"
+    TYPE_BEAST       : "BE"
+    TYPE_WARRIOR     : "WA"
+    TYPE_ITEM        : "IT"
+    TYPE_SUMMON      : "??"
     # crest icons
     CREST_SUMMON   : "S"
     CREST_MOVEMENT : "M"
@@ -38,12 +39,13 @@ ascii:
 
 unicode:
     # type icons
-    TYPE_DRAGON      : "D"
-    TYPE_SPELLCASTER : "S"
-    TYPE_UNDEAD      : "U"
-    TYPE_BEAST       : "B"
-    TYPE_WARRIOR     : "W"
-    TYPE_ITEM        : "I"
+    TYPE_DRAGON      : "DR"
+    TYPE_SPELLCASTER : "SP"
+    TYPE_UNDEAD      : "UN"
+    TYPE_BEAST       : "BE"
+    TYPE_WARRIOR     : "WA"
+    TYPE_ITEM        : "IT"
+    TYPE_SUMMON      : "??"
     # crest icons
     CREST_SUMMON   : "★"
     CREST_MOVEMENT : "⬆"
@@ -83,6 +85,7 @@ emoji:
     TYPE_BEAST       : "🐺"
     TYPE_WARRIOR     : "🥋"
     TYPE_ITEM        : "❔"
+    TYPE_SUMMON      : "❔"
     # crest icons
     CREST_SUMMON   : "⭐"
     CREST_MOVEMENT : "⬆️ "
@@ -121,6 +124,7 @@ emoji2:
     TYPE_BEAST       : 🐺
     TYPE_WARRIOR     : 🥋
     TYPE_ITEM        : ❔
+    TYPE_SUMMON      : ❔
     # crest icons
     CREST_SUMMON   : ⭐
     CREST_MOVEMENT : 🔄

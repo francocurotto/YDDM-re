@@ -10,7 +10,7 @@ from dungeon.dicenets.net_s1 import NetS1
 from dungeon.dicenets.net_s2 import NetS2
 from dungeon.dicenets.net_l1 import NetL1
 
-net_dict = {
+netdict = {
     "T1" : NetT1,
     "T2" : NetT2,
     "Z1" : NetZ1,

@@ -35,6 +35,12 @@ class PrintGen():
         # print summon candidates
         elif split[0]=="s" and len(split)==1:
             self.print_summons(engine)
+        # print nets
+        elif split[0]=="n" and len(split)==1:
+            self.print_nets(engine)
+        # print trans
+        elif split[0]=="t" and len(split)==1:
+            self.print_trans(engine)
         return None
 
     def print_pool(self, engine):
@@ -119,8 +125,20 @@ class PrintGen():
         dimdice = engine.dsm.state.dimdice
         print(self.stringifier.stringify_dicelist(dimdice))
 
+    def print_nets(self, engine):
+        """
+        Print all possible nets for dimension.
+        """
+        print(self.stringifier.stringify_nets(engine))
+
+    def print_trans(self, engine):
+        """
+        Print all possible transformations for dimension.
+        """
+        print(self.stringifier.stringify_trans(engine))
+
 desc = "\
-- PRINT COMMANDS: p ARGS\n\
+- PRINT COMMANDS: p ARG1 [ARG2]\n\
     - p p:     print dice pool\n\
     - p p INT: print dice at INT in dice pool\n\
     - p d:     print dungeon\n\

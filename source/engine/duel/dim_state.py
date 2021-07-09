@@ -1,5 +1,5 @@
 from duel.duel_state import DuelState
-from dungeon.dicenets.net_dict import net_dict
+from dungeon.dicenets.netdict import netdict
 from dungeon.dicenets.pos import Pos
 
 class DimState(DuelState):
@@ -40,7 +40,7 @@ class DimState(DuelState):
         self.player.dimdice.append(dice)
 
         # create net
-        net = net_dict[cmd["net"]]()
+        net = netdict[cmd["net"]]()
 
         # apply transformations to net
         net.apply_trans(cmd["trans"])

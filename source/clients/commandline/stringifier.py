@@ -285,8 +285,38 @@ class Stringifier():
         string = " ".join(strlist)
         return string
 
-    def stringify_nets(self):
-        
+    def stringify_nets(self,  engine):
+        """
+        Creates a string with all nets.
+        """
+        # get path icon
+        pid = engine.dsm.state.player.id
+        icon = self.icons["TILE_PATH_P"+str(pid)]
+        colors = self.icons["COLORS_PATH_P"+str(pid)]
+        dtile = colored(icon, *colors)
+        # get summon icon
+        icon = self.icons["TYPE_SUMMON"]
+        colors = self.icons["COLORS_SUMMON_P"+str(pid)]
+        stile = colored(icon, *colors)
+        # generate string
+        string = netstr
+        string = string.replace("[]", dtile)
+        string = string.replace("()", stile)
+        # add net names
+        for netname in engine.NETS:
+            string = string.replace("NN", netname, 1)
+        return string
+
+    def stringify_trans(self, engine):
+        """
+        Creates a string with the description of all the
+        transformations.
+        """
+        strlist = []
+        for key in engine.TRANS:
+            strlist.append(key+": "+engine.TRANS[key])
+        string = "\n".join(strlist)
+        return string
 
 def colorize_attr(attr, original):
     """
@@ -299,3 +329,17 @@ def colorize_attr(attr, original):
         return colored(str(attr),"red")+"/"+str(original)
     else:
         return str(attr)+"/"+str(original)
+
+netstr = "\
+  NN     NN     NN     NN     NN     NN   \n\
+[][][] [][]   [][]   [][]     []     []   \n\
+  ()     ()[]   ()     ()   []()[] []()   \n\
+  []     []     []     [][]   []     [][] \n\
+  []     []     [][]   []     []     []   \n\
+                                          \n\
+  NN   NN     NN     NN     NN            \n\
+[][]   []     []     []     []            \n\
+  ()   []()   []()[] []()   []            \n\
+  [][]   [][]   []     [][] ()[]          \n\
+    []     []   []     []     []          \n\
+                              []          "

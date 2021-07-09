@@ -1,7 +1,10 @@
 from dungeon.dicenets.pos import Pos
 
 # constants
-trans = ["TCW", "TCCW", "FUD", "FLR"]
+trans = {"TCW" : "Turn clockwise",
+         "TAW" : "Turn anti-clockwise",
+         "FUD" : "Flip up-down",
+         "FLR" : "Flip left-right"}
 
 class DiceNet():
     """
@@ -10,11 +13,11 @@ class DiceNet():
     """
     def __init__(self):
         self.center = self.get_center()
-        self.trans_dict = {}
+        self.transdict = {} # map keys to functions
         self.transfunc = [self.turn_cw, self.turn_ccw,
             self.flip_lr, self.flip_ud]
-        for name, func in zip(trans, self.transfunc):
-            self.trans_dict[name] = func
+        for name, func in zip(trans.keys(), self.transfunc):
+            self.transdict[name] = func
 
     def get_center(self):
         """
@@ -30,7 +33,7 @@ class DiceNet():
         strings to the net.
         """
         for trans in translist:
-            self.trans_dict[trans]()
+            self.transdict[trans]()
 
     def offset(self, offset):
         """
@@ -67,26 +70,3 @@ class DiceNet():
         """
         for pos in self.poslist:
             pos.flip_ud()
-
-def create_net(string, log):
-    #imports
-    from .net_t1 import NetT1
-    from .net_t2 import NetT2
-    from .net_z1 import NetZ1
-    from .net_z2 import NetZ2
-    from .net_x1 import NetX1
-    from .net_x2 import NetX2
-    from .net_m1 import NetM1
-    from .net_m2 import NetM2
-    from .net_s1 import NetS1
-    from .net_s2 import NetS2
-    from .net_l1 import NetL1
-    net_class_list = [NetT1, NetT2, NetZ1, NetZ2, NetX1, NetX2,
-        NetM1, NetM2, NetS1, NetS2, NetL1]
-
-    # if string coincides with name return net instance
-    for net_class in net_class_list:
-        if string == net_class.name:
-            return net_class(log)
-    # invalid net name
-    return None

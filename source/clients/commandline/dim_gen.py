@@ -34,7 +34,7 @@ class DimGen():
         
 
 desc = "\
-- DIM COMMAND [DIM state]: d D N XY [T1, T2,...]\n\
+- DIM COMMAND: d D N XY [T1, T2,...]\n\
     - d D N XY [T1 T2 ...]: dimension dice D from candidates,
         using net N, at position XY, and optionally apply
         transformations T1, T2, ... to net before dimension."
