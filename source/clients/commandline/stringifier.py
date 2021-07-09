@@ -284,6 +284,8 @@ class Stringifier():
             strlist.append(crest+mult)
         string = " ".join(strlist)
         return string
+
+    def stringify_nets(self):
         
 
 def colorize_attr(attr, original):

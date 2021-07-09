@@ -11,12 +11,12 @@ class DimGen():
         Create a dim command.
         """
         # check argument number
-        if len(split)!=1:
-            print("Number of arguments must be 1")
+        if len(split)<3:
+            print("Number of arguments must be 3 or greater")
             return
-        # sanitize arguments
+        # sanitize dice integer
         try:
-            i = int(split[0])-1
+            i = int(split[0])
         except ValueError:
             print("Cannot convert integer")
             return None
@@ -26,21 +26,15 @@ class DimGen():
             print("Integer out of candidates bound")
             return None
         # get net
-        while True:
-            net_string = stringifier.stringify_nets(dice)
-            print(net_string)
-            string = input("Select net: (c:cancel)")
-            if string == "c":
-                return None
-            if reply in engine.NETS:
-                break
-        # get pos and trans
-        string = input("Input net position XY (c:cancel)")
-
-        # create command
-        cmd = {"command" : "ROLL", "dice" : dice}
-        return cmd
+        net = split[1]
+        if net not in engine.NETS:
+            print("Invalid net name")
+            return None
+        # get pos
+        
 
 desc = "\
-- DIM COMMAND [DIM state]: d D\n\
-    - d D: dimension dice D from summon candidates"
+- DIM COMMAND [DIM state]: d D N XY [T1, T2,...]\n\
+    - d D N XY [T1 T2 ...]: dimension dice D from candidates,
+        using net N, at position XY, and optionally apply
+        transformations T1, T2, ... to net before dimension."

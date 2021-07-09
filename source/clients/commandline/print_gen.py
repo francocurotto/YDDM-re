@@ -17,16 +17,22 @@ class PrintGen():
         # print dice pool
         if split[0]=="p" and len(split)==1:
             self.print_pool(engine)
+        # print dice
         elif split[0]=="p" and len(split)==2:
             self.print_pool_dice(engine, split[1])
+        # print dungeon
         elif split[0]=="d" and len(split)==1:
             self.print_dungeon(engine)
+        # print dungeon object
         elif split[0]=="d" and len(split)==2:
             self.print_dungobj(engine, split[1])
+        # print crest pool
         elif split[0]=="c" and len(split)==1:
             self.print_crestpool(engine)
+        # print opponent crest pool
         elif split[0]=="oc" and len(split)==1:
             self.print_opponent_crestpool(engine)
+        # print summon candidates
         elif split[0]=="s" and len(split)==1:
             self.print_summons(engine)
         return None
