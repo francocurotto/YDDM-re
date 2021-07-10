@@ -12,5 +12,11 @@ class Summon(DungeonObject):
         self.ability = card.ability
         self.card = card
 
+    def add_to_player(self, player):
+        """
+        Add summon to the proper player list when summoning.
+        """
+        player.summons.append(self)
+
     def is_summon(self):
         return True

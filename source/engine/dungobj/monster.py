@@ -18,6 +18,7 @@ class Monster(Summon):
         """
         Add monster to the proper player list when summoning.
         """
+        super().add_to_player(player)
         player.monsters.append(self)
 
     def attack_monster(self, attacked, defending):

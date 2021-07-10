@@ -1,10 +1,7 @@
 from dungeon.dicenets.pos import Pos
 
 # constants
-trans = {"TCW" : "Turn clockwise",
-         "TAW" : "Turn anti-clockwise",
-         "FUD" : "Flip up-down",
-         "FLR" : "Flip left-right"}
+trans = ["TCW", "TAW", "FUD", "FLR"]
 
 class DiceNet():
     """
@@ -14,9 +11,9 @@ class DiceNet():
     def __init__(self):
         self.center = self.get_center()
         self.transdict = {} # map keys to functions
-        self.transfunc = [self.turn_cw, self.turn_ccw,
+        self.transfunc = [self.turn_cw, self.turn_aw,
             self.flip_lr, self.flip_ud]
-        for name, func in zip(trans.keys(), self.transfunc):
+        for name, func in zip(trans, self.transfunc):
             self.transdict[name] = func
 
     def get_center(self):
@@ -49,13 +46,12 @@ class DiceNet():
         for pos in self.poslist:
             pos.turn_cw()
 
-    def turn_ccw(self):
+    def turn_aw(self):
         """
-        Turn all positions on net counter clock-wise 90
-        degrees.
+        Turn all positions on net anti clock-wise 90 degrees.
         """
         for pos in self.poslist:
-            pos.turn_ccw()
+            pos.turn_aw()
 
     def flip_lr(self):
         """

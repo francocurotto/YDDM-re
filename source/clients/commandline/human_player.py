@@ -1,20 +1,25 @@
 from print_gen import PrintGen
 from roll_gen import RollGen
+from dim_gen import DimGen
+from endturn_gen import EndturnGen
 from quit_gen import QuitGen
 
 class HumanPlayer():
     """
     Player controled by human.
     """
-    def __init__(self, name, icontype):
+    def __init__(self, engine, name, icontype):
         self.name = name
         # list of command generators
-        printgen = PrintGen(icontype)
-        rollgen = RollGen()
-        quitgen  = QuitGen()
-        self.generators = [printgen, rollgen, quitgen]
+        printgen   = PrintGen(engine, icontype)
+        rollgen    = RollGen()
+        dimgen     = DimGen()
+        endturngen = EndturnGen()
+        quitgen    = QuitGen()
+        self.generators = [printgen, rollgen, dimgen,  
+            endturngen, quitgen]
 
-    def get_command(self, engine):
+    def get_command(self):
         """
         Generate the proper command given the user input. If
         not command should be generated (e.g. for print 
@@ -39,7 +44,7 @@ class HumanPlayer():
         # excecute the correct generator
         for gen in self.generators:
             if gen.key == split[0]:
-                return gen.create_command(engine, split[1:])
+                return gen.create_command(split[1:])
 
         # no generator found
         print("No command with key " + split[0])

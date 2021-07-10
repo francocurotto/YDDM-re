@@ -11,6 +11,7 @@ class Item(Summon):
         """
         Add item to the proper player list when summoning.
         """
+        super().add_to_player(player)
         player.items.append(self)
 
     def is_item(self):

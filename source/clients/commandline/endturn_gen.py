@@ -1,9 +1,9 @@
-class QuitGen():
+class EndturnGen():
     """
-    Generator for quit command.
+    Generator for endturn command.
     """
     def __init__(self):
-        self.key = "q"
+        self.key = "e"
         self.desc = desc
 
     def create_command(self, split):
@@ -13,9 +13,8 @@ class QuitGen():
         if split:
             print("Number of arguments must be 0")
             return None
-        print("Bye!")
-        exit()
+        return {"command" : "ENDTURN"}
 
 desc = "\
-- QUIT COMMAND: q\n\
-    - q: quit game"
+- QUIT COMMAND: e\n\
+    - e: end turn"

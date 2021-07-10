@@ -12,11 +12,6 @@ class Engine():
     """
     Creates and controls a duel.
     """
-    # constants
-    POOLSIZE = 15
-    NETS     = netdict.keys()
-    TRANS    = trans
-
     def __init__(self, libraryfile, poolfile1, poolfile2):
         self.library = create_library(libraryfile)
         # pools

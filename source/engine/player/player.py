@@ -1,6 +1,7 @@
 from player.crest_pool import CrestPool
 from dungobj.monster_lord import MonsterLord
 from dungeon.dungeon_tile import DungeonTile
+from dungobj.dungobj import DungeonObject
 
 class Player():
     """
@@ -13,15 +14,17 @@ class Player():
         self.crestpool = CrestPool()
         self.dimdice = []
         self.ml = MonsterLord()
+        self.summons = []
         self.monsters = []
         self.items = []
         self.tiles = []
 
-    def create_tile(self, dungobj=None):
+    def create_tile(self, dungobj=DungeonObject()):
         """
         Create player tile with dungeon object in it.
         """
         tile = DungeonTile(dungobj)
+        dungobj.add_to_player(self)
         self.tiles.append(tile)
         return tile
 

@@ -19,9 +19,22 @@ class Stringifier():
         for i, dice in enumerate(dicelist):
             dice_string  = str(i+1).rjust(2) + ". "
             dice_string += self.stringify_dice_short(dice)
-            dice_string  = colored(dice_string, "grey")
             strlist.append(dice_string)
         return "\n".join(strlist)
+
+    def stringify_dicepool(self, player):
+        """
+        Creates string version of a player dice pool.
+        """
+        strlist = []
+        for i, dice in enumerate(player.dicepool):
+            dice_string  = str(i+1).rjust(2) + ". "
+            dice_string += self.stringify_dice_short(dice)
+            if dice in player.dimdice:
+                dice_string  = colored(dice_string, "grey")
+            strlist.append(dice_string)
+        return "\n".join(strlist)
+
 
     def stringify_dice_short(self, dice):
         """
@@ -160,7 +173,7 @@ class Stringifier():
         elif tile.content.is_monster_lord():
             return self.stringify_ml_tile(duel, content)
         else: # no content in tile
-            return self.stringify_path(duel, tile)
+            return self.stringify_path_tile(duel, tile)
 
     def stringify_empty_tile(self):
         """
@@ -175,7 +188,7 @@ class Stringifier():
         Creates a string version of a tile with a summon in 
         it.
         """
-        icon = self.icons["TYPE_"+contents.type]
+        icon = self.icons["TYPE_"+summon.type]
         if summon in duel.player1.summons:
             colors = self.icons["COLORS_SUMMON_P1"]
         if summon in duel.player2.summons:
@@ -302,20 +315,16 @@ class Stringifier():
         string = netstr
         string = string.replace("[]", dtile)
         string = string.replace("()", stile)
-        # add net names
-        for netname in engine.NETS:
-            string = string.replace("NN", netname, 1)
-        return string
 
     def stringify_trans(self, engine):
         """
         Creates a string with the description of all the
         transformations.
         """
-        strlist = []
-        for key in engine.TRANS:
-            strlist.append(key+": "+engine.TRANS[key])
-        string = "\n".join(strlist)
+        string = "TCW: Turn clockwise\n" + \
+                 "TAW: Turn anti-clockwise\n" + \
+                 "FUD: Flip up-down\n" + \
+                 "FLR: Flip left-right"
         return string
 
 def colorize_attr(attr, original):
@@ -331,13 +340,13 @@ def colorize_attr(attr, original):
         return str(attr)+"/"+str(original)
 
 netstr = "\
-  NN     NN     NN     NN     NN     NN   \n\
+  T1     T2     Z1     Z2     X1     X2   \n\
 [][][] [][]   [][]   [][]     []     []   \n\
   ()     ()[]   ()     ()   []()[] []()   \n\
   []     []     []     [][]   []     [][] \n\
   []     []     [][]   []     []     []   \n\
                                           \n\
-  NN   NN     NN     NN     NN            \n\
+  M1   M2     S1     S2     L1            \n\
 [][]   []     []     []     []            \n\
   ()   []()   []()[] []()   []            \n\
   [][]   [][]   []     [][] ()[]          \n\

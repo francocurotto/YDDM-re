@@ -13,9 +13,9 @@ class Pos():
         """
         self.y, self.x = self.x, -1*self.y
 
-    def turn_ccw(self):
+    def turn_aw(self):
         """
-        Turn position counter clock-wise 90 degrees.
+        Turn position anti clock-wise 90 degrees.
         """
         self.y, self.x = -1*self.x, self.y
 

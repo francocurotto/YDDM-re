@@ -14,8 +14,10 @@ class CliClient():
         stringifier = Stringifier(args.icontype)
         
         # players 
-        player1 = HumanPlayer(args.player1, stringifier)
-        player2 = HumanPlayer(args.player2, stringifier)
+        player1 = HumanPlayer(self.engine, args.player1, 
+            stringifier)
+        player2 = HumanPlayer(self.engine, args.player2, 
+            stringifier)
         self.players = [player1, player2]
         self.currplayer = self.players[0] # current player
         
@@ -28,7 +30,7 @@ class CliClient():
         """
         while True:
             print(self.get_header())
-            cmd = self.currplayer.get_command(self.engine)
+            cmd = self.currplayer.get_command()
 
             # if commmand is generated, update engine
             if cmd:

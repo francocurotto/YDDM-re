@@ -25,7 +25,7 @@ class RollState(DuelState):
         for i in cmd["dice"]:
             dice = self.player.dicepool[i]
             if dice in self.player.dimdice:
-                self.reply["message"] = "Dice " + str(i) + \
+                self.reply["message"] = "Dice " + str(i+1) +\
                     " already dimensioned"
                 return self.reply, self
             dicelist.append(dice)

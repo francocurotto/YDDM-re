@@ -10,9 +10,9 @@ Dimension dice in dungeon, in the shape of net, at position
 pos, and applying transformations trans.
 - command: DIM
 - dice:    0..2 (int)
-- net:     NX (net string)
+- net:     NX (net string, see appendix)
 - pos:     (0..18, 0..12) (tuple of ints)
-- trans:   [T1, T2, ...] (list of transformations)
+- trans:   [T1,T2,...] (list of transformations, see appendix)
 
 ## SKIP [DIM state]
 Skip dimension.
@@ -42,3 +42,27 @@ Defend attack from opponent monster.
 ## WAIT [REPLY state]
 Do not defend attack from opponent monster.
 - command: WAIT
+
+## Appendix
+
+### List of Nets
+  T1     T2     Z1     Z2     X1     X2  
+[][][] [][]   [][]   [][]     []     []  
+  ()     ()[]   ()     ()   []()[] []()  
+  []     []     []     [][]   []     [][]
+  []     []     [][]   []     []     []  
+                                         
+  M1   M2     S1     S2     L1           
+[][]   []     []     []     []           
+  ()   []()   []()[] []()   []           
+  [][]   [][]   []     [][] ()[]         
+    []     []   []     []     []         
+                              []         
+
+(): center of net, where summon is summoned
+
+### List of transfromations
+TCW: Turn clockwise
+TAW: Turn anti-clockwise
+FUD: Flip up-down
+FLR: Flip left-right

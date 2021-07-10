@@ -1,3 +1,5 @@
+from sanitize_functs import *
+
 class RollGen():
     """
     Generator for roll command.
@@ -6,7 +8,7 @@ class RollGen():
         self.key = "r"
         self.desc = desc
 
-    def create_command(self, engine, split):
+    def create_command(self, split):
         """
         Create a roll command.
         """
@@ -14,20 +16,21 @@ class RollGen():
         if len(split)!=3:
             print("Number of arguments must be 3")
             return
-        # sanitize arguments
-        try:
-            dice = [int(i)-1 for i in split]
-        except ValueError:
-            print("Cannot convert integer")
-            return None
-        for i in dice:
-            if i<0 or i>engine.POOLSIZE-1:
-                print("Integer out of pool bound")
+        # get dice indeces
+        indeces = set()
+        for string in split:
+            i = str2index(string, 0 , 14)
+            if i is None:
                 return None
+            # check for repetition
+            if i in indeces:
+                print("Cannot use the same dice twice")
+                return None
+            indeces.add(i)
         # create command
-        cmd = {"command" : "ROLL", "dice" : dice}
+        cmd = {"command" : "ROLL", "dice" : indeces}
         return cmd
 
 desc = "\
-- ROLL COMMAND [ROLL state]: r D1 D2 D3\n\
+- ROLL COMMAND: r D1 D2 D3\n\
     - r D1 D2 D3: roll dice D1, D2 and D3 from dice pool"
