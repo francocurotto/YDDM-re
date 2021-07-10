@@ -46,6 +46,7 @@ Do not defend attack from opponent monster.
 ## Appendix
 
 ### List of Nets
+```
   T1     T2     Z1     Z2     X1     X2  
 [][][] [][]   [][]   [][]     []     []  
   ()     ()[]   ()     ()   []()[] []()  
@@ -58,11 +59,12 @@ Do not defend attack from opponent monster.
   [][]   [][]   []     [][] ()[]         
     []     []   []     []     []         
                               []         
+```
 
 (): center of net, where summon is summoned
 
 ### List of transfromations
-TCW: Turn clockwise
-TAW: Turn anti-clockwise
-FUD: Flip up-down
-FLR: Flip left-right
+- TCW: Turn clockwise
+- TAW: Turn anti-clockwise
+- FUD: Flip up-down
+- FLR: Flip left-right
