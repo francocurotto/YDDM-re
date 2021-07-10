@@ -20,4 +20,3 @@ class CmdGen():
         """
         Get dice at position i of dicelist.
         """
-        a
