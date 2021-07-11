@@ -298,12 +298,12 @@ class Stringifier():
         string = " ".join(strlist)
         return string
 
-    def stringify_nets(self,  engine):
+    def stringify_nets(self, player):
         """
         Creates a string with all nets.
         """
         # get path icon
-        pid = engine.dsm.state.player.id
+        pid = player.id
         icon = self.icons["TILE_PATH_P"+str(pid)]
         colors = self.icons["COLORS_PATH_P"+str(pid)]
         dtile = colored(icon, *colors)
@@ -315,8 +315,9 @@ class Stringifier():
         string = netstr
         string = string.replace("[]", dtile)
         string = string.replace("()", stile)
+        return string
 
-    def stringify_trans(self, engine):
+    def stringify_trans(self):
         """
         Creates a string with the description of all the
         transformations.

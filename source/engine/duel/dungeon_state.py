@@ -23,7 +23,7 @@ class DungeonState(DuelState):
         # fill success reply
         self.reply["valid"] = True
         self.reply["newturn"] = True
-        self.reply["message"] = "Turn finished"
+        self.reply["message"] = "Turn finished!"
         from duel.roll_state import RollState
         nextstate = RollState(self.duel, self.opponent, 
             self.player)

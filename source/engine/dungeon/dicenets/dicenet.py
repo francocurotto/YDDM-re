@@ -12,7 +12,7 @@ class DiceNet():
         self.center = self.get_center()
         self.transdict = {} # map keys to functions
         self.transfunc = [self.turn_cw, self.turn_aw,
-            self.flip_lr, self.flip_ud]
+            self.flip_ud, self.flip_lr]
         for name, func in zip(trans, self.transfunc):
             self.transdict[name] = func
 
@@ -53,16 +53,16 @@ class DiceNet():
         for pos in self.poslist:
             pos.turn_aw()
 
-    def flip_lr(self):
-        """
-        Turn all positions on net left-right.
-        """
-        for pos in self.poslist:
-            pos.flip_lr()
-
     def flip_ud(self):
         """
         Turn all positions on net up-down.
         """
         for pos in self.poslist:
             pos.flip_ud()
+
+    def flip_lr(self):
+        """
+        Turn all positions on net left-right.
+        """
+        for pos in self.poslist:
+            pos.flip_lr()

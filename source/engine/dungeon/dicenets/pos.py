@@ -11,20 +11,13 @@ class Pos():
         """
         Turn position clock-wise 90 degrees.
         """
-        self.y, self.x = self.x, -1*self.y
+        self.y, self.x = -1*self.x, self.y
 
     def turn_aw(self):
         """
         Turn position anti clock-wise 90 degrees.
         """
-        self.y, self.x = -1*self.x, self.y
-
-    def flip_lr(self):
-        """
-        Flip position left-right, that is, in the horizontal
-        direction.
-        """
-        self.x = -1*self.x
+        self.y, self.x = self.x, -1*self.y
 
     def flip_ud(self):
         """
@@ -32,6 +25,13 @@ class Pos():
         direction.
         """
         self.y = -1*self.y
+
+    def flip_lr(self):
+        """
+        Flip position left-right, that is, in the horizontal
+        direction.
+        """
+        self.x = -1*self.x
 
     def get_neighbors(self):
         """

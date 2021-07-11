@@ -101,7 +101,7 @@ class PrintGen():
         """
         Print opponent crestpool.
         """
-        cpool = self.engine.dsm.state.player.crestpool
+        cpool = self.engine.dsm.state.opponent.crestpool
         print(self.stringifier.stringify_crestpool(cpool))
 
     def print_summons(self):
@@ -119,7 +119,8 @@ class PrintGen():
         """
         Print all possible nets for dimension.
         """
-        print(self.stringifier.stringify_nets())
+        player = self.engine.dsm.state.player
+        print(self.stringifier.stringify_nets(player))
 
     def print_trans(self):
         """
