@@ -48,16 +48,15 @@ class RollState(DuelState):
             nextstate = DimState(self.duel, self.player,
                 self.opponent, dimdice)
         else: # cannot dimension
-            nextstate = self
             from duel.dungeon_state import DungeonState
             nextstate = DungeonState(self.duel, self.player,
                 self.opponent)
 
         # fill success reply
-        self.reply["message"] = "Go Dice Roll!"
         if self.player.hit_dim_limit():
-            self.reply["message"] += "\nNo more dice " + \
-                "dimensions allowed"
+            self.reply["message"] += "No more dice " + \
+                "dimensions allowed\n"
+        self.reply["message"] += "Go Dice Roll!"
         self.reply["roll"] = serialize_sides(sides)
         return self.reply, nextstate
 
