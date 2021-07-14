@@ -1,3 +1,4 @@
+import readline # for input history
 from print_gen import PrintGen
 from roll_gen import RollGen
 from dim_gen import DimGen
