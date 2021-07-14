@@ -7,11 +7,11 @@ class Dice():
     """
     The dice players use to play the game.
     """
-    def __init__(self, dice_id, dice_dict):
-        self.id = dice_id
-        self.level = dice_dict["LEVEL"]
-        self.card = create_card(dice_dict)
-        self.sides = create_sides(dice_dict["CRESTS"], 
+    def __init__(self, diceid, dicedict):
+        self.id = diceid
+        self.level = dicedict["LEVEL"]
+        self.card = create_card(dicedict)
+        self.sides = create_sides(dicedict["CRESTS"], 
             self.level)
 
     def roll(self):

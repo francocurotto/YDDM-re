@@ -17,7 +17,7 @@ class RollGen():
             print("Number of arguments must be 3")
             return
         # get dice indeces
-        indeces = set()
+        indeces = []
         for string in split:
             i = str2index(string, 0 , 14)
             if i is None:
@@ -26,7 +26,7 @@ class RollGen():
             if i in indeces:
                 print("Cannot use the same dice twice")
                 return None
-            indeces.add(i)
+            indeces.append(i)
         # create command
         cmd = {"command" : "ROLL", "dice" : indeces}
         return cmd

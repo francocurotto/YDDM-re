@@ -30,7 +30,7 @@ class DimState(DuelState):
             dice = self.dimdice[cmd["dice"]]
         except IndexError:
             self.reply["message"] = "Invalid dice index " + \
-                str(cmd["dice"])
+                str(cmd["dice"]+1)
             return self.reply, self
 
         # get the summon from the dice

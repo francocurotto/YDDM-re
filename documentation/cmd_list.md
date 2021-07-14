@@ -3,7 +3,7 @@
 ## ROLL [ROLL state]
 Roll dice set.
 - command: ROLL
-- dice:    {0..14, 0..14, 0..14} (set of ints)
+- dice:    [0..14, 0..14, 0..14] (list of non-repeating ints)
 
 ## DIM [DIM state]
 Dimension dice in dungeon, in the shape of net, at position
