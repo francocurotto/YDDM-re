@@ -1,4 +1,5 @@
 from sanitize_functs import *
+
 class DimGen():
     """
     Generator for dim command.

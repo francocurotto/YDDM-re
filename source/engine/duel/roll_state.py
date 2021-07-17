@@ -20,6 +20,12 @@ class RollState(DuelState):
         """
         Run roll command.
         """
+        # check for duplicates in list
+        if len(cmd["dice"]) != len(set(cmd["dice"])):
+            self.reply["message"] = "Cannot use the same " +\
+                " twice"
+            return self.reply, self
+
         # get the dice from the command
         dicelist = []
         for i in cmd["dice"]:

@@ -1,4 +1,5 @@
 from duel.duel_state import DuelState
+from dungeon.dicenets.pos import Pos
 
 class DungeonState(DuelState):
     """
@@ -12,9 +13,37 @@ class DungeonState(DuelState):
         """
         Update state given command cmd.
         """
-        if cmd["command"] == "ENDTURN":
+        if cmd["command"] == "MOVE":
+            return self.run_move_command(cmd)
+        elif cmd["command"] == "ENDTURN":
             return self.run_endturn_command(cmd)
         return super().update(cmd)
+
+    def run_move_command(self, cmd):
+        """
+        Run move command.
+        """
+        # 1. chack monster at origin
+        origin = Pos(*cmd["origin"])
+        dungobj = self.duel.dungeon.get_content(origin)
+        if not dungobj in self.player.monsters:
+            self.reply["Message"] = "No player monster at "+\
+                "origin"
+            return self.reply, self
+
+        # 2. check destiny is unoccupied
+        dest = Pos(*cmd["dest"])
+        dungobj = self.duel.dungeon.get_content(dest)
+        if dungobj.is_target():
+            self.reply["Message"] = "Destination ocupied"
+            return self.reply, self
+
+        # 3. check if monster has already move
+
+        # 4. check valid path
+
+        # 5. check enough movement crests
+
 
     def run_endturn_command(self, cmd):
         """
