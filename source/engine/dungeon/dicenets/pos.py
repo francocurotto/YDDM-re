@@ -68,3 +68,9 @@ class Pos():
             return self.y == other.y and self.x == other.x
         else:
             return False
+
+    def __str__(self):
+        """
+        Redefinition of str.
+        """
+        return chr(self.x+97) + str(self.y+1)

@@ -12,7 +12,7 @@ class Monster(Summon):
         self.defense = self.card.defense
         self.life = self.card.life
 
-        self.move_cooldown = False
+        self.cooldown = False
 
     def add_to_player(self, player):
         """

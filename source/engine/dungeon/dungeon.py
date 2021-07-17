@@ -1,5 +1,6 @@
 from dungeon.empty_tile import EmptyTile
 from dungeon.dicenets.pos import Pos
+from dungobj.dungobj import DungeonObject
 
 class Dungeon():
     """
@@ -49,6 +50,12 @@ class Dungeon():
         tile.
         """
         self.array[pos.y][pos.x] = tile
+
+    def get_content(self, pos):
+        """
+        Get content of tile at position.
+        """
+        return self.get_tile(pos).content
 
     def set_net(self, net, player, summon):
         """
@@ -134,3 +141,83 @@ class Dungeon():
                 tiles.append(self.get_tile(pos))
 
         return tiles
+
+    def get_path(self, origin, dest):
+        """
+        Computes dungeon path from origin to dest. If no path
+        can be found return None.
+        """
+        path = [origin]
+        pathqueue = [path]
+        visited = []
+
+        # breadth-first search
+        while pathqueue:
+            # pop current path
+            path = pathqueue.pop()
+            
+            # check path finish condition
+            lastpos = path[-1]
+            if lastpos == dest:
+                return path
+
+            # add path end to visited positions
+            visited.append(lastpos)
+
+            # expand path in one tile in all possible 
+            # directions and add them to the queue
+            newpaths = self.expand_path(path, visited)
+            pathqueue += newpaths
+
+        # no path was found
+        return None
+
+    def expand_path(self, path, visited):
+        """
+        Return a list of paths that expand one tile from last
+        position of path, in all posible directions according 
+        to DDM rules. The rules include:
+        - you can only expand through dungeon tiles.
+        - you cannot expand through tiles occupied by 
+            monsters or monster lords (targets)
+        - you can expand through a tile occupied by an item,
+            but you can't expand further from that.
+        Visited list of positions are used to avoid cycles.
+        """
+        # get last pos
+        lastpos = path[-1]
+
+        # if last tile has an item, you can't expand further
+        if self.get_tile(lastpos).content.is_item():
+            return []
+
+        newpaths = []
+        neighborpos = lastpos.get_neighbors()
+        # for each neighbor, check if they satisfy all the 
+        # requirements to expand the path
+        for pos in neighborpos:
+            # 1. must be in bound
+            if not self.in_bound(pos):
+                continue
+            # 2. must be a dungeon tile
+            if not self.get_tile(pos).is_dungeon():
+                continue
+            # 3. must not be ocupied by an obstacle (target)
+            if self.get_tile(pos).content.is_target():
+                continue
+            # 4. must not have been visited before
+            if pos in visited:
+                continue
+            # 5. all conditions are met, add new path
+            newpaths.append(path + [pos])
+
+        return newpaths
+
+    def move_dungobj(self, origin, dest):
+        """
+        Move dungeon object at position origin to postions
+        dest. Leave a DungObj at origin.
+        """
+        dungobj = self.get_tile(origin).content
+        self.get_tile(dest).content = dungobj
+        self.get_tile(origin).content = DungeonObject()

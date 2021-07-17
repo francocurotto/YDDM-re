@@ -23,27 +23,52 @@ class DungeonState(DuelState):
         """
         Run move command.
         """
-        # 1. chack monster at origin
+        # get origin, dest position and tile
         origin = Pos(*cmd["origin"])
-        dungobj = self.duel.dungeon.get_content(origin)
-        if not dungobj in self.player.monsters:
-            self.reply["Message"] = "No player monster at "+\
+        origintile = self.duel.dungeon.get_tile(origin)
+        dest = Pos(*cmd["dest"])
+        desttile = self.duel.dungeon.get_tile(dest)
+
+        # 1. check if origin and dest are dungeon tiles
+        if not origintile.is_dungeon():
+            self.reply["message"] = "Origin not dungeon tile"
+            return self.reply, self
+        if not desttile.is_dungeon():
+            self.reply["message"] = "Destination not "+ \
+                "dungeon tile"
+            return self.reply, self
+
+        # 2. check monster at origin
+        monster = origintile.content
+        if not monster in self.player.monsters:
+            self.reply["message"] = "No player monster at "+\
                 "origin"
             return self.reply, self
 
-        # 2. check destiny is unoccupied
-        dest = Pos(*cmd["dest"])
-        dungobj = self.duel.dungeon.get_content(dest)
-        if dungobj.is_target():
-            self.reply["Message"] = "Destination ocupied"
+        # 3. check destiny is unoccupied
+        if desttile.content.is_target():
+            self.reply["message"] = "Destination occupied"
             return self.reply, self
 
-        # 3. check if monster has already move
-
         # 4. check valid path
+        path = self.duel.dungeon.get_path(origin, dest)
+        if not path:
+            self.reply["message"] = "Cannot reach destination"
+            return self.reply, self
 
         # 5. check enough movement crests
+        movecost = len(path) - 1 # first pos doesn't count
+        if self.player.crestpool.movement < movecost:
+            self.reply["message"] = "Not enough movement " +\
+                "crests"
+            return self.reply, self
 
+        # 6. everything is okay, so move the monster
+        self.player.crestpool.movement -= movecost
+        self.duel.dungeon.move_dungobj(origin, dest)
+        self.reply["message"] = monster.name + " moved " + \
+            "from " + str(origin) + " to " + str(dest)
+        return self.reply, self 
 
     def run_endturn_command(self, cmd):
         """

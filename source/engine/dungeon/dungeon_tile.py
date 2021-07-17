@@ -18,7 +18,4 @@ class DungeonTile():
         return True
 
     def is_occupied(self):
-        return self.content.is_summon() or \
-            self.content.is_monster_lord()
-        
-    
+        return self.content.is_content()

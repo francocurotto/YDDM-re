@@ -2,6 +2,7 @@ import readline # for input history
 from print_gen import PrintGen
 from roll_gen import RollGen
 from dim_gen import DimGen
+from move_gen import MoveGen
 from endturn_gen import EndturnGen
 from quit_gen import QuitGen
 
@@ -15,10 +16,11 @@ class HumanPlayer():
         printgen   = PrintGen(engine, icontype)
         rollgen    = RollGen()
         dimgen     = DimGen()
+        movegen    = MoveGen()
         endturngen = EndturnGen()
         quitgen    = QuitGen()
         self.generators = [printgen, rollgen, dimgen,  
-            endturngen, quitgen]
+            movegen, endturngen, quitgen]
 
     def get_command(self):
         """

@@ -1,6 +1,6 @@
 from sanitize_functs import *
 
-class MoveGen(self):
+class MoveGen():
     """
     Generator for move command.
     """
@@ -12,10 +12,10 @@ class MoveGen(self):
         """
         Create move command.
         """
-    # check argument number
-    if len(split)<3:
-        print("Number of arguments must be 2")
-        return
+        # check argument number
+        if len(split)!=2:
+            print("Number of arguments must be 2")
+            return
         # sanitize pos
         origin = str2coor(split[0])
         if not origin:
@@ -25,11 +25,11 @@ class MoveGen(self):
         if not dest:
             return None
 
-    # create command
-    cmd = {"command" : "DIM",
-           "origin"  : origin,
-           "dest"    : dest}    
-    return cmd
+        # create command
+        cmd = {"command" : "MOVE",
+               "origin"  : origin,
+               "dest"    : dest}    
+        return cmd
 
 desc = "\
 - MOVE COMMAND: m XY1 XY2\n\
