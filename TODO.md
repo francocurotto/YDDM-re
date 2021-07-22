@@ -1,8 +1,10 @@
 ### TODO
 - engine: implement dungeon_state
-    - implement movement
     - implement attack
 - engine: implement reply_state
+
+### IMPROVEMENTS
+- avoid checks of dungeon tile in dungeon state
 
 ### CHECKS
 

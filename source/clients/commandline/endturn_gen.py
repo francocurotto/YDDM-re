@@ -16,5 +16,5 @@ class EndturnGen():
         return {"command" : "ENDTURN"}
 
 desc = "\
-- QUIT COMMAND: e\n\
+- ENDTURN COMMAND: e\n\
     - e: end turn"

@@ -1,16 +1,16 @@
 from sanitize_functs import *
 
-class MoveGen():
+class AttackGen():
     """
     Generator for move command.
     """
     def __init__(self):
-        self.key = "m"
+        self.key = "a"
         self.desc = desc
 
     def create_command(self, split):
         """
-        Create move command.
+        Create attack command.
         """
         # check argument number
         if len(split)!=2:
@@ -26,12 +26,12 @@ class MoveGen():
             return None
 
         # create command
-        cmd = {"command" : "MOVE",
+        cmd = {"command" : "ATTACK",
                "origin"  : origin,
                "dest"    : dest}    
         return cmd
 
 desc = "\
-- MOVE COMMAND: m XY1 XY2\n\
-    - m XY1 XY2: move monster at position XY1 to position\n\
-        XY2."
+- ATTACK COMMAND: a XY1 XY2\n\
+    - m XY1 XY2: make monster at position XY1 attack target\n\
+        at position XY2."

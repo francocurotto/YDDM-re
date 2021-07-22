@@ -39,3 +39,9 @@ class Player():
         True if player hit the dimension limit.
         """
         return len(self.dimdice) >= self.DIM_LIMIT
+
+    def is_my_target(self, dungobj):
+        """
+        Returns True if dungobj is players target.
+        """
+        return dungobj in self.monsters or dungobj is self.ml

@@ -1,6 +1,5 @@
 from dungeon.empty_tile import EmptyTile
 from dungeon.dicenets.pos import Pos
-from dungobj.dungobj import DungeonObject
 
 class Dungeon():
     """
@@ -220,4 +219,4 @@ class Dungeon():
         """
         dungobj = self.get_tile(origin).content
         self.get_tile(dest).content = dungobj
-        self.get_tile(origin).content = DungeonObject()
+        self.get_tile(origin).remove_content()
