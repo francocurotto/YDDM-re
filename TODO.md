@@ -1,4 +1,5 @@
 ### TODO
+- engine: finish roll_state try/except refactor
 - engine: implement dungeon_state
     - implement attack
 - engine: implement reply_state

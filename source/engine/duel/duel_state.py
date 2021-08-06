@@ -7,16 +7,19 @@ class DuelState():
         self.player = player
         self.opponent = opponent
         self.reply = {
-            "valid"   : True,
+            "valid"   : False,
             "newturn" : False,
             "endduel" : False,
             "message" : ""}
 
     def update(self, cmd):
         """
-        By default, the command is invalid.
+        try to run command. If invalid send appropriate 
+        response.
         """
-        self.reply["valid"] = False
-        self.reply["message"] = "Invalid command " + \
-            cmd["command"] + " at state " + self.name
-        return self.reply, self
+        try:
+            return self.cmddict[cmd["command"]](cmd)
+        except KeyError:
+            self.reply["message"] = "Invalid command " + \
+                cmd["command"] + " at state " + self.name
+            return self.reply, self

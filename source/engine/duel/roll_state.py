@@ -7,34 +7,19 @@ class RollState(DuelState):
     def __init__(self, duel, player, opponent):
         super().__init__(duel, player, opponent)
         self.name = "ROLL"
-
-    def update(self, cmd):
-        """
-        Update state given command cmd.
-        """
-        if cmd["command"] == "ROLL":
-            return self.run_roll_command(cmd)
-        return super().update(cmd)
+        self.cmddict = {"ROLL" : self.run_roll_state}
+        self.rollerrors = (DiceDuplicatedError,
+            DiceUsedError)
 
     def run_roll_command(self, cmd):
         """
         Run roll command.
         """
-        # check for duplicates in list
-        if len(cmd["dice"]) != len(set(cmd["dice"])):
-            self.reply["message"] = "Cannot use the same " +\
-                " twice"
-            return self.reply, self
-
-        # get the dice from the command
-        dicelist = []
-        for i in cmd["dice"]:
-            dice = self.player.dicepool[i]
-            if dice in self.player.dimdice:
-                self.reply["message"] = "Dice " + str(i+1) +\
-                    " already dimensioned"
-                return self.reply, self
-            dicelist.append(dice)
+        try:
+            dicelist = self.get_dicelist(cmd["dice"])
+        except self.rollerrors as e:
+            self.["message"] = e.message
+            self.reply, self
         
         # roll the dice and get the rolled sides
         sides = []
@@ -62,9 +47,28 @@ class RollState(DuelState):
         if self.player.hit_dim_limit():
             self.reply["message"] += "No more dice " + \
                 "dimensions allowed\n"
+        self.reply["valid"] = True
         self.reply["message"] += "Go Dice Roll!"
         self.reply["roll"] = serialize_sides(sides)
         return self.reply, nextstate
+
+    def get_dicelist(self, intlist):
+        """
+        Creates a dicelist from a list of ints from a 
+        command.
+        """
+        # check for duplicates
+        if len(cmd["dice"]) != len(set(cmd["dice"])):
+            raise DiceDuplicatedError
+
+        # get dice from the intlist
+        dicelist = []
+        for i in intlist:
+            dice = self.player.dicepool[i]
+            if dice in self.player.dimdice:
+                raise DiceUSedError
+            dicelist.append(dice)
+        return dicelist
 
     def can_dimension(self, dimdice):
         """
