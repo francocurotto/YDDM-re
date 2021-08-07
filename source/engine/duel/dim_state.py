@@ -13,25 +13,24 @@ class DimState(DuelState):
         self.dimdice = dimdice
         self.cmdlist = {"DIM"  : self.run_dim_command,
                         "SKIP" : self.run_skip_command}
-        self.dimerrors = (DimIndexError, SetNetError)
+        self.dimerrors = (DimIndexError, NetUnconnectedError,
+            NetUnboundError, NetOverlapsError)
 
     def run_dim_command(self, cmd):
         """
         Run dim command.
         """
+        net = netdict[cmd["net"]]()
+        net.apply_trans(cmd["trans"])
+        net.offset(Pos(*cmd["pos"]))
+
         # get the selected dice
         try:
-            dice = self.dimdice[cmd["dice"]]
-            dice = get_dimdice(cmd["dice"])
+            dice = self.get_dimdice(cmd["dice"])
             summon = dice.card.summon()
-            net = netdict[cmd["net"]]()
-            net.apply_trans(cmd["trans"])
-            net.offset(Pos(*cmd["pos"]))
             self.duel.dungeon.set_net(net, self.player, 
                 summon)
         except self.dimerrors as e:
-            self.reply["message"] = "Invalid dice index " + \
-                str(cmd["dice"]+1)
             self.reply["message"] = e.message
             return self.reply, self
 

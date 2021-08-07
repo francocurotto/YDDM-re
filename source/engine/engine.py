@@ -1,12 +1,8 @@
-import yaml
-from copy import deepcopy
+import yaml, copy
 from dice.dice import Dice
 from player.player import Player
 from duel.duel import Duel
 from duel.dsm import DuelStateMachine
-# constants
-from dungeon.dicenets.netdict import netdict
-from dungeon.dicenets.dicenet import trans
 
 class Engine():
     """
@@ -47,4 +43,4 @@ def create_library(libraryfile):
 
 def create_dicepool(poolfile, library):
     dice_ids = yaml.full_load(open(poolfile))
-    return [deepcopy(library[id]) for id in dice_ids]
+    return [copy.deepcopy(library[id]) for id in dice_ids]

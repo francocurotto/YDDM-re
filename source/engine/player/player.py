@@ -28,6 +28,19 @@ class Player():
         self.tiles.append(tile)
         return tile
 
+    def create_net_tiles(self, net, summon):
+        """
+        Create player tiles from net. Put summon in center
+        tile.
+        """
+        tiles = []
+        for pos in net.poslist:
+            if pos == net.center: # center => add summon
+                tiles.append(self.create_tile(summon))
+            else: # not center => empty tile
+                tiles.append(self.create_tile())
+        return tiles
+
     def create_ml_tile(self):
         """
         Create a player tile with the monster lord in it.

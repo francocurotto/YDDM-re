@@ -1,3 +1,4 @@
+import copy
 from dungeon.empty_tile import EmptyTile
 from dungeon.dicenets.pos import Pos
 
@@ -12,6 +13,9 @@ class Dungeon():
     def __init__(self, players):
         self.array = self.init_array()
         self.add_monster_lords(players)
+        self.setnet_errors = {
+            TileUnboundError  : NetUnboundError,
+            TileOverlapsError : NetOverlapsError}
 
     def init_array(self):
         """
@@ -59,72 +63,67 @@ class Dungeon():
     def set_net(self, net, player, summon):
         """
         Set player's net in dungeon with summon at center.
-        If unsuccessful, return False and error message. 
         Set summon at center of net.
         """
-        # check if net can be correctly dimensioned
-        #success, message = self.check_net(net, player)
-        #if not success:
-        #    return success, message
+        # check if net can be connects correctly
+        if not self.net_connects(net, player):
+            raise NetUnconnectedError
 
-        # check if net can be correctly dimensioned
-        check_net(net, player)
+        # set net
+        backup_array = copy.copy(self.array)
+        tiles = player.create_net_tiles(net, summon)
+        for pos, tile in zip(net.poslist, tiles):
+            try:
+                self.set_tile(tile, pos)
+            except self.setnet_errors.keys() as e:
+                self.array = backup_array # restore array
+                raise self.setnet_errors[e]
 
-        # if check passed, place the net
-        for pos in net.poslist:
-            if pos == net.center: # center => add summon
-                tile = player.create_tile(summon)
-            else: # not center => empty tile
-                tile = player.create_tile()
-            self.set_tile(tile, pos)
+    #def check_net(self, net, player):
+    #    """
+    #    Check for correct net dimension: check for out of 
+    #    bound, overlaping dungeon path, and unconnected with
+    #    player path.
+    #    """
+    #    # check in bound condition
+    #    for pos in net.poslist:
+    #        if not self.in_bound(pos):
+    #            message = "Dice net out of bound"
+    #            return False, message
 
-    def check_net(self, net, player):
+    #    # check no overlaping condition
+    #    for pos in net.poslist:
+    #        if self.overlaps(pos):
+    #            message = "Dice net overlaps dungeon path"
+    #            return False, message
+
+    def net_connects(self, net, player):
         """
-        Check for correct net dimension: check for out of 
-        bound, overlaping dungeon path, and unconnected with
-        player path.
+        Check if net connects with path of player.
         """
-        # check in bound condition
-        for pos in net.poslist:
-            if not self.in_bound(pos):
-                message = "Dice net out of bound"
-                return False, message
-
-        # check no overlaping condition
-        for pos in net.poslist:
-            if self.overlaps(pos):
-                message = "Dice net overlaps dungeon path"
-                return False, message
-
-        # check connection with player dungeon condition
         for pos in net.poslist:
             neighbors = self.get_neighbors(pos)
             for neighbor in neighbors:
                 if neighbor in player.tiles:
-                    # all checks passed
-                    return True, ""
-        
-        # connection check not passed
-        message = "Dice net does not connect with " + \
-            "dungeon path"
-        return False, message
+                    return True
+        return False
 
-    def in_bound(self, pos):
-        """
-        Check if a position falls inside the dungeon array.
-        """
-        in_bound_y = 0 <= pos.y < len(self.array)
-        in_bound_x = 0 <= pos.x < len(self.array[0])
+    #def in_bound(self, pos):
+    #    """
+    #    Check if a position falls inside the dungeon array.
+    #    """
+    #    in_bound_y = 0 <= pos.y < len(self.array)
+    #    in_bound_x = 0 <= pos.x < len(self.array[0])
 
-        return in_bound_y and in_bound_x
+    #    return in_bound_y and in_bound_x
 
-    def overlaps(self, pos):
-        """
-        Checks if position overlaps with a dungeon tile 
-        already existing in the dungeon.
-        """
-        tile = self.get_tile(pos)
-        return tile.is_dungeon()
+    #def overlaps(self, pos):
+    #    """
+    #    Checks if position overlaps with a dungeon tile 
+    #    already existing in the dungeon.
+    #    """
+    #    tile = self.get_tile(pos)
+    #    return tile.is_dungeon()
 
     def get_neighbors(self, pos):
         """
