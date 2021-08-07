@@ -63,9 +63,12 @@ class Dungeon():
         Set summon at center of net.
         """
         # check if net can be correctly dimensioned
-        success, message = self.check_net(net, player)
-        if not success:
-            return success, message
+        #success, message = self.check_net(net, player)
+        #if not success:
+        #    return success, message
+
+        # check if net can be correctly dimensioned
+        check_net(net, player)
 
         # if check passed, place the net
         for pos in net.poslist:
@@ -74,16 +77,12 @@ class Dungeon():
             else: # not center => empty tile
                 tile = player.create_tile()
             self.set_tile(tile, pos)
-        
-        # return success
-        return True, ""
 
     def check_net(self, net, player):
         """
         Check for correct net dimension: check for out of 
         bound, overlaping dungeon path, and unconnected with
-        player path. Retrun False and message if it did not
-        pass checks.
+        player path.
         """
         # check in bound condition
         for pos in net.poslist:
