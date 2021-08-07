@@ -8,8 +8,8 @@ class DungeonState(DuelState):
     def __init__(self, duel, player, opponent):
         super().__init__(duel, player, opponent)
         self.name = "DUNGEON"
-        self.cmddict = {"MOVE"    : self.run_move_command 
-                        "ATTACK"  : self.run_attack_command
+        self.cmddict = {"MOVE"    : self.run_move_command,
+                        "ATTACK"  : self.run_attack_command,
                         "ENDTURN" : self.run_endturn_command}
         
     def run_move_command(self, cmd):
@@ -19,11 +19,13 @@ class DungeonState(DuelState):
         origin = Pos(*cmd["origin"])
         dest = Pos(*cmd["dest"])
         
-        # error prone tasks
+        # get monster and path
         try:
             monster = self.get_monster(origin)
             path = self.get_path(origin, dest)
             self.pay_movement_cost(path)
+        except:
+            pass
 
         self.duel.dungeon.move_dungobj(origin, dest)
         self.reply["valid"] = True

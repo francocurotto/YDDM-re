@@ -1,6 +1,6 @@
 ### TODO
-- engine: finish dim_state try/except refactor
 - engine: implement dungeon_state
+    - refactor move eith try/except
     - implement attack
 - engine: implement reply_state
 

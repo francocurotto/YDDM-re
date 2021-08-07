@@ -1,7 +1,9 @@
 from duel.duel_state import DuelState
-from dungeon import SetNetError
 from dungeon.dicenets.netdict import netdict
 from dungeon.dicenets.pos import Pos
+from dungeon.dungeon import NetUnconnectedError
+from dungeon.dungeon import TilePosUnboundError
+from dungeon.dungeon import TileOverlapsError
 
 class DimState(DuelState):
     """
@@ -11,10 +13,10 @@ class DimState(DuelState):
         super().__init__(duel, player, opponent)
         self.name = "DIM"
         self.dimdice = dimdice
-        self.cmdlist = {"DIM"  : self.run_dim_command,
+        self.cmddict = {"DIM"  : self.run_dim_command,
                         "SKIP" : self.run_skip_command}
         self.dimerrors = (DimIndexError, NetUnconnectedError,
-            NetUnboundError, NetOverlapsError)
+            TilePosUnboundError, TileOverlapsError)
 
     def run_dim_command(self, cmd):
         """

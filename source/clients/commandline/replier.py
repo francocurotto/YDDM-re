@@ -13,7 +13,7 @@ class Replier():
             message += " "
             message += self.get_roll_string(reply["roll"])
 
-        # print only if there is a mesage
+        # print only if there is a message
         if message:
             print(message)
 

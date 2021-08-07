@@ -15,6 +15,7 @@ class RollState(DuelState):
         """
         Run roll command.
         """
+        # get the dice list
         try:
             dicelist = self.get_dicelist(cmd["dice"])
         except self.rollerrors as e:

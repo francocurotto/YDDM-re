@@ -11,10 +11,10 @@ class HumanPlayer():
     """
     Player controled by human.
     """
-    def __init__(self, engine, name, icontype):
+    def __init__(self, engine, name, stringifier):
         self.name = name
         # list of command generators
-        printgen   = PrintGen(engine, icontype)
+        printgen   = PrintGen(engine, stringifier)
         rollgen    = RollGen()
         dimgen     = DimGen()
         movegen    = MoveGen()
