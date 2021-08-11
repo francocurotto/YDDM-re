@@ -1,5 +1,6 @@
 from duel.duel_state import DuelState
 from dungeon.dicenets.pos import Pos
+from player.crest_pool import NotEnoughCrests
 
 class DungeonState(DuelState):
     """
@@ -11,6 +12,8 @@ class DungeonState(DuelState):
         self.cmddict = {"MOVE"    : self.run_move_command,
                         "ATTACK"  : self.run_attack_command,
                         "ENDTURN" : self.run_endturn_command}
+        self.moveerrors = (NotDungeonTile,
+            NotPlayerMonster, NotPathFound, NotEnoughCrests)
         
     def run_move_command(self, cmd):
         """
@@ -19,15 +22,16 @@ class DungeonState(DuelState):
         origin = Pos(*cmd["origin"])
         dest = Pos(*cmd["dest"])
         
-        # get monster and path
+        # error prone tasks
         try:
-            monster = self.get_monster(origin)
+            monster = self.get_player_monster(origin)
             path = self.get_path(origin, dest)
             self.pay_movement_cost(path)
-        except:
-            pass
+            self.duel.dungeon.move_dungobj(origin, dest)
+        except self.moveerrors as e:
+            self.reply["message"] = e.message
+            return self.reply, self
 
-        self.duel.dungeon.move_dungobj(origin, dest)
         self.reply["valid"] = True
         self.reply["message"] = monster.name + " moved " + \
             "from " + str(origin) + " to " + str(dest)
@@ -109,3 +113,41 @@ class DungeonState(DuelState):
         nextstate = RollState(self.duel, self.opponent, 
             self.player)
         return self.reply, nextstate
+
+    def get_player_monster(self, pos):
+        """
+        Get player moster at position pos. If no player
+        monster in pos, return exception.
+        """
+        monster = self.duel.dungeon.get_content(pos)
+        if monster not in self.player.monsters:
+            raise NotPlayerMonster(pos)
+        return monster
+
+    def get_path(self, origin, dest):
+        """
+        Get a path from origin to dest from the dungeon. If
+        not path was found, raise exception.
+        """
+        path = self.duel.dungeon.get_path(origin, dest)
+        if path is None:
+            raise NotPathFound(origin, dest)
+        return path
+
+    def pay_movement_cost(self, path):
+        """
+        Pay the movement cost of a monster given a path.
+        """
+        cost = len(path)-1
+        self.player.crestpool.remove_crests("movement", cost)
+
+class NotPlayerMonster(Exception):
+    def __init__(self, pos):
+        self.message = "No player monster at " + str(pos)
+        super().__init__(self.message)
+
+class NotPathFound(Exception):
+    def __init__(self, origin, dest):
+        self.message = "No path found between " + \
+            str(origin) + " and " + str(dest)
+        super().__init__(self.message)

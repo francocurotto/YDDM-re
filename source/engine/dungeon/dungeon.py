@@ -46,11 +46,11 @@ class Dungeon():
         """
         # rejects negative numbers as out of bound
         if not self.in_bound(pos):
-            raise TilePosUnboundError
+            raise TilePosUnboundError(pos)
         try:
             return self.array[pos.y][pos.x]
         except IndexError:
-            raise TilePosUnboundError
+            raise TilePosUnboundError(pos)
 
     def in_bound(self, pos):
         """
@@ -64,7 +64,10 @@ class Dungeon():
         """
         Get content of tile at position.
         """
-        return self.get_tile(pos).content
+        tile = self.get_tile(pos)
+        if not tile.is_dungeon():
+            raise NotDungeonTile(pos)
+        return tile.content
 
     def set_tile(self, tile, pos):
         """
@@ -211,6 +214,13 @@ class Dungeon():
 class NetUnconnectedError(Exception):
     message = "Net do not connect with dungeon path"
 class TilePosUnboundError(Exception):
-    message = "Tile position out of bound"
+    def __init__(self, pos):
+        self.message = "Tile position " + str(pos) + \
+            " out of bound"
+        super().__init__(self, self.message)
+class NotDungeonTile(Exception):
+    def __init__(self, pos):
+        self.message = "No dungeon at " + str(pos)
+        super().__init__(self, self.message)
 class TileOverlapsError(Exception):
     message = "Tile overlaps existing dungeon path"

@@ -30,8 +30,7 @@ class DimState(DuelState):
         try:
             dice = self.get_dimdice(cmd["dice"])
             summon = dice.card.summon()
-            self.duel.dungeon.set_net(net, self.player, 
-                summon)
+            self.duel.dungeon.set_net(net,self.player,summon)
         except self.dimerrors as e:
             self.reply["message"] = e.message
             return self.reply, self
