@@ -1,18 +1,17 @@
-class QuitGen():
+class SkipGen():
     """
-    Generator for quit command.
+    Generator for skip command.
     """
     def __init__(self):
-        self.key = "q"
+        self.key = "s"
         self.desc = desc
 
     def create_command(self, split):
         """
         Quit the game.
         """
-        print("Bye!")
-        exit()
+        return {"command" : "SKIP"}
 
 desc = "\
-- QUIT COMMAND: q\n\
-    - q: quit game"
+- SKIP COMMAND: s\n\
+    - s: skip dimension"

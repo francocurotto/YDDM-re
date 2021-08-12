@@ -14,9 +14,6 @@ class PrintGen():
         """
         Print the desired info. Return None as command.
         """
-        # sanitize split
-        if not split:
-            return None
         # print dice pool
         if split[0]=="p" and len(split)==1:
             self.print_pool()
@@ -61,10 +58,8 @@ class PrintGen():
         """
         # convert string to index
         i = str2index(string, 0, 14)
-        if i is not None:
-            dicepool = self.engine.dsm.state.player.dicepool
-            dice = dicepool[i]
-            print(self.stringifier.stringify_dice(dice))
+        dice = self.engine.dsm.state.player.dicepool[i]
+        print(self.stringifier.stringify_dice(dice))
 
     def print_dungeon(self):
         """
@@ -78,8 +73,6 @@ class PrintGen():
         Print object in dungeon at position string.
         """
         coor = str2coor(string)
-        if not coor:
-            return
         y = coor[0]; x = coor[1]
         tile = self.engine.duel.dungeon.array[y][x]
         if not tile.is_dungeon() or not tile.is_occupied():

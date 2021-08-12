@@ -46,61 +46,26 @@ class DungeonState(DuelState):
         """
         # get origin, dest position and tile
         origin = Pos(*cmd["origin"])
-        origintile = self.duel.dungeon.get_tile(origin)
         dest = Pos(*cmd["dest"])
-        desttile = self.duel.dungeon.get_tile(dest)
 
-        # 1. check if origin and dest are dungeon tiles
-        if not origintile.is_dungeon():
-            self.reply["message"] = "Origin not dungeon tile"
-            return self.reply, self
-        if not desttile.is_dungeon():
-            self.reply["message"] = "Destination not "+ \
-                "dungeon tile"
-            return self.reply, self
-
-        # 2. check monster at origin
-        monster = origintile.content
-        if not monster in self.player.monsters:
-            self.reply["message"] = "No player monster at "+\
-                "origin"
+        # error prone tasks
+        try:
+            monster = self.get_player_monster(origin)
+            target = self.get_opponent_target(dest)
+            self.check_attack_range(origin, dest)
+            self.pay_attack_cost()
+        except self.attackerrors as e:
+            self.reply["message"] = e.message
             return self.reply, self
 
-        # 3. check target at destination
-        target = desttile.content
-        if not self.opponent.is_my_target(target):
-            self.reply["message"] = "No opponent target " + \
-                "at destination"
-            return self.reply, self
-
-        # 4. check monster range
-        if monster.range < origin.distance_to(dest):
-            self.reply["message"] = "Target out of range"
-            return self.reply, self
-
-        # 5. check enough attack crests
-        if self.player.crestpool.attack < 1:
-            self.reply["message"] = "Not enough attack " + \
-                "crests"
-            return self.reply, self
-            
-        # 6. attack is valid, first reduce attack crest
-        self.duel.player.crestpool.attack -= 1
-
-        # 7. if target is monster
+        # check for monster or ml attack
         if target.is_monster():
-            self.reply["message"] = monster.name + " is " + \
-                "attacks " + target.name + " with " + \
-                str(monster.get_attacking_power()) + " power"
-            if self.opponent.can_reply(target):
-                from duel.reply_state import ReplyState
-                nextstate = ReplyState(self, self.duel, 
-                    self.player, self.oppoent, monster, 
-                    target)
-                return self.reply, nextstate
-            else:
-                monster.attack_monster(target, 
-                    defending=False)
+            nextstate = self.run_monster_attack(monster,   
+                target)
+        elif target.is_monster_lord():
+            nextstate = self.run_ml_attack()
+    
+        return self.reply, nextstate
 
     def run_endturn_command(self, cmd):
         """
@@ -115,6 +80,29 @@ class DungeonState(DuelState):
             self.player)
         return self.reply, nextstate
 
+    def run_monster_attack(self, monster, target):
+        """
+        Run the attack from a player monster to an opponent
+        monster.
+        """
+        power = monster.get_attack_power(target)
+        self.reply["message"] = monster.name + " attacks " +\
+            target.name + " with " + power
+
+        # if opponent can defend, go to next state
+        #if self.opponent.crestpool.defense > 0:
+        #    from reply_state import ReplyState
+        #    return ReplyState(self.duel, self.player, 
+        #        self.opponent, monster, target)
+
+        # if opponent cannot defend, continue with attack
+        self.reply["message"] += "\n" + self.opponent.name +\
+            " cannot defend" 
+        damage = monster.attack_monster(target)
+        self.reply["message"] += "\n" + target.name +
+            " received " + str(damage) + " damage"
+        return self
+
     def get_player_monster(self, pos):
         """
         Get player moster at position pos. If no player
@@ -124,6 +112,17 @@ class DungeonState(DuelState):
         if monster not in self.player.monsters:
             raise NotPlayerMonster(pos)
         return monster
+
+    def get_opponent_target(self, pos):
+        """
+        Get opponent targer at position pos. If no opponent
+        target in pos, return exception.
+        """
+        target = self.duel.dungeon.get_content(pos)
+        if target not in self.opponent.monsters or \
+            target not self.opponent.ml:
+            raise NotOpponentTarget(pos)
+        return target
 
     def get_path(self, origin, dest):
         """
@@ -142,9 +141,26 @@ class DungeonState(DuelState):
         cost = len(path)-1
         self.player.crestpool.remove_crests("movement", cost)
 
+    def check_attack_range(origin, dest):
+        """
+        Check if an attack is in attack range.
+        """
+        return origin.distance_to(dest) == 1
+
+    def pay_attack_cost(self):
+        """
+        Pay the attack cost of an attack.
+        """
+        self.player.crestpool.remove_crests("attack", 1)
+
 class NotPlayerMonster(Exception):
     def __init__(self, pos):
         self.message = "No player monster at " + str(pos)
+        super().__init__(self.message)
+
+class NotOpponentTarget(Exception):
+    def __init__(self, pos):
+        self.message = "No opponent targer at " + str(pos)
         super().__init__(self.message)
 
 class NotPathFound(Exception):

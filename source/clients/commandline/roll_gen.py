@@ -1,4 +1,5 @@
 from sanitize_functs import *
+from duel.roll_state import DiceDuplicatedError
 
 class RollGen():
     """
@@ -12,25 +13,17 @@ class RollGen():
         """
         Create a roll command.
         """
-        # check argument number
-        if len(split)!=3:
-            print("Number of arguments must be 3")
-            return
         # get dice indeces
         indeces = []
-        for string in split:
-            i = str2index(string, 0 , 14)
-            if i is None:
-                return None
-            # check for repetition
+        for string in [split[0],split[1],split[2]]:
+            i = str2index(string, 0, 14)
             if i in indeces:
-                print("Cannot use the same dice twice")
-                return None
+                raise DiceDuplicatedError
             indeces.append(i)
         # create command
         cmd = {"command" : "ROLL", "dice" : indeces}
         return cmd
-
+                    
 desc = "\
 - ROLL COMMAND: r D1 D2 D3\n\
     - r D1 D2 D3: roll dice D1, D2 and D3 from dice pool"

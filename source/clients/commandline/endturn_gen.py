@@ -10,9 +10,6 @@ class EndturnGen():
         """
         Quit the game.
         """
-        if split:
-            print("Number of arguments must be 0")
-            return None
         return {"command" : "ENDTURN"}
 
 desc = "\

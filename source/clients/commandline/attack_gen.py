@@ -12,19 +12,8 @@ class AttackGen():
         """
         Create attack command.
         """
-        # check argument number
-        if len(split)!=2:
-            print("Number of arguments must be 2")
-            return
-        # sanitize pos
         origin = str2coor(split[0])
-        if not origin:
-            return None
-        # sanitize pos
         dest = str2coor(split[1])
-        if not dest:
-            return None
-
         # create command
         cmd = {"command" : "ATTACK",
                "origin"  : origin,

@@ -12,30 +12,10 @@ class DimGen():
         """
         Create a dim command.
         """
-        # check argument number
-        if len(split)<3:
-            print("Number of arguments must be 3 or greater")
-            return
-        # sanitize dice integer
         i = str2index(split[0], 0, 2)
-        if i is None:
-            return None
-        # sanitize net
         net = str2net(split[1])
-        if not net:
-            return None
-        # sanitize pos
         pos = str2coor(split[2])
-        if not pos:
-            return None
-        # sanitize transformations
-        translist = []
-        for string in split[3:]:
-            trans = str2trans(string)
-            if not trans:
-                return None
-            translist.append(trans)
-
+        translist = [str2trans(s) for s in split[3:]]
         # create command
         cmd = {"command" : "DIM",
                "dice"    : i,

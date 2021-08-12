@@ -8,12 +8,10 @@ def str2index(string, minval, maxval):
     try:
         i = int(string)-1
     except ValueError:
-        print("Cannot convert index " + string)
-        return None
+        raise IndexValueError(string)
     # check boundaries
     if i<minval or i>maxval:
-        print("Index " + string + " out of bound")
-        return None
+        raise IndexUnboundError(string)
     return i
 
 def str2coor(string):
@@ -29,12 +27,10 @@ def str2coor(string):
         # convert coordinate to ints
         x = ord(x)-97; y = int(y)-1
     except (IndexError, ValueError):
-        print("Cannot convert coordinates " + string)
-        return
+        raise CoordinatesError(string)
     # check coordinates boundaries
     if x<0 or x>12 or y<0 or y>18:
-        print("Coordinates " + string + "out of bound")
-        return
+        raise CoordinatesUnboundError(string)
     return (y,x)
 
 def str2net(string):
@@ -46,8 +42,7 @@ def str2net(string):
         "S2","L1"]
     string = string.upper()
     if string not in nets:
-        print("Invalid net name " + string)
-        return None
+        raise NetValueError(string)
     return string
 
 def str2trans(string):
@@ -58,6 +53,30 @@ def str2trans(string):
     trans = ["TCW", "TAW", "FUD", "FLR"]
     string = string.upper()
     if string not in trans:
-        print("Invalid trans name " + string)
-        return None
+        raise TransValueError(string)
     return string
+
+class IndexValueError(Exception):
+    def __init__(self, string):
+       self.message = "Cannot convert index " + string
+       super().__init__(self, self.message)
+class IndexUnboundError(Exception):
+    def __init__(self, string):
+       self.message = "Index " + string + " out of bound"
+       super().__init__(self, self.message)
+class CoordinatesError(Exception):
+    def __init__(self, string):
+       self.message = "Cannot convert coordinates " + string
+       super().__init__(self, self.message)
+class CoordinatesUnboundError(Exception):
+    def __init__(self, string):
+       self.message = "Coordinates " + string + "out of bound"
+       super().__init__(self, self.message)
+class NetValueError(Exception):
+    def __init__(self, string):
+       self.message = "Invalid net name " + string
+       super().__init__(self, self.message)
+class TransValueError(Exception):
+    def __init__(self, string):
+       self.message = "Invalid trans name " + string
+       super().__init__(self, self.message)

@@ -31,15 +31,13 @@ class CliClient():
         while True:
             print(self.get_header())
             cmd = self.currplayer.get_command()
-
-            # if commmand is generated, update engine
-            if cmd:
-                reply = self.engine.update(cmd)
-                self.replier.print_reply(reply)
-
-                # if new turn, update current player
-                if reply["newturn"]:
-                    self.currplayer = self.get_next_player()
+            if not cmd:
+                continue
+            reply = self.engine.update(cmd)
+            self.replier.print_reply(reply)
+            # if new turn, update current player
+            if reply["newturn"]:
+                self.currplayer = self.get_next_player()
 
             # end command newline
             print("")
