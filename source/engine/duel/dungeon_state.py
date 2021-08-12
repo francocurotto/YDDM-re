@@ -1,6 +1,7 @@
 from duel.duel_state import DuelState
 from dungeon.dicenets.pos import Pos
 from player.crest_pool import NotEnoughCrests
+from dungeon.dungeon import NotDungeonTile
 
 class DungeonState(DuelState):
     """

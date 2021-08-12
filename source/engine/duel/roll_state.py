@@ -22,6 +22,7 @@ class RollState(DuelState):
             self.reply["message"] = e.message
             return self.reply, self
         
+        self.reply["message"] = ""
         sides = self.roll_dice(dicelist)
         nextstate = self.get_nextstate(dicelist, sides)
 

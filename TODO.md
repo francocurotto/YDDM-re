@@ -10,4 +10,3 @@
 ### CHECKS
 
 ### FIXES
-- reset messages after error
