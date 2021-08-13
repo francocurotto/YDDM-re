@@ -9,14 +9,14 @@ class CliClient():
     Command line interface client.
     """
     def __init__(self, args):
-        self.engine = Engine(args.library, args.poolfile1,
-            args.poolfile2)
+        self.engine = Engine(args.library, args.name1, 
+            args.poolfile1, args.name2, args.poolfile2)
         stringifier = Stringifier(args.icontype)
         
         # players 
-        player1 = HumanPlayer(self.engine, args.player1, 
+        player1 = HumanPlayer(self.engine, args.name1, 
             stringifier)
-        player2 = HumanPlayer(self.engine, args.player2, 
+        player2 = HumanPlayer(self.engine, args.name2, 
             stringifier)
         self.players = [player1, player2]
         self.currplayer = self.players[0] # current player

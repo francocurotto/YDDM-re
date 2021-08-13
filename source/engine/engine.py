@@ -8,14 +8,15 @@ class Engine():
     """
     Creates and controls a duel.
     """
-    def __init__(self, libraryfile, poolfile1, poolfile2):
+    def __init__(self, libraryfile, name1, poolfile1, name2,
+        poolfile2):
         self.library = create_library(libraryfile)
         # pools
         pool1 = create_dicepool(poolfile1, self.library)
         pool2 = create_dicepool(poolfile1, self.library)
         # players
-        player1 = Player(1, pool1)
-        player2 = Player(2, pool2)
+        player1 = Player(1, name1, pool1)
+        player2 = Player(2, name2, pool2)
         
         # duel
         self.duel = Duel(player1, player2)

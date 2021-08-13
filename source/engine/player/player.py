@@ -8,8 +8,9 @@ class Player():
     The player that is playing the duel.
     """
     DIM_LIMIT = 10
-    def __init__(self, playerid, dicepool):
+    def __init__(self, playerid, name, dicepool):
         self.id = playerid
+        self.name = name
         self.dicepool = dicepool
         self.crestpool = CrestPool()
         self.dimdice = []

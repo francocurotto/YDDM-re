@@ -63,7 +63,7 @@ class DungeonState(DuelState):
             nextstate = self.run_monster_attack(monster,   
                 target)
         elif target.is_monster_lord():
-            nextstate = self.run_ml_attack()
+            nextstate = self.run_ml_attack(monster)
     
         return self.reply, nextstate
 
@@ -96,11 +96,30 @@ class DungeonState(DuelState):
         #        self.opponent, monster, target)
 
         # if opponent cannot defend, continue with attack
-        self.reply["message"] += "\n" + self.opponent.name +\
-            " cannot defend" 
         damage = monster.attack_monster(target)
-        self.reply["message"] += "\n" + target.name +
+        self.reply["message"] += "\n" + self.opponent.name +\
+            " cannot defend\n" + target.name + \
             " received " + str(damage) + " damage"
+        return self
+
+    def run_ml_attack(self, monster):
+        """
+        Run the attack from a player monster to the opponent
+        monster lord.
+        """
+        self.reply["message"] = monster.name + " attacks " +\
+            self.opponent.name + " monster lord"
+        self.monster.attack_ml(self.opponent)
+
+        # check for opponent loss
+        if self.opponent.ml.hearts <= 0:
+            self.reply["message"] = ".\n" + \
+                self.opponent.name + " lost all their " + \
+                " hearts.\n" + self.player.name " is the " + \
+                "winner!"
+            from end_state import EndState
+            return EndState(self.duel, self.player,
+                self.opponent)
         return self
 
     def get_player_monster(self, pos):

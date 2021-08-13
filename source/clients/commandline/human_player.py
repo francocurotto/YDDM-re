@@ -50,7 +50,7 @@ class HumanPlayer():
         try:
             # print command list
             if split[0] == "l":
-                self.print_cmd_list(self)
+                self.print_cmd_list()
                 return None
 
             # excecute the correct generator
