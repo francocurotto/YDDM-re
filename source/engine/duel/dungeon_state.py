@@ -110,7 +110,7 @@ class DungeonState(DuelState):
         """
         self.reply["message"] = monster.name + " attacks " +\
             self.opponent.name + " monster lord"
-        self.monster.attack_ml(self.opponent)
+        monster.attack_ml(self.opponent)
 
         # check for opponent loss
         if self.opponent.ml.hearts <= 0:

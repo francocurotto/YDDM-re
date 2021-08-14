@@ -34,7 +34,7 @@ class Monster(Summon):
         Attack the opponent monster lord, directly removing
         one of its hearts.
         """
-        opponent.monster_lord.hearts -= 1
+        opponent.ml.hearts -= 1
         self.attack_cooldown = True
 
     #def attack_defending_monster(self, target, power):
