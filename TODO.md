@@ -4,6 +4,7 @@
     - refactor and implement attack
         - implement monster death
 - engine: implement reply_state
+- engine: implement end_state
 
 ### IMPROVEMENTS
 
