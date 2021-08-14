@@ -37,27 +37,27 @@ class Monster(Summon):
         opponent.monster_lord.hearts -= 1
         self.attack_cooldown = True
 
-    #def attack_defending_monster(self, attacked, power):
+    #def attack_defending_monster(self, target, power):
     #    """
     #    Attack a monster that is defending with power attack
     #    points.
     #    """
     #    # defending message
-    #    self.log.add(attacked.name + " defends with " + \
-    #        str(attacked.defense) + ".\n")
+    #    self.log.add(target.name + " defends with " + \
+    #        str(target.defense) + ".\n")
 
     #    # if attack surpass defense, inflict damage in 
-    #    # attacked monster
-    #    if power > attacked.defense:
-    #        damage = power - attacked.defense
-    #        attacked.life -= damage
-    #        self.log.add(attacked.name + " received " + \
+    #    # target monster
+    #    if power > target.defense:
+    #        damage = power - target.defense
+    #        target.life -= damage
+    #        self.log.add(target.name + " received " + \
     #            str(damage) + " points of damage.\n")
 
     #    # if defense surpass attack, get retaliation damage
     #    # in attacker monster
-    #    elif power < attacked.defense:
-    #        damage = attacked.defense - power
+    #    elif power < target.defense:
+    #        damage = target.defense - power
     #        self.inflict_retaliation_damage(damage)
     #    
     #    # attack and defense are equal
@@ -70,10 +70,10 @@ class Monster(Summon):
         considering type advantages.
         """
         # case advantage
-        if self.has_advantage(attacked):
+        if self.has_advantage(target):
             return self.attack + 10
         # case disadvantage
-        elif self.has_disadvantage(attacked):
+        elif self.has_disadvantage(target):
             return self.attack - 10
         # case neutral
         else:
@@ -95,14 +95,14 @@ class Monster(Summon):
     #    else:
     #       self.log.add("No damage inflicted.\n")
             
-    def has_advantage(self, attacked):
+    def has_advantage(self, target):
         """
-        Check if monster has type advantage over attacked 
+        Check if monster has type advantage over target 
         monster. This can be implemented easily by checking
-        the reverse condition, ie, if the attacked has 
-        disadvantage (tht is already implemented).
+        the reverse condition, ie, if the target has 
+        disadvantage (that is already implemented).
         """
-        return attacked.has_disadvantage(self)
+        return target.has_disadvantage(self)
 
     def is_monster(self):
         return True

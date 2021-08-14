@@ -15,6 +15,9 @@ class DungeonState(DuelState):
                         "ENDTURN" : self.run_endturn_command}
         self.moveerrors = (NotDungeonTile,
             NotPlayerMonster, NotPathFound, NotEnoughCrests)
+        self.attackerrors = (NotDungeonTile,
+            NotPlayerMonster, NotOpponentTarget, 
+            AttackOutOfRange, NotEnoughCrests)
         
     def run_move_command(self, cmd):
         """
@@ -36,9 +39,7 @@ class DungeonState(DuelState):
         self.reply["valid"] = True
         self.reply["message"] = monster.name + " moved " + \
             "from " + str(origin) + " to " + str(dest)
-        nextstate = DungeonState(self.duel, self.opponent, 
-            self.player)
-        return self.reply, nextstate
+        return self.reply, self
 
     def run_attack_command(self, cmd):
         """
@@ -87,7 +88,7 @@ class DungeonState(DuelState):
         """
         power = monster.get_attack_power(target)
         self.reply["message"] = monster.name + " attacks " +\
-            target.name + " with " + power
+            target.name + " with " + str(power)
 
         # if opponent can defend, go to next state
         #if self.opponent.crestpool.defense > 0:
@@ -115,8 +116,8 @@ class DungeonState(DuelState):
         if self.opponent.ml.hearts <= 0:
             self.reply["message"] = ".\n" + \
                 self.opponent.name + " lost all their " + \
-                " hearts.\n" + self.player.name " is the " + \
-                "winner!"
+                " hearts.\n" + self.player.name + \
+                " is the winner!"
             from end_state import EndState
             return EndState(self.duel, self.player,
                 self.opponent)
@@ -138,8 +139,8 @@ class DungeonState(DuelState):
         target in pos, return exception.
         """
         target = self.duel.dungeon.get_content(pos)
-        if target not in self.opponent.monsters or \
-            target not self.opponent.ml:
+        if target not in self.opponent.monsters and \
+            target is not self.opponent.ml:
             raise NotOpponentTarget(pos)
         return target
 
@@ -160,11 +161,12 @@ class DungeonState(DuelState):
         cost = len(path)-1
         self.player.crestpool.remove_crests("movement", cost)
 
-    def check_attack_range(origin, dest):
+    def check_attack_range(self, origin, dest):
         """
-        Check if an attack is in attack range.
+        Raise an error if attack is out or range.
         """
-        return origin.distance_to(dest) == 1
+        if origin.distance_to(dest) == 1: #TODO: change to !=
+            raise AttackOutOfRange
 
     def pay_attack_cost(self):
         """
@@ -179,8 +181,11 @@ class NotPlayerMonster(Exception):
 
 class NotOpponentTarget(Exception):
     def __init__(self, pos):
-        self.message = "No opponent targer at " + str(pos)
+        self.message = "No opponent target at " + str(pos)
         super().__init__(self.message)
+
+class AttackOutOfRange(Exception):
+    message = "Attack is out of range"
 
 class NotPathFound(Exception):
     def __init__(self, origin, dest):

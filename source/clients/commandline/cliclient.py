@@ -14,10 +14,8 @@ class CliClient():
         stringifier = Stringifier(args.icontype)
         
         # players 
-        player1 = HumanPlayer(self.engine, args.name1, 
-            stringifier)
-        player2 = HumanPlayer(self.engine, args.name2, 
-            stringifier)
+        player1 = HumanPlayer(self.engine, 1, stringifier)
+        player2 = HumanPlayer(self.engine, 2, stringifier)
         self.players = [player1, player2]
         self.currplayer = self.players[0] # current player
         

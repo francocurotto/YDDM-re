@@ -43,6 +43,7 @@ class PrintGen():
             self.print_trans()
         else:
             print("Invalid print command")
+        print("")
         return None
 
     def print_pool(self):

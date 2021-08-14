@@ -19,8 +19,8 @@ class HumanPlayer():
     """
     Player controled by human.
     """
-    def __init__(self, engine, name, stringifier):
-        self.name = name
+    def __init__(self, engine, playerid, stringifier):
+        self.name = engine.duel.players[playerid-1].name
         # list of command generators
         printgen   = PrintGen(engine, stringifier)
         rollgen    = RollGen()
