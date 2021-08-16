@@ -17,6 +17,8 @@ class DuelState():
         try to run command. If invalid send appropriate 
         response.
         """
+        # reset message after every command
+        self.reply["message"] = ""
         try:
             return self.cmddict[cmd["command"]](cmd)
         except KeyError:
