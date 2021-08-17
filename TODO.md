@@ -1,14 +1,18 @@
 ### TODO
-- engine: add player name
 - engine: implement dungeon_state
     - refactor and implement attack
         - implement monster death
+        - implement cooldown and cooldown reset
 - engine: implement reply_state
-- engine: implement end_state
+- cliclient: print ml damage after attack
 
 ### IMPROVEMENTS
 
 ### CHECKS
-- check monster lord attack
+- proper attack crest payment
 
 ### FIXES
+
+### ENABLE
+- attack range
+- attack cost

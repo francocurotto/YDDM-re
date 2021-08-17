@@ -26,7 +26,7 @@ class DungeonState(DuelState):
         origin = Pos(*cmd["origin"])
         dest = Pos(*cmd["dest"])
         
-        # error prone tasks
+        # error prone actions
         try:
             monster = self.get_player_monster(origin)
             path = self.get_path(origin, dest)
@@ -54,7 +54,7 @@ class DungeonState(DuelState):
             monster = self.get_player_monster(origin)
             target = self.get_opponent_target(dest)
             self.check_attack_range(origin, dest)
-            self.pay_attack_cost()
+            #self.pay_attack_cost()TODO uncomment
         except self.attackerrors as e:
             self.reply["message"] = e.message
             return self.reply, self
@@ -114,12 +114,13 @@ class DungeonState(DuelState):
 
         # check for opponent loss
         if self.opponent.ml.hearts <= 0:
-            self.reply["message"] = ".\n" + \
+            self.reply["endduel"] = True
+            self.reply["message"] += ".\n" + \
                 self.opponent.name + " lost all their " + \
-                " hearts.\n" + self.player.name + \
+                "hearts.\n" + self.player.name + \
                 " is the winner!"
-            from end_state import EndState
-            return EndState(self.duel, self.player,
+            from duel.endduel_state import EndDuelState
+            return EndDuelState(self.duel, self.player,
                 self.opponent)
         return self
 
