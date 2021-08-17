@@ -17,7 +17,8 @@ class DungeonState(DuelState):
             NotPlayerMonster, NotPathFound, NotEnoughCrests)
         self.attackerrors = (NotDungeonTile,
             NotPlayerMonster, NotOpponentTarget, 
-            AttackOutOfRange, NotEnoughCrests)
+            AttackOutOfRange, MonsterInCooldown,
+            NotEnoughCrests)
         
     def run_move_command(self, cmd):
         """
@@ -54,12 +55,14 @@ class DungeonState(DuelState):
             monster = self.get_player_monster(origin)
             target = self.get_opponent_target(dest)
             self.check_attack_range(origin, dest)
-            #self.pay_attack_cost()TODO uncomment
+            self.check_cooldown(monster)
+            self.pay_attack_cost()
         except self.attackerrors as e:
             self.reply["message"] = e.message
             return self.reply, self
 
         # check for monster or ml attack
+        monster.cooldown = True
         if target.is_monster():
             nextstate = self.run_monster_attack(monster,   
                 target)
@@ -72,6 +75,9 @@ class DungeonState(DuelState):
         """
         Run endturn command.
         """
+        # reset cooldown from player monsters
+        self.player.reset_cooldown()
+
         # fill success reply
         self.reply["valid"] = True
         self.reply["newturn"] = True
@@ -101,6 +107,12 @@ class DungeonState(DuelState):
         self.reply["message"] += "\n" + self.opponent.name +\
             " cannot defend\n" + target.name + \
             " received " + str(damage) + " damage"
+
+        # check for monster death
+        if target.is_dead():
+            self.duel.remove_summon(target)
+            self.reply["message"] += "\n" + target.name + \
+                " is dead"
         return self
 
     def run_ml_attack(self, monster):
@@ -166,8 +178,15 @@ class DungeonState(DuelState):
         """
         Raise an error if attack is out or range.
         """
-        if origin.distance_to(dest) == 1: #TODO: change to !=
+        if origin.distance_to(dest) != 1:
             raise AttackOutOfRange
+
+    def check_cooldown(self, monster):
+        """
+        Raise an error if monster is in cooldown.
+        """
+        if monster.cooldown:
+            raise MonsterInCooldown(monster)
 
     def pay_attack_cost(self):
         """
@@ -187,6 +206,11 @@ class NotOpponentTarget(Exception):
 
 class AttackOutOfRange(Exception):
     message = "Attack is out of range"
+
+class MonsterInCooldown(Exception):
+    def __init__(self, monster):
+        self.message = monster.name + " already attacked " +\
+        "this turn"
 
 class NotPathFound(Exception):
     def __init__(self, origin, dest):

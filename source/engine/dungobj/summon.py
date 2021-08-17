@@ -18,5 +18,11 @@ class Summon(DungeonObject):
         """
         player.summons.append(self)
 
+    def remove_from_player(self, player):
+        """
+        Remove summon from proper player list.
+        """
+        player.summons.remove(self)
+
     def is_summon(self):
         return True

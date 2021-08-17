@@ -211,6 +211,18 @@ class Dungeon():
         self.get_tile(dest).content = dungobj
         self.get_tile(origin).remove_content()
 
+    def remove_summon(self, summon):
+        """
+        Remove summon from dungeon. Must be searched through
+        all tiles.
+        """
+        for row in self.array:
+            for tile in row:
+                if tile.is_dungeon():
+                    if tile.content is summon:
+                        tile.remove_content()
+                        return
+
 class NetUnconnectedError(Exception):
     message = "Net do not connect with dungeon path"
 class TilePosUnboundError(Exception):

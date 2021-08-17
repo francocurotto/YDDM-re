@@ -1,9 +1,6 @@
 ### TODO
-- engine: implement dungeon_state
-    - refactor and implement attack
-        - implement monster death
-        - implement cooldown and cooldown reset
 - engine: implement reply_state
+    - implement retaliation damage
 - cliclient: print ml damage after attack
 
 ### IMPROVEMENTS
@@ -14,5 +11,3 @@
 ### FIXES
 
 ### ENABLE
-- attack range
-- attack cost

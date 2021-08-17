@@ -14,5 +14,12 @@ class Item(Summon):
         super().add_to_player(player)
         player.items.append(self)
 
+    def remove_from_player(self, player):
+        """
+        Remove summon from proper player list.
+        """
+        super().remove_from_player(player)
+        player.items.remove(self)
+
     def is_item(self):
         return True

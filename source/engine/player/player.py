@@ -59,3 +59,10 @@ class Player():
         Returns True if dungobj is players target.
         """
         return dungobj in self.monsters or dungobj is self.ml
+
+    def reset_cooldown(self):
+        """
+        Reset the coodown from all player monsters.
+        """
+        for monster in self.monsters:
+            monster.cooldown = False

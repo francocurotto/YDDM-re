@@ -20,6 +20,19 @@ class Monster(Summon):
         super().add_to_player(player)
         player.monsters.append(self)
 
+    def remove_from_player(self, player):
+        """
+        Remove summon from proper player list.
+        """
+        super().remove_from_player(player)
+        player.monsters.remove(self)
+
+    def is_dead(self):
+        """
+        True if monster is dead.
+        """
+        return self.life <= 0
+
     def attack_monster(self, target):
         """
         Attack the target monster.
