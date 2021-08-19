@@ -143,7 +143,7 @@ class Dungeon():
         # breadth-first search
         while pathqueue:
             # pop current path
-            path = pathqueue.pop()
+            path = pathqueue.pop(0)
             
             # check path finish condition
             lastpos = path[-1]

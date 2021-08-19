@@ -56,7 +56,7 @@ class DungeonState(DuelState):
             target = self.get_opponent_target(dest)
             self.check_attack_range(origin, dest)
             self.check_cooldown(monster)
-            self.pay_attack_cost()
+            self.player.crestpool.pay_crests("attack", 1)
         except self.attackerrors as e:
             self.reply["message"] = e.message
             return self.reply, self
@@ -172,7 +172,7 @@ class DungeonState(DuelState):
         Pay the movement cost of a monster given a path.
         """
         cost = len(path)-1
-        self.player.crestpool.remove_crests("movement", cost)
+        self.player.crestpool.pay_crests("movement", cost)
 
     def check_attack_range(self, origin, dest):
         """
@@ -187,12 +187,6 @@ class DungeonState(DuelState):
         """
         if monster.cooldown:
             raise MonsterInCooldown(monster)
-
-    def pay_attack_cost(self):
-        """
-        Pay the attack cost of an attack.
-        """
-        self.player.crestpool.remove_crests("attack", 1)
 
 class NotPlayerMonster(Exception):
     def __init__(self, pos):

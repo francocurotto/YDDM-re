@@ -17,7 +17,7 @@ class CrestPool():
         """
         side.crest.add_to_pool(self, side.mult)
 
-    def remove_crests(self, crestname, amount):
+    def pay_crests(self, crestname, amount):
         """
         Remove amount number of crests from crestname in 
         crest pool. If crest goes below 0 raise error.
@@ -25,7 +25,7 @@ class CrestPool():
         crest = getattr(self, crestname)
         if crest < amount:
             raise NotEnoughCrests(crestname)
-        crest -= amount
+        setattr(self, crestname, crest-amount)
 
 class NotEnoughCrests(Exception):
     def __init__(self, crest):

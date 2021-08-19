@@ -4,9 +4,10 @@
 - cliclient: print ml damage after attack
 
 ### IMPROVEMENTS
+- Check custom exceptions for rename (remove "Error"?)
+- Somehow make that in endturn one can check both players
 
 ### CHECKS
-- proper attack crest payment
 
 ### FIXES
 
