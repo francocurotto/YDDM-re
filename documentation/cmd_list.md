@@ -44,7 +44,6 @@ Do not defend attack from opponent monster.
 - command: WAIT
 
 ## Appendix
-
 ### List of Nets
 ```
   T1     T2     Z1     Z2     X1     X2  

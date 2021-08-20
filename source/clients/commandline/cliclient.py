@@ -20,7 +20,7 @@ class CliClient():
         self.currplayer = self.players[0] # current player
         
         # replier
-        self.replier = Replier(stringifier)
+        self.replier = Replier(self.engine, stringifier)
         
     def run(self):
         """
@@ -29,12 +29,14 @@ class CliClient():
         while True:
             print(self.get_header())
             cmd = self.currplayer.get_command()
-            if not cmd:
-                continue
+            if not cmd: # case of print commands
+                continue # no real cmd to engine, so skip
+            
             reply = self.engine.update(cmd)
             self.replier.print_reply(reply)
+
             # if new turn, update current player
-            if reply["newturn"]:
+            if "NEWTURN" in reply["flags"]:
                 self.currplayer = self.get_next_player()
 
             # end command newline

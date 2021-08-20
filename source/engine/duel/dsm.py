@@ -18,6 +18,7 @@ class DuelStateMachine():
         Update state machine given command cmd.
         """
         reply, newstate = self.state.update(cmd)
-        self.turn += reply["newturn"] # incr turn counter
+        # increment turn counter
+        self.turn += "NEWTURN" in reply["flags"]
         self.state = newstate
         return reply

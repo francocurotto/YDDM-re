@@ -69,6 +69,7 @@ class DungeonState(DuelState):
         elif target.is_monster_lord():
             nextstate = self.run_ml_attack(monster)
     
+        self.reply["valid"] = True
         return self.reply, nextstate
 
     def run_endturn_command(self, cmd):
@@ -80,8 +81,8 @@ class DungeonState(DuelState):
 
         # fill success reply
         self.reply["valid"] = True
-        self.reply["newturn"] = True
         self.reply["message"] = "Turn finished!"
+        self.reply["flags"].append("NEWTURN")
         from duel.roll_state import RollState
         nextstate = RollState(self.duel, self.opponent, 
             self.player)
@@ -122,11 +123,12 @@ class DungeonState(DuelState):
         """
         self.reply["message"] = monster.name + " attacks " +\
             self.opponent.name + " monster lord"
+        self.reply["flags"].append("MLATTACK")
         monster.attack_ml(self.opponent)
 
         # check for opponent loss
         if self.opponent.ml.hearts <= 0:
-            self.reply["endduel"] = True
+            self.reply["flags"].append("ENDDUEL")
             self.reply["message"] += ".\n" + \
                 self.opponent.name + " lost all their " + \
                 "hearts.\n" + self.player.name + \

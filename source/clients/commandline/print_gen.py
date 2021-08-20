@@ -20,6 +20,9 @@ class PrintGen():
         # print dice
         elif split[0]=="p" and len(split)==2:
             self.print_pool_dice(split[1])
+        # print opponent dice pool
+        if split[0]=="op" and len(split)==1:
+            self.print_opponent_pool()
         # print dungeon
         elif split[0]=="d" and len(split)==1:
             self.print_dungeon()
@@ -61,6 +64,18 @@ class PrintGen():
         i = str2index(string, 0, 14)
         dice = self.engine.dsm.state.player.dicepool[i]
         print(self.stringifier.stringify_dice(dice))
+
+    def print_opponent_pool(self):
+        """
+        Print opponent pool.
+        """
+        # check if duel had ended
+        if self.engine.dsm.state.name != "ENDDUEL":
+            print("Can only see opponent's pool at the " + \
+            " end of duel")
+            return
+        opponent = self.engine.dsm.state.opponent
+        print(self.stringifier.stringify_dicepool(opponent))
 
     def print_dungeon(self):
         """

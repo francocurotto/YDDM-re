@@ -1,16 +1,14 @@
 ### TODO
-- engine: implement reply flags
-- cliclient: print ml damage after attack
-- documentation: document reply
 - engine: implement reply_state
     - implement retaliation damage
 
 ### IMPROVEMENTS
 - Check custom exceptions for rename (remove "Error"?)
-- Somehow make that in endturn one can check both players
+- switch roll result from serialized reply to dim attribute?
 
 ### CHECKS
-- is valid in reply correctly used?
+- print opponent pool
+- print ml damage after attack
 
 ### FIXES
 
