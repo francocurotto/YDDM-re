@@ -72,7 +72,7 @@ class PrintGen():
         # check if duel had ended
         if self.engine.dsm.state.name != "ENDDUEL":
             print("Can only see opponent's pool at the " + \
-            " end of duel")
+            "end of duel")
             return
         opponent = self.engine.dsm.state.opponent
         print(self.stringifier.stringify_dicepool(opponent))

@@ -11,7 +11,7 @@ def str2index(string, minval, maxval):
         raise IndexValueError(string)
     # check boundaries
     if i<minval or i>maxval:
-        raise IndexUnboundError(string)
+        raise OOBIndexError(string)
     return i
 
 def str2coor(string):
@@ -30,7 +30,7 @@ def str2coor(string):
         raise CoordinatesError(string)
     # check coordinates boundaries
     if x<0 or x>12 or y<0 or y>18:
-        raise CoordinatesUnboundError(string)
+        raise OOBCoordinatesError(string)
     return (y,x)
 
 def str2net(string):
@@ -60,7 +60,7 @@ class IndexValueError(Exception):
     def __init__(self, string):
        self.message = "Cannot convert index " + string
        super().__init__(self, self.message)
-class IndexUnboundError(Exception):
+class OOBIndexError(Exception):
     def __init__(self, string):
        self.message = "Index " + string + " out of bound"
        super().__init__(self, self.message)
@@ -68,7 +68,7 @@ class CoordinatesError(Exception):
     def __init__(self, string):
        self.message = "Cannot convert coordinates " + string
        super().__init__(self, self.message)
-class CoordinatesUnboundError(Exception):
+class OOBCoordinatesError(Exception):
     def __init__(self, string):
        self.message = "Coordinates " + string + "out of bound"
        super().__init__(self, self.message)

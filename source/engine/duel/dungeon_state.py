@@ -50,7 +50,7 @@ class DungeonState(DuelState):
         origin = Pos(*cmd["origin"])
         dest = Pos(*cmd["dest"])
 
-        # error prone tasks
+        # error prone actions
         try:
             monster = self.get_player_monster(origin)
             target = self.get_opponent_target(dest)

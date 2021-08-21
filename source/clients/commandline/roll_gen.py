@@ -1,5 +1,5 @@
 from sanitize_functs import *
-from duel.roll_state import DiceDuplicatedError
+from duel.roll_state import DuplicatedDice
 
 class RollGen():
     """
@@ -18,7 +18,7 @@ class RollGen():
         for string in [split[0],split[1],split[2]]:
             i = str2index(string, 0, 14)
             if i in indeces:
-                raise DiceDuplicatedError
+                raise DuplicatedDice
             indeces.append(i)
         # create command
         cmd = {"command" : "ROLL", "dice" : indeces}

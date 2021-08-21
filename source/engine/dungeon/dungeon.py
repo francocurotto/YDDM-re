@@ -12,8 +12,8 @@ class Dungeon():
     def __init__(self, players):
         self.array = self.init_array()
         self.add_monster_lords(players)
-        self.setnet_errors = (TilePosUnboundError, 
-                              TileOverlapsError)
+        self.setnet_errors = (OOBTilePos, 
+                              TileOverlaps)
 
     def init_array(self):
         """
@@ -46,11 +46,8 @@ class Dungeon():
         """
         # rejects negative numbers as out of bound
         if not self.in_bound(pos):
-            raise TilePosUnboundError(pos)
-        try:
-            return self.array[pos.y][pos.x]
-        except IndexError:
-            raise TilePosUnboundError(pos)
+            raise OOBTilePos(pos)
+        return self.array[pos.y][pos.x]
 
     def in_bound(self, pos):
         """
@@ -76,7 +73,7 @@ class Dungeon():
         """
         # check if tile is already occupied
         if self.get_tile(pos).is_dungeon():
-            raise TileOverlapsError
+            raise TileOverlaps
         self.array[pos.y][pos.x] = tile
 
     def destroy_tile(self, pos):
@@ -91,7 +88,7 @@ class Dungeon():
         """
         # check if net can be connects correctly
         if not self.net_connects(net, player):
-            raise NetUnconnectedError
+            raise NetUnconnected
 
         # set net
         dimpos = []
@@ -127,7 +124,7 @@ class Dungeon():
         for pos in poslist:
             try:
                 tiles.append(self.get_tile(pos))
-            except TilePosUnboundError:
+            except OOBTilePos:
                 pass
         return tiles
 
@@ -223,16 +220,31 @@ class Dungeon():
                         tile.remove_content()
                         return
 
-class NetUnconnectedError(Exception):
+class NetUnconnected(Exception):
+    """
+    Raised when trying to dimension a net unconnected from 
+    player's dungeon path.
+    """
     message = "Net do not connect with dungeon path"
-class TilePosUnboundError(Exception):
+class OOBTilePos(Exception):
+    """
+    Raised when tile position is out of bounds.
+    """
     def __init__(self, pos):
         self.message = "Tile position " + str(pos) + \
             " out of bound"
         super().__init__(self, self.message)
 class NotDungeonTile(Exception):
+    """
+    Raised when trying to select a position with no dungeon 
+    path while moving/attacking.
+    """
     def __init__(self, pos):
         self.message = "No dungeon at " + str(pos)
         super().__init__(self, self.message)
-class TileOverlapsError(Exception):
+class TileOverlaps(Exception):
+    """
+    Raised when trying to dimension a net overlaping an 
+    existing dungeon path.
+    """
     message = "Tile overlaps existing dungeon path"

@@ -8,8 +8,8 @@ class RollState(DuelState):
         super().__init__(duel, player, opponent)
         self.name = "ROLL"
         self.cmddict = {"ROLL" : self.run_roll_command}
-        self.rollerrors = (DiceDuplicatedError,
-            DiceUsedError)
+        self.rollerrors = (DuplicatedDice,
+            DiceAlreadyUsed)
 
     def run_roll_command(self, cmd):
         """
@@ -38,14 +38,14 @@ class RollState(DuelState):
         """
         # check for duplicates
         if len(intlist) != len(set(intlist)):
-            raise DiceDuplicatedError
+            raise DuplicatedDice
 
         # get dice from the intlist
         dicelist = []
         for i in intlist:
             dice = self.player.dicepool[i]
             if dice in self.player.dimdice:
-                raise DiceUsedError
+                raise DiceAlreadyUsed
             dicelist.append(dice)
         return dicelist
 
@@ -121,14 +121,14 @@ def serialize_sides(sides):
     """
     return [side.serialize() for side in sides]
 
-class DiceDuplicatedError(Exception):
+class DuplicatedDice(Exception):
     """
     Raised when there are duplicated dice in the roll dice 
     list.
     """
     message = "Duplicated dice in roll"
 
-class DiceUsedError(Exception):
+class DiceAlreadyUsed(Exception):
     """
     Raised when trying to roll an already dimensioned dice.
     """

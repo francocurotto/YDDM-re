@@ -32,12 +32,13 @@ class Replier():
         Add the ml print to ml attack message.
         """
         duel = self.engine.duel
-        ml = self.engine.duel.opponent.ml
-        string = self.stringifier.stringify_ml_tile(duel, ml)
+        ml = self.engine.dsm.state.opponent.ml
+        string = self.stringifier.stringify_monster_lord(
+            duel, ml)
         string = "\n" + string
         if "\n" in message: # case third heart
             message = message.replace("\n", string+"\n", 1)
         else: # first or second heart
             message += string
-        return string
+        return message
 

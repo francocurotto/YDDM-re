@@ -8,12 +8,12 @@ from attack_gen  import AttackGen
 from endturn_gen import EndturnGen
 from quit_gen    import QuitGen
 from sanitize_functs import IndexValueError
-from sanitize_functs import IndexUnboundError
+from sanitize_functs import OOBIndexError
 from sanitize_functs import CoordinatesError
-from sanitize_functs import CoordinatesUnboundError
+from sanitize_functs import OOBCoordinatesError
 from sanitize_functs import NetValueError
 from sanitize_functs import TransValueError
-from duel.roll_state import DiceDuplicatedError
+from duel.roll_state import DuplicatedDice
 
 class HumanPlayer():
     """
@@ -32,10 +32,10 @@ class HumanPlayer():
         quitgen    = QuitGen()
         self.generators = [printgen, rollgen, dimgen, 
             skipgen, movegen, attackgen, endturngen, quitgen]
-        self.cmderrors = (IndexValueError, IndexUnboundError,
-            CoordinatesError, CoordinatesUnboundError, 
+        self.cmderrors = (IndexValueError, OOBIndexError,
+            CoordinatesError, OOBCoordinatesError, 
             NetValueError, TransValueError, 
-            DiceDuplicatedError)
+            DuplicatedDice)
 
     def get_command(self):
         """

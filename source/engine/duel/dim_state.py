@@ -1,9 +1,9 @@
 from duel.duel_state import DuelState
 from dungeon.dicenets.netdict import netdict
 from dungeon.dicenets.pos import Pos
-from dungeon.dungeon import NetUnconnectedError
-from dungeon.dungeon import TilePosUnboundError
-from dungeon.dungeon import TileOverlapsError
+from dungeon.dungeon import NetUnconnected
+from dungeon.dungeon import OOBTilePos
+from dungeon.dungeon import TileOverlaps
 
 class DimState(DuelState):
     """
@@ -15,8 +15,8 @@ class DimState(DuelState):
         self.dimdice = dimdice
         self.cmddict = {"DIM"  : self.run_dim_command,
                         "SKIP" : self.run_skip_command}
-        self.dimerrors = (DimIndexError, NetUnconnectedError,
-            TilePosUnboundError, TileOverlapsError)
+        self.dimerrors = (OOBDimIndex, NetUnconnected,
+            OOBTilePos, TileOverlaps)
 
     def run_dim_command(self, cmd):
         """
@@ -60,13 +60,16 @@ class DimState(DuelState):
 
     def get_dimdice(self, i):
         """
-        Get dimension dice from index. Raise error if invalid
-        index.
+        Get dimension dice from index. Raise error if index 
+        out of bounds.
         """
         try:
             return self.dimdice[i]
         except IndexError:
-            raise DimIndexError
+            raise OOBDimIndex
 
-class DimIndexError(Exception):
+class OOBDimIndex(Exception):
+    """
+    Raised when dimension index is out of bounds.
+    """
     message = "Invalid dimension index"
