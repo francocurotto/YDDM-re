@@ -13,8 +13,9 @@ class Player():
         self.name = name
         self.dicepool = dicepool
         self.crestpool = CrestPool()
-        self.dimdice = []
         self.ml = MonsterLord()
+        self.rolls = []
+        self.dimdice = []
         self.summons = []
         self.monsters = []
         self.items = []

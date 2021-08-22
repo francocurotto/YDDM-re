@@ -23,12 +23,13 @@ class RollState(DuelState):
             return self.reply, self
         
         sides = self.roll_dice(dicelist)
+        self.player.rolls.append(sides)
         nextstate = self.get_nextstate(dicelist, sides)
 
         # fill success reply
         self.reply["valid"] = True
         self.reply["message"] += "Go Dice Roll!"
-        self.reply["roll"] = serialize_sides(sides)
+        self.reply["flags"].append("ROLL")
         return self.reply, nextstate
 
     def get_dicelist(self, intlist):
@@ -113,13 +114,6 @@ def get_dimdice(dicelist, sides):
             return dimdice
     # no dice available for dimension found
     return []
-
-def serialize_sides(sides):
-    """
-    Convert list of side objects into a list of serialized 
-    dicts.
-    """
-    return [side.serialize() for side in sides]
 
 class DuplicatedDice(Exception):
     """

@@ -3,7 +3,6 @@
     - implement retaliation damage
 
 ### IMPROVEMENTS
-- switch roll result from serialized reply to dim attribute?
 
 ### CHECKS
 

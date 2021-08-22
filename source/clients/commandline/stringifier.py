@@ -292,8 +292,8 @@ class Stringifier():
         """
         strlist = []
         for side in roll:
-            crest = self.icons["CREST_"+side["crest"]]
-            mult  = str(side["mult"])
+            crest = self.icons["CREST_"+side.crest.name]
+            mult  = str(side.mult)
             strlist.append(crest+mult)
         string = " ".join(strlist)
         return string

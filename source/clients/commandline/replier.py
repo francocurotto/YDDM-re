@@ -10,8 +10,8 @@ class Replier():
         message = reply["message"]
         
         # reply has roll result
-        if "roll" in reply:
-            message += self.get_roll_string(reply["roll"])
+        if "ROLL" in reply["flags"]:
+            message = self.add_roll(message)
 
         # reply indicates an attack to a monster lord
         if "MLATTACK" in reply["flags"]:
@@ -21,11 +21,13 @@ class Replier():
         if message:
             print(message)
 
-    def get_roll_string(self, roll):
+    def add_roll(self, message):
         """
-        Get convert roll list into a string.
+        Add roll to roll message
         """
-        return " " + self.stringifier.stringify_roll(roll)
+        roll = self.engine.dsm.state.player.rolls[-1]
+        string = " " + self.stringifier.stringify_roll(roll)
+        return message + string
 
     def add_ml_attack(self, message):
         """
@@ -41,4 +43,3 @@ class Replier():
         else: # first or second heart
             message += string
         return message
-
