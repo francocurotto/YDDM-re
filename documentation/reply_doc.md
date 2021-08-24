@@ -13,8 +13,10 @@ command execution.
 - flags: list of strings that indicate the ocurrence of an
     event triggered by the command. List of flags:
 
-    - ROLL:     the current player rolled the dice
-    - MLATTACK: the current player attacked the opponent 
-                monster lord
-    - NEWTURN:  the current player ended it's turn
-    - ENDDUEL:  The duel ended
+    - ROLL:         the current player rolled the dice
+    - MLATTACK:     the current player attacked the opponent 
+                    monster lord
+    - PLAYERSWITCH: the current player and opponent 
+                    were switched
+    - NEWTURN:      the current player ended it's turn
+    - ENDDUEL:      The duel ended

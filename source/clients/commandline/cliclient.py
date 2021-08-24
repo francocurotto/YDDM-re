@@ -36,7 +36,7 @@ class CliClient():
             self.replier.print_reply(reply)
 
             # if new turn, update current player
-            if "NEWTURN" in reply["flags"]:
+            if "PLAYERSWITCH" in reply["flags"]:
                 self.currplayer = self.get_next_player()
 
             # end command newline

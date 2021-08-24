@@ -82,6 +82,7 @@ class DungeonState(DuelState):
         # fill success reply
         self.reply["valid"] = True
         self.reply["message"] = "Turn finished!"
+        self.reply["flags"].append("PLAYERSWITCH")
         self.reply["flags"].append("NEWTURN")
         from duel.roll_state import RollState
         nextstate = RollState(self.duel, self.opponent, 
@@ -98,10 +99,10 @@ class DungeonState(DuelState):
             target.name + " with " + str(power)
 
         # if opponent can defend, go to next state
-        #if self.opponent.crestpool.defense > 0:
-        #    from reply_state import ReplyState
-        #    return ReplyState(self.duel, self.player, 
-        #        self.opponent, monster, target)
+        if self.opponent.crestpool.defense > 0:
+            from reply_state import ReplyState
+            return ReplyState(self.duel, self.player, 
+                self.opponent, monster, target)
 
         # if opponent cannot defend, continue with attack
         damage = monster.attack_monster(target)
