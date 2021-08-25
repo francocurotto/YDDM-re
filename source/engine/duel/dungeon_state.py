@@ -1,9 +1,9 @@
-from duel.duel_state import DuelState
+from duel.attack_state import AttackState
 from dungeon.dicenets.pos import Pos
 from player.crest_pool import NotEnoughCrests
 from dungeon.dungeon import NotDungeonTile
 
-class DungeonState(DuelState):
+class DungeonState(AttackState):
     """
     State were monsters move and attack.
     """
@@ -94,27 +94,20 @@ class DungeonState(DuelState):
         Run the attack from a player monster to an opponent
         monster.
         """
-        power = monster.get_attack_power(target)
-        self.reply["message"] = monster.name + " attacks " +\
-            target.name + " with " + str(power)
+        # get the attaking power message
+        self.add_attack_message(monster, target)
 
         # if opponent can defend, go to next state
         if self.opponent.crestpool.defense > 0:
+            self.reply["flags"].append("PLAYERSWITCH")
             from reply_state import ReplyState
             return ReplyState(self.duel, self.player, 
                 self.opponent, monster, target)
 
         # if opponent cannot defend, continue with attack
-        damage = monster.attack_monster(target)
         self.reply["message"] += "\n" + self.opponent.name +\
-            " cannot defend\n" + target.name + \
-            " received " + str(damage) + " damage"
-
-        # check for monster death
-        if target.is_dead():
-            self.duel.remove_summon(target)
-            self.reply["message"] += "\n" + target.name + \
-                " is dead"
+            " cannot defend\n"
+        self.run_undefended_attack(monster, target)
         return self
 
     def run_ml_attack(self, monster):
@@ -190,6 +183,26 @@ class DungeonState(DuelState):
         """
         if monster.cooldown:
             raise MonsterInCooldown(monster)
+
+    def add_attack_message(self, monster, target):
+        """
+        Add attack power message to reply.
+        """
+        # create advantage message
+        if monster.has_advantage(target):
+            self.message["reply"] += monster.name + \
+                " has advantage over " target.name + "\n"
+        elif monster.has_disavantage(target):
+            self.message["reply"] += monster.name + \
+                " has disadvantage over " target.name + "\n"
+        # create power message
+        power = monster.get_attack_power(target)
+        self.reply["message"] += monster.name + \ 
+            " attacks " + target.name + " with " + str(power)
+
+        # case disadvantage
+        elif self.has_disadvantage(target):
+            return self.attack - 10
 
 class NotPlayerMonster(Exception):
     def __init__(self, pos):

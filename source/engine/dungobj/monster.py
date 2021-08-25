@@ -50,32 +50,30 @@ class Monster(Summon):
         opponent.ml.hearts -= 1
         self.attack_cooldown = True
 
-    #def attack_defending_monster(self, target, power):
-    #    """
-    #    Attack a monster that is defending with power attack
-    #    points.
-    #    """
-    #    # defending message
-    #    self.log.add(target.name + " defends with " + \
-    #        str(target.defense) + ".\n")
+    def attack_defending_monster(self, target):
+        """
+        Attack a monster that is defending. Return damage 
+        given and monster damaged with the attack.
+        """
+        # get attack power
+        power = self.get_attack_power(target)
 
-    #    # if attack surpass defense, inflict damage in 
-    #    # target monster
-    #    if power > target.defense:
-    #        damage = power - target.defense
-    #        target.life -= damage
-    #        self.log.add(target.name + " received " + \
-    #            str(damage) + " points of damage.\n")
+        # if attack surpass defense, inflict damage in 
+        # target monster
+        if power > target.defense:
+            damage = power - target.defense
+            target.life -= damage
+            return damage, target
 
-    #    # if defense surpass attack, get retaliation damage
-    #    # in attacker monster
-    #    elif power < target.defense:
-    #        damage = target.defense - power
-    #        self.inflict_retaliation_damage(damage)
-    #    
-    #    # attack and defense are equal
-    #    else:
-    #        self.log.add("No damage inflicted.\n")
+        # if defense surpass attack, inflict 
+        # retaliation damage in attacker monster
+        elif power < target.defense:
+            damage = target.defense - power
+            target.life -= damage
+            return damage, self
+        
+        # attack and defense are equal, no damage done
+        return 0, None
 
     def get_attack_power(self, target):
         """
@@ -92,22 +90,6 @@ class Monster(Summon):
         else:
             return self.attack
 
-    #def inflict_retaliation_damage(self, damage):
-    #    """
-    #    Inflict the damage for attacking a defending monster
-    #    that has higher defense that the attack of the 
-    #    attacker. Note: should consider different rules.
-    #    """
-    #    # case retaliation damage is activated
-    #    if retal_dmg:
-    #        self.life -= damage
-    #        self.log.add(self.name + " received " + \
-    #            str(damage) + " points of damage in " + \
-    #            "retaliation.\n")
-    #    # case retaliation damage deactivated
-    #    else:
-    #       self.log.add("No damage inflicted.\n")
-            
     def has_advantage(self, target):
         """
         Check if monster has type advantage over target 

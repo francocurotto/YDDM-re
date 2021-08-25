@@ -14,8 +14,8 @@ pos, and applying transformations trans.
 - pos:     (0..18, 0..12) (tuple of ints)
 - trans:   [T1,T2,...] (list of transformations, see appendix)
 
-## SKIP [DIM state]
-Skip dimension.
+## SKIP [DIM state, REPLY state]
+Skip dimension or reply.
 - command: SKIP
 
 ## MOVE [DUNGEON state]
@@ -35,9 +35,9 @@ with monster at position origin
 Finish turn.
 - command: ENDTURN
 
-## DEF [REPLY state]
+## GUARD [REPLY state]
 Defend attack from opponent monster.
-- command: DEF
+- command: GUARD
 
 ## WAIT [REPLY state]
 Do not defend attack from opponent monster.

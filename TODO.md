@@ -1,7 +1,6 @@
 ### TODO
-- engine: print type advantage on attack 
 - engine: implement reply_state
-    - implement retaliation damage
+    - implement add_damage_message
 
 ### IMPROVEMENTS
 
