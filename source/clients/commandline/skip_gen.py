@@ -8,10 +8,10 @@ class SkipGen():
 
     def create_command(self, split):
         """
-        Quit the game.
+        Create skip command.
         """
         return {"command" : "SKIP"}
 
 desc = "\
 - SKIP COMMAND: s\n\
-    - s: skip dimension"
+    - s: skip dimension or reply"

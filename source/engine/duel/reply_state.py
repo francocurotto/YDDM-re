@@ -32,13 +32,26 @@ class DungeonState(DuelState):
             "with " + str(self.target.defense) + "\n"
         damage, damaged = self.monster.\
             attack_defending_monster(self.target)
-        #self.reply["message"] += affected.name + \
-        #    " received " + str(damage) + " damage"
-        self.add_damage_message(self, damage, damaged)#TODO
-        self.check_monster_death(affected)
+        self.add_damage_message(self, damage, damaged)
+        self.check_monster_death(damaged)
 
         # finish reply and next state
         self.reply["flags"].append("PLAYERSWITCH")
         nextsate = DungeonState(self.duel, self.player, 
             self.opponent)
         return self.reply, nextstate
+
+    def add_damage_message(self, damage, damaged):
+        """
+        Add the damage message to the reply given the result
+        of an defended attack.
+        """
+        if damaged is self.target:
+            self.reply["message"] += damaged.name + \
+                " received " + str(damage) + " damage"
+        elif damaged is self.monster:
+            self.reply["message"] += damaged.name +  \
+                " received " + str(damage) + " damage in " +\
+                "retaliation")
+        elif damage == 0 and not damaged:
+           self.reply["message"] += "No damage inflicted"

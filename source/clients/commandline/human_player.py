@@ -5,6 +5,7 @@ from dim_gen     import DimGen
 from skip_gen    import SkipGen
 from move_gen    import MoveGen
 from attack_gen  import AttackGen
+from guard_gen   import GuardGen
 from endturn_gen import EndturnGen
 from quit_gen    import QuitGen
 from sanitize_functs import IndexValueError
@@ -28,10 +29,12 @@ class HumanPlayer():
         skipgen    = SkipGen()
         movegen    = MoveGen()
         attackgen  = AttackGen()
+        guardgen   = GuardGen()
         endturngen = EndturnGen()
         quitgen    = QuitGen()
         self.generators = [printgen, rollgen, dimgen, 
-            skipgen, movegen, attackgen, endturngen, quitgen]
+            skipgen, movegen, attackgen, guardgen, 
+            endturngen, quitgen]
         self.cmderrors = (IndexValueError, OOBIndexError,
             CoordinatesError, OOBCoordinatesError, 
             NetValueError, TransValueError, 

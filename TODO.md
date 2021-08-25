@@ -1,10 +1,13 @@
 ### TODO
-- engine: implement reply_state
-    - implement add_damage_message
+- curses_client
+- predefined dungeons for testing
+- abilities!!
 
 ### IMPROVEMENTS
+- list only available commands in state
 
 ### CHECKS
+- test reply
 
 ### FIXES
 
