@@ -5,7 +5,7 @@ class AttackState(DuelState):
     State were attacks can be performed. Includes dungeon 
     state and reply state.
     """
-    def run_undefended_attack(monster, target):
+    def run_undefended_attack(self, monster, target):
         """
         Run undefended attack.
         """
