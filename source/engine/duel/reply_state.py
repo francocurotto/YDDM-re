@@ -52,6 +52,6 @@ class ReplyState(AttackState):
         elif damaged is self.monster:
             self.reply["message"] += damaged.name +  \
                 " received " + str(damage) + " damage in " +\
-                "retaliation")
+                "retaliation"
         elif damage == 0 and not damaged:
            self.reply["message"] += "No damage inflicted"

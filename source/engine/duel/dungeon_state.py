@@ -100,7 +100,7 @@ class DungeonState(AttackState):
         # if opponent can defend, go to next state
         if self.opponent.crestpool.defense > 0:
             self.reply["flags"].append("PLAYERSWITCH")
-            from reply_state import ReplyState
+            from duel.reply_state import ReplyState
             return ReplyState(self.duel, self.player, 
                 self.opponent, monster, target)
 
