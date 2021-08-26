@@ -190,10 +190,10 @@ class DungeonState(AttackState):
         """
         # create advantage message
         if monster.has_advantage(target):
-            self.message["reply"] += monster.name + \
+            self.reply["message"] += monster.name + \
                 " has advantage over " + target.name + "\n"
         elif monster.has_disadvantage(target):
-            self.message["reply"] += monster.name + \
+            self.reply["message"] += monster.name + \
                 " has disadvantage over " + target.name+"\n"
         # create power message
         power = monster.get_attack_power(target)

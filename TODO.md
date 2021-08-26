@@ -10,5 +10,7 @@
 - test reply
 
 ### FIXES
+- print dungeon tile with no content "None"
+- in disadvantage attack, cap at 0 damage
 
 ### ENABLE
