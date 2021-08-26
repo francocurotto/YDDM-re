@@ -1,6 +1,6 @@
 from duel.duel_state import AttackState
 
-class DungeonState(AttackState):
+class ReplyState(AttackState):
     """
     State were the opponent reply to an attack.
     """
