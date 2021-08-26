@@ -4,12 +4,11 @@
 - abilities!!
 
 ### IMPROVEMENTS
-- list only available commands in state
+- list only available commands in state?
 
 ### CHECKS
 - test reply
 
 ### FIXES
-- in disadvantage attack, cap at 0 damage
 
 ### ENABLE

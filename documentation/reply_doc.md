@@ -1,5 +1,4 @@
 # Reply documentation
-
 The reply is a dictionary returned by the "update" function 
 of the engine. It gives information about the result of a 
 command execution.

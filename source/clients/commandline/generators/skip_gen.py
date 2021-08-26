@@ -14,4 +14,4 @@ class SkipGen():
 
 desc = "\
 - SKIP COMMAND: s\n\
-    - s: skip dimension or reply"
+    - s: skip dimension"

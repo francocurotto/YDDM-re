@@ -22,5 +22,5 @@ class AttackGen():
 
 desc = "\
 - ATTACK COMMAND: a XY1 XY2\n\
-    - m XY1 XY2: make monster at position XY1 attack target\n\
+    - a XY1 XY2: make monster at position XY1 attack target\n\
         at position XY2."

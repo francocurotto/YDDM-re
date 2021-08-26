@@ -13,5 +13,5 @@ class GuardGen():
         return {"command" : "GUARD"}
 
 desc = "\
-- GUARD COMMAND: s\n\
+- GUARD COMMAND: g\n\
     - g: defend against attack"

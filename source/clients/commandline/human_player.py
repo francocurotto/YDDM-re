@@ -1,13 +1,14 @@
 import readline # for input history
-from print_gen   import PrintGen
-from roll_gen    import RollGen
-from dim_gen     import DimGen
-from skip_gen    import SkipGen
-from move_gen    import MoveGen
-from attack_gen  import AttackGen
-from guard_gen   import GuardGen
-from endturn_gen import EndturnGen
-from quit_gen    import QuitGen
+from generators.print_gen   import PrintGen
+from generators.roll_gen    import RollGen
+from generators.dim_gen     import DimGen
+from generators.skip_gen    import SkipGen
+from generators.move_gen    import MoveGen
+from generators.attack_gen  import AttackGen
+from generators.wait_gen    import WaitGen
+from generators.guard_gen   import GuardGen
+from generators.endturn_gen import EndturnGen
+from generators.quit_gen    import QuitGen
 from sanitize_functs import IndexValueError
 from sanitize_functs import OOBIndexError
 from sanitize_functs import CoordinatesError
@@ -29,11 +30,12 @@ class HumanPlayer():
         skipgen    = SkipGen()
         movegen    = MoveGen()
         attackgen  = AttackGen()
+        waitgen    = WaitGen()
         guardgen   = GuardGen()
         endturngen = EndturnGen()
         quitgen    = QuitGen()
         self.generators = [printgen, rollgen, dimgen, 
-            skipgen, movegen, attackgen, guardgen, 
+            skipgen, movegen, attackgen, waitgen, guardgen, 
             endturngen, quitgen]
         self.cmderrors = (IndexValueError, OOBIndexError,
             CoordinatesError, OOBCoordinatesError, 

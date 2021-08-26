@@ -1,4 +1,8 @@
 # List of commands
+The "update" function of the engine requires as a parameter a
+dictionary with the information of a command issued by the
+user or CPU. Below is a list of all possible commands in any
+given state of the engine.
 
 ## ROLL [ROLL state]
 Roll dice set.
@@ -14,8 +18,8 @@ pos, and applying transformations trans.
 - pos:     (0..18, 0..12) (tuple of ints)
 - trans:   [T1,T2,...] (list of transformations, see appendix)
 
-## SKIP [DIM state, REPLY state]
-Skip dimension or reply.
+## SKIP [DIM state]
+Skip dimension.
 - command: SKIP
 
 ## MOVE [DUNGEON state]
@@ -26,25 +30,25 @@ Move monster from position origin to position dest.
 
 ## ATTACK [DUNGEON state]
 Attack opponent monster or monster lord at position dest, 
-with monster at position origin
+with monster at position origin.
 - command: ATTACK
 - origin:  (0..18, 0..12) (tuple of ints)
 - dest:    (0..18, 0..12) (tuple of ints)
-
-## ENDTURN [DUNGEON state]
-Finish turn.
-- command: ENDTURN
 
 ## GUARD [REPLY state]
 Defend attack from opponent monster.
 - command: GUARD
 
 ## WAIT [REPLY state]
-Do not defend attack from opponent monster.
+Do not reply to an attack from opponent monster.
 - command: WAIT
 
-## Appendix
-### List of Nets
+## ENDTURN [DUNGEON state]
+Finish turn.
+- command: ENDTURN
+
+# Appendix
+## List of Nets
 ```
   T1     T2     Z1     Z2     X1     X2  
 [][][] [][]   [][]   [][]     []     []  
@@ -59,10 +63,9 @@ Do not defend attack from opponent monster.
     []     []   []     []     []         
                               []         
 ```
-
 (): center of net, where summon is summoned
 
-### List of transfromations
+## List of Transformations
 - TCW: Turn clockwise
 - TAW: Turn anti-clockwise
 - FUD: Flip up-down

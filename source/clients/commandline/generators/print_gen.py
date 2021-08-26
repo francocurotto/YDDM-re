@@ -19,10 +19,13 @@ class PrintGen():
             self.print_pool()
         # print dice
         elif split[0]=="p" and len(split)==2:
-            self.print_pool_dice(split[1])
+            self.print_dice(split[1])
         # print opponent dice pool
-        if split[0]=="op" and len(split)==1:
+        elif split[0]=="op" and len(split)==1:
             self.print_opponent_pool()
+        # print opponent dice
+        elif split[0]=="op" and len(split)==2:
+            self.print_opponent_dice(split[1])
         # print dungeon
         elif split[0]=="d" and len(split)==1:
             self.print_dungeon()
@@ -56,7 +59,7 @@ class PrintGen():
         player = self.engine.dsm.state.player
         print(self.stringifier.stringify_dicepool(player))
 
-    def print_pool_dice(self, string):
+    def print_dice(self, string):
         """
         Print player dice at index string in dice pool.
         """
@@ -75,6 +78,19 @@ class PrintGen():
             "end of duel")
             return
         opponent = self.engine.dsm.state.opponent
+        print(self.stringifier.stringify_dicepool(opponent))
+
+    def print_opponent_dice(self):
+        """
+        Print opponent dice at index string in dice pool.
+        """
+        # check if duel had ended
+        if self.engine.dsm.state.name != "ENDDUEL":
+            print("Can only see opponent's pool at the " + \
+            "end of duel")
+            return
+        i = str2index(string, 0, 14)
+        dice = self.engine.dsm.state.opponent.dicepool[i]
         print(self.stringifier.stringify_dicepool(opponent))
 
     def print_dungeon(self):
@@ -139,10 +155,12 @@ class PrintGen():
 
 desc = "\
 - PRINT COMMANDS: p ARG1 [ARG2]\n\
-    - p p:     print dice pool\n\
-    - p p INT: print dice at INT in dice pool\n\
-    - p d:     print dungeon\n\
-    - p d XY:  print object in dungeon at position XY\n\
-    - p c:     print own crest pool\n\
-    - p oc:    print opponent crest pool\n\
-    - p s:     print summon candidates"
+    - p p:      print own dice pool\n\
+    - p op:     print opponent dice pool\n\
+    - p p INT:  print dice at INT in own dice pool\n\
+    - p op INT: print dice at INT in opponent dice pool\n\
+    - p d:      print dungeon\n\
+    - p d XY:   print object in dungeon at position XY\n\
+    - p c:      print own crest pool\n\
+    - p oc:     print opponent crest pool\n\
+    - p s:      print summon candidates"

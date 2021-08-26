@@ -10,12 +10,12 @@ class DungeonState(AttackState):
         self.name = "REPLY"
         self.monster = monster
         self.target = target
-        self.cmddict = {"SKIP"  : self.run_skip_command,
+        self.cmddict = {"WAIT"  : self.run_wait_command,
                         "GUARD" : self.run_guard_command}
         
-    def run_skip_command(self, cmd):
+    def run_wait_command(self, cmd):
         """
-        Run skip command.
+        Run wait command.
         """
         self.run_undefended_attack(self.monster, self.target)
         self.reply["flags"].append("PLAYERSWITCH")
