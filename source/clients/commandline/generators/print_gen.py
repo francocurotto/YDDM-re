@@ -80,7 +80,7 @@ class PrintGen():
         opponent = self.engine.dsm.state.opponent
         print(self.stringifier.stringify_dicepool(opponent))
 
-    def print_opponent_dice(self):
+    def print_opponent_dice(self, string):
         """
         Print opponent dice at index string in dice pool.
         """
