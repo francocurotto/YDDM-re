@@ -20,7 +20,7 @@ class DungeonObject():
         return self.is_monster() or self.is_monster_lord() 
 
     def is_content(self):
-        return self.is_summon or self.is_monster_lord()
+        return self.is_summon() or self.is_monster_lord()
 
     def add_to_player(self, player):
         pass
