@@ -1,3 +1,4 @@
+import yaml
 from engine import Engine
 from stringifier import Stringifier
 from human_player import HumanPlayer

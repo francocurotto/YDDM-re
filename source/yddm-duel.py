@@ -3,20 +3,16 @@ import sys
 import yaml
 import argparse
 
-# add to python path
+# add engine to python path
 sys.path.append("./engine")
 sys.path.append("./clients/commandline")
 
 # internal imports
 from clients.commandline.cli_client import CliClient
-from clients.curses.curses_client import CursesClient
 
 # get available icons
 icons = yaml.full_load(open("ICONS.yaml"))
 icontypes = list(icons.keys())
-
-# dict of available clients
-clients = {"cli":CliClient, "curses":CursesClient}
 
 # create parser
 parser = argparse.ArgumentParser()
@@ -38,9 +34,6 @@ parser.add_argument("-p2", "--pool2",
 parser.add_argument("-i", "--icons", choices=icontypes,
     default="emoji", dest="icontype", 
     help="Type of icons to use.")
-parser.add_argument("-c", "--client", choices=clients.keys(),
-    default="cli", dest="client", 
-    help="Client for user interface.")
 args = parser.parse_args()
 
-clients[args.client](args).run()
+CliClient(args).run()
