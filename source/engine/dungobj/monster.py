@@ -60,7 +60,7 @@ class Monster(Summon):
 
         # if attack surpass defense, inflict damage in 
         # target monster
-        if power > target.defense:
+        if power >= target.defense:
             damage = power - target.defense
             target.life -= damage
             return damage, target
@@ -71,9 +71,6 @@ class Monster(Summon):
             damage = target.defense - power
             target.life -= damage
             return damage, self
-        
-        # attack and defense are equal, no damage done
-        return 0, None
 
     def get_attack_power(self, target):
         """

@@ -7,7 +7,6 @@
 - list only available commands in state?
 
 ### CHECKS
-- test reply
 
 ### FIXES
 
