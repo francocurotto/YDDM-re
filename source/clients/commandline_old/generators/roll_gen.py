@@ -1,4 +1,4 @@
-from commandline.generators.sanitize_functs import *
+from sanitize_functs import *
 from duel.roll_state import DuplicatedDice
 
 class RollGen():

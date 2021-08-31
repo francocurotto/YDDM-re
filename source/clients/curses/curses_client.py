@@ -1,7 +1,7 @@
 import curses
 from stringifier import Stringifier
 from engine import Engine
-from replier import Replier
+#from replier import Replier
 
 class CursesClient():
     """
@@ -34,7 +34,7 @@ class CursesClient():
         Run game.
         """
         while True:
-            
+            pass
 
     def terminate(self):
         """

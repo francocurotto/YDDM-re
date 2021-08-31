@@ -1,3 +1,6 @@
+from engine import Engine
+from stringifier import Stringifier
+
 class Client():
     """
     Generic client.
@@ -5,15 +8,14 @@ class Client():
     def __init__(self, args):
         self.engine = Engine(args.library, args.name1, 
             args.poolfile1, args.name2, args.poolfile2)
-        self.players = self.init_players()
-        self.currplayer = self.player[0] # current player
+        self.stringifier = Stringifier(args.icontype)
 
-    def run():
+    def run(self):
         """
         Run game.
         """
         while True:
-            self.curr_player.init_turn()
+            self.currplayer.init_turn()
             cmd = self.currplayer.get_command()
             reply = self.engine.update(cmd)
             self.currplayer.process_reply(reply)
@@ -26,7 +28,8 @@ class Client():
         """
         player1 = self.init_player(1)
         player2 = self.init_player(2)
-        return [player1, player2]
+        self.players = [player1, player2]
+        self.currplayer = self.players[0] # current player
 
     def switch_player(self):
         """

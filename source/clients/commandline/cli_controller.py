@@ -1,4 +1,6 @@
-class CliController():
+from commandline.text_controller import TextController
+
+class CliController(TextController):
     """
     Input controller for command line interface.
     """
@@ -6,4 +8,4 @@ class CliController():
         """
         Get input from user text
         """
-        return input(">>")
+        return input(">> ")

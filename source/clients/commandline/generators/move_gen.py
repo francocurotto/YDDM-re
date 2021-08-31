@@ -1,4 +1,4 @@
-from sanitize_functs import *
+from commandline.generators.sanitize_functs import *
 
 class MoveGen():
     """

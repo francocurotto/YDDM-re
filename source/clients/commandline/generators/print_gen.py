@@ -1,6 +1,6 @@
-from sanitize_functs import *
+from commandline.generators.sanitize_functs import *
 
-class PrintGen():
+class PrintGenerator():
     """
     Generator for print command.
     """
@@ -10,146 +10,140 @@ class PrintGen():
         self.engine = engine
         self.stringifier = stringifier
 
-    def create_command(self, split):
+    def get_string(self, split):
         """
-        Print the desired info. Return None as command.
+        Get the desired info string.
         """
-        # print dice pool
+        # get dice pool
         if split[0]=="p" and len(split)==1:
-            self.print_pool()
-        # print dice
+            return self.get_pool()
+        # get dice
         elif split[0]=="p" and len(split)==2:
-            self.print_dice(split[1])
-        # print opponent dice pool
+            return self.get_dice(split[1])
+        # get opponent dice pool
         elif split[0]=="op" and len(split)==1:
-            self.print_opponent_pool()
-        # print opponent dice
+            return self.get_opponent_pool()
+        # get opponent dice
         elif split[0]=="op" and len(split)==2:
-            self.print_opponent_dice(split[1])
-        # print dungeon
+            return self.get_opponent_dice(split[1])
+        # get dungeon
         elif split[0]=="d" and len(split)==1:
-            self.print_dungeon()
-        # print dungeon object
+            return self.get_dungeon()
+        # get dungeon object
         elif split[0]=="d" and len(split)==2:
-            self.print_dungobj(split[1])
-        # print crest pool
+            return self.get_dungobj(split[1])
+        # get crest pool
         elif split[0]=="c" and len(split)==1:
-            self.print_crestpool()
-        # print opponent crest pool
+            return self.get_crestpool()
+        # get opponent crest pool
         elif split[0]=="oc" and len(split)==1:
-            self.print_opponent_crestpool()
-        # print summon candidates
+            return self.get_opponent_crestpool()
+        # get summon candidates
         elif split[0]=="s" and len(split)==1:
-            self.print_summons()
-        # print nets
+            return self.get_summons()
+        # get nets
         elif split[0]=="n" and len(split)==1:
-            self.print_nets()
-        # print trans
+            return self.get_nets()
+        # get trans
         elif split[0]=="t" and len(split)==1:
-            self.print_trans()
+            return self.get_trans()
         else:
-            print("Invalid print command")
-        print("")
-        return None
+            return "Invalid print command"
 
-    def print_pool(self):
+    def get_pool(self):
         """
-        Print player pool.
+        get player pool.
         """
         player = self.engine.dsm.state.player
-        print(self.stringifier.stringify_dicepool(player))
+        return self.stringifier.stringify_dicepool(player)
 
-    def print_dice(self, string):
+    def get_dice(self, string):
         """
-        Print player dice at index string in dice pool.
+        get player dice at index string in dice pool.
         """
         # convert string to index
         i = str2index(string, 0, 14)
         dice = self.engine.dsm.state.player.dicepool[i]
-        print(self.stringifier.stringify_dice(dice))
+        return self.stringifier.stringify_dice(dice)
 
-    def print_opponent_pool(self):
+    def get_opponent_pool(self):
         """
-        Print opponent pool.
+        get opponent pool.
         """
         # check if duel had ended
         if self.engine.dsm.state.name != "ENDDUEL":
-            print("Can only see opponent's pool at the " + \
-            "end of duel")
-            return
+            return "Can only see opponent's pool at the " + \
+            "end of duel"
         opponent = self.engine.dsm.state.opponent
-        print(self.stringifier.stringify_dicepool(opponent))
+        return self.stringifier.stringify_dicepool(opponent)
 
-    def print_opponent_dice(self, string):
+    def get_opponent_dice(self, string):
         """
-        Print opponent dice at index string in dice pool.
+        get opponent dice at index string in dice pool.
         """
         # check if duel had ended
         if self.engine.dsm.state.name != "ENDDUEL":
-            print("Can only see opponent's pool at the " + \
-            "end of duel")
+            return "Can only see opponent's pool at the " + \
+            "end of duel"
             return
         i = str2index(string, 0, 14)
         dice = self.engine.dsm.state.opponent.dicepool[i]
-        print(self.stringifier.stringify_dicepool(opponent))
+        return self.stringifier.stringify_dicepool(opponent)
 
-    def print_dungeon(self):
+    def get_dungeon(self):
         """
-        Print dungeon.
+        get dungeon.
         """
         duel = self.engine.duel
-        print(self.stringifier.stringify_dungeon(duel))
+        return self.stringifier.stringify_dungeon(duel)
 
-    def print_dungobj(self, string):
+    def get_dungobj(self, string):
         """
-        Print object in dungeon at position string.
+        get object in dungeon at position string.
         """
         coor = str2coor(string)
         y = coor[0]; x = coor[1]
         tile = self.engine.duel.dungeon.array[y][x]
         if not tile.is_dungeon() or not tile.is_occupied():
-            print("Nothing to print there")
-            return
+            return "Nothing to print there"
         duel = self.engine.duel
-        dungobj = tile.content
-        print(self.stringifier.stringify_dungobj(duel, \
-            dungobj))
+        cont = tile.content
+        return self.stringifier.stringify_dungobj(duel, cont)
 
-    def print_crestpool(self):
+    def get_crestpool(self):
         """
-        Print player crestpool.
+        get player crestpool.
         """
         cpool = self.engine.dsm.state.player.crestpool
-        print(self.stringifier.stringify_crestpool(cpool))
+        return self.stringifier.stringify_crestpool(cpool)
 
-    def print_opponent_crestpool(self):
+    def get_opponent_crestpool(self):
         """
-        Print opponent crestpool.
+        get opponent crestpool.
         """
         cpool = self.engine.dsm.state.opponent.crestpool
-        print(self.stringifier.stringify_crestpool(cpool))
+        return self.stringifier.stringify_crestpool(cpool)
 
-    def print_summons(self):
+    def get_summons(self):
         """
-        Print player's summoning options after roll.
+        get player's summoning options after roll.
         """
         # check for correct state
         if self.engine.dsm.state.name != "DIM":
-            print("Can print summons in DIM state only")
-            return
+            return "Can print summons in DIM state only"
         dimdice = self.engine.dsm.state.dimdice
-        print(self.stringifier.stringify_dicelist(dimdice))
+        return self.stringifier.stringify_dicelist(dimdice)
 
-    def print_nets(self):
+    def get_nets(self):
         """
-        Print all possible nets for dimension.
+        get all possible nets for dimension.
         """
         player = self.engine.dsm.state.player
-        print(self.stringifier.stringify_nets(player))
+        return self.stringifier.stringify_nets(player)
 
-    def print_trans(self):
+    def get_trans(self):
         """
-        Print all possible transformations for dimension.
+        get all possible transformations for dimension.
         """
         print(self.stringifier.stringify_trans())
 

@@ -7,6 +7,12 @@ class HumanPlayer():
         self.ctrl = ctrl
         self.view = self.ctrl.view
 
+    def init_turn(self):
+        """
+        Initialize turn.
+        """
+        pass
+
     def get_command(self):
         """
         Get a proper engine command from the controller.
