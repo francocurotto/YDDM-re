@@ -70,7 +70,7 @@ class CoordinatesError(Exception):
        super().__init__(self, self.message)
 class OOBCoordinatesError(Exception):
     def __init__(self, string):
-       self.message = "Coordinates " + string + "out of bound"
+       self.message = "Coordinates " + string + " out of bound"
        super().__init__(self, self.message)
 class NetValueError(Exception):
     def __init__(self, string):

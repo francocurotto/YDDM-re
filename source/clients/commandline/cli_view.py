@@ -1,9 +1,8 @@
-class CliView():
-    def print_string(self, string):
+from commandline.text_view import TextView
+
+class CliView(TextView):
+    def print_string(self, string, end="\n\n"):
         """
         Print a generic string.
         """
-        if not string:
-            print("", end="")
-        else:
-            print(string+"\n")
+        print(string, end=end)

@@ -15,10 +15,9 @@ class Client():
         Run game.
         """
         while True:
-            self.currplayer.init_turn()
             cmd = self.currplayer.get_command()
             reply = self.engine.update(cmd)
-            self.currplayer.process_reply(reply)
+            self.currplayer.show_reply(reply)
             if "PLAYERSWITCH" in reply["flags"]:
                 self.switch_player()
 

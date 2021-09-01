@@ -7,6 +7,7 @@
 - list only available commands in state?
 
 ### CHECKS
+- test cli_client refactor
 
 ### FIXES
 

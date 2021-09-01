@@ -7,8 +7,6 @@ from commandline.generators.wait_gen    import WaitGen
 from commandline.generators.guard_gen   import GuardGen
 from commandline.generators.endturn_gen import EndturnGen
 from commandline.generators.quit_gen    import QuitGen
-from commandline.generators.sanitize_functs import *
-from duel.roll_state import DuplicatedDice
 
 class CmdGenerator():
     """
@@ -26,25 +24,16 @@ class CmdGenerator():
         quitgen    = QuitGen()
         self.generators = [rollgen, dimgen, skipgen, movegen,
         attackgen, waitgen, guardgen, endturngen, quitgen]
-        self.cmderrors = (IndexValueError, OOBIndexError,
-            CoordinatesError, OOBCoordinatesError, 
-            NetValueError, TransValueError, 
-            DuplicatedDice)
 
     def create_command(self, split):
         """
         Creates command from splited text. If command is
         invalid, raise InvalidTextCommand.
         """
-        try:
-            for gen in self.generators:
-                if gen.key == split[0]:
-                    return gen.create_command(split[1:])
-            # no generator found
-            errortext = "No command with key " + split[0]
-            raise InvalidTextCommand(errortext)
-        except self.cmderrors as e:
-            raise InvalidTextCommand(e.message)
+        for gen in self.generators:
+            if gen.key == split[0]:
+                return gen.create_command(split[1:])
+        raise InvalidCommandKey(split[0])
 
     def list_commands(self):
         """
@@ -53,7 +42,7 @@ class CmdGenerator():
         strlist = [gen.desc for gen in self.generators]
         return strlist
             
-class InvalidTextCommand(Exception):
-    def __init__(self, message):
-        self.message = message
+class InvalidCommandKey(Exception):
+    def __init__(self, string):
+        self.message = "No command with key " + string
         super().__init__(self, self.message)

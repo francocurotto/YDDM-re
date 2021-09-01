@@ -9,7 +9,7 @@ class CliClient(Client):
     """
     def __init__(self, args):
         super().__init__(args)
-        self.view = CliView()
+        self.view = CliView(self.engine, self.stringifier)
         self.ctrl = CliController(self.view, 
             self.engine, self.stringifier)
         self.init_players()
