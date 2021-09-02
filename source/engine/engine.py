@@ -13,7 +13,7 @@ class Engine():
         self.library = create_library(libraryfile)
         # pools
         pool1 = create_dicepool(poolfile1, self.library)
-        pool2 = create_dicepool(poolfile1, self.library)
+        pool2 = create_dicepool(poolfile2, self.library)
         # players
         player1 = Player(1, name1, pool1)
         player2 = Player(2, name2, pool2)

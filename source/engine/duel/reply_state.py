@@ -34,6 +34,7 @@ class ReplyState(AttackState):
             str(self.target.defense) + "\n"
         damage, damaged = self.monster.\
             attack_defending_monster(self.target)
+        self.opponent.crestpool.pay_crests("defense", 1)
         self.add_damage_message(damage, damaged)
         self.check_monster_death(damaged)
 

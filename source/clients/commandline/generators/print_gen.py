@@ -14,8 +14,10 @@ class PrintGenerator():
         """
         Get the desired info string.
         """
+        if not split:
+            return "Not enough arguments"
         # get dice pool
-        if split[0]=="p" and len(split)==1:
+        elif split[0]=="p" and len(split)==1:
             return self.get_pool()
         # get dice
         elif split[0]=="p" and len(split)==2:
