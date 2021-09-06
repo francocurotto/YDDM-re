@@ -8,8 +8,9 @@
 - list only available commands in state?
 
 ### CHECKS
-- test cli_client refactor
 
 ### FIXES
+- refactor get text input
+- refactor commandline client name?
 
 ### ENABLE

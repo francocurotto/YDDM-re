@@ -1,5 +1,6 @@
 from engine import Engine
 from stringifier import Stringifier
+from human_player import HumanPlayer
 
 class Client():
     """
@@ -29,6 +30,12 @@ class Client():
         player2 = self.init_player(2)
         self.players = [player1, player2]
         self.currplayer = self.players[0] # current player
+
+    def init_player(self, playerid):
+        """
+        Initialize player.
+        """
+        return HumanPlayer(playerid, self.engine, self.ctrl)
 
     def switch_player(self):
         """

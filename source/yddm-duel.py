@@ -9,15 +9,14 @@ sys.path.append("./clients")
 
 # internal imports
 from commandline.cli_client import CliClient
-#from clients.curses.curses_client import CursesClient
+from cursescli.curses_client import CursesClient
 
 # get available icons
 icons = yaml.full_load(open("ICONS.yaml"))
 icontypes = list(icons.keys())
 
 # dict of available clients
-#clients = {"cli":CliClient, "curses":CursesClient}
-clients = {"cli":CliClient}
+clients = {"cli":CliClient, "curses":CursesClient}
 
 # create parser
 parser = argparse.ArgumentParser()
@@ -40,7 +39,7 @@ parser.add_argument("-i", "--icons", choices=icontypes,
     default="emoji", dest="icontype", 
     help="Type of icons to use.")
 parser.add_argument("-c", "--client", choices=clients.keys(),
-    default="cli", dest="client", 
+    default="curses", dest="client", 
     help="Client for user interface.")
 args = parser.parse_args()
 
