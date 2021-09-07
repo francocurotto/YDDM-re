@@ -1,12 +1,12 @@
-from commandline.generators.roll_gen    import RollGen
-from commandline.generators.dim_gen     import DimGen
-from commandline.generators.skip_gen    import SkipGen
-from commandline.generators.move_gen    import MoveGen
-from commandline.generators.attack_gen  import AttackGen
-from commandline.generators.wait_gen    import WaitGen
-from commandline.generators.guard_gen   import GuardGen
-from commandline.generators.endturn_gen import EndturnGen
-from commandline.generators.quit_gen    import QuitGen
+from cmdcli.generators.roll_gen    import RollGen
+from cmdcli.generators.dim_gen     import DimGen
+from cmdcli.generators.skip_gen    import SkipGen
+from cmdcli.generators.move_gen    import MoveGen
+from cmdcli.generators.attack_gen  import AttackGen
+from cmdcli.generators.wait_gen    import WaitGen
+from cmdcli.generators.guard_gen   import GuardGen
+from cmdcli.generators.endturn_gen import EndturnGen
+from cmdcli.generators.quit_gen    import QuitGen
 
 class CmdGenerator():
     """

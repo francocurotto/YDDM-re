@@ -1,6 +1,6 @@
-from commandline.text_view import TextView
+from cmdcli.text_view import TextView
 
-class CliView(TextView):
+class CmdView(TextView):
     def print_string(self, string, end="\n\n"):
         """
         Print a generic string.

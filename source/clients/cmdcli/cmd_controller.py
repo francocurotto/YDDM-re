@@ -1,7 +1,7 @@
 import readline # for input history
-from commandline.text_controller import TextController
+from cmdcli.text_controller import TextController
 
-class CliController(TextController):
+class CmdController(TextController):
     """
     Input controller for command line interface.
     """

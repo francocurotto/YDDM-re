@@ -10,7 +10,5 @@
 ### CHECKS
 
 ### FIXES
-- refactor get text input
-- refactor commandline client name?
 
 ### ENABLE

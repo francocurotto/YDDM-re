@@ -8,7 +8,7 @@ sys.path.append("./engine")
 sys.path.append("./clients")
 
 # internal imports
-from commandline.cli_client import CliClient
+from cmdcli.cmd_client import CmdClient
 from cursescli.curses_client import CursesClient
 
 # get available icons
@@ -16,7 +16,7 @@ icons = yaml.full_load(open("ICONS.yaml"))
 icontypes = list(icons.keys())
 
 # dict of available clients
-clients = {"cli":CliClient, "curses":CursesClient}
+clients = {"cmd":CmdClient, "curses":CursesClient}
 
 # create parser
 parser = argparse.ArgumentParser()

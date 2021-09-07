@@ -1,5 +1,5 @@
 import curses
-from commandline.text_view import TextView
+from cmdcli.text_view import TextView
 from cursescli.windows.inputwin import InputWin
 
 class CursesView(TextView):

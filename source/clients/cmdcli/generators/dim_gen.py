@@ -1,4 +1,4 @@
-from commandline.generators.sanitize_functs import *
+from cmdcli.generators.sanitize_functs import *
 
 class DimGen():
     """

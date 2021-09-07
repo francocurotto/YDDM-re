@@ -1,7 +1,7 @@
-from commandline.generators.cmd_gen import CmdGenerator
-from commandline.generators.cmd_gen import InvalidCommandKey
-from commandline.generators.print_gen import PrintGenerator
-from commandline.generators.sanitize_functs import *
+from cmdcli.generators.cmd_gen import CmdGenerator
+from cmdcli.generators.cmd_gen import InvalidCommandKey
+from cmdcli.generators.print_gen import PrintGenerator
+from cmdcli.generators.sanitize_functs import *
 from duel.roll_state import DuplicatedDice
 
 class TextController():
