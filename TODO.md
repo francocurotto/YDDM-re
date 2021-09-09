@@ -1,7 +1,8 @@
 ### TODO
 - curses_client
+    - colors
     - clean exit
-    - dungoen win
+    - dungeon win
     - crest wins
     - output win
 - predefined dungeons for testing

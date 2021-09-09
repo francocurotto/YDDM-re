@@ -262,7 +262,9 @@ class Stringifier():
             string += colored(icon, *colors)
         # dead hearts
         for _ in range(3 - monster_lord.hearts):
-            string += self.icons["NOHEART"]
+            icon = self.icons["NOHEART"]
+            colors = self.icons["COLORS_NOHEART"]
+            string += colored(icon, *colors)
         return string
 
     def stringify_crestpool(self, crestpool):
