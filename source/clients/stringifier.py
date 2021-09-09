@@ -328,6 +328,22 @@ class Stringifier():
                  "FLR: Flip left-right"
         return string
 
+    def stringify_header(self, dsm):
+        """
+        Creates a string of a summary of the current state
+        of the game.
+        """
+        string  = "<"
+        string += str(dsm.state.player.name)
+        string += "[p"
+        string += str(dsm.state.player.id)
+        string += "] | state:"
+        string += dsm.state.name
+        string += " | turn:"
+        string += str(dsm.turn)
+        string += "> (l:list command)"
+        return string
+
 def colorize_attr(attr, original):
     """
     Colorize an attribute (attack, defense, life), to

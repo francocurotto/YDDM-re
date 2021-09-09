@@ -1,4 +1,5 @@
 from cmdcli.generators.cmd_gen import CmdGenerator
+from cmdcli.generators.cmd_gen import NotEnoughCmdArgs
 from cmdcli.generators.cmd_gen import InvalidCommandKey
 from cmdcli.generators.print_gen import PrintGenerator
 from cmdcli.generators.sanitize_functs import *
@@ -16,7 +17,8 @@ class TextController():
         self.cmderrors = (IndexValueError, OOBIndexError,
             CoordinatesError, OOBCoordinatesError, 
             NetValueError, TransValueError, 
-            DuplicatedDice, InvalidCommandKey)
+            DuplicatedDice, NotEnoughCmdArgs,
+            InvalidCommandKey)
 
     def get_command(self):
         """

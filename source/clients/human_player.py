@@ -13,9 +13,8 @@ class HumanPlayer():
         """
         return self.ctrl.get_command()
 
-    def show_reply(self, reply):
+    def update_view(self, reply):
         """
         Update view given engine reply.
         """
-        self.view.show_reply(reply)
-        
+        self.view.update(reply)

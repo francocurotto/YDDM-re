@@ -18,7 +18,7 @@ class Client():
         while True:
             cmd = self.currplayer.get_command()
             reply = self.engine.update(cmd)
-            self.currplayer.show_reply(reply)
+            self.currplayer.update_view(reply)
             if "PLAYERSWITCH" in reply["flags"]:
                 self.switch_player()
 

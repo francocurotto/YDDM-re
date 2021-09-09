@@ -32,7 +32,10 @@ class CmdGenerator():
         """
         for gen in self.generators:
             if gen.key == split[0]:
-                return gen.create_command(split[1:])
+                try:
+                    return gen.create_command(split[1:])
+                except IndexError:
+                    raise NotEnoughCmdArgs(split[0])
         raise InvalidCommandKey(split[0])
 
     def list_commands(self):
@@ -42,6 +45,12 @@ class CmdGenerator():
         strlist = [gen.desc for gen in self.generators]
         return strlist
             
+class NotEnoughCmdArgs(Exception):
+    def __init__(self, string):
+        self.message = "No enough arguments for command " + \
+            string
+        super().__init__(self, self.message)
+
 class InvalidCommandKey(Exception):
     def __init__(self, string):
         self.message = "No command with key " + string

@@ -7,14 +7,16 @@ class InputWin(Window):
     """
     def __init__(self, parwin, y ,x):
         super().__init__(parwin, 1, 21, y, x)
-
-        # draw >> symbol
-        self.win.addstr(0, 0, ">> ")
-        self.win.noutrefresh()
-
         # add textbox
         self.boxwin = self.win.derwin(1, 18, 0, 3)
         self.textbox = Textbox(self.boxwin)
+
+    def update(self, engine, stringifier):
+        """
+        Update window conent.
+        """
+        self.win.addstr(0, 0, ">> ")
+        self.win.noutrefresh()
 
     def get_input(self):
         """
