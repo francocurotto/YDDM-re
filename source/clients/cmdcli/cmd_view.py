@@ -20,3 +20,7 @@ class CmdView(TextView):
         dsm = self.engine.dsm
         header = self.stringifier.stringify_header(dsm)
         self.print_string(header, end="\n")
+
+    def exit_game(self):
+        self.print_string("Bye!", end="\n")
+        super().exit_game()

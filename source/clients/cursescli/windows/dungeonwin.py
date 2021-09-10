@@ -1,11 +1,11 @@
 from cursescli.windows.boxedwin import BoxedWin
 
-class PoolWin(BoxedWin):
+class DungeonWin(BoxedWin):
     """
-    Window to display pool.
+    Window to display the dungeon.
     """
     def __init__(self, parwin, y, x):
-        super().__init__(parwin, 17, 65, y, x, "Dice Pool")
+        super().__init__(parwin, 25, 37, y, x, "Dungeon")
 
     def update(self, engine, stringifier):
         """
@@ -13,7 +13,6 @@ class PoolWin(BoxedWin):
         """
         super().update()
         # create string
-        player = engine.dsm.state.player
-        string = stringifier.stringify_dicepool(player)
+        string = stringifier.stringify_dungeon(engine.duel)
         # update window
         self.addstr(string)

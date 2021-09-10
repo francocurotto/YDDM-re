@@ -41,3 +41,9 @@ class TextView():
         else: # first or second heart
             message += string
         return message
+
+    def exit_game(self):
+        """
+        Finish game script.
+        """
+        exit()

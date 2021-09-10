@@ -1,11 +1,11 @@
 from cursescli.windows.boxedwin import BoxedWin
 
-class PlayerWin(BoxedWin):
+class OpponentWin(BoxedWin):
     """
-    Window to player information.
+    Window to display opponent information.
     """
     def __init__(self, parwin, y, x):
-        super().__init__(parwin, 4, 32, y, x, "Player")
+        super().__init__(parwin, 4, 32, y, x, "Opponent")
 
     def update(self, engine, stringifier):
         """
@@ -13,11 +13,11 @@ class PlayerWin(BoxedWin):
         """
         super().update()
         # create string with crest pool info
-        crestpool = engine.dsm.state.player.crestpool
+        crestpool = engine.dsm.state.opponent.crestpool
         string = stringifier.stringify_crestpool(crestpool)
         # add monster lord info
         duel = engine.duel
-        ml   = engine.dsm.state.player.ml 
+        ml   = engine.dsm.state.opponent.ml 
         string += "\n"
         string += stringifier.stringify_monster_lord(duel,ml)
         # update window

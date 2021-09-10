@@ -1,9 +1,5 @@
 ### TODO
 - curses_client
-    - colors
-    - clean exit
-    - dungeon win
-    - crest wins
     - output win
 - predefined dungeons for testing
 - implement warp vortex
@@ -11,7 +7,8 @@
 - network support
 
 ### IMPROVEMENTS
-- curses: fix last column unused while printing
+- curses: remove duplication of addstr+noutrefresh in update
+- curses: fix last column unused while printing?
 - list only available commands in state?
 - engine: remove message and message related flags from reply?
 

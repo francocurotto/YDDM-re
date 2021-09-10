@@ -6,7 +6,6 @@ from cmdcli.generators.attack_gen  import AttackGen
 from cmdcli.generators.wait_gen    import WaitGen
 from cmdcli.generators.guard_gen   import GuardGen
 from cmdcli.generators.endturn_gen import EndturnGen
-from cmdcli.generators.quit_gen    import QuitGen
 
 class CmdGenerator():
     """
@@ -21,9 +20,8 @@ class CmdGenerator():
         waitgen    = WaitGen()
         guardgen   = GuardGen()
         endturngen = EndturnGen()
-        quitgen    = QuitGen()
         self.generators = [rollgen, dimgen, skipgen, movegen,
-        attackgen, waitgen, guardgen, endturngen, quitgen]
+        attackgen, waitgen, guardgen, endturngen]
 
     def create_command(self, split):
         """

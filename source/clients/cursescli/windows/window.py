@@ -1,4 +1,5 @@
 import curses
+from cursescli.windows.ansi_translator import ANSITranslator
 
 class Window():
     """
@@ -6,15 +7,21 @@ class Window():
     """
     def __init__(self, parwin, dy, dx, y, x):
         self.win = parwin.derwin(dy, dx, y, x)
+        self.translator = ANSITranslator()
 
     def addstr(self, string):
         """
-        Add string to window at position (0,0). It wraps
-        curses addstr into a try/except statement to avoid 
-        stupid curses error when addinga char at lower right 
-        corner of window. 
+        Add string to window at position (0,0) and add colors
+        by translating ANSI escape characters.
+        Then update the screen.
         """
-        try:
-            self.win.addstr(string)
-        except curses.error:
-            pass
+        ctuplelist = self.translator.get_ctuples(string)
+        for ctuple in ctuplelist:
+            self.win.addstr(ctuple[0], ctuple[1])
+        self.win.noutrefresh()
+
+    def update(self):
+        """
+        Update window content.
+        """
+        self.win.clear()

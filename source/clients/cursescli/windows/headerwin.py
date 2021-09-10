@@ -11,7 +11,6 @@ class HeaderWin(Window):
         """
         Update window conent.
         """
-        self.win.clear()
+        super().update()
         header = stringifier.stringify_header(engine.dsm)
-        self.win.addstr(0, 0, header)
-        self.win.noutrefresh()
+        self.addstr(header)

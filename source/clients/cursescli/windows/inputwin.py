@@ -15,8 +15,8 @@ class InputWin(Window):
         """
         Update window conent.
         """
-        self.win.addstr(0, 0, ">> ")
-        self.win.noutrefresh()
+        super().update()
+        self.addstr(">> ")
 
     def get_input(self):
         """

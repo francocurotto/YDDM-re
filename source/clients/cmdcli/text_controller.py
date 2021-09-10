@@ -34,6 +34,8 @@ class TextController():
                     self.list_commands()
                 elif split[0] == "p": # print command
                     self.run_print_command(split)
+                elif split[0] == "q": # quit command
+                    self.view.exit_game()
                 else: # engine command
                     return self.cmdgen.create_command(split)
             except self.cmderrors as e:
@@ -47,6 +49,8 @@ class TextController():
         strlist = [self.printgen.desc]
         # get engine commands
         strlist += self.cmdgen.list_commands()
+        # quit command
+        strlist += [quitdesc]
         # print list
         self.view.print_string("\n\n".join(strlist))
 
@@ -56,3 +60,7 @@ class TextController():
         """
         string = self.printgen.get_string(split[1:])
         self.view.print_string(string)
+
+quitdesc = "\
+- QUIT COMMAND: q\n\
+    - q: quit game"
