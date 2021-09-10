@@ -5,7 +5,8 @@ from cursescli.windows.headerwin   import HeaderWin
 from cursescli.windows.poolwin     import PoolWin
 from cursescli.windows.playerwin   import PlayerWin
 from cursescli.windows.opponentwin import OpponentWin
-from cursescli.windows.dungeonwin import DungeonWin
+from cursescli.windows.dungeonwin  import DungeonWin
+from cursescli.windows.outputwin   import OutputWin
 
 class CursesView(TextView):
     """
@@ -23,9 +24,10 @@ class CursesView(TextView):
         self.opponentwin = OpponentWin(self.stdscr, 5, 102)
         self.headerwin = HeaderWin(self.stdscr, 18, 0)
         self.inputwin = InputWin(self.stdscr, 19, 0)
+        self.outputwin = OutputWin(self.stdscr, 20, 0)
         self.windows = [self.poolwin, self.dungeonwin, 
             self.playerwin, self.opponentwin, self.headerwin,
-            self.inputwin]
+            self.inputwin, self.outputwin]
 
         # inital display
         self.update_windows()
@@ -50,6 +52,7 @@ class CursesView(TextView):
         """
         Print a generic string.
         """
+        self.outputwin.print_string(string+end)
         pass
 
     def exit_game(self):

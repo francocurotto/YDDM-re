@@ -7,7 +7,7 @@
 - network support
 
 ### IMPROVEMENTS
-- curses: fix last column unused while printing?
+- curses: fix last column unused while printing? unnecessary
 - list only available commands in state?
 - engine: remove message and message related flags from reply?
 

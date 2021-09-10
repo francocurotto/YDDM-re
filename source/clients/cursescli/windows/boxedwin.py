@@ -1,4 +1,4 @@
-from cursescli.windows.window import Window
+from cursescli.windows.window import Window, create_derwin
 
 class BoxedWin(Window):
     """
@@ -6,7 +6,7 @@ class BoxedWin(Window):
     """
     def __init__(self, parwin, dy, dx, y, x, title):
         # create box
-        self.box = parwin.derwin(dy, dx, y, x)
+        self.box = create_derwin(parwin, dy, dx, y, x)
         self.box.border()
         self.box.addstr(0, 2, " " + title + " ")
 

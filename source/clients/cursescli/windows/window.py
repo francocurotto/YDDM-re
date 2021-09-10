@@ -6,7 +6,7 @@ class Window():
     Generic window for the curses interface.
     """
     def __init__(self, parwin, dy, dx, y, x):
-        self.win = parwin.derwin(dy, dx, y, x)
+        self.win = create_derwin(parwin, dy, dx, y, x)
         self.translator = ANSITranslator()
 
     def addstr(self, string):
@@ -25,3 +25,19 @@ class Window():
         Update window content.
         """
         self.win.clear()
+
+def create_derwin(parwin, dy, dx, y, x):
+    """
+    Creates a subwindow from parent window. If curses error
+    (due to screen being too small), print message and exit.
+    """
+    try:
+        return parwin.derwin(dy, dx, y, x)
+    except curses.error:
+        print("Curses error. Probably window is too small " +
+            "to run the game. Try Maximizing the window, " +
+            "or reducing the terminal font size.")
+        curses.echo()
+        curses.endwin()
+        exit()
+
