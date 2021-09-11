@@ -5,7 +5,7 @@ class DungeonWin(BoxedWin):
     Window to display the dungeon.
     """
     def __init__(self, parwin, y, x):
-        super().__init__(parwin, 25, 37, y, x, "Dungeon")
+        super().__init__(parwin, 25, 36, y, x, "Dungeon")
 
     def update(self, engine, stringifier):
         """

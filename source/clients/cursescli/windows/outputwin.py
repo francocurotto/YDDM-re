@@ -5,7 +5,7 @@ class OutputWin(BoxedWin):
     Window to display text output.
     """
     def __init__(self, parwin, y, x):
-        super().__init__(parwin, 14, 65, y, x, "Output")
+        super().__init__(parwin, 14, 66, y, x, "Output")
         self.textbuffer = []
 
     def update(self, engine, stringifier):

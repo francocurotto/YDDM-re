@@ -10,6 +10,7 @@ class PrintGenerator(Generator):
         self.key = "p"
         self.engine = engine
         self.stringifier = stringifier
+        self.descdict = descdict
         super().__init__()
 
     def get_string(self, split):
@@ -65,7 +66,7 @@ class PrintGenerator(Generator):
         """
         Get basic help.
         """
-        return descdict["p"]
+        return self.descdict["p"]
 
     def get_cmd_list(self):
         """
@@ -78,7 +79,7 @@ class PrintGenerator(Generator):
         Get command cmd description.
         """
         try:
-            return descdict[cmd]
+            return self.descdict[cmd]
         except KeyError: 
             return "Unknown command"
 

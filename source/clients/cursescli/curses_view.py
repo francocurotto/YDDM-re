@@ -19,9 +19,9 @@ class CursesView(TextView):
         (y, x) = self.stdscr.getmaxyx()
 
         # create view elements
-        self.titlewin = TitleWin(self.stdscr, 0, 65)
+        self.titlewin = TitleWin(self.stdscr, 0, 64)
         self.poolwin  = PoolWin(self.stdscr, 1, 0)
-        self.dungeonwin = DungeonWin(self.stdscr, 1, 65)
+        self.dungeonwin = DungeonWin(self.stdscr, 1, 66)
         self.playerwin = PlayerWin(self.stdscr, 1, 102)
         self.opponentwin = OpponentWin(self.stdscr, 5, 102)
         self.headerwin = HeaderWin(self.stdscr, 18, 0)
@@ -55,7 +55,7 @@ class CursesView(TextView):
         """
         Print a generic string.
         """
-        self.outputwin.print_string(string+"\n")
+        self.outputwin.print_string("\n"+string)
         self.outputwin.update(self.engine, self.stringifier)
 
     def exit_game(self):

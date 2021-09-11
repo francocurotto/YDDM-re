@@ -13,11 +13,21 @@ class Window():
         """
         Add string to window at position (0,0) and add colors
         by translating ANSI escape characters.
-        Then update the screen.
+        Wrap addstr into try/except to avoid stupid curses
+        error while writing at the bottom right corner.
+        At the end, update the screen.
         """
-        ctuplelist = self.translator.get_ctuples(string)
-        for ctuple in ctuplelist:
-            self.win.addstr(ctuple[0], ctuple[1])
+        strlist = string.split("\n")
+        for i, line in enumerate(strlist):
+            # move cursor to the start of the line
+            self.win.move(i,0)
+            ctuplelist = self.translator.get_ctuples(line)
+            for ctuple in ctuplelist:
+                # avoid stupid curses error
+                try:
+                    self.win.addstr(ctuple[0], ctuple[1])
+                except curses.error:
+                    pass
         self.win.noutrefresh()
 
     def update(self):

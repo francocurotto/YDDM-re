@@ -5,7 +5,7 @@ class PlayerWin(BoxedWin):
     Window to player information.
     """
     def __init__(self, parwin, y, x):
-        super().__init__(parwin, 4, 32, y, x, "Player")
+        super().__init__(parwin, 4, 31, y, x, "Player")
 
     def update(self, engine, stringifier):
         """

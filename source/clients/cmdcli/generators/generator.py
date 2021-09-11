@@ -91,5 +91,3 @@ descdict = {
     "c" : None, # TODO: finish description
     "j" : None,
     "q" : quitdesc}
-
-

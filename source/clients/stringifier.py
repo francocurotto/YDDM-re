@@ -47,8 +47,10 @@ class Stringifier():
         # summon type icon
         string += self.icons["TYPE_"+dice.card.type]
         # level value
-        string += str(dice.level) + " "
+        string += str(dice.level)
         if dice.card.is_monster():
+            # ability icon
+            string += "   " # TODO: add ability icon
             # attack value
             string += str(dice.card.attack).rjust(2)
             #attack icon
@@ -63,9 +65,9 @@ class Stringifier():
             string += self.icons["MONSTER_HEART"] + " "
         else: # is item, hence, add align space
             if self.icontype.startswith("emoji"):
-                string += 15*" "
+                string += 18*" "
             else: # if no emoji icons, correct align
-                string += 12*" "
+                string += 15*" "
         string += self.stringify_sides(dice)
         return string
 

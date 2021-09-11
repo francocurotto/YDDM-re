@@ -5,11 +5,7 @@
 - network support
 
 ### IMPROVEMENTS
-- curses: better print command printing?
-- curses: use last line in output
-- curses: make space for ability icon
-- curses: fix last column unused while printing? unnecessary
-- list only available commands in state?
+- curses: how to print opponent dicepool? giveup?
 - engine: remove message and message related flags from reply?
 
 ### CHECKS

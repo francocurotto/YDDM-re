@@ -5,7 +5,7 @@ class PoolWin(BoxedWin):
     Window to display pool.
     """
     def __init__(self, parwin, y, x):
-        super().__init__(parwin, 17, 65, y, x, "Dice Pool")
+        super().__init__(parwin, 17, 66, y, x, "Dice Pool")
 
     def update(self, engine, stringifier):
         """

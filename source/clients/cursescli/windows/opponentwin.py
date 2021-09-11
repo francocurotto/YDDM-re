@@ -5,7 +5,7 @@ class OpponentWin(BoxedWin):
     Window to display opponent information.
     """
     def __init__(self, parwin, y, x):
-        super().__init__(parwin, 4, 32, y, x, "Opponent")
+        super().__init__(parwin, 4, 31, y, x, "Opponent")
 
     def update(self, engine, stringifier):
         """
