@@ -1,12 +1,13 @@
+from cmdcli.generators.generator import Generator
 from cmdcli.generators.sanitize_functs import *
 
-class AttackGen():
+class AttackGen(Generator):
     """
     Generator for move command.
     """
     def __init__(self):
         self.key = "a"
-        self.desc = desc
+        super().__init__()
 
     def create_command(self, split):
         """
@@ -19,8 +20,3 @@ class AttackGen():
                "origin"  : origin,
                "dest"    : dest}    
         return cmd
-
-desc = "\
-- ATTACK COMMAND: a XY1 XY2\n\
-    - a XY1 XY2: make monster at position XY1 attack target\n\
-        at position XY2."

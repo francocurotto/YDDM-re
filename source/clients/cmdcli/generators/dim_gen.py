@@ -1,12 +1,13 @@
+from cmdcli.generators.generator import Generator
 from cmdcli.generators.sanitize_functs import *
 
-class DimGen():
+class DimGen(Generator):
     """
     Generator for dim command.
     """
     def __init__(self):
         self.key = "d"
-        self.desc = desc
+        super().__init__()
 
     def create_command(self, split):
         """
@@ -23,10 +24,3 @@ class DimGen():
                "pos"     : pos,
                "trans"   : translist}    
         return cmd
-
-desc = "\
-- DIM COMMAND: d D N XY [T1, T2,...]\n\
-    - d D N XY [T1 T2 ...]: dimension dice D from\n\
-        candidates, using net N, at position XY, and\n\
-        optionally apply transformations T1, T2, ... to net\n\
-        before dimension."

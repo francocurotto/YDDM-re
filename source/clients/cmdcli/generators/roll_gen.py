@@ -1,13 +1,14 @@
+from cmdcli.generators.generator import Generator
 from cmdcli.generators.sanitize_functs import *
 from duel.roll_state import DuplicatedDice
 
-class RollGen():
+class RollGen(Generator):
     """
     Generator for roll command.
     """
     def __init__(self):
         self.key = "r"
-        self.desc = desc
+        super().__init__()
 
     def create_command(self, split):
         """
@@ -23,7 +24,3 @@ class RollGen():
         # create command
         cmd = {"command" : "ROLL", "dice" : indeces}
         return cmd
-                    
-desc = "\
-- ROLL COMMAND: r D1 D2 D3\n\
-    - r D1 D2 D3: roll dice D1, D2 and D3 from dice pool"

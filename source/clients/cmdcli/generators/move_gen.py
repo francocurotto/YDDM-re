@@ -1,12 +1,13 @@
+from cmdcli.generators.generator import Generator
 from cmdcli.generators.sanitize_functs import *
 
-class MoveGen():
+class MoveGen(Generator):
     """
     Generator for move command.
     """
     def __init__(self):
         self.key = "m"
-        self.desc = desc
+        super().__init__()
 
     def create_command(self, split):
         """
@@ -19,8 +20,3 @@ class MoveGen():
                "origin"  : origin,
                "dest"    : dest}    
         return cmd
-
-desc = "\
-- MOVE COMMAND: m XY1 XY2\n\
-    - m XY1 XY2: move monster at position XY1 to position\n\
-        XY2."

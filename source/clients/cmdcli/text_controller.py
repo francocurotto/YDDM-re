@@ -30,8 +30,6 @@ class TextController():
             try:
                 if not split: # empty command
                     self.view.print_string("", end="")
-                elif split[0] == "l": # list commands
-                    self.list_commands()
                 elif split[0] == "p": # print command
                     self.run_print_command(split)
                 elif split[0] == "q": # quit command
@@ -40,19 +38,6 @@ class TextController():
                     return self.cmdgen.create_command(split)
             except self.cmderrors as e:
                 self.view.print_string(e.message)
-
-    def list_commands(self):
-        """
-        Print list of all commands.
-        """
-        # get print commands
-        strlist = [self.printgen.desc]
-        # get engine commands
-        strlist += self.cmdgen.list_commands()
-        # quit command
-        strlist += [quitdesc]
-        # print list
-        self.view.print_string("\n\n".join(strlist))
 
     def run_print_command(self, split):
         """

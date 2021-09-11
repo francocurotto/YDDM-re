@@ -1,21 +1,30 @@
+from cmdcli.generators.generator import Generator
+from cmdcli.generators.generator import infodict, descdict
 from cmdcli.generators.sanitize_functs import *
 
-class PrintGenerator():
+class PrintGenerator(Generator):
     """
     Generator for print command.
     """
     def __init__(self, engine, stringifier):
         self.key = "p"
-        self.desc = desc
         self.engine = engine
         self.stringifier = stringifier
+        super().__init__()
 
     def get_string(self, split):
         """
         Get the desired info string.
         """
+        # get basic help
         if not split:
-            return "Not enough arguments"
+            return self.get_help()
+        # get command list
+        elif split[0]=="cmd" and len(split)==1:
+            return self.get_cmd_list()
+        # get command description
+        elif split[0]=="cmd" and len(split)==2:
+            return self.get_cmd_desc(split[1])
         # get dice pool
         elif split[0]=="p" and len(split)==1:
             return self.get_pool()
@@ -51,6 +60,27 @@ class PrintGenerator():
             return self.get_trans()
         else:
             return "Invalid print command"
+
+    def get_help(self):
+        """
+        Get basic help.
+        """
+        return descdict["p"]
+
+    def get_cmd_list(self):
+        """
+        Get command list.
+        """
+        return "\n".join(infodict.values())
+    
+    def get_cmd_desc(self, cmd):
+        """
+        Get command cmd description.
+        """
+        try:
+            return descdict[cmd]
+        except KeyError: 
+            return "Unknown command"
 
     def get_pool(self):
         """
@@ -147,16 +177,4 @@ class PrintGenerator():
         """
         get all possible transformations for dimension.
         """
-        print(self.stringifier.stringify_trans())
-
-desc = "\
-- PRINT COMMANDS: p ARG1 [ARG2]\n\
-    - p p:      print own dice pool\n\
-    - p op:     print opponent dice pool\n\
-    - p p INT:  print dice at INT in own dice pool\n\
-    - p op INT: print dice at INT in opponent dice pool\n\
-    - p d:      print dungeon\n\
-    - p d XY:   print object in dungeon at position XY\n\
-    - p c:      print own crest pool\n\
-    - p oc:     print opponent crest pool\n\
-    - p s:      print summon candidates"
+        return self.stringifier.stringify_trans()
