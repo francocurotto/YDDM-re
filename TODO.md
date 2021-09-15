@@ -1,6 +1,6 @@
 ### TODO
+- urwid pool builder
 - predefined dungeons for testing
-- implement warp vortex
 - abilities!!
 - network support
 
