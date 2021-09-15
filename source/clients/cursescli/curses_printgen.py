@@ -40,8 +40,24 @@ class CursesPrintGen(PrintGenerator):
         # get trans
         elif split[0]=="t" and len(split)==1:
             return self.get_trans()
+        elif split[0]=="o" and len(split)==1:
+            return self.get_opponent()
         else:
             return "Invalid print command"
+
+    def get_opponent(self):
+        """
+        Hack to get opponent info by manually switching 
+        players in engine.
+        """
+        if self.engine.dsm.state.name != "ENDDUEL":
+            return "Can only see opponent info at the " + \
+            "end of duel"
+        self.engine.dsm.state.player, \
+            self.engine.dsm.state.opponent = \
+            self.engine.dsm.state.opponent, \
+            self.engine.dsm.state.player
+        return "Switching players"
 
 printdesc = "\
 - PRINT COMMANDS: p [ARG1 ARG2]\n\
@@ -53,4 +69,5 @@ printdesc = "\
     - p d XY:   print object in dungeon at position XY\n\
     - p s:      print summon candidates\n\
     - p n:      print nets\n\
-    - p t:      print transformations"
+    - p t:      print transformations\n\
+    - p o:      print opponent info"

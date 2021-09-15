@@ -5,12 +5,12 @@
 - network support
 
 ### IMPROVEMENTS
-- curses: how to print opponent dicepool? giveup?
 - engine: remove message and message related flags from reply?
 
 ### CHECKS
 - test cursescli
 
 ### FIXES
+- trim tea and tristan pools to 15 dice
 
 ### ENABLE

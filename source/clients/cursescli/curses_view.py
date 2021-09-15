@@ -56,7 +56,7 @@ class CursesView(TextView):
         Print a generic string.
         """
         self.outputwin.print_string("\n"+string)
-        self.outputwin.update(self.engine, self.stringifier)
+        self.update_windows()
 
     def exit_game(self):
         """
