@@ -117,7 +117,6 @@ class DungeonState(AttackState):
         """
         self.reply["message"] = monster.name + " attacks " +\
             self.opponent.name + " monster lord"
-        self.reply["flags"].append("MLATTACK")
         monster.attack_ml(self.opponent)
 
         # check for opponent loss
@@ -182,7 +181,7 @@ class DungeonState(AttackState):
         Raise an error if monster is in cooldown.
         """
         if monster.cooldown:
-            raise MonsterInCooldown(monster)
+            raise MonsterInCooldown(monster.name)
 
     def add_attack_message(self, monster, target):
         """
@@ -201,25 +200,34 @@ class DungeonState(AttackState):
             " attacks " + target.name + " with " + str(power)
 
 class NotPlayerMonster(Exception):
-    def __init__(self, pos):
-        self.message = "No player monster at " + str(pos)
-        super().__init__(self.message)
+    """
+    Raised when no player monster is located at specified 
+    position.
+    """
+    pass
 
 class NotOpponentTarget(Exception):
-    def __init__(self, pos):
-        self.message = "No opponent target at " + str(pos)
-        super().__init__(self.message)
+    """
+    Raised when no opponent target is located at specified 
+    position.
+    """
+    pass
 
 class AttackOutOfRange(Exception):
-    message = "Attack is out of range"
+    """
+    Raised when an attack is out of range.
+    """
+    pass
 
 class MonsterInCooldown(Exception):
-    def __init__(self, monster):
-        self.message = monster.name + " already attacked " +\
-        "this turn"
+    """
+    Raised when a monster in cooldown tries to attack.
+    """
+    pass
 
 class NotPathFound(Exception):
-    def __init__(self, origin, dest):
-        self.message = "No path found between " + \
-            str(origin) + " and " + str(dest)
-        super().__init__(self.message)
+    """
+    Raised when no valid path is found between origin and
+    destination of a move.
+    """
+    pass

@@ -13,16 +13,19 @@ class DuelState():
         response.
         """
         # initialize reply dict before every command
-        self.reply = init_reply()
+        self.reply = init_reply(cmd)
         try:
             return self.cmddict[cmd["command"]](cmd)
         except KeyError:
-            self.reply["message"] = "Invalid command " + \
-                cmd["command"] + " at state " + self.name
+            self.reply["error"] = "InvalidCommand"
+            self.reply["args"] = (cmd["command"])
             return self.reply, self
+        except self.errors as e:
+            self.reply["error"] = e.__class__.__name__
+            self.reply["args"] = e.args
 
-def init_reply():
+def init_reply(cmd):
     """
     Initialize a reply dict with default values.
     """
-    return {"valid":False, "message":"", "flags":[]}
+    return {"cmd":cmd, "valid":False, "flags":[]}

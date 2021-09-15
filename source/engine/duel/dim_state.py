@@ -72,4 +72,4 @@ class OOBDimIndex(Exception):
     """
     Raised when dimension index is out of bounds.
     """
-    message = "Invalid dimension index"
+    pass

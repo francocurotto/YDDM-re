@@ -8,8 +8,7 @@ class RollState(DuelState):
         super().__init__(duel, player, opponent)
         self.name = "ROLL"
         self.cmddict = {"ROLL" : self.run_roll_command}
-        self.rollerrors = (DuplicatedDice,
-            DiceAlreadyUsed)
+        self.errors = (DuplicatedDice, DiceAlreadyUsed)
 
     def run_roll_command(self, cmd):
         """
@@ -29,7 +28,6 @@ class RollState(DuelState):
         # fill success reply
         self.reply["valid"] = True
         self.reply["message"] += "Go Dice Roll!"
-        self.reply["flags"].append("ROLL")
         return self.reply, nextstate
 
     def get_dicelist(self, intlist):
@@ -120,10 +118,10 @@ class DuplicatedDice(Exception):
     Raised when there are duplicated dice in the roll dice 
     list.
     """
-    message = "Duplicated dice in roll"
+    pass
 
 class DiceAlreadyUsed(Exception):
     """
     Raised when trying to roll an already dimensioned dice.
     """
-    message = "Dice already dimensioned"
+    pass
