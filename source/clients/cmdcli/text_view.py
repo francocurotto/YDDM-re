@@ -7,6 +7,7 @@ class TextView():
     def __init__(self, engine, stringifier):
         self.engine = engine
         self.stringifier = stringifier
+        self.replier = Replier(self.engine, self.stringifier)
         self.ereplier = ErrorReplier(self.engine)
 
     def show_reply(self, reply):
@@ -14,10 +15,11 @@ class TextView():
         Create reply message.
         """
         if reply["valid"]: # case valid command
-            self.print_string(reply["message"])
+            string = self.replier.gen_string(reply)
+            #self.print_string(reply["message"])
         else: # case invalid reply
             string = self.ereplier.gen_string(reply)
-            self.print_string(string)
+        self.print_string(string)
 
     def exit_game(self):
         """

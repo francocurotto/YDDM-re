@@ -135,7 +135,7 @@ class DungeonState(AttackState):
         """
         monster = self.duel.dungeon.get_content(pos)
         if monster not in self.player.monsters:
-            raise NotPlayerMonster(pos)
+            raise NotPlayerMonster(pos.totuple())
         return monster
 
     def get_opponent_target(self, pos):
@@ -146,7 +146,7 @@ class DungeonState(AttackState):
         target = self.duel.dungeon.get_content(pos)
         if target not in self.opponent.monsters and \
             target is not self.opponent.ml:
-            raise NotOpponentTarget(pos)
+            raise NotOpponentTarget(pos.totuple())
         return target
 
     def get_path(self, origin, dest):
@@ -156,7 +156,8 @@ class DungeonState(AttackState):
         """
         path = self.duel.dungeon.get_path(origin, dest)
         if path is None:
-            raise NotPathFound(origin, dest)
+            raise NotPathFound(origin.totuple(), 
+                dest.totuple())
         return path
 
     def pay_movement_cost(self, path):

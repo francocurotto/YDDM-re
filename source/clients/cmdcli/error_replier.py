@@ -41,10 +41,10 @@ class ErrorReplier():
         return "Invalid dimension index"
         
     def gen_NotPlayerMonster(self, args):
-        return "No player monster at " + str(args[0])
+        return "No player monster at " + strpos(args[0])
 
     def gen_NotOpponentTarget(self, args):
-        return "No opponent target at " + str(args[0])
+        return "No opponent target at " + strpos(args[0])
 
     def gen_AttackOutOfRange(self, args):
        return "Attack is out of range"
@@ -53,21 +53,26 @@ class ErrorReplier():
         return  args[0] + " already attacked this turn"
 
     def gen_NotPathFound(self, args):
-        return "No path found between " + str(args[0]) + \
-            " and " + str(args[1])
+        return "No path found between " + strpos(args[0]) + \
+            " and " + strpos(args[1])
 
     def gen_NetUnconnected(self, args):
         return "Net do not connect with dungeon path"
 
     def gen_OOBTilePos(self, args):
-        return "Tile position " + str(args[0]) + \
-            " out of bound"
+        return "Net out of bound"
 
     def gen_NotDungeonTile(self, args):
-        return "No dungeon at " + str(args[0])
+        return "No dungeon at " + strpos(args[0])
 
     def gen_TileOverlaps(self, args):
         return "Tile overlaps existing dungeon path"
 
     def gen_NotEnoughCrests(self, args):
         return "Not enough " + args[0] + " crests"
+
+def strpos(pos):
+    """
+    Convert position in tuple into nice coordinates.
+    """
+    return chr(pos[1]+97) + str(pos[0]+1)

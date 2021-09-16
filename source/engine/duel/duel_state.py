@@ -18,7 +18,7 @@ class DuelState():
             return self.cmddict[cmd["command"]](cmd)
         except KeyError:
             self.reply["error"] = "InvalidCommand"
-            self.reply["args"] = (cmd["command"])
+            self.reply["args"] = (cmd["command"],)
             return self.reply, self
         except self.errors as e:
             self.reply["error"] = e.__class__.__name__

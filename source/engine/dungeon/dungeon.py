@@ -50,7 +50,7 @@ class Dungeon():
         """
         # rejects negative numbers as out of bound
         if not self.in_bound(pos):
-            raise OOBTilePos(pos)
+            raise OOBTilePos(pos.totuple())
         return self.array[pos.y][pos.x]
 
     def in_bound(self, pos):
@@ -67,7 +67,7 @@ class Dungeon():
         """
         tile = self.get_tile(pos)
         if not tile.is_dungeon():
-            raise NotDungeonTile(pos)
+            raise NotDungeonTile(pos.totuple())
         return tile.content
 
     def set_tile(self, tile, pos):

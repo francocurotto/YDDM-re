@@ -60,6 +60,12 @@ class Pos():
         """
         return abs(self.y-pos2.y) + abs(self.x-pos2.x) 
 
+    def totuple(self):
+        """
+        Convert Pos into a tuple.
+        """
+        return (self.y, self.x)
+
     def __eq__(self, other):
         """
         Redefinition of equality.
@@ -69,8 +75,9 @@ class Pos():
         else:
             return False
 
-    def __str__(self):
-        """
-        Redefinition of str.
-        """
-        return chr(self.x+97) + str(self.y+1)
+# TODO: remove?
+#    def __str__(self):
+#        """
+#        Redefinition of str.
+#        """
+#        return chr(self.x+97) + str(self.y+1)

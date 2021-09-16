@@ -23,7 +23,6 @@ class RollState(DuelState):
 
         # fill success reply
         self.reply["valid"] = True
-        self.reply["message"] += "Go Dice Roll!"
         return self.reply, nextstate
 
     def get_dicelist(self, intlist):
