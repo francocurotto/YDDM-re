@@ -1,3 +1,5 @@
+from errors import NotEnoughCrests
+
 class CrestPool():
     """
     The crest pool of a player.
@@ -26,8 +28,3 @@ class CrestPool():
         if crest < amount:
             raise NotEnoughCrests(crestname)
         setattr(self, crestname, crest-amount)
-
-class NotEnoughCrests(Exception):
-    def __init__(self, crest):
-        self.message = "Not enough " + crest + " crests"
-        super().__init__(self.message)

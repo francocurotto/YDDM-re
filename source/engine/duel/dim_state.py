@@ -1,9 +1,10 @@
 from duel.duel_state import DuelState
 from dungeon.dicenets.netdict import netdict
 from dungeon.dicenets.pos import Pos
-from dungeon.dungeon import NetUnconnected
-from dungeon.dungeon import OOBTilePos
-from dungeon.dungeon import TileOverlaps
+from errors import OOBDimIndex
+from errors import NetUnconnected
+from errors import OOBTilePos
+from errors import TileOverlaps
 
 class DimState(DuelState):
     """
@@ -15,7 +16,7 @@ class DimState(DuelState):
         self.dimdice = dimdice
         self.cmddict = {"DIM"  : self.run_dim_command,
                         "SKIP" : self.run_skip_command}
-        self.dimerrors = (OOBDimIndex, NetUnconnected,
+        self.errors = (OOBDimIndex, NetUnconnected, 
             OOBTilePos, TileOverlaps)
 
     def run_dim_command(self, cmd):
@@ -27,13 +28,9 @@ class DimState(DuelState):
         net.offset(Pos(*cmd["pos"]))
 
         # get the selected dice
-        try:
-            dice = self.get_dimdice(cmd["dice"])
-            summon = dice.card.summon()
-            self.duel.dungeon.set_net(net,self.player,summon)
-        except self.dimerrors as e:
-            self.reply["message"] = e.message
-            return self.reply, self
+        dice = self.get_dimdice(cmd["dice"])
+        summon = dice.card.summon()
+        self.duel.dungeon.set_net(net,self.player,summon)
 
         # add dice to dimensioned dice
         self.player.dimdice.append(dice)
@@ -67,9 +64,3 @@ class DimState(DuelState):
             return self.dimdice[i]
         except IndexError:
             raise OOBDimIndex
-
-class OOBDimIndex(Exception):
-    """
-    Raised when dimension index is out of bounds.
-    """
-    pass

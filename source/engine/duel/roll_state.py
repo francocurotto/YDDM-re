@@ -1,4 +1,5 @@
 from duel.duel_state import DuelState
+from errors import DuplicatedDice, DiceAlreadyUsed
 
 class RollState(DuelState):
     """
@@ -15,12 +16,7 @@ class RollState(DuelState):
         Run roll command.
         """
         # get the dice list
-        try:
-            dicelist = self.get_dicelist(cmd["dice"])
-        except self.rollerrors as e:
-            self.reply["message"] = e.message
-            return self.reply, self
-        
+        dicelist = self.get_dicelist(cmd["dice"])
         sides = self.roll_dice(dicelist)
         self.player.rolls.append(sides)
         nextstate = self.get_nextstate(dicelist, sides)
@@ -112,16 +108,3 @@ def get_dimdice(dicelist, sides):
             return dimdice
     # no dice available for dimension found
     return []
-
-class DuplicatedDice(Exception):
-    """
-    Raised when there are duplicated dice in the roll dice 
-    list.
-    """
-    pass
-
-class DiceAlreadyUsed(Exception):
-    """
-    Raised when trying to roll an already dimensioned dice.
-    """
-    pass

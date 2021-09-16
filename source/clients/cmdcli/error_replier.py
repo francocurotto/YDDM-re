@@ -6,47 +6,68 @@ class ErrorReplier():
     def __init__(self, engine):
         self.engine = engine
         self.errordict = {
-            "InvalidCommand"    : self.gen_invalidcommand,
-            "DuplicatedDice"    : self.gen_duplicateddice,
-            "DiceAlreadyUsed"   : self.gen_dicealreadyused,
-            "OOBDinIndex"       : self.gen_oobdimindex,
-            "NotPlayerMonster"  : self.gen_notplayermonster,
-            "NotOpponentTarget" : self.gen_notopponenttarget,
-            "AttackOutOfRange"  : self.gen_attackoutofrange,
-            "MonsterInCooldown" : self.gen_monsterincooldown,
-            "NotPathFound"      : self.gen_notpathfound}
+            "InvalidCommand"    : self.gen_InvalidCommand,
+            "DuplicatedDice"    : self.gen_DuplicatedDice,
+            "DiceAlreadyUsed"   : self.gen_DiceAlreadyUsed,
+            "OOBDinIndex"       : self.gen_OOBDimIndex,
+            "NotPlayerMonster"  : self.gen_NotPlayerMonster,
+            "NotOpponentTarget" : self.gen_NotOpponentTarget,
+            "AttackOutOfRange"  : self.gen_AttackOutOfRange,
+            "MonsterInCooldown" : self.gen_MonsterInCooldown,
+            "NotPathFound"      : self.gen_NotPathFound,
+            "NetUnconnected"    : self.gen_NetUnconnected,
+            "OOBTilePos"        : self.gen_OOBTilePos,
+            "NotDungeonTile"    : self.gen_NotDungeonTile,
+            "TileOverlaps"      : self.gen_TileOverlaps,
+            "NotEnoughCrests"   : self.gen_NotEnoughCrests}
 
-    def gen_string(reply):
+    def gen_string(self, reply):
         """
         Generates reply string using the errordict.
         """
-        self.errordict[reply["error"]](reply["args"])
+        return self.errordict[reply["error"]](reply["args"])
 
-    def gen_invalidcommand(self, args):
+    def gen_InvalidCommand(self, args):
         return "Invalid command " + args[0] + " at state " +\
             self.engine.dsm.state.name
 
-    def gen_duplicateddice(self, args):
+    def gen_DuplicatedDice(self, args):
         return "Duplicated dice in roll"
 
-    def gen_dicealreadyused(self, args):
+    def gen_DiceAlreadyUsed(self, args):
         return "Dice already dimensioned"
 
-    def gen_oobdimindex(self, args):
+    def gen_OOBDimIndex(self, args):
         return "Invalid dimension index"
         
-    def gen_notplayermonster(self, args):
+    def gen_NotPlayerMonster(self, args):
         return "No player monster at " + str(args[0])
 
-    def gen_notopponenttarget(self, args):
+    def gen_NotOpponentTarget(self, args):
         return "No opponent target at " + str(args[0])
 
-    def gen_attackoutofrange(self, args):
+    def gen_AttackOutOfRange(self, args):
        return "Attack is out of range"
 
-    def gen_monsterincooldown(self, args):
+    def gen_MonsterInCooldown(self, args):
         return  args[0] + " already attacked this turn"
 
-    def gen_notpathfound(self, args):
+    def gen_NotPathFound(self, args):
         return "No path found between " + str(args[0]) + \
             " and " + str(args[1])
+
+    def gen_NetUnconnected(self, args):
+        return "Net do not connect with dungeon path"
+
+    def gen_OOBTilePos(self, args):
+        return "Tile position " + str(args[0]) + \
+            " out of bound"
+
+    def gen_NotDungeonTile(self, args):
+        return "No dungeon at " + str(args[0])
+
+    def gen_TileOverlaps(self, args):
+        return "Tile overlaps existing dungeon path"
+
+    def gen_NotEnoughCrests(self, args):
+        return "Not enough " + args[0] + " crests"

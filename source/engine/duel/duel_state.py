@@ -23,9 +23,11 @@ class DuelState():
         except self.errors as e:
             self.reply["error"] = e.__class__.__name__
             self.reply["args"] = e.args
+            return self.reply, self
 
 def init_reply(cmd):
     """
     Initialize a reply dict with default values.
     """
-    return {"cmd":cmd, "valid":False, "flags":[]}
+    return {"cmd":cmd, "valid":False, "flags":[], 
+        "message":""}

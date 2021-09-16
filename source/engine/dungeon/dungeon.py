@@ -1,5 +1,9 @@
 from dungeon.empty_tile import EmptyTile
 from dungeon.dicenets.pos import Pos
+from errors import NetUnconnected
+from errors import OOBTilePos
+from errors import NotDungeonTile
+from errors import TileOverlaps
 
 class Dungeon():
     """
@@ -219,32 +223,3 @@ class Dungeon():
                     if tile.content is summon:
                         tile.remove_content()
                         return
-
-class NetUnconnected(Exception):
-    """
-    Raised when trying to dimension a net unconnected from 
-    player's dungeon path.
-    """
-    message = "Net do not connect with dungeon path"
-class OOBTilePos(Exception):
-    """
-    Raised when tile position is out of bounds.
-    """
-    def __init__(self, pos):
-        self.message = "Tile position " + str(pos) + \
-            " out of bound"
-        super().__init__(self, self.message)
-class NotDungeonTile(Exception):
-    """
-    Raised when trying to select a position with no dungeon 
-    path while moving/attacking.
-    """
-    def __init__(self, pos):
-        self.message = "No dungeon at " + str(pos)
-        super().__init__(self, self.message)
-class TileOverlaps(Exception):
-    """
-    Raised when trying to dimension a net overlaping an 
-    existing dungeon path.
-    """
-    message = "Tile overlaps existing dungeon path"

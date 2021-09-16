@@ -1,7 +1,12 @@
 from duel.attack_state import AttackState
 from dungeon.dicenets.pos import Pos
-from player.crest_pool import NotEnoughCrests
-from dungeon.dungeon import NotDungeonTile
+from errors import NotPlayerMonster
+from errors import NotOpponentTarget
+from errors import AttackOutOfRange
+from errors import MonsterInCooldown
+from errors import NotPathFound
+from errors import NotEnoughCrests
+from errors import NotDungeonTile
 
 class DungeonState(AttackState):
     """
@@ -13,10 +18,8 @@ class DungeonState(AttackState):
         self.cmddict = {"MOVE"    : self.run_move_command,
                         "ATTACK"  : self.run_attack_command,
                         "ENDTURN" : self.run_endturn_command}
-        self.moveerrors = (NotDungeonTile,
-            NotPlayerMonster, NotPathFound, NotEnoughCrests)
-        self.attackerrors = (NotDungeonTile,
-            NotPlayerMonster, NotOpponentTarget, 
+        self.errors = (NotDungeonTile, NotPlayerMonster,
+            NotOpponentTarget, NotPathFound, 
             AttackOutOfRange, MonsterInCooldown,
             NotEnoughCrests)
         
@@ -27,16 +30,13 @@ class DungeonState(AttackState):
         origin = Pos(*cmd["origin"])
         dest = Pos(*cmd["dest"])
         
-        # error prone actions
-        try:
-            monster = self.get_player_monster(origin)
-            path = self.get_path(origin, dest)
-            self.pay_movement_cost(path)
-            self.duel.dungeon.move_dungobj(origin, dest)
-        except self.moveerrors as e:
-            self.reply["message"] = e.message
-            return self.reply, self
+        # move monster
+        monster = self.get_player_monster(origin)
+        path = self.get_path(origin, dest)
+        self.pay_movement_cost(path)
+        self.duel.dungeon.move_dungobj(origin, dest)
 
+        # fill success reply
         self.reply["valid"] = True
         self.reply["message"] = monster.name + " moved " + \
             "from " + str(origin) + " to " + str(dest)
@@ -50,16 +50,12 @@ class DungeonState(AttackState):
         origin = Pos(*cmd["origin"])
         dest = Pos(*cmd["dest"])
 
-        # error prone actions
-        try:
-            monster = self.get_player_monster(origin)
-            target = self.get_opponent_target(dest)
-            self.check_attack_range(origin, dest)
-            self.check_cooldown(monster)
-            self.player.crestpool.pay_crests("attack", 1)
-        except self.attackerrors as e:
-            self.reply["message"] = e.message
-            return self.reply, self
+        # get attack info
+        monster = self.get_player_monster(origin)
+        target = self.get_opponent_target(dest)
+        self.check_attack_range(origin, dest)
+        self.check_cooldown(monster)
+        self.player.crestpool.pay_crests("attack", 1)
 
         # check for monster or ml attack
         monster.cooldown = True
@@ -69,6 +65,7 @@ class DungeonState(AttackState):
         elif target.is_monster_lord():
             nextstate = self.run_ml_attack(monster)
     
+        # fill success reply
         self.reply["valid"] = True
         return self.reply, nextstate
 
@@ -198,36 +195,3 @@ class DungeonState(AttackState):
         power = monster.get_attack_power(target)
         self.reply["message"] += monster.name + \
             " attacks " + target.name + " with " + str(power)
-
-class NotPlayerMonster(Exception):
-    """
-    Raised when no player monster is located at specified 
-    position.
-    """
-    pass
-
-class NotOpponentTarget(Exception):
-    """
-    Raised when no opponent target is located at specified 
-    position.
-    """
-    pass
-
-class AttackOutOfRange(Exception):
-    """
-    Raised when an attack is out of range.
-    """
-    pass
-
-class MonsterInCooldown(Exception):
-    """
-    Raised when a monster in cooldown tries to attack.
-    """
-    pass
-
-class NotPathFound(Exception):
-    """
-    Raised when no valid path is found between origin and
-    destination of a move.
-    """
-    pass
