@@ -37,7 +37,6 @@ class DimState(DuelState):
 
         # fill success reply
         self.reply["valid"] = True
-        self.reply["message"] = "Dimension The Dice!"
         from duel.dungeon_state import DungeonState
         nextstate = DungeonState(self.duel, self.player, 
             self.opponent)
@@ -49,7 +48,6 @@ class DimState(DuelState):
         """
         # fill success reply
         self.reply["valid"] = True
-        self.reply["message"] = "Dimension skipped"
         from duel.dungeon_state import DungeonState
         nextstate = DungeonState(self.duel, self.player, 
             self.opponent)
