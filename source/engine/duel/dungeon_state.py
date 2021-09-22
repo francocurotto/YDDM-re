@@ -109,17 +109,11 @@ class DungeonState(AttackState):
         Run the attack from a player monster to the opponent
         monster lord.
         """
-        self.reply["message"] = monster.name + " attacks " +\
-            self.opponent.name + " monster lord"
         monster.attack_ml(self.opponent)
 
         # check for opponent loss
         if self.opponent.ml.hearts <= 0:
             self.reply["flags"].append("ENDDUEL")
-            self.reply["message"] += ".\n" + \
-                self.opponent.name + " lost all their " + \
-                "hearts.\n" + self.player.name + \
-                " is the winner!"
             from duel.endduel_state import EndDuelState
             return EndDuelState(self.duel, self.player,
                 self.opponent)
@@ -127,7 +121,7 @@ class DungeonState(AttackState):
 
     def get_player_monster(self, pos):
         """
-        Get player moster at position pos. If no player
+        Get player monster at position pos. If no player
         monster in pos, return exception.
         """
         monster = self.duel.dungeon.get_content(pos)

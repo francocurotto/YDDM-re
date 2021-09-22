@@ -42,14 +42,31 @@ class Replier():
             str(origin) + " to " + str(dest)
 
     def gen_attack(self, reply);
+        tgpos = Pos(*reply["cmd"]["dest"])
+        target = self.engine.duel.dungeon.get_content(tgpos)
         # distinguish between monster and ml
+        if target.is_monster_lord():
+            return self.gen_ml_attack(reply)
+        else: # monster attack
+            return self.gen_monster_attack(reply)
+
+    def gen_ml_attack(self, reply):
+        mnpos = Pos(*reply["cmd"]["origin"])
+        monster = self.engine.duel.dungeon.get_content(mnpos)
+        player = self.engine.dsm.state.player
+        opponent = self.engine.dsm.state.opponent
+        string = monster.name + " attacks " + \
+            opponent.name + " monster lord"
+        # check for opponent loss
+        if self.opponent.ml.hearts <= 0:
+            string += ".\n" + opponent.name + " lost all " +\
+                "their hearts.\n" + player.name + \
+                " is the winner!"
+        return string
+
         # distinguish between adv, disadv, and neutral
         # get attack power
         # distinguish between reply state and dungeon state
 
     def gen_endturn(self, reply):
         return "Turn finished!"
-
-
-
-
