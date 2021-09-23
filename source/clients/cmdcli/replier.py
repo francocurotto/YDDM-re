@@ -42,17 +42,18 @@ class Replier():
             str(origin) + " to " + str(dest)
 
     def gen_attack(self, reply);
+        mnpos = Pos(*reply["cmd"]["origin"])
         tgpos = Pos(*reply["cmd"]["dest"])
+        monster = self.engine.duel.dungeon.get_content(mnpos)
         target = self.engine.duel.dungeon.get_content(tgpos)
         # distinguish between monster and ml
         if target.is_monster_lord():
-            return self.gen_ml_attack(reply)
+            return self.gen_ml_attack(reply, monster)
         else: # monster attack
-            return self.gen_monster_attack(reply)
+            return self.gen_monster_attack(reply, monster,
+                target)
 
-    def gen_ml_attack(self, reply):
-        mnpos = Pos(*reply["cmd"]["origin"])
-        monster = self.engine.duel.dungeon.get_content(mnpos)
+    def gen_ml_attack(self, reply, monster):
         player = self.engine.dsm.state.player
         opponent = self.engine.dsm.state.opponent
         string = monster.name + " attacks " + \
@@ -64,8 +65,18 @@ class Replier():
                 " is the winner!"
         return string
 
+    def gen_monster_attack(selg, reply, monster, target):
+        string = ""
         # distinguish between adv, disadv, and neutral
+        if "ADVANTAGE" in reply["flags"]:
+             sring += monster.name +  " has advantage " + \
+                "over " + target.name + "\n"
+        if "DISADVANTAGE" in reply["flags"]:
+             string += monster.name + " has disadvantage " +\
+                "over " + target.name+"\n"
         # get attack power
+        string += monster.name + " attacks " + \
+            target.name + " with " + reply["power"]
         # distinguish between reply state and dungeon state
 
     def gen_endturn(self, reply):

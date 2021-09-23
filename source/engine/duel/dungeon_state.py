@@ -88,9 +88,6 @@ class DungeonState(AttackState):
         Run the attack from a player monster to an opponent
         monster.
         """
-        # get the attaking power message
-        self.add_attack_message(monster, target)
-
         # if opponent can defend, go to next state
         if self.opponent.crestpool.defense > 0:
             self.reply["flags"].append("PLAYERSWITCH")
@@ -171,19 +168,3 @@ class DungeonState(AttackState):
         """
         if monster.cooldown:
             raise MonsterInCooldown(monster.name)
-
-    def add_attack_message(self, monster, target):
-        """
-        Add attack power message to reply.
-        """
-        # create advantage message
-        if monster.has_advantage(target):
-            self.reply["message"] += monster.name + \
-                " has advantage over " + target.name + "\n"
-        elif monster.has_disadvantage(target):
-            self.reply["message"] += monster.name + \
-                " has disadvantage over " + target.name+"\n"
-        # create power message
-        power = monster.get_attack_power(target)
-        self.reply["message"] += monster.name + \
-            " attacks " + target.name + " with " + str(power)
