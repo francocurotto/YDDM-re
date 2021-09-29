@@ -37,6 +37,7 @@ class DimState(DuelState):
 
         # fill success reply
         self.reply["valid"] = True
+        self.reply["result"] = "DIM"
         from duel.dungeon_state import DungeonState
         nextstate = DungeonState(self.duel, self.player, 
             self.opponent)
@@ -48,6 +49,7 @@ class DimState(DuelState):
         """
         # fill success reply
         self.reply["valid"] = True
+        self.reply["result"] = "SKIP"
         from duel.dungeon_state import DungeonState
         nextstate = DungeonState(self.duel, self.player, 
             self.opponent)

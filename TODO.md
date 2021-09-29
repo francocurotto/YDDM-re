@@ -6,13 +6,19 @@
 
 ### IMPROVEMENTS
 - engine: remove message and message related flags from reply?
-    - implement replier
+    - MLATTACK
+    - DIRECTATTACK
+    - REPLYATTACK
+    - GUARD
+    - WAIT
 - docs: update reply_doc
+- imporve flags: --cmd, --curses, --emoji, --unicode, --ascii
 
 ### CHECKS
 - test cursescli
 
 ### FIXES
+- add flags to reply_doc
 - trim tea and tristan pools to 15 dice
 
 ### ENABLE

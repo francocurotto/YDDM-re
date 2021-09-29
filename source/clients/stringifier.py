@@ -296,11 +296,17 @@ class Stringifier():
         """
         strlist = []
         for side in roll:
-            crest = self.icons["CREST_"+side.crest.name]
-            mult  = str(side.mult)
+            crest = self.icons["CREST_"+side["crest"]]
+            mult  = str(side["mult"])
             strlist.append(crest+mult)
         string = " ".join(strlist)
         return string
+
+    def stringify_pos(self, pos):
+        """
+        Creates a string from as pos tuple
+        """
+        return chr(pos[1]+97) + str(pos[0]+1)
 
     def stringify_nets(self, player):
         """

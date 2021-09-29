@@ -38,6 +38,10 @@ class DungeonState(AttackState):
 
         # fill success reply
         self.reply["valid"] = True
+        self.reply["result"] = "MOVE"
+        self.reply["monster"] = monster.name
+        self.reply["origin"] = cmd["origin"]
+        self.reply["dest"] = cmd["dest"]
         return self.reply, self
 
     def run_attack_command(self, cmd):
@@ -76,6 +80,7 @@ class DungeonState(AttackState):
 
         # fill success reply
         self.reply["valid"] = True
+        self.reply["result"] = "ENDTURN"
         self.reply["flags"].append("PLAYERSWITCH")
         self.reply["flags"].append("NEWTURN")
         from duel.roll_state import RollState

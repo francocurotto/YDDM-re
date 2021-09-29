@@ -18,11 +18,12 @@ class RollState(DuelState):
         # get the dice list
         dicelist = self.get_dicelist(cmd["dice"])
         sides = self.roll_dice(dicelist)
-        self.player.rolls.append(sides)
         nextstate = self.get_nextstate(dicelist, sides)
 
         # fill success reply
         self.reply["valid"] = True
+        self.reply["result"] = "ROLL"
+        self.reply["roll"] = [s.serialize() for s in sides]
         return self.reply, nextstate
 
     def get_dicelist(self, intlist):
