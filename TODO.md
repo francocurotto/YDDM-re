@@ -12,7 +12,6 @@
     - GUARD
     - WAIT
 - docs: update reply_doc
-- imporve flags: --cmd, --curses, --emoji, --unicode, --ascii
 
 ### CHECKS
 - test cursescli

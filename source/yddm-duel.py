@@ -35,12 +35,21 @@ parser.add_argument("-n2", "--name2",
 parser.add_argument("-p2", "--pool2", 
     default="dicesets/starter.yaml", dest="poolfile2",
     help="Player 2 pool file")
-parser.add_argument("-i", "--icons", choices=icontypes,
-    default="emoji", dest="icontype", 
-    help="Type of icons to use.")
-parser.add_argument("-c", "--client", choices=clients.keys(),
-    default="curses", dest="client", 
-    help="Client for user interface.")
+icongroup = parser.add_mutually_exclusive_group()
+icongroup.add_argument("--ascii", action="store_const", 
+    const="ascii", dest="icontype", help="Use ascii icons")
+icongroup.add_argument("--unicode", action="store_const", 
+    const="unicode", dest="icontype",
+    help="Use unicode icons")
+icongroup.add_argument("--emoji", action="store_const", 
+    const="emoji", dest="icontype", help="Use emoji icons")
+clientgroup = parser.add_mutually_exclusive_group()
+clientgroup.add_argument("--cmd", action="store_const", 
+    const="cmd", dest="client", 
+    help="Use commandline client")
+clientgroup.add_argument("--curses", action="store_const", 
+    const="curses", dest="client", help="Use curses client")
+parser.set_defaults(icontype="emoji", client="curses")
 args = parser.parse_args()
 
 clients[args.client](args).run()
