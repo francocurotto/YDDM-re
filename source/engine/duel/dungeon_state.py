@@ -69,6 +69,7 @@ class DungeonState(AttackState):
     
         # fill success reply
         self.reply["valid"] = True
+        self.reply["monster"] = monster.name
         return self.reply, nextstate
 
     def run_endturn_command(self, cmd):
@@ -93,16 +94,22 @@ class DungeonState(AttackState):
         Run the attack from a player monster to an opponent
         monster.
         """
+        # fill reply
+        self.reply["target"] = target.name
+        self.reply["power"] = monster.get_attack_power(target)
+        self.reply["advantage"] = get_advantage_string(
+            monster,target)
+
         # if opponent can defend, go to next state
         if self.opponent.crestpool.defense > 0:
+            self.reply["result"] = "REPLYATTACK"
             self.reply["flags"].append("PLAYERSWITCH")
             from duel.reply_state import ReplyState
             return ReplyState(self.duel, self.player, 
                 self.opponent, monster, target)
 
         # if opponent cannot defend, continue with attack
-        self.reply["message"] += "\n" + self.opponent.name +\
-            " cannot defend\n"
+        self.reply["result"] = "DIRECTATTACK"
         self.run_undefended_attack(monster, target)
         return self
 
@@ -112,6 +119,9 @@ class DungeonState(AttackState):
         monster lord.
         """
         monster.attack_ml(self.opponent)
+
+        # fill reply
+        self.reply["result"] = "MLATTACK"
 
         # check for opponent loss
         if self.opponent.ml.hearts <= 0:
@@ -173,3 +183,14 @@ class DungeonState(AttackState):
         """
         if monster.cooldown:
             raise MonsterInCooldown(monster.name)
+
+def get_advantage_string(monster, target):
+    """
+    Returns the advantage string representing the advantage
+    of the attacker monster over the target.
+    """
+    if monster.has_advantage(target):
+        return "ADV"
+    elif monster.has_disadvantage(target):
+        return "DAV"
+    return "NOA"

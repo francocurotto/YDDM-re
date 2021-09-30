@@ -11,8 +11,6 @@ class AttackState(DuelState):
         """
         # deal damage
         damage = monster.attack_monster(target)
-        self.reply["message"] += target.name + \
-            " received " + str(damage) + " damage"
         # check for monster death
         self.check_monster_death(target)
 
@@ -21,8 +19,8 @@ class AttackState(DuelState):
         Check if monster is death. If True, remove from duel
         and add message to reply.
         """
+        reply["kill"] = False
         if monster.is_dead():
             self.duel.remove_summon(monster)
-            self.reply["message"] += "\n" + monster.name + \
-                " is dead"
+            reply["kill"] = True
         

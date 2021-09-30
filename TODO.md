@@ -6,8 +6,6 @@
 
 ### IMPROVEMENTS
 - engine: remove message and message related flags from reply?
-    - MLATTACK
-    - DIRECTATTACK
     - REPLYATTACK
     - GUARD
     - WAIT

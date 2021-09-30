@@ -32,7 +32,7 @@ The rest of the keys depend of the command excecuted:
 - `advantage`:
     - `"ADV"`: attacker has advantage over target 
     - `"DAV"`: attacker has disadvantage over target 
-    - `"NONE"`: no advantage or disadvantage
+    - `"NOA"`: no advantage or disadvantage
 - `power`: power amount of attack
 - `kill`: True if target is killed
 
