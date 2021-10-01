@@ -15,8 +15,8 @@ class Replier():
             "MLATTACK"     : self.gen_ml_attack,
             "DIRCETATTACK" : self.gen_direct_attack,
             "REPLYATTACK"  : self.gen_reply_attack,
-            #"GUARD"        : self.gen_guard,
-            #"WAIT"         : self.gen_wait,
+            "GUARD"        : self.gen_guard,
+            "WAIT"         : self.gen_wait,
             "ENDTURN" : self.gen_endturn}
 
     def gen_string(self, reply):
@@ -26,9 +26,12 @@ class Replier():
         return self.resultdict[reply["result"]](reply)
 
     def gen_roll(self, reply):
-       roll = reply["roll"]
-       string = self.stringifier.stringify_roll(roll)
-       return "Go Dice Roll! "  + string
+        roll = reply["roll"]
+        string = ""
+        if reply["hitlimit"]:
+            string += "No more dice dimensions allowed\n"
+        roll_string = self.stringifier.stringify_roll(roll)
+        return string + "Go Dice Roll! " + roll_string
 
     def gen_dim(self, reply):
         return "Dimension The Dice!"
@@ -63,30 +66,76 @@ class Replier():
                 " is the winner!"
         return string
 
-    def gen_direct_attack(selg, reply):
-        string = ""
-        monster = reply["monster"]
+    def gen_direct_attack(self, reply):
+        opponent = self.engine.dsm.state.opponent.name
+        # get attack preamble
+        string = self.gen_attack_preamble(reply)
+        # add nondefendig message
+        string += "\n" + opponent + " cannot defend\n"
+        # add damage message
         target = reply["target"]
         power = reply["power"]
-        opponent = self.engine.dsm.state.opponent.name
+        kill = reply["kill"]
+        string += self.gen_damage(target, power, kill, False)
+        return string
+
+    def gen_reply_attack(self, reply):
+        return self.gen_attack_preamble(reply)
+
+    def gen_guard(self, reply):
+        monster = reply["monster"]
+        target = reply["target"]
+        defense = reply["defense"]
+        retaliation = reply["retaliation"]
+        damage = reply["damage"]
+        kill = reply["kill"]
+        # add defend message
+        string = target + " defends " + "with " + \
+            str(defense) + "\n"
+        # add damage message
+        if damage == 0:
+           string += "No damage inflicted"
+        elif retaliation:
+            string += self.gen_damage(monster, damage, kill,
+                True)
+        else:
+            string += self.gen_damage(target, damage, kill,
+                False)
+        return string
+
+    def gen_wait(self, reply):
+        target = reply["target"]
+        power = reply["power"]
+        kill = reply["kill"]
+        return self.gen_damage(target, power, kill, False)
+
+    def gen_attack_preamble(self, reply):
+        monster = reply["monster"]
+        target = reply["target"]
+        advantage = reply["advantage"]
+        power = reply["power"]
+        string = ""
         # distinguish between adv, disadv, and neutral
-        if "ADV" in reply["advantage"]:
+        if "ADV" in advantage:
              string += monster +  " has advantage over " + \
                 target + "\n"
-        if "DAV" in reply["advantage"]:
+        if "DAV" in advantage:
              string += monster + " has disadvantage over " +\
                 target + "\n"
         # get attack power
         string += monster + " attacks " + target + \
             " with " + str(power)
-        # add nondefendig message
-        string += "\n" + opponent + " cannot defend\n"
+        return string
+        
+    def gen_damage(self, damaged, damage, kill, retaliation):
         # add damage message
-        string += target + " received " + str(power) + \
+        string = damaged + " received " + str(damage) + \
             " damage"
+        if retaliation:
+            string += " in retaliation"
         # add kill message
-        if reply["kill"]:
-            string += "\n" + monster + " is dead"
+        if kill:
+            string += "\n" + damaged + " is dead"
         return string
 
     def gen_endturn(self, reply):

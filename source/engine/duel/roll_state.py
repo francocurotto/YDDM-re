@@ -83,9 +83,9 @@ class RollState(DuelState):
         available to dimension and the player has not hit the
         dimension limit.
         """
+        self.reply["dimlimit"] = False
         if self.player.hit_dim_limit():
-            self.reply["message"] += "No more dice " + \
-                "dimensions allowed\n"
+            self.reply["dimlimit"] = True
             return False
         return dimdice
                     

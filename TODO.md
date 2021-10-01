@@ -5,11 +5,7 @@
 - network support
 
 ### IMPROVEMENTS
-- engine: remove message and message related flags from reply?
-    - REPLYATTACK
-    - GUARD
-    - WAIT
-- docs: update reply_doc
+- remove flags from reply dict?
 
 ### CHECKS
 - test cursescli

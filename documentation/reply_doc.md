@@ -11,6 +11,7 @@ The rest of the keys depend of the command excecuted:
 ## ROLL
 - `roll`: list of sides rolled:
     - {`"crest"`:name of crest, `"mult"`:multiplier of side}
+- `dimlimit`: True if player has hit dice dimension limit
 
 ## DIM 
 (no extra keys)
@@ -34,6 +35,7 @@ The rest of the keys depend of the command excecuted:
     - `"DAV"`: attacker has disadvantage over target 
     - `"NOA"`: no advantage or disadvantage
 - `power`: power amount of attack
+- `damage`: damage amount
 - `kill`: True if target is killed
 
 ## REPLYATTACK

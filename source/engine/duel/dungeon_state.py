@@ -96,9 +96,9 @@ class DungeonState(AttackState):
         """
         # fill reply
         self.reply["target"] = target.name
-        self.reply["power"] = monster.get_attack_power(target)
         self.reply["advantage"] = get_advantage_string(
             monster,target)
+        self.reply["power"] = monster.get_attack_power(target)
 
         # if opponent can defend, go to next state
         if self.opponent.crestpool.defense > 0:
