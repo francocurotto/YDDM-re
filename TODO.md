@@ -5,11 +5,14 @@
 - network support
 
 ### IMPROVEMENTS
+- only print no dimension allowed when roll dimension?
+- check if position is occupied when moving to improve performace
 
 ### CHECKS
-- test cursescli
 
 ### FIXES
+- retaliation damage bug?
+- monster death after no dmage inflicted???
 - trim tea and tristan pools to 15 dice
 
 ### ENABLE
