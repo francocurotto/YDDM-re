@@ -19,8 +19,8 @@ class AttackState(DuelState):
         """
         Check if monster is death. If True, remove from duel.
         """
-        reply["kill"] = False
+        self.reply["kill"] = False
         if monster.is_dead():
             self.duel.remove_summon(monster)
-            reply["kill"] = True
+            self.reply["kill"] = True
         

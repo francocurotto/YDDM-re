@@ -24,6 +24,8 @@ class ReplyState(AttackState):
         from duel.dungeon_state import DungeonState
         nextstate = DungeonState(self.duel, self.player, 
             self.opponent)
+        self.reply["valid"] = True
+        self.reply["result"] = "WAIT"
         return self.reply, nextstate
 
     def run_guard_command(self, cmd):
@@ -38,6 +40,7 @@ class ReplyState(AttackState):
         retal = True if damaged is self.monster else False
 
         # finish reply and next state
+        self.reply["valid"] = True
         self.reply["result"] = "GUARD"
         self.reply["monster"] = self.monster.name
         self.reply["target"] = self.target.name

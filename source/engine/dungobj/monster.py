@@ -82,7 +82,7 @@ class Monster(Summon):
             return self.attack + 10
         # case disadvantage
         elif self.has_disadvantage(target):
-            return min(self.attack - 10, 0)
+            return max(self.attack - 10, 0)
         # case neutral
         else:
             return self.attack

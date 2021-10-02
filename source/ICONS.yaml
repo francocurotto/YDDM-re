@@ -97,8 +97,8 @@ emoji:
     MONSTER_HEART : "❤️ "
     # monster lord icons
     MONSTER_LORD : "👑"
-    HEART_P1     : "❤️ "
-    HEART_P2     : "💙"
+    HEART_P1     : "💙"
+    HEART_P2     : "❤️ "
     NOHEART      : "🖤"
     # monster lord color style
     COLORS_HEART_P1 : []

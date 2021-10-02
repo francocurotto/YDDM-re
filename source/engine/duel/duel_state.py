@@ -6,6 +6,7 @@ class DuelState():
         self.duel = duel
         self.player = player
         self.opponent = opponent
+        self.errors = ()
 
     def update(self, cmd):
         """

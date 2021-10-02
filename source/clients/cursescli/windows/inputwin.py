@@ -6,9 +6,9 @@ class InputWin(Window):
     Window for user input.
     """
     def __init__(self, parwin, y ,x):
-        super().__init__(parwin, 1, 21, y, x)
+        super().__init__(parwin, 1, 22, y, x)
         # add textbox
-        self.boxwin = create_derwin(self.win, 1, 18, 0, 3)
+        self.boxwin = create_derwin(self.win, 1, 19, 0, 3)
         self.textbox = Textbox(self.boxwin)
 
     def update(self, engine, stringifier):

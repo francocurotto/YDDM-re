@@ -13,7 +13,7 @@ class Replier():
             "SKIP"         : self.gen_skip,
             "MOVE"         : self.gen_move,
             "MLATTACK"     : self.gen_ml_attack,
-            "DIRCETATTACK" : self.gen_direct_attack,
+            "DIRECTATTACK" : self.gen_direct_attack,
             "REPLYATTACK"  : self.gen_reply_attack,
             "GUARD"        : self.gen_guard,
             "WAIT"         : self.gen_wait,
@@ -28,7 +28,7 @@ class Replier():
     def gen_roll(self, reply):
         roll = reply["roll"]
         string = ""
-        if reply["hitlimit"]:
+        if reply["dimlimit"]:
             string += "No more dice dimensions allowed\n"
         roll_string = self.stringifier.stringify_roll(roll)
         return string + "Go Dice Roll! " + roll_string
@@ -55,7 +55,7 @@ class Replier():
         ml = self.engine.dsm.state.opponent.ml
         # add attack message
         string = monster + " attacks " + opponent + \
-            " monster lord"
+            " monster lord\n"
         # add monster lord
         string += self.stringifier.stringify_monster_lord(
             self.engine.duel, ml)
@@ -75,8 +75,9 @@ class Replier():
         # add damage message
         target = reply["target"]
         power = reply["power"]
+        damage = reply["damage"]
         kill = reply["kill"]
-        string += self.gen_damage(target, power, kill, False)
+        string += self.gen_damage(target, damage, kill, False)
         return string
 
     def gen_reply_attack(self, reply):
@@ -105,9 +106,9 @@ class Replier():
 
     def gen_wait(self, reply):
         target = reply["target"]
-        power = reply["power"]
+        damage = reply["damage"]
         kill = reply["kill"]
-        return self.gen_damage(target, power, kill, False)
+        return self.gen_damage(target, damage, kill, False)
 
     def gen_attack_preamble(self, reply):
         monster = reply["monster"]
