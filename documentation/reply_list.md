@@ -6,8 +6,12 @@ The reply is a dictionary returned by the "update" function of the engine. It gi
 
 # Reply Keys when valid=True
 - `result`: Name of the result of the command. 
+- `flags`: list of reply flags. Flags are indicator of an event ocurred during the the excecution of the command. The flags are:
+    - `NEWTURN`: used when a new turn starts
+    - `PLAYERSWITCH`: used when the control of the duel is switched between players
+    - `ENDDUEL`: used when the duel ends
 
-The rest of the keys depend of the command excecuted:
+The rest of the keys depend on the result:
 ## ROLL
 - `roll`: list of sides rolled:
     - {`"crest"`:name of crest, `"mult"`:multiplier of side}
