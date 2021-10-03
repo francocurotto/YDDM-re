@@ -69,7 +69,7 @@ class Monster(Summon):
         # retaliation damage in attacker monster
         elif power < target.defense:
             damage = target.defense - power
-            target.life -= damage
+            self.life -= damage
             return damage, self
 
     def get_attack_power(self, target):
