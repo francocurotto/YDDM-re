@@ -5,7 +5,6 @@
 - network support
 
 ### IMPROVEMENTS
-- check if position is occupied when moving to improve performace
 
 ### CHECKS
 

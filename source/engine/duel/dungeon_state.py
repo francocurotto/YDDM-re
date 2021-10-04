@@ -2,6 +2,7 @@ from duel.attack_state import AttackState
 from dungeon.dicenets.pos import Pos
 from errors import NotPlayerMonster
 from errors import NotOpponentTarget
+from errors import TileOccupied
 from errors import AttackOutOfRange
 from errors import MonsterInCooldown
 from errors import NotPathFound
@@ -19,7 +20,7 @@ class DungeonState(AttackState):
                         "ATTACK"  : self.run_attack_command,
                         "ENDTURN" : self.run_endturn_command}
         self.errors = (NotDungeonTile, NotPlayerMonster,
-            NotOpponentTarget, NotPathFound, 
+            NotOpponentTarget, TileOccupied, NotPathFound, 
             AttackOutOfRange, MonsterInCooldown,
             NotEnoughCrests)
         
@@ -32,6 +33,7 @@ class DungeonState(AttackState):
         
         # move monster
         monster = self.get_player_monster(origin)
+        self.check_pos_unoccupied(dest)
         path = self.get_path(origin, dest)
         self.pay_movement_cost(path)
         self.duel.dungeon.move_dungobj(origin, dest)
@@ -134,7 +136,7 @@ class DungeonState(AttackState):
     def get_player_monster(self, pos):
         """
         Get player monster at position pos. If no player
-        monster in pos, return exception.
+        monster in pos, raise exception.
         """
         monster = self.duel.dungeon.get_content(pos)
         if monster not in self.player.monsters:
@@ -143,14 +145,22 @@ class DungeonState(AttackState):
 
     def get_opponent_target(self, pos):
         """
-        Get opponent targer at position pos. If no opponent
-        target in pos, return exception.
+        Get opponent target at position pos. If no opponent
+        target in pos, raise exception.
         """
         target = self.duel.dungeon.get_content(pos)
         if target not in self.opponent.monsters and \
             target is not self.opponent.ml:
             raise NotOpponentTarget(pos.totuple())
         return target
+
+    def check_pos_unoccupied(self, pos):
+        """
+        Check if position is not ocuppied. Raise exception
+        if occupied.
+        """
+        if self.duel.dungeon.get_tile(pos).is_occupied():
+            raise TileOccupied(pos.totuple())
 
     def get_path(self, origin, dest):
         """

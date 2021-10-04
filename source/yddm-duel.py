@@ -11,10 +11,6 @@ sys.path.append("./clients")
 from cmdcli.cmd_client import CmdClient
 from cursescli.curses_client import CursesClient
 
-# get available icons
-icons = yaml.full_load(open("ICONS.yaml"))
-icontypes = list(icons.keys())
-
 # dict of available clients
 clients = {"cmd":CmdClient, "curses":CursesClient}
 

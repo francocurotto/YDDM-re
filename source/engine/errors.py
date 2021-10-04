@@ -27,6 +27,13 @@ position.
 args[0]: position.
 """
 
+class TileOccupied(Exception): pass
+"""
+Raised when tile at specified position occupied when a 
+vacant tile is expected.
+args[0]: position.
+"""
+
 class AttackOutOfRange(Exception): pass
 """
 Raised when an attack is out of range.

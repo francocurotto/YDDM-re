@@ -12,6 +12,7 @@ class ErrorReplier():
             "OOBDinIndex"       : self.gen_OOBDimIndex,
             "NotPlayerMonster"  : self.gen_NotPlayerMonster,
             "NotOpponentTarget" : self.gen_NotOpponentTarget,
+            "TileOccupied"      : self.gen_TileOccupied,
             "AttackOutOfRange"  : self.gen_AttackOutOfRange,
             "MonsterInCooldown" : self.gen_MonsterInCooldown,
             "NotPathFound"      : self.gen_NotPathFound,
@@ -45,6 +46,9 @@ class ErrorReplier():
 
     def gen_NotOpponentTarget(self, args):
         return "No opponent target at " + strpos(args[0])
+
+    def gen_TileOccupied(self, args):
+        return "Tile occupied at " + strpos(args[0])
 
     def gen_AttackOutOfRange(self, args):
        return "Attack is out of range"
