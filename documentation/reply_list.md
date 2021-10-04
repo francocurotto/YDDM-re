@@ -15,7 +15,6 @@ The rest of the keys depend on the result:
 ## ROLL
 - `roll`: list of sides rolled:
     - {`"crest"`:name of crest, `"mult"`:multiplier of side}
-- `dimlimit`: True if player has hit dice dimension limit
 
 ## DIM 
 (no extra keys)

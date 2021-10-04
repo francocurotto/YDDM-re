@@ -5,7 +5,6 @@
 - network support
 
 ### IMPROVEMENTS
-- remove dimlimit from reply
 - check if position is occupied when moving to improve performace
 
 ### CHECKS

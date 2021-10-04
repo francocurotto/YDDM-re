@@ -28,7 +28,7 @@ class Replier():
     def gen_roll(self, reply):
         roll = reply["roll"]
         string = ""
-        if reply["dimlimit"]:
+        if self.engine.dsm.state.player.hit_dim_limit():
             string += "No more dice dimensions allowed\n"
         roll_string = self.stringifier.stringify_roll(roll)
         return string + "Go Dice Roll! " + roll_string
