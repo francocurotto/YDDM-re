@@ -1,6 +1,5 @@
 # standard imports
 import sys
-import yaml
 import argparse
 
 # add to python path
