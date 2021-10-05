@@ -1,13 +1,14 @@
 # standard imports
 import sys
 import argparse
+import urwid
 
 # add to python path
 sys.path.append("./engine")
-sys.path.append("./clients/urwidcli")
+sys.path.append("./clients")
 
 # internal imports
-# from poolbuilder import PoolBuilder
+from urwidcli.poolbuilder import PoolBuilder
 
 # create parser
 parser = argparse.ArgumentParser()
@@ -27,4 +28,5 @@ icongroup.add_argument("--emoji", action="store_const",
 parser.set_defaults(icontype="emoji")
 args = parser.parse_args()
 
-#PoolBuilder(args).run()
+# start urwid loop
+urwid.MainLoop(PoolBuilder(args)).run()
