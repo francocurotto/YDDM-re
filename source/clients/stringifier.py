@@ -44,31 +44,52 @@ class Stringifier():
         string = dice.card.name[:self.NAMECROP]
         # whitespace to fill chars if name is too short
         string = string.ljust(self.NAMECROP+1)
-        # summon type icon
-        string += self.icons["TYPE_"+dice.card.type]
+        # type+level+ability
+        string += self.stringify_type(dice)
         # level value
-        string += str(dice.level)
         if dice.card.is_monster():
-            # ability icon
-            string += "   " # TODO: add ability icon
-            # attack value
-            string += str(dice.card.attack).rjust(2)
-            #attack icon
-            string += self.icons["CREST_ATTACK"] + " "
-            # defense value
-            string += str(dice.card.defense).rjust(2)
-            # defense icon
-            string += self.icons["CREST_DEFENSE"] + " "
-            # life value
-            string += str(dice.card.life) 
-            # life icon
-            string += self.icons["MONSTER_HEART"] + " "
+            string += self.stringify_attack(dice) + " "
+            string += self.stringify_defense(dice) + " "
+            string += self.stringify_life(dice) + " "
         else: # is item, hence, add align space
             if self.icontype.startswith("emoji"):
-                string += 18*" "
-            else: # if no emoji icons, correct align
                 string += 15*" "
+            else: # if no emoji icons, correct align
+                string += 12*" "
         string += self.stringify_sides(dice)
+        return string
+
+    def stringify_type(self, dice):
+        """
+        Creates string version of type of dice.
+        """
+        string = self.icons["TYPE_"+dice.card.type]
+        string += str(dice.level)
+        string += "   " # TODO: add ability icon
+        return string
+
+    def stringify_attack(self, dice):
+        """
+        Creates string version of attack of dice.
+        """
+        string = str(dice.card.attack).rjust(2)
+        string += self.icons["CREST_ATTACK"]
+        return string
+
+    def stringify_defense(self, dice):
+        """
+        Creates string version of attack of dice.
+        """
+        string = str(dice.card.defense).rjust(2)
+        string += self.icons["CREST_DEFENSE"]
+        return string
+
+    def stringify_life(self, dice):
+        """
+        Creates string version of life of dice.
+        """
+        string = str(dice.card.life).rjust(2)
+        string += self.icons["MONSTER_HEART"]
         return string
 
     def stringify_sides(self, dice):

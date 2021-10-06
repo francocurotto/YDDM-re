@@ -14,7 +14,8 @@ class PoolBuilder(urwid.Columns):
         # create stringifier
         stringifier = Stringifier(args.icontype)
         # create main widgets
-        self.library = Library(library)
+        self.library = urwid.LineBox(
+            Library(library, stringifier), "Library", "left")
         #self.pool = Pool(pool, stringifier)
         #self.diceinfo = DiceInfo(sringifier)
         super().__init__([self.library])

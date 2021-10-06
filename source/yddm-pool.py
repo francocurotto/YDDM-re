@@ -15,7 +15,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-l", "--library", 
     default="LIBRARY.yaml", dest="library", 
     help="Dice library file location")
-parser.add_argument("-p", "--pool", default=None, dest="pool",
+parser.add_argument("-p", "--pool", 
+    default="dicesets/starter.yaml", dest="pool",
     help="Pool file to create/modify")
 icongroup = parser.add_mutually_exclusive_group()
 icongroup.add_argument("--ascii", action="store_const", 

@@ -1,5 +1,6 @@
 ### TODO
 - urwid pool builder
+    - fix linebox misalignment in library
 - predefined dungeons for testing
 - abilities!!
 - network support
