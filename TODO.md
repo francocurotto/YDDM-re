@@ -1,11 +1,11 @@
 ### TODO
 - urwid pool builder
-    - fix linebox misalignment in library
 - predefined dungeons for testing
 - abilities!!
 - network support
 
 ### IMPROVEMENTS
+- make urwid work with emojis
 
 ### CHECKS
 
