@@ -45,7 +45,7 @@ class Stringifier():
         # whitespace to fill chars if name is too short
         string = string.ljust(self.NAMECROP+1)
         # type+level+ability
-        string += self.stringify_type(dice)
+        string += self.stringify_type(dice) + " "
         # level value
         if dice.card.is_monster():
             string += self.stringify_attack(dice) + " "
@@ -65,7 +65,7 @@ class Stringifier():
         """
         string = self.icons["TYPE_"+dice.card.type]
         string += str(dice.level)
-        string += "   " # TODO: add ability icon
+        string += "  " # TODO: add ability icon
         return string
 
     def stringify_attack(self, dice):

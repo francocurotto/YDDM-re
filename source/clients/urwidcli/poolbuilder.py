@@ -3,7 +3,7 @@ from engine import create_library, create_dicepool
 from stringifier import Stringifier
 from urwidcli.dice_widgets.library import Library
 
-class PoolBuilder(urwid.Columns):
+class PoolBuilder(urwid.Frame):
     """
     Main class of the pool builder implemented in urwid.
     """
@@ -16,6 +16,10 @@ class PoolBuilder(urwid.Columns):
         # create main widgets
         self.library = urwid.LineBox(
             Library(library, stringifier), "Library", "left")
+        #self.library = Library(library, stringifier)
         #self.pool = Pool(pool, stringifier)
         #self.diceinfo = DiceInfo(sringifier)
-        super().__init__([self.library])
+        # create container widgets
+        self.columns = urwid.Columns([(78,self.library)])
+        #self.columns = urwid.Columns([(66,self.library)])
+        super().__init__(self.columns)
