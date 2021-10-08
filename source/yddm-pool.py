@@ -26,8 +26,9 @@ icongroup.add_argument("--unicode", action="store_const",
     help="Use unicode icons")
 icongroup.add_argument("--emoji", action="store_const", 
     const="emoji", dest="icontype", help="Use emoji icons")
-parser.set_defaults(icontype="emoji")
+parser.set_defaults(icontype="unicode")
 args = parser.parse_args()
 
 # start urwid loop
-urwid.MainLoop(PoolBuilder(args)).run()
+palette = [("focused", "standout", "")]
+urwid.MainLoop(PoolBuilder(args), palette).run()

@@ -39,13 +39,13 @@ ascii:
 
 unicode:
     # type icons
-    TYPE_DRAGON      : "DR"
-    TYPE_SPELLCASTER : "SP"
-    TYPE_UNDEAD      : "UN"
-    TYPE_BEAST       : "BE"
-    TYPE_WARRIOR     : "WA"
-    TYPE_ITEM        : "IT"
-    TYPE_SUMMON      : "??"
+    TYPE_DRAGON      : "Ⓓ "
+    TYPE_SPELLCASTER : "Ⓢ "
+    TYPE_UNDEAD      : "Ⓤ "
+    TYPE_BEAST       : "Ⓑ "
+    TYPE_WARRIOR     : "Ⓦ "
+    TYPE_ITEM        : "Ⓘ "
+    TYPE_SUMMON      : "Ⓧ "
     # crest icons
     CREST_SUMMON   : "★"
     CREST_MOVEMENT : "⬆"
@@ -56,7 +56,7 @@ unicode:
     # monster icons
     MONSTER_HEART : "♥"
     # monster lord icons
-    MONSTER_LORD : "♚♛"
+    MONSTER_LORD : "Ⓛ "
     HEART_P1     : "♥"
     HEART_P2     : "♥"
     NOHEART      : "♡"

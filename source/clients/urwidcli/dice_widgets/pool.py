@@ -1,15 +1,15 @@
 import urwid
 from urwidcli.dice_widgets.dice import Dice
 
-class Library(urwid.ListBox):
+class Pool(urwid.ListBox):
     """
-    Displays a library.
+    Displays a dice pool.
     """
-    def __init__(self, library, stringifier):
+    def __init__(self, pool, stringifier):
         # generate widget list
         widgetlist = []
-        for dice in library.values():
-            index = str(dice.id).rjust(3) + "."
+        for i, dice in enumerate(pool):
+            index = str(i+1).rjust(2) + "."
             widgetlist.append(Dice(index, dice, stringifier))
 
         # create walker
