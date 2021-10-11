@@ -38,6 +38,13 @@ class PoolBuilder(urwid.Frame):
         super().keypress(size, key)
         self.update_diceinfo()
 
+        # handle space (dice movement)
+        if key == " ":
+            if self.library in self.get_focus_widgets():
+                self.add_dice_to_pool()
+            if self.pool in self.get_focus_widgets():
+                self.remove_dice_to_pool()
+
     def mouse_event(self, size, event, button, col, row, 
         focus):
         super().mouse_event(size, event, button, col, row,
