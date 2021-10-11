@@ -13,28 +13,30 @@ class Dice(urwid.AttrMap):
         colwidgets.append(("pack", urwid.Text(index)))
 
         # create name widget
-        namewid = DiceName(dice.card.name, wrap="clip")
+        namewid = DiceName(self.dice.card.name, wrap="clip")
         colwidgets.append(namewid)
         #colwidgets.append((stringifier.NAMECROP, namewid))
 
         # create type widget
-        typestr = stringifier.stringify_type(dice)
+        typestr = stringifier.stringify_type(self.dice)
         typewid = urwid.Text(typestr, wrap="clip")
         colwidgets.append(("pack", typewid))
 
-        if dice.card.is_monster():
+        if self.dice.card.is_monster():
             # create attack widget
-            attackstr = stringifier.stringify_attack(dice)
+            attackstr = stringifier.stringify_attack(
+                self.dice)
             attackwid = urwid.Text(attackstr, wrap="clip")
             colwidgets.append(("pack", attackwid))
 
             # create defense widget
-            defensestr = stringifier.stringify_defense(dice)
+            defensestr = stringifier.stringify_defense(
+                self.dice)
             defensewid = urwid.Text(defensestr)
             colwidgets.append(("pack", defensewid))
 
             # create life widget
-            lifestr = stringifier.stringify_life(dice)
+            lifestr = stringifier.stringify_life(self.dice)
             lifewid = urwid.Text(lifestr)
             colwidgets.append(("pack", lifewid))
         else: # is item, hence, add align widgets
@@ -43,7 +45,7 @@ class Dice(urwid.AttrMap):
                 colwidgets.append(("pack", alignwid))
 
         # create sides widget
-        sidesstr = stringifier.stringify_sides(dice)
+        sidesstr = stringifier.stringify_sides(self.dice)
         sideswid = urwid.Text(sidesstr,wrap="clip")
         colwidgets.append(("pack", sideswid))
 

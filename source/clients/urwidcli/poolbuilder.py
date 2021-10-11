@@ -4,6 +4,7 @@ from stringifier import Stringifier
 from urwidcli.dice_widgets.library import Library
 from urwidcli.dice_widgets.pool import Pool
 from urwidcli.dice_widgets.diceinfo import DiceInfo
+from urwidcli.dice_widgets.dice import Dice
 
 class PoolBuilder(urwid.Frame):
     """
@@ -35,14 +36,26 @@ class PoolBuilder(urwid.Frame):
 
     def keypress(self, size, key):
         super().keypress(size, key)
+        self.update_diceinfo()
 
-        # update diceinfo widget
+    def mouse_event(self, size, event, button, col, row, 
+        focus):
+        super().mouse_event(size, event, button, col, row,
+            focus)
         self.update_diceinfo()
 
     def update_diceinfo(self):
         """
         Update dice info widget with current dice in focus.
         """
-        dice = self.get_focus_widgets()[-2].dice
+        dice = self.get_focused_dice()
         self.diceinfo.base_widget.update(dice)
 
+    def get_focused_dice(self):
+        """
+        Get the dice that is currently selected, either in
+        library or in pool.
+        """
+        for widget in self.get_focus_widgets():
+            if isinstance(widget, Dice):
+                return widget.dice
