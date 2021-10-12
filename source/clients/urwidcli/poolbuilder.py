@@ -19,31 +19,33 @@ class PoolBuilder(urwid.Frame):
         stringifier = Stringifier(args.icontype)
         
         # create main widgets
-        self.library = urwid.LineBox(
-            Library(library, stringifier), "Library", "left")
-        self.pool = urwid.LineBox(
-            Pool(pool, stringifier), "Dice Pool", "left")
-        self.diceinfo = urwid.LineBox(urwid.Filler(
-            DiceInfo(library[1], stringifier), "top"), 
-            "Dice Info", "left")
+        self.library = Library(library, stringifier)
+        self.boxlibrary = urwid.LineBox(self.library , 
+            "Library", "left")
+        self.pool = Pool(pool, stringifier)
+        self.boxpool = urwid.LineBox(self.pool, "Dice Pool",
+            "left")
+        self.diceinfo = DiceInfo(library[1], stringifier)
+        self.boxdiceinfo = urwid.LineBox(urwid.Filler(
+            self.diceinfo, "top"), "Dice Info", "left")
         
         # create container widgets
-        self.rightcol = urwid.Pile([(17,self.pool), 
-            self.diceinfo])
-        self.columns = urwid.Columns([self.library, 
+        self.rightcol = urwid.Pile([(17,self.boxpool), 
+            self.boxdiceinfo])
+        self.columns = urwid.Columns([self.boxlibrary, 
             self.rightcol])
         super().__init__(self.columns)
 
     def keypress(self, size, key):
-        super().keypress(size, key)
-        self.update_diceinfo()
-
         # handle space (dice movement)
         if key == " ":
-            if self.library in self.get_focus_widgets():
+            if self.boxlibrary in self.get_focus_widgets():
                 self.add_dice_to_pool()
-            if self.pool in self.get_focus_widgets():
-                self.remove_dice_to_pool()
+            if self.boxpool in self.get_focus_widgets():
+                self.remove_dice_from_pool()
+
+        super().keypress(size, key)
+        self.update_diceinfo()
 
     def mouse_event(self, size, event, button, col, row, 
         focus):
@@ -55,14 +57,28 @@ class PoolBuilder(urwid.Frame):
         """
         Update dice info widget with current dice in focus.
         """
-        dice = self.get_focused_dice()
-        self.diceinfo.base_widget.update(dice)
+        dicewid = self.get_focused_dicewid()
+        self.diceinfo.update(dicewid.dice)
 
-    def get_focused_dice(self):
+    def get_focused_dicewid(self):
         """
         Get the dice that is currently selected, either in
         library or in pool.
         """
         for widget in self.get_focus_widgets():
             if isinstance(widget, Dice):
-                return widget.dice
+                return widget
+
+    def add_dice_to_pool(self):
+        """
+        Add dice focused in library to pool.
+        """
+        dicewid = self.get_focused_dicewid()
+        self.pool.add_dice(dicewid.dice)
+
+    def remove_dice_from_pool(self):
+        """
+        Remove dice focused in pool.
+        """
+        dicewid = self.get_focused_dicewid()
+        self.pool.remove_dice(dicewid)
