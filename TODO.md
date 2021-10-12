@@ -1,6 +1,5 @@
 ### TODO
 - urwid pool builder
-    - add contols banner
     - save pool logic
 - predefined dungeons for testing
 - abilities!!

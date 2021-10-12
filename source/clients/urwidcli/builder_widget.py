@@ -6,7 +6,7 @@ from urwidcli.dice_widgets.pool import Pool
 from urwidcli.dice_widgets.diceinfo import DiceInfo
 from urwidcli.dice_widgets.dice import Dice
 
-class PoolBuilder(urwid.Frame):
+class BuilderWidget(urwid.Frame):
     """
     Main class of the pool builder implemented in urwid.
     """
@@ -34,7 +34,13 @@ class PoolBuilder(urwid.Frame):
             self.boxdiceinfo])
         self.columns = urwid.Columns([self.boxlibrary, 
             self.rightcol])
-        super().__init__(self.columns)
+
+        # create footer widget
+        self.footer = urwid.Text(
+            "↑,↓:Select dice | ←,→:Change list | " +
+            "SPACE:Remove,add dice | q:quit")
+
+        super().__init__(self.columns, footer=self.footer)
 
     def keypress(self, size, key):
         # handle space (dice movement)
