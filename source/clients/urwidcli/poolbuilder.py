@@ -45,19 +45,27 @@ class PoolBuilder(urwid.Frame):
                 self.remove_dice_from_pool()
 
         super().keypress(size, key)
-        self.update_diceinfo()
+        self.update_diceinfo(size)
 
     def mouse_event(self, size, event, button, col, row, 
         focus):
+        if button == 4: # button 4 = scroll up
+            self.keypress(size, "up")
+        if button == 5: # button 4 = scroll down
+            self.keypress(size, "down")
         super().mouse_event(size, event, button, col, row,
             focus)
-        self.update_diceinfo()
+        self.update_diceinfo(size)
 
-    def update_diceinfo(self):
+    def update_diceinfo(self, size):
         """
         Update dice info widget with current dice in focus.
         """
         dicewid = self.get_focused_dicewid()
+        # if no dicewid is focused, move focus to library
+        if not dicewid:
+            super().keypress(size, "left")
+            dicewid = self.get_focused_dicewid()
         self.diceinfo.update(dicewid.dice)
 
     def get_focused_dicewid(self):
@@ -68,6 +76,8 @@ class PoolBuilder(urwid.Frame):
         for widget in self.get_focus_widgets():
             if isinstance(widget, Dice):
                 return widget
+        # if not dice widget found, return None
+        return None
 
     def add_dice_to_pool(self):
         """

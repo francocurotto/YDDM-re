@@ -1,8 +1,6 @@
 ### TODO
 - urwid pool builder
-    - fix zero dice in pool error
     - add contols banner
-    - add mouse wheel control
     - save pool logic
 - predefined dungeons for testing
 - abilities!!
