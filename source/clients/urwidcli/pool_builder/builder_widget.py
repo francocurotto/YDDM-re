@@ -8,7 +8,7 @@ from urwidcli.dice_widgets.dice import Dice
 
 class BuilderWidget(urwid.Frame):
     """
-    Main class of the pool builder implemented in urwid.
+    Main interface to add and remove dice from pool.
     """
     def __init__(self, args):
         # create dice lists

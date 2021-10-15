@@ -8,7 +8,7 @@ sys.path.append("./engine")
 sys.path.append("./clients")
 
 # internal imports
-from urwidcli.builder_widget import BuilderWidget
+from urwidcli.pool_builder.pool_builder import PoolBuilder
 
 # create parser
 parser = argparse.ArgumentParser()
@@ -31,4 +31,4 @@ args = parser.parse_args()
 
 # start urwid loop
 palette = [("focused", "standout", "")]
-urwid.MainLoop(BuilderWidget(args), palette).run()
+urwid.MainLoop(PoolBuilder(args), palette).run()
