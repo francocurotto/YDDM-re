@@ -776,7 +776,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Fly,    Raises defense of all dragon monsters by 10. (In play)
+  ABILITY: Fly, Raises defense of all dragon monsters by 10. (In play)
   CRESTS:  SSSSM2T
 
 79:
@@ -786,7 +786,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Raises defense of all spellcaster monsters by    10. (In play)
+  ABILITY: Raises defense of all spellcaster monsters by 10. (In play)
   CRESTS:  SSSSGG
 
 80:

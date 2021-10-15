@@ -8,8 +8,7 @@
 ### CHECKS
 
 ### FIXES
-- trim tea and tristan pools to 15 dice
-- monster death after no dmage inflicted???
+- monster death after no damage inflicted???
 
 ### IMPOSSIBLE?
 - make urwid work with emojis
