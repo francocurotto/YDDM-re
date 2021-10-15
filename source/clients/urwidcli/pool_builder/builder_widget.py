@@ -13,7 +13,10 @@ class BuilderWidget(urwid.Frame):
     def __init__(self, args):
         # create dice lists
         library = create_library(args.library)
-        pool = create_dicepool(args.pool, library)
+        if not args.pool:
+            pool = []
+        else:
+            pool = create_dicepool(args.pool, library)
 
         # create stringifier
         stringifier = Stringifier(args.icontype)
@@ -43,6 +46,10 @@ class BuilderWidget(urwid.Frame):
         super().__init__(self.columns, footer=self.footer)
 
     def keypress(self, size, key):
+        # pass quitting status to parent
+        if key == "q":
+            return "QUIT"
+            
         # handle space (dice movement)
         if key == " ":
             if self.boxlibrary in self.get_focus_widgets():
