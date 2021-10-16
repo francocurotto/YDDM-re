@@ -30,7 +30,7 @@ class DimState(DuelState):
         # get the selected dice
         dice = self.get_dimdice(cmd["dice"])
         summon = dice.card.summon()
-        self.duel.dungeon.set_net(net,self.player,summon)
+        self.duel.dungeon.set_net(net, self.player, summon)
 
         # add dice to dimensioned dice
         self.player.dimdice.append(dice)

@@ -1,6 +1,7 @@
+from dungeon.tiles.tile import Tile
 from dungobj.dungobj import DungeonObject
 
-class DungeonTile():
+class DungeonTile(Tile):
     """
     Tile were monsters can exist and move.
     """
@@ -17,5 +18,5 @@ class DungeonTile():
     def is_dungeon(self):
         return True
 
-    def is_occupied(self):
-        return self.content.is_content()
+    def is_reachable(self):
+        return not self.content.is_content()

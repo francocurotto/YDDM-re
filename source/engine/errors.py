@@ -27,10 +27,10 @@ position.
 args[0]: position.
 """
 
-class TileOccupied(Exception): pass
+class TileNotReachable(Exception): pass
 """
-Raised when tile at specified position occupied when a 
-vacant tile is expected.
+Raised when tile at specified position is not reachable when 
+a reachable tile is expected.
 args[0]: position.
 """
 

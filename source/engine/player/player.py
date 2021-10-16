@@ -1,7 +1,7 @@
 import yaml
 from player.crest_pool import CrestPool
 from dungobj.monster_lord import MonsterLord
-from dungeon.dungeon_tile import DungeonTile
+from dungeon.tiles.dungeon_tile import DungeonTile
 from dungobj.dungobj import DungeonObject
 
 class Player():

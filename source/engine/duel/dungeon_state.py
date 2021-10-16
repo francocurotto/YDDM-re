@@ -2,7 +2,7 @@ from duel.attack_state import AttackState
 from dungeon.dicenets.pos import Pos
 from errors import NotPlayerMonster
 from errors import NotOpponentTarget
-from errors import TileOccupied
+from errors import TileNotReachable
 from errors import AttackOutOfRange
 from errors import MonsterInCooldown
 from errors import NotPathFound
@@ -20,9 +20,9 @@ class DungeonState(AttackState):
                         "ATTACK"  : self.run_attack_command,
                         "ENDTURN" : self.run_endturn_command}
         self.errors = (NotDungeonTile, NotPlayerMonster,
-            NotOpponentTarget, TileOccupied, NotPathFound, 
-            AttackOutOfRange, MonsterInCooldown,
-            NotEnoughCrests)
+            NotOpponentTarget, TileNotReachable, 
+            NotPathFound, AttackOutOfRange, 
+            MonsterInCooldown, NotEnoughCrests)
         
     def run_move_command(self, cmd):
         """
@@ -33,7 +33,7 @@ class DungeonState(AttackState):
         
         # move monster
         monster = self.get_player_monster(origin)
-        self.check_pos_unoccupied(dest)
+        self.check_pos_reachable(dest)
         path = self.get_path(origin, dest)
         self.pay_movement_cost(path)
         self.duel.dungeon.move_dungobj(origin, dest)
@@ -154,13 +154,13 @@ class DungeonState(AttackState):
             raise NotOpponentTarget(pos.totuple())
         return target
 
-    def check_pos_unoccupied(self, pos):
+    def check_pos_reachable(self, pos):
         """
-        Check if position is not ocuppied. Raise exception
-        if occupied.
+        Check if position is not ocuppied. Raise exception if
+        occupied.
         """
-        if self.duel.dungeon.get_tile(pos).is_occupied():
-            raise TileOccupied(pos.totuple())
+        if not self.duel.dungeon.get_tile(pos).is_reachable():
+            raise TileNotReachable(pos.totuple())
 
     def get_path(self, origin, dest):
         """

@@ -1,10 +1,13 @@
 import yaml
-from dungeon.empty_tile import EmptyTile
+from dungeon.tiles.empty_tile import EmptyTile
+from dungeon.tiles.block_tile import BlockTile
 from dungeon.dicenets.pos import Pos
 from errors import NetUnconnected
 from errors import OOBTilePos
 from errors import NotDungeonTile
 from errors import TileOverlaps
+from cmdcli.generators.sanitize_functs import str2coor
+from cmdcli.generators.sanitize_functs import str2index
 
 class Dungeon():
     """
@@ -18,6 +21,7 @@ class Dungeon():
         self.array = self.init_array()
         self.layoutdict = {
             "O" : lambda i,j,p : None,
+            "X" : lambda i,j,p : self.add_block(i,j),
             "l" : lambda i,j,p : self.add_ml(i,j,p[0]),
             "L" : lambda i,j,p : self.add_ml(i,j,p[1]),
             "p" : lambda i,j,p : self.add_path(i,j,p[0]),
@@ -49,6 +53,24 @@ class Dungeon():
         for i, row in enumerate(layout):
             for j, char in enumerate(row):
                 self.layoutdict[char](i, j, players)
+        # add summons
+        try:
+            summonlist = layoutdict["SUMMONS1"]
+            self.add_summons(summonlist, players[0])
+        except KeyError:
+            pass
+        try:
+            summonlist = layoutdict["SUMMONS2"]
+            self.add_summons(summonlist, players[1])
+        except KeyError:
+            pass
+
+    def add_block(self, i, j):
+        """
+        Add block into dungeon.
+        """
+        tile = BlockTile()
+        self.set_tile(tile, Pos(i,j))
 
     def add_ml(self, i, j, player):
         """
@@ -63,6 +85,23 @@ class Dungeon():
         """
         tile = player.create_tile()
         self.set_tile(tile, Pos(i,j))
+
+    def add_summons(self, summonlist, player):
+        """
+        Add summons from dice pool into a specific position
+        in dungeon.
+        """
+        for summonstr in summonlist:
+            # get the values from string
+            values = summonstr.split("-")
+            pos = Pos(*str2coor(values[0]))
+            dice = player.dicepool[str2index(values[1],0,14)]
+            # add dice to dimensioned
+            player.dimdice.append(dice)
+            # add summoned to position
+            summon = dice.card.summon()
+            self.get_tile(pos).content = summon
+            summon.add_to_player(player)
 
     def get_tile(self, pos):
         """
@@ -96,8 +135,8 @@ class Dungeon():
         Set tile at position pos (y,x). If tile is already 
         occupied, raise exception.
         """
-        # check if tile is already occupied
-        if self.get_tile(pos).is_dungeon():
+        # check if tile is empty
+        if not self.get_tile(pos).is_empty():
             raise TileOverlaps
         self.array[pos.y][pos.x] = tile
 

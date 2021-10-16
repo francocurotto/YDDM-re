@@ -36,6 +36,7 @@ ascii:
     COLORS_SUMMON_P2 : ["red"]
     COLORS_PATH_P1   : ["blue"]
     COLORS_PATH_P2   : ["red"]
+    COLORS_BLOCK     : []
 
 unicode:
     # type icons
@@ -70,12 +71,12 @@ unicode:
     TILE_PATH_P2 : "[]"
     TILE_BLOCK   : "[]"
     # tile color style
-    # tile color style
     COLORS_EMPTY     : ["grey"]
     COLORS_SUMMON_P1 : ["blue"]
     COLORS_SUMMON_P2 : ["red"]
     COLORS_PATH_P1   : ["blue"]
     COLORS_PATH_P2   : ["red"]
+    COLORS_BLOCK     : []
 
 emoji:
     # type icons
@@ -115,3 +116,4 @@ emoji:
     COLORS_SUMMON_P2 : ["white", "on_red"]
     COLORS_PATH_P1   : []
     COLORS_PATH_P2   : []
+    COLORS_BLOCK     : []

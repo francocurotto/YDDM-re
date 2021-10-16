@@ -187,16 +187,24 @@ class Stringifier():
         Creates string version of a tile.
         """
         # the tile is empty
-        if not tile.is_dungeon():
+        if tile.is_empty():
             return self.stringify_empty_tile()
+        # the tile is block
+        elif tile.is_block():
+            return self.stringify_block_tile()
         # the tile is a dungeon tile
-        content = tile.content
-        if content.is_summon():
-            return self.stringify_summon_tile(duel, content)
-        elif tile.content.is_monster_lord():
-            return self.stringify_ml_tile(duel, content)
-        else: # no content in tile
-            return self.stringify_path_tile(duel, tile)
+        elif tile.is_dungeon():
+            content = tile.content
+            # content is summon
+            if content.is_summon():
+                return self.stringify_summon_tile(duel, 
+                    content)
+            # content is ml
+            elif tile.content.is_monster_lord():
+                return self.stringify_ml_tile(duel, content)
+            # no content in tile
+            else:
+                return self.stringify_path_tile(duel, tile)
 
     def stringify_empty_tile(self):
         """
@@ -204,6 +212,14 @@ class Stringifier():
         """
         icon = self.icons["TILE_EMPTY"]
         colors = self.icons["COLORS_EMPTY"]
+        return colored(icon, *colors)
+
+    def stringify_block_tile(self):
+        """
+        Creates a string version of a block tile.
+        """
+        icon = self.icons["TILE_BLOCK"]
+        colors = self.icons["COLORS_BLOCK"]
         return colored(icon, *colors)
 
     def stringify_summon_tile(self, duel, summon):
