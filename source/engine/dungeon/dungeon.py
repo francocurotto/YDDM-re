@@ -1,3 +1,4 @@
+import yaml
 from dungeon.empty_tile import EmptyTile
 from dungeon.dicenets.pos import Pos
 from errors import NetUnconnected
@@ -13,9 +14,15 @@ class Dungeon():
     WIDTH  = 13
     HEIGHT = 19
 
-    def __init__(self, players):
+    def __init__(self, players, layout):
         self.array = self.init_array()
-        self.add_monster_lords(players)
+        self.layoutdict = {
+            "O" : lambda i,j,p : None,
+            "l" : lambda i,j,p : self.add_ml(i,j,p[0]),
+            "L" : lambda i,j,p : self.add_ml(i,j,p[1]),
+            "p" : lambda i,j,p : self.add_path(i,j,p[0]),
+            "P" : lambda i,j,p : self.add_path(i,j,p[1])}
+        self.add_layout(layout, players)
         self.setnet_errors = (OOBTilePos, 
                               TileOverlaps)
 
@@ -31,17 +38,31 @@ class Dungeon():
             array.append(row)
         return array
 
-    def add_monster_lords(self, players):
+    def add_layout(self, layoutfile, players):
         """
-        Add monster lords from both players into the dungeon
-        array.
+        Add layout to dungeon given the dungeon file.
         """
-        # player 1
-        tile = players[0].create_ml_tile()
-        self.set_tile(tile, Pos(0,6))
-        # player 2
-        tile = players[1].create_ml_tile()
-        self.set_tile(tile, Pos(18,6))
+        # get the dungeon layout
+        layoutdict = yaml.full_load(open(layoutfile))
+        layout = layoutdict["DUNGEON"].split()
+        layout.reverse()
+        for i, row in enumerate(layout):
+            for j, char in enumerate(row):
+                self.layoutdict[char](i, j, players)
+
+    def add_ml(self, i, j, player):
+        """
+        Add player's monster lord tile into dungeon.
+        """
+        tile = player.create_ml_tile()
+        self.set_tile(tile, Pos(i,j))
+
+    def add_path(self, i, j, player):
+        """
+        Add player's path into dungeon.
+        """
+        tile = player.create_tile()
+        self.set_tile(tile, Pos(i,j))
 
     def get_tile(self, pos):
         """

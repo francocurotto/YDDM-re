@@ -30,6 +30,9 @@ parser.add_argument("-n2", "--name2",
 parser.add_argument("-p2", "--pool2", 
     default="dicesets/starter.yaml", dest="poolfile2",
     help="Player 2 pool file")
+parser.add_argument("-d", "--dungeon", 
+    default="dungeons/default.yaml", dest="dungeon",
+    help="Initial dungeon layout")
 icongroup = parser.add_mutually_exclusive_group()
 icongroup.add_argument("--ascii", action="store_const", 
     const="ascii", dest="icontype", help="Use ascii icons")

@@ -1,3 +1,4 @@
+import yaml
 from player.crest_pool import CrestPool
 from dungobj.monster_lord import MonsterLord
 from dungeon.dungeon_tile import DungeonTile
@@ -8,7 +9,7 @@ class Player():
     The player that is playing the duel.
     """
     DIM_LIMIT = 10
-    def __init__(self, playerid, name, dicepool):
+    def __init__(self, playerid, name, dicepool, initfile):
         self.id = playerid
         self.name = name
         self.dicepool = dicepool
@@ -19,6 +20,26 @@ class Player():
         self.monsters = []
         self.items = []
         self.tiles = []
+        self.set_init(initfile)
+
+    def set_init(self, initfile):
+        """
+        Set intial state of player given, initialization 
+        file.
+        """
+        initdict = yaml.full_load(open(initfile))
+        # get crests init
+        try:
+            crests = initdict["CRESTS"+str(self.id)]
+            for crest, value in crests.items():
+                setattr(self.crestpool, crest, value)
+        except KeyError:
+            pass
+        # get hearts init
+        try:
+            self.ml.hearts = initdict["HEARTS"+str(self.id)]
+        except KeyError:
+            pass
 
     def create_tile(self, dungobj=DungeonObject()):
         """

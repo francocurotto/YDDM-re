@@ -9,17 +9,17 @@ class Engine():
     Creates and controls a duel.
     """
     def __init__(self, libraryfile, name1, poolfile1, name2,
-        poolfile2):
+        poolfile2, dungeon):
         self.library = create_library(libraryfile)
         # pools
         pool1 = create_dicepool(poolfile1, self.library)
         pool2 = create_dicepool(poolfile2, self.library)
         # players
-        player1 = Player(1, name1, pool1)
-        player2 = Player(2, name2, pool2)
+        player1 = Player(1, name1, pool1, dungeon)
+        player2 = Player(2, name2, pool2, dungeon)
         
         # duel
-        self.duel = Duel(player1, player2)
+        self.duel = Duel(player1, player2, dungeon)
 
         # duel state machine
         self.dsm = DuelStateMachine(self.duel)

@@ -8,7 +8,8 @@ class Client():
     """
     def __init__(self, args):
         self.engine = Engine(args.library, args.name1, 
-            args.poolfile1, args.name2, args.poolfile2)
+            args.poolfile1, args.name2, args.poolfile2, 
+            args.dungeon)
         self.stringifier = Stringifier(args.icontype)
 
     def run(self):
