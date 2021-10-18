@@ -31,7 +31,8 @@ class Stringifier():
             dice_string  = str(i+1).rjust(2) + ". "
             dice_string += self.stringify_dice_short(dice)
             if dice in player.dimdice:
-                dice_string  = colored(dice_string, "grey")
+                dice_string  = colored(dice_string, "grey",
+                    attrs=["blink"])
             strlist.append(dice_string)
         return "\n".join(strlist)
 
