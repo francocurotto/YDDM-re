@@ -32,7 +32,7 @@ class Stringifier():
             dice_string += self.stringify_dice_short(dice)
             if dice in player.dimdice:
                 dice_string  = colored(dice_string, "grey",
-                    attrs=["blink"])
+                    attrs=["bold"])
             strlist.append(dice_string)
         return "\n".join(strlist)
 
