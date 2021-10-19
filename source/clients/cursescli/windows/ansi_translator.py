@@ -26,7 +26,14 @@ class ANSITranslator():
         "\x1b[41m\x1b[37m" : curses.color_pair(2), # red bg
         "\x1b[34m"         : curses.color_pair(3), # blue fg
         "\x1b[31m"         : curses.color_pair(4), # red fg
-        "\x1b[30m":curses.A_BOLD+curses.color_pair(5)} # gray
+        "\x1b[30m"         : curses.color_pair(5), # gray fg
+        # bold blue fg
+        "\x1b[1m\x1b[34m":curses.A_BOLD+curses.color_pair(3), 
+        # bold red fg
+        "\x1b[1m\x1b[31m":curses.A_BOLD+curses.color_pair(4), 
+        # bold gray fg
+        "\x1b[1m\x1b[30m":curses.A_BOLD+curses.color_pair(5),
+        "\x1b[1m"          : curses.A_BOLD} # bold white fg
 
     def get_ctuples(self, line):
         """

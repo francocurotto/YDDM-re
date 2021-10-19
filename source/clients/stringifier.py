@@ -131,6 +131,9 @@ class Stringifier():
         Creates string version of the dungeon.
         """
         dungeon = duel.dungeon
+        icon = self.icons["TILE_BLOCK"]
+        colors = self.icons["COLORS_BLOCK"]
+        attrs = self.icons["ATTRS_TILE"]
         strlist = []
 
         # create first row (coordinates)
@@ -145,14 +148,14 @@ class Stringifier():
         for i,row in enumerate(reversed(dungeon.array)):
             # coordinate and block
             rowstr = str(dungeon.HEIGHT-i).rjust(2)
-            rowstr += self.icons["TILE_BLOCK"]
+            rowstr += colored(icon, *colors, attrs=attrs)
             
             # create list of row strings
             for tile in row:
                 rowstr += self.stringify_tile(duel, tile)
 
             # block and coordinate
-            rowstr += self.icons["TILE_BLOCK"]
+            rowstr += colored(icon, *colors, attrs=attrs)
             rowstr += str(dungeon.HEIGHT-i).ljust(2)
 
             # add to list
@@ -181,7 +184,11 @@ class Stringifier():
         """
         Create a row of blocks.
         """
-        return (dungeon.WIDTH+2)*self.icons["TILE_BLOCK"]
+        icon = self.icons["TILE_BLOCK"]
+        colors = self.icons["COLORS_BLOCK"]
+        attrs = self.icons["ATTRS_TILE"]
+        blockstr = colored(icon, *colors, attrs=attrs)
+        return (dungeon.WIDTH+2)*blockstr
 
     def stringify_tile(self, duel, tile):
         """
@@ -213,7 +220,8 @@ class Stringifier():
         """
         icon = self.icons["TILE_EMPTY"]
         colors = self.icons["COLORS_EMPTY"]
-        return colored(icon, *colors)
+        attrs = self.icons["ATTRS_TILE"]
+        return colored(icon, *colors, attrs=attrs)
 
     def stringify_block_tile(self):
         """
@@ -221,7 +229,8 @@ class Stringifier():
         """
         icon = self.icons["TILE_BLOCK"]
         colors = self.icons["COLORS_BLOCK"]
-        return colored(icon, *colors)
+        attrs = self.icons["ATTRS_TILE"]
+        return colored(icon, *colors, attrs=attrs)
 
     def stringify_summon_tile(self, duel, summon):
         """
@@ -233,7 +242,8 @@ class Stringifier():
             colors = self.icons["COLORS_SUMMON_P1"]
         if summon in duel.player2.summons:
             colors = self.icons["COLORS_SUMMON_P2"]
-        return colored(icon, *colors)
+        attrs = self.icons["ATTRS_TILE"]
+        return colored(icon, *colors, attrs=attrs)
 
     def stringify_ml_tile(self, duel, monster_lord):
         """
@@ -245,7 +255,8 @@ class Stringifier():
             colors = self.icons["COLORS_SUMMON_P1"]
         if monster_lord is duel.player2.ml:
             colors = self.icons["COLORS_SUMMON_P2"]
-        return colored(icon, *colors)
+        attrs = self.icons["ATTRS_TILE"]
+        return colored(icon, *colors, attrs=attrs)
 
     def stringify_path_tile(self, duel, tile):
         """
@@ -258,7 +269,8 @@ class Stringifier():
         if tile in duel.player2.tiles:
             icon = self.icons["TILE_PATH_P2"]
             colors = self.icons["COLORS_PATH_P2"]
-        return colored(icon, *colors)
+        attrs = self.icons["ATTRS_TILE"]
+        return colored(icon, *colors, attrs=attrs)
 
     def stringify_dungobj(self, duel, dungobj):
         """
@@ -299,12 +311,14 @@ class Stringifier():
             if monster_lord is duel.player2.ml:
                 icon = self.icons["HEART_P2"]
                 colors = self.icons["COLORS_HEART_P2"]
-            string += colored(icon, *colors)
+            attrs = self.icons["ATTRS_HEART"]
+            string += colored(icon, *colors, attrs=attrs)
         # dead hearts
         for _ in range(3 - monster_lord.hearts):
             icon = self.icons["NOHEART"]
             colors = self.icons["COLORS_NOHEART"]
-            string += colored(icon, *colors)
+            attrs = self.icons["ATTRS_HEART"]
+            string += colored(icon, *colors, attrs=attrs)
         return string
 
     def stringify_crestpool(self, crestpool):

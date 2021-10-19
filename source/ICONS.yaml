@@ -37,6 +37,9 @@ ascii:
     COLORS_PATH_P1   : ["blue"]
     COLORS_PATH_P2   : ["red"]
     COLORS_BLOCK     : []
+    # attributes
+    ATTRS_HEART : ["bold"]
+    ATTRS_TILE  : ["bold"]
 
 unicode:
     # type icons
@@ -77,6 +80,9 @@ unicode:
     COLORS_PATH_P1   : ["blue"]
     COLORS_PATH_P2   : ["red"]
     COLORS_BLOCK     : []
+    # attributes
+    ATTRS_HEART : []
+    ATTRS_TILE  : ["bold"]
 
 emoji:
     # type icons
@@ -117,3 +123,6 @@ emoji:
     COLORS_PATH_P1   : []
     COLORS_PATH_P2   : []
     COLORS_BLOCK     : []
+    # attributes
+    ATTRS_HEART : []
+    ATTRS_TILE  : []
