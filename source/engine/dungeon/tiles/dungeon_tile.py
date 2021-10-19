@@ -18,5 +18,9 @@ class DungeonTile(Tile):
     def is_dungeon(self):
         return True
 
+    def is_occupied(self):
+        return self.content.is_content()
+
     def is_reachable(self):
-        return not self.content.is_content()
+        return not self.is_occupied() or \
+            self.content.is_item()

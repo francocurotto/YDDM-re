@@ -137,8 +137,7 @@ class PrintGenerator(Generator):
         coor = str2coor(string)
         y = coor[0]; x = coor[1]
         tile = self.engine.duel.dungeon.array[y][x]
-        # reachable = no content
-        if not tile.is_dungeon() or tile.is_reachable():
+        if not tile.is_occupied():
             return "Nothing to print there"
         duel = self.engine.duel
         cont = tile.content

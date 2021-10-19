@@ -8,5 +8,7 @@ class Tile():
         return False
     def is_block(self):
         return False
+    def is_occupied(self):
+        return False
     def is_reachable(self):
         return False

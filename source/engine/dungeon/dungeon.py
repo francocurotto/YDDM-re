@@ -211,9 +211,6 @@ class Dungeon():
             if lastpos == dest:
                 return path
 
-            # add path end to visited positions
-            visited.append(lastpos)
-
             # expand path in one tile in all possible 
             # directions and add them to the queue
             newpaths = self.expand_path(path, visited)
@@ -260,6 +257,8 @@ class Dungeon():
                 continue
             # 5. all conditions are met, add new path
             newpaths.append(path + [pos])
+            # add to visited newly discovered position
+            visited.append(pos)
 
         return newpaths
 
