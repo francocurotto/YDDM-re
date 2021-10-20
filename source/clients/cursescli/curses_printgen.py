@@ -25,9 +25,6 @@ class CursesPrintGen(PrintGenerator):
         # get dice
         elif split[0]=="p" and len(split)==2:
             return self.get_dice(split[1])
-        # get opponent dice
-        elif split[0]=="op" and len(split)==2:
-            return self.get_opponent_dice(split[1])
         # get dungeon object
         elif split[0]=="d" and len(split)==2:
             return self.get_dungobj(split[1])
@@ -60,14 +57,13 @@ class CursesPrintGen(PrintGenerator):
         return "Switching players"
 
 printdesc = "\
-- PRINT COMMANDS: p [ARG1 ARG2]\n\
+PRINT COMMANDS: p [ARG1 ARG2]\n\
     - p:        print this help\n\
     - p cmd     print command list\n\
     - p cmd CMD print command CMD description\n\
     - p p INT:  print dice at INT in own dice pool\n\
-    - p op INT: print dice at INT in opponent dice pool\n\
     - p d XY:   print object in dungeon at position XY\n\
     - p s:      print summon candidates\n\
     - p n:      print nets\n\
     - p t:      print transformations\n\
-    - p o:      print opponent info"
+    - p o:      switch to opponent view"

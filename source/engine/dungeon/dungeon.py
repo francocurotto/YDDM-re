@@ -52,7 +52,10 @@ class Dungeon():
         layout.reverse()
         for i, row in enumerate(layout):
             for j, char in enumerate(row):
-                self.layoutdict[char](i, j, players)
+                try:
+                    self.layoutdict[char](i, j, players)
+                except OOBTilePos:
+                    pass
         # add summons
         try:
             summonlist = layoutdict["SUMMONS1"]

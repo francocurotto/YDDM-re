@@ -1,12 +1,10 @@
 ### TODO
 - abilities!!
+    - how do command help will be accessible?
 
 ### IMPROVEMENTS
-- custom help per state?
-- add dunginit errors docs
 
 ### CHECKS
-- blocks workingp
 
 ### FIXES
 

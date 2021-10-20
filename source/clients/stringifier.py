@@ -403,7 +403,7 @@ class Stringifier():
         string += dsm.state.name
         string += " | turn:"
         string += str(dsm.turn)
-        string += "> (p:print command)"
+        string += "> (p:print help)"
         return string
 
 def colorize_attr(attr, original):

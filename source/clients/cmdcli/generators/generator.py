@@ -7,21 +7,21 @@ class Generator():
         self.desc = descdict[self.key]
 
 infodict = {
-    "p" : "print info:       p [ARG1 ARG2]",
-    "r" : "roll dice:        r D1 D2 D3",
-    "d" : "dimension dice:   d D N XY [T1 T2]",
-    "s" : "skip summon/cast: s",
-    "m" : "move monster:     m XY1 XY2",
-    "a" : "attack target:    a XY1 XY2",
-    "g" : "guard attack:     g",
-    "w" : "wait attack:      w",
-    "e" : "end turn:         e",
-    "c" : "cast ability:     c [ARG1 ...]",
-    "j" : "jump to warp:     j XY1 XY2",
-    "q" : "quit game:        q"}
+    "p" : "- p [ARG1 ARG2]   : print info",
+    "r" : "- r D1 D2 D3      : roll dice",
+    "d" : "- d D N XY [T1 T2]: dimension dice",
+    "s" : "- s               : skip summon/cast",
+    "m" : "- m XY1 XY2       : move monster",
+    "a" : "- a XY1 XY2       : attack target",
+    "g" : "- g               : guard attack",
+    "w" : "- w               : wait attack",
+    "e" : "- e               : end turn",
+    "c" : "- c [ARG1 ...]    : cast ability",
+    "j" : "- j XY1 XY2       : jump to warp",
+    "q" : "- q               : quit game"}
 
 printdesc = "\
-- PRINT COMMANDS: p [ARG1 ARG2]\n\
+PRINT COMMANDS: p [ARG1 ARG2]\n\
     - p:        print this help\n\
     - p cmd     print command list\n\
     - p cmd CMD print command CMD description\n\
@@ -38,45 +38,42 @@ printdesc = "\
     - p t:      print transformations"
                     
 rolldesc = "\
-- ROLL COMMAND: r D1 D2 D3\n\
-    - r D1 D2 D3: roll dice D1, D2 and D3 from dice pool"
+ROLL COMMAND: r D1 D2 D3\n\
+    Roll dice D1, D2 and D3 from dice pool"
 
 dimdesc = "\
 - DIM COMMAND: d D N XY [T1 T2]\n\
-    - d D N XY [T1 T2]: dimension dice D from\n\
-        candidates, using net N, at position XY, and\n\
-        optionally apply transformations T1, T2 to net\n\
-        before dimension."
+    Dimension dice D from candidates, using net N, at\n\
+    position XY, and optionally apply transformations T1,\n\
+    T2 to net before dimension"
 
 skipdesc = "\
 - SKIP COMMAND: s\n\
-    - s: skip dimension or cast"
+    Skip dimension or cast"
 
 movedesc = "\
 - MOVE COMMAND: m XY1 XY2\n\
-    - m XY1 XY2: move monster at position XY1 to position\n\
-        XY2."
+    Move monster at position XY1 to position XY2"
 
 attackdesc = "\
 - ATTACK COMMAND: a XY1 XY2\n\
-    - a XY1 XY2: make monster at position XY1 attack target\n\
-        at position XY2."
+    Make monster at position XY1 attack target at position XY2"
 
 guarddesc = "\
 - GUARD COMMAND: g\n\
-    - g: guard against attack"
+    Guard against attack"
 
 waitdesc = "\
 - WAIT COMMAND: w\n\
-    - w: do not reply to an attack"
+    Do not reply to an attack"
 
 endturndesc = "\
 - ENDTURN COMMAND: e\n\
-    - e: end turn"
+    End turn"
 
 quitdesc = "\
 - QUIT COMMAND: q\n\
-    - q: quit game"
+    Quit game"
 
 descdict = {
     "p" : printdesc,

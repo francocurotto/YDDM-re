@@ -121,7 +121,7 @@ class PrintGenerator(Generator):
             return
         i = str2index(string, 0, 14)
         dice = self.engine.dsm.state.opponent.dicepool[i]
-        return self.stringifier.stringify_dicepool(opponent)
+        return self.stringifier.stringify_dice(dice)
 
     def get_dungeon(self):
         """

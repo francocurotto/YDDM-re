@@ -1,5 +1,5 @@
 # Dungeon Layout
-Define the inital layout by locating the empty tiles, block tiles, dungoen paths and monster lords.
+Define the initial layout by locating the empty tiles, block tiles, dungeon paths and monster lords.
 
 Example:
 ```
@@ -48,15 +48,17 @@ SUMMONS2: [g17-15,g14-9,g12-2]
     - `5` : dice index in pool to summon
 
 ## Crests
-Indicate the intial crest for each players
+Indicate the initial crest for each players
 ```
 CRESTS1: {movement:9,attack:1,defense:3,magic:5,trap:2}
 CRESTS2: {movement:0,attack:5,defense:4,magic:1,trap:1}
 ```
 
 ## Hearts
-Indicate the inital hearts for each player
+Indicate the initial hearts for each player
 ```
 HEARTS1: 3
 HEARTS2: 1
 ```
+### Note on Debug options
+Since the debug is only intended to be used for debugging (no shit sherlock), it does not have the safety mechanism from the rest of the code. That means the game may throw some errors or have unexpected behavior if not used correctly. Make sure to define SUMMONSX, CRESTSX, and HEARTSX as specified above to avoid the errors.
