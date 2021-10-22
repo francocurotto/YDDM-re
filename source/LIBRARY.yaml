@@ -1160,7 +1160,7 @@
   NAME:    Time Machine
   TYPE:    ITEM
   LEVEL:   1
-  ABILITY: Returns monster to its last lactation.
+  ABILITY: Returns monster to its last location.
   CRESTS:  SSSSDT
 
 118:
