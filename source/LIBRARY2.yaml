@@ -5,7 +5,8 @@
   ATTACK:  40
   DEFENSE: 30
   LIFE:    50
-  ABILITY: Fly
+  ABILITY: 
+    NAME: FLY
   CRESTS:  SMM2A4DG
 
 2:
@@ -15,7 +16,9 @@
   ATTACK:  10
   DEFENSE: 20
   LIFE:    20
-  ABILITY: Restores 1 heart to all allies. (dimension)
+  ABILITY: 
+    NAME: MYSTICALELF
+    AMOUNT: 1
   CRESTS:  SSSSM2G4
 
 3:
@@ -25,7 +28,7 @@
   ATTACK:  20
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSA2D2G
 
 4:
@@ -35,7 +38,9 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Fly, No family pros or cons.
+  ABILITY: 
+    - NAME: FLY
+    - NAME: NEUTRAL
   CRESTS:  SSSSAG
 
 5:
@@ -45,7 +50,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSMA2A2
 
 6:
@@ -55,7 +60,8 @@
   ATTACK:  10
   DEFENSE: 20
   LIFE:    10
-  ABILITY: Prevents all flying. (In play)
+  ABILITY: 
+    NAME: STOPFLY
   CRESTS:  SSSM3A5D
 
 7:
@@ -65,7 +71,9 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Fly, Prevents all tunneling. (In play)
+  ABILITY: 
+    - NAME: FLY
+    - NAME: STOPTUNNEL
   CRESTS:  SSSM2M3G
 
 8:
@@ -75,7 +83,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSA2G
 
 9:
@@ -85,7 +93,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSA2G
 
 10:
@@ -95,7 +103,12 @@
   ATTACK:  20
   DEFENSE: 20
   LIFE:    20
-  ABILITY: Attack crests raises attack by 10 once a turn. (on attack) [A X 1]
+  ABILITY:
+    NAME: RAISE
+    ATTR: ATTACK
+    COSTTYPE: ATTACK
+    COST: 1
+    MAX: 3
   CRESTS:  SSSM2A2T
 
 11:
@@ -105,7 +118,7 @@
   ATTACK:  20
   DEFENSE: 20
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSM3DT4
 
 12:
@@ -115,7 +128,7 @@
   ATTACK:  20
   DEFENSE: 20
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSMM2A2
 
 13:
@@ -125,7 +138,8 @@
   ATTACK:  0
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Destroys monster with least attack. (dimension)
+  ABILITY:
+    NAME: KILLWEAKEST
   CRESTS:  SSSSM2M3
 
 14:
@@ -135,7 +149,7 @@
   ATTACK:  10
   DEFENSE: 0
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSM2M3A2D
 
 15:
@@ -145,7 +159,7 @@
   ATTACK:  10
   DEFENSE: 0
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSM2ADG
 
 16:
@@ -155,7 +169,7 @@
   ATTACK:  10
   DEFENSE: 0
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSM2M3A4D2
 
 17:
@@ -165,7 +179,7 @@
   ATTACK:  10
   DEFENSE: 0
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSMM3AD
 
 18:
@@ -175,7 +189,8 @@
   ATTACK:  20
   DEFENSE: 20
   LIFE:    20
-  ABILITY: Automatic win if the 4 limbs exist. (Dimension)
+  ABILITY:
+    NAME: EXODIA
   CRESTS:  SMM7A2D4T
 
 19:
@@ -185,7 +200,7 @@
   ATTACK:  40
   DEFENSE: 20
   LIFE:    40
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SM3M4ADG
 
 20:
@@ -195,7 +210,7 @@
   ATTACK:  20
   DEFENSE: 20
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSM2DG2
 
 21:
@@ -205,17 +220,21 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSM2A2
 
 22:
-  NAME:    Rock Ogre Grotto #1
+  NAME:    "Rock Ogre Grotto #1" # quotes needed to escape #
   TYPE:    SPELLCASTER
   LEVEL:   1
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Raises defense of all spellcaster monsters by 10 (in play)
+  ABILITY: 
+    NAME: BUFFTYPE
+    TYPE: SPELLCASTER
+    ATTR: DEFENSE
+    AMOUNT: 10
   CRESTS:  SSSSG2T
 
 23:
@@ -225,7 +244,11 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Raises attack of all Zombie monsters by 10. (in play)
+  ABILITY: 
+    NAME: BUFFTYPE
+    TYPE: UNDEAD
+    ATTR: ATTACK
+    AMOUNT: 10
   CRESTS:  SSSSAD2
 
 24:
@@ -235,7 +258,7 @@
   ATTACK:  10
   DEFENSE: 20
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSMAD
 
 25:
@@ -245,7 +268,11 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Reduces damage to one ally by 10. [D X 2]
+  ABILITY:
+    NAME: SAGGI
+    AMOUNT: 10
+    COSTTYPE: DEFENSE
+    COST: 2
   CRESTS:  SSSSDT
 
 26:
@@ -255,7 +282,7 @@
   ATTACK:  40
   DEFENSE: 20
   LIFE:    30
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SM2AD2GT
 
 27:
@@ -265,7 +292,12 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Fly, Raises defense of all zombie monsters by 10. (in play)
+  ABILITY: 
+    - NAME: FLY
+    - NAME: BUFFTYPE
+      TYPE: UNDEAD
+      ATTR: DEFENSE
+      AMOUNT: 10
   CRESTS:  SSSSMG
 
 28:
@@ -275,7 +307,8 @@
   ATTACK:  40
   DEFENSE: 30
   LIFE:    40
-  ABILITY: Fly
+  ABILITY:
+    NAME: FLY
   CRESTS:  SM4A3DG2T
 
 29:
@@ -285,7 +318,8 @@
   ATTACK:  40
   DEFENSE: 20
   LIFE:    40
-  ABILITY: Able to attack flying monsters.
+  ABILITY:
+    NAME: ARCHER
   CRESTS:  SMADG3T
 
 30:
@@ -295,7 +329,8 @@
   ATTACK:  20
   DEFENSE: 20
   LIFE:    20
-  ABILITY: Fly
+  ABILITY:
+    NAME: FLY
   CRESTS:  SSMM3AD3
 
 31:
@@ -305,7 +340,9 @@
   ATTACK:  0
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Limits Dragon monsters 1 move/ 2 turns. (in play)
+  ABILITY: 
+    NAME: PIPER
+    TYPE: DRAGON
   CRESTS:  SSSSDG
 
 32:
@@ -315,7 +352,7 @@
   ATTACK:  20
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSM3G3T
 
 33:
@@ -325,7 +362,7 @@
   ATTACK:  20
   DEFENSE: 30
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSM3M3AD2
 
 34:
@@ -335,7 +372,11 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Raises attack of all warriors by 10. (in play)
+  ABILITY: 
+    NAME: BUFFTYPE
+    TYPE: WARRIOR
+    ATTR: ATTACK
+    AMOUNT: 10
   CRESTS:  SSSSM2T
 
 35:
@@ -345,7 +386,12 @@
   ATTACK:  30
   DEFENSE: 20
   LIFE:    20
-  ABILITY: Restores 1 heart to 2 allied monsters. (Dimension) [P X 3]
+  ABILITY: 
+    NAME: ROUGEDOLL
+    AMOUNT: 1
+    NMONSTERS: 2
+    COSTTYPE: MAGIC
+    COST: 3
   CRESTS:  SSMAAD
 
 36:
@@ -355,7 +401,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSD2G4
 
 37:
@@ -365,7 +411,8 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Able to attack flying monsters
+  ABILITY:
+    NAME: ARCHER
   CRESTS:  SSSSMA
 
 38:
@@ -375,7 +422,7 @@
   ATTACK:  20
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSMT
 
 39:
@@ -385,7 +432,7 @@
   ATTACK:  20
   DEFENSE: 20
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSMD
 
 40:
@@ -395,7 +442,8 @@
   ATTACK:  30
   DEFENSE: 30
   LIFE:    40
-  ABILITY: Fly
+  ABILITY:
+    NAME: FLY
   CRESTS:  SSMM2AD
 
 41:
@@ -405,7 +453,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSA4D2
 
 42:
@@ -415,7 +463,12 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Tunneling, Raises attack of all Beats monsters by 10. (in play)
+  ABILITY: 
+    - NAME: TUNNELING
+    - NAME: BUFFTYPE
+      TYPE: BEAST
+      ATTR: ATTACK
+      AMOUNT: 10
   CRESTS:  SSSSM5G2
 
 43:
@@ -425,7 +478,11 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    20
-  ABILITY: Fly, Destroys one tunneling monster. (Dimension) [P X 3]
+  ABILITY: 
+    - NAME: FLY
+    - NAME: HARPIELADY
+      COSTTYPE: MAGIC
+      COST: 3
   CRESTS:  SSSMMG3
 
 44:
@@ -435,7 +492,10 @@
   ATTACK:  20
   DEFENSE: 20
   LIFE:    20
-  ABILITY: Destroys all tunnellers. (Dimension) [P X 4]
+  ABILITY: 
+    NAME: HARPIESISTERS
+    COSTTYPE: MAGIC
+    COST: 4
   CRESTS:  SSM2A3DT2
 
 45:
@@ -445,7 +505,8 @@
   ATTACK:  40
   DEFENSE: 40
   LIFE:    50
-  ABILITY: Fly
+  ABILITY: 
+    NAME: FLY
   CRESTS:  SM4A2DTT2
 
 46:
@@ -455,7 +516,7 @@
   ATTACK:  30
   DEFENSE: 20
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSM2A7D
 
 47:
@@ -465,7 +526,11 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Raises defense of all Beast monsters by 10 (In Play)
+  ABILITY: 
+    NAME: BUFFTYPE
+    TYPE: BEAST
+    ATTR: DEFENSE
+    AMOUNT: 10
   CRESTS:  SSSSMG2
 
 48:
@@ -475,7 +540,7 @@
   ATTACK:  10
   DEFENSE: 40
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSAGT3
 
 49:
@@ -485,7 +550,9 @@
   ATTACK:  10
   DEFENSE: 30
   LIFE:    20
-  ABILITY: Removes one obstacle. [P X 2]
+    NAME: KILLBLOCK
+    COSTTYPE: MAGIC
+    COST: 2
   CRESTS:  SSSM2D2T
 
 50:
@@ -495,7 +562,8 @@
   ATTACK:  40
   DEFENSE: 20
   LIFE:    30
-  ABILITY: Fly
+  ABILITY: 
+    NAME: FLY
   CRESTS:  SM2AD2G2T2
 
 51:
@@ -505,7 +573,11 @@
   ATTACK:  10
   DEFENSE: 20
   LIFE:    20
-  ABILITY: Reduces damage by 20 when attacked. [D X 2]
+  ABILITY:
+    NAME: REDUCEDAMAGE
+    AMOUNT: 20
+    COSTTYPE: DEFENSE
+    COST: 2
   CRESTS:  SSSMDD
 
 52:
@@ -515,7 +587,7 @@
   ATTACK:  10
   DEFENSE: 30
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSMAD
 
 53:
@@ -525,7 +597,12 @@
   ATTACK:  20
   DEFENSE: 10
   LIFE:    40
-  ABILITY: Adds damage to attack once per turn. [P X 1]
+  ABILITY:
+    NAME: RAISE
+    ATTR: ATTACK
+    COSTTYPE: MAGIC
+    COST: 1
+    MAX: 3
   CRESTS:  SSSM2AD
 
 54:
@@ -535,7 +612,12 @@
   ATTACK:  30
   DEFENSE: 20
   LIFE:    40
-  ABILITY: Attack crest raises attack by 10 up to twice/turn. (In attack) [A X ?]
+  ABILITY:
+    NAME: RAISE
+    ATTR: ATTACK
+    COSTTYPE: ATTACK
+    COST: 1
+    MAX: 2
   CRESTS:  SSM2A2DG
 
 55:
@@ -545,7 +627,9 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Tunneling, No family pros or cons.
+  ABILITY: 
+    - NAME: TUNNELING
+    - NAME: NEUTRAL
   CRESTS:  SSSSM2T4
 
 56:
@@ -555,7 +639,11 @@
   ATTACK:  20
   DEFENSE: 30
   LIFE:    30
-  ABILITY: Reduces damage by 30 when attacked. [D X 3]
+  ABILITY:
+    NAME: REDUCEDAMAGE
+    AMOUNT: 30
+    COSTTYPE: DEFENSE
+    COST: 3
   CRESTS:  SSMA2D3G2
 
 57:
@@ -565,8 +653,11 @@
   ATTACK:  20
   DEFENSE: 10
   LIFE:    20
-  ABILITY: Adds 1 attacks crest to own crest pool. (Dimension) Able to attack flying
-      monsters.
+  ABILITY: 
+    - NAME: ARCHER
+    - NAME: ADDCREST
+      CREST: ATTACK
+      AMOUNT: 1
   CRESTS:  SSSSAG
 
 58:
@@ -576,7 +667,12 @@
   ATTACK:  0
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Tunneling, Removes 1 heart from enemy and self. [P X 2]
+  ABILITY: 
+    - NAME: TUNNELING
+    - NAME: 13THGRAVE
+      AMOUNT: 1
+      COSTTYPE: MAGIC
+      COST: 2
   CRESTS:  SSSM7AG
 
 59:
@@ -586,7 +682,11 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Raises attack of dragon monsters by 10. (In Play)
+  ABILITY: 
+    NAME: BUFFTYPE
+    TYPE: DRAGON
+    ATTR: ATTACK
+    AMOUNT: 10
   CRESTS:  SSSSAT
 
 60:
@@ -596,7 +696,7 @@
   ATTACK:  10
   DEFENSE: 20
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSA2T
 
 61:
@@ -606,7 +706,8 @@
   ATTACK:  40
   DEFENSE: 40
   LIFE:    40
-  ABILITY: Fly
+  ABILITY: 
+    NAME: FLY
   CRESTS:  SM3AAD3G
 
 62:
@@ -616,7 +717,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSM4DDG2
 
 63:
@@ -626,7 +727,9 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    20
-  ABILITY: Trades 3 crests in own pool for 1. (Dimension)
+  ABILITY: 
+    NAME: YARANZO
+    COST: 3
   CRESTS:  SSSM2AD
 
 64:
@@ -636,7 +739,7 @@
   ATTACK:  20
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSM2DD
 
 65:
@@ -646,7 +749,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSM2D
 
 66:
@@ -656,7 +759,7 @@
   ATTACK:  20
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSAD4
 
 67:
@@ -666,7 +769,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSDGT
 
 68:
@@ -676,7 +779,8 @@
   ATTACK:  0
   DEFENSE: 40
   LIFE:    10
-  ABILITY: This item cant move.
+  ABILITY: 
+    NAME: FROZEN
   CRESTS:  SSM3AA3D4
 
 69:
@@ -686,7 +790,7 @@
   ATTACK:  40
   DEFENSE: 30
   LIFE:    50
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SM2ADGT2
 
 70:
@@ -696,7 +800,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSAD2T2
 
 71:
@@ -706,7 +810,8 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    20
-  ABILITY: Tunneling
+  ABILITY: 
+    NAME: TUNNELING
   CRESTS:  SSSSD6G
 
 72:
@@ -716,7 +821,10 @@
   ATTACK:  30
   DEFENSE: 30
   LIFE:    30
-  ABILITY: Shifts damage to an ally [T X 3]
+  ABILITY:
+    NAME: SHIFTDAMAGE
+    COSTTYPE: TRAP
+    COST: 3
   CRESTS:  SMM3A3DT
 
 73:
@@ -726,7 +834,10 @@
   ATTACK:  30
   DEFENSE: 30
   LIFE:    30
-  ABILITY: Shifts damage to an ally [T X 3]
+  ABILITY:
+    NAME: SHIFTDAMAGE
+    COSTTYPE: TRAP
+    COST: 3
   CRESTS:  SM3ADGT
 
 74:
@@ -736,7 +847,10 @@
   ATTACK:  30
   DEFENSE: 30
   LIFE:    30
-  ABILITY: Shifts damage to an ally [T X 3]
+  ABILITY:
+    NAME: SHIFTDAMAGE
+    COSTTYPE: TRAP
+    COST: 3
   CRESTS:  SMAD2GT
 
 75:
@@ -746,7 +860,8 @@
   ATTACK:  40
   DEFENSE: 40
   LIFE:    50
-  ABILITY: Shifts damage to an ally.
+  ABILITY:
+    NAME: GATEGUARDIAN
   CRESTS:  SM2AD2G3T2
 
 76:
@@ -756,7 +871,7 @@
   ATTACK:  30
   DEFENSE: 20
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSM3AD
 
 77:
@@ -766,7 +881,9 @@
   ATTACK:  50
   DEFENSE: 40
   LIFE:    60
-  ABILITY: Movement limited to 1 square per turn.
+  ABILITY:
+    NAME: MOVELIMIT
+    LIMIT: 1
   CRESTS:  SMADG2T
 
 78:
@@ -776,7 +893,12 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Fly, Raises defense of all dragon monsters by 10. (In play)
+  ABILITY:
+    - NAME: FLY
+    - NAME: BUFFTYPE
+      TYPE: DRAGON
+      ATTR: DEFENSE
+      AMOUNT: 10
   CRESTS:  SSSSM2T
 
 79:
@@ -786,7 +908,11 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Raises defense of all spellcaster monsters by 10. (In play)
+  ABILITY:
+    NAME: BUFFTYPE
+    TYPE: SPELLCASTER
+    ATTR: DEFENSE
+    AMOUNT: 10
   CRESTS:  SSSSGG
 
 80:
@@ -796,7 +922,7 @@
   ATTACK:  20
   DEFENSE: 30
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSMAG3T
 
 81:
@@ -806,7 +932,7 @@
   ATTACK:  30
   DEFENSE: 20
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSM4ADD2
 
 82:
@@ -816,7 +942,7 @@
   ATTACK:  30
   DEFENSE: 30
   LIFE:    30
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SM8AD8GT4
 
 83:
@@ -826,7 +952,7 @@
   ATTACK:  20
   DEFENSE: 10
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSAT
 
 84:
@@ -836,7 +962,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSMA2
 
 85:
@@ -846,7 +972,7 @@
   ATTACK:  40
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSMAD3T4
 
 86:
@@ -856,7 +982,11 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Raises defense of all warrior monsters by 10 (In Play)
+  ABILITY:
+    NAME: BUFFTYPE
+    TYPE: WARRIOR
+    ATTR: DEFENSE
+    AMOUNT: 10
   CRESTS:  SSSSMG
 
 87:
@@ -866,7 +996,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSD4G
 
 88:
@@ -876,7 +1006,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSM2M3
 
 89:
@@ -886,7 +1016,7 @@
   ATTACK:  40
   DEFENSE: 20
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSMA2G2T2
 
 90:
@@ -896,7 +1026,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSSSM2T
 
 91:
@@ -906,7 +1036,8 @@
   ATTACK:  30
   DEFENSE: 30
   LIFE:    30
-  ABILITY: Fly
+  ABILITY: 
+    NAME: FLY
   CRESTS:  SSM3M4DG
 
 92:
@@ -916,7 +1047,8 @@
   ATTACK:  40
   DEFENSE: 20
   LIFE:    30
-  ABILITY: Fly
+  ABILITY: 
+    NAME: FLY
   CRESTS:  SMADGT
 
 93:
@@ -926,7 +1058,7 @@
   ATTACK:  20
   DEFENSE: 20
   LIFE:    20
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSMAD2G2
 
 94:
@@ -936,7 +1068,7 @@
   ATTACK:  40
   DEFENSE: 30
   LIFE:    40
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SMA2DGT
 
 95:
@@ -946,7 +1078,7 @@
   ATTACK:  20
   DEFENSE: 20
   LIFE:    30
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSM2A2DT
 
 96:
@@ -956,7 +1088,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY:  N/A
+  ABILITY: null
   CRESTS:  SSSSMD2
 
 97:
