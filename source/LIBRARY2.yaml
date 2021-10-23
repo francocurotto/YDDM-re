@@ -139,7 +139,7 @@
   DEFENSE: 10
   LIFE:    10
   ABILITY:
-    NAME: KILLWEAKEST
+    NAME: TIMEWIZARD
   CRESTS:  SSSSM2M3
 
 14:
@@ -1098,7 +1098,10 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Negates attack & effect on 1 ally [T X 5]
+  ABILITY:
+    NAME: NEGATE
+    COSTTYPE: TRAP
+    COST: 5
   CRESTS:  SMA2D2GT3
 
 98:
@@ -1108,7 +1111,10 @@
   ATTACK:  0
   DEFENSE: 0
   LIFE:    10
-  ABILITY: Sacrifices self to steal 1 enemy. [P X 10]
+  ABILITY: 
+    NAME: STEALMONSTER
+    COSTTYPE: MAGIC
+    COST: 8
   CRESTS:  SSSSDT3
 
 99:
@@ -1118,7 +1124,10 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Gain control of 1 foe/turn. [P X 8]
+  ABILITY: 
+    NAME: MINDCONTROL
+    COSTTYPE: MAGIC
+    COST: 8
   CRESTS:  SM2AD2G5T
 
 100:
@@ -1128,7 +1137,9 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: Protects all dragon monsters. (In Play)
+  ABILITY: 
+    NAME: PROTECTTYPE
+    TYPE: DRAGON
   CRESTS:  SSSMAG2
 
 101:
@@ -1138,7 +1149,8 @@
   ATTACK:  40
   DEFENSE: 40
   LIFE:    30
-  ABILITY: Fly
+  ABILITY: 
+    NAME: FLY
   CRESTS:  SM2ADG3T2
 
 102:
@@ -1148,7 +1160,7 @@
   ATTACK:  30
   DEFENSE: 30
   LIFE:    40
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SM6DGT2T2
 
 103:
@@ -1158,7 +1170,7 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    10
-  ABILITY: N/A
+  ABILITY: null
   CRESTS:  SSMA3D2T
 
 104:
@@ -1168,7 +1180,9 @@
   ATTACK:  20
   DEFENSE: 10
   LIFE:    20
-  ABILITY: Obtains Attack and Defense of all destroyed spellcaster monsters. (Dimension)
+  ABILITY: 
+    NAME: MAGICIALGIRL
+    TYPE: SPELLCASTER
   CRESTS:  SSMADT
 
 105:
@@ -1178,7 +1192,11 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    20
-  ABILITY: Tunneling, Adds 1 trap crest to own crest pool. (Dimension)
+  ABILITY: 
+    - NAME: TUNNELING
+    - NAME: ADDCREST
+      CREST: TRAP
+      AMOUNT: 1
   CRESTS:  SSSSDG2
 
 106:
@@ -1188,7 +1206,9 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    30
-  ABILITY: Reduces attack damage by Defense crest X 10. [D X ?]
+  ABILITY:
+    NAME: GATORDRAGON
+    COSTTYPE: DEFENSE
   CRESTS:  SSSMDT
 
 107:
@@ -1198,7 +1218,10 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    20
-  ABILITY: Destroys 1 foe Add 1 magic crest/level. [P X 3]
+  ABILITY:
+    NAME: BLASTLIZARD
+    COSTTYPE: MAGIC
+    COST: 3
   CRESTS:  SSSADT4
 
 108:
@@ -1208,8 +1231,11 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    30
-  ABILITY: Moves 2 squares for 1 movement crests. Attacks 1 foe up to 3 times/turn.
-      (on attack) [A X ?]
+  ABILITY: 
+    - NAME: INCSPEED
+      AMOUNT: 2
+    - NAME: TWINSWORDS
+      COSTTYPE: ATATCK
   CRESTS:  SSSMAD
 
 109:
@@ -1219,7 +1245,10 @@
   ATTACK:  10
   DEFENSE: 10
   LIFE:    30
-  ABILITY: Rolls to destroy one foe. Add 1 defense crest per level. [P X 3]
+  ABILITY: 
+    NAME: THUNDERBALL
+    COSTTYPE: MAGIC
+    COST: 3
   CRESTS:  SSMM3A2D2
 
 110:
@@ -1229,8 +1258,12 @@
   ATTACK:  20
   DEFENSE: 10
   LIFE:    40
-  ABILITY: Adds enemy defense to own defense. [T X 3] Destroys all within 3 x 3 grid.
-      [P X 3]
+  ABILITY:
+    - NAME: MAGICIANDRAGON
+      COSTTYPE: TRAP
+      COST: 3
+    - NAME: KILLGRID
+      SIZE: 3
   CRESTS:  SSM4ADD3
 
 111:
@@ -1240,8 +1273,12 @@
   ATTACK:  20
   DEFENSE: 10
   LIFE:    20
-  ABILITY: Moves 3 squares for 1 movement crest. Protects self from attacks and effects.
-      [T X 2]
+  ABILITY:
+    - NAME: INCSPEED
+      AMOUNT: 3
+    - NAME: PROTECTSELF
+      COSTTYPE: TRAP
+      COST: 2
   CRESTS:  SSMM3AD
 
 112:
@@ -1251,7 +1288,11 @@
   ATTACK:  30
   DEFENSE: 20
   LIFE:    50
-  ABILITY: Attacks an enemy 2 squares away. {P X 1]
+  ABILITY:
+    NAME: INCRANGE
+    AMOUNT: MAGIC
+    COSTTYPE: MAGIC
+    COST: 1
   CRESTS:  SM2M4AGT
 
 113:
@@ -1261,7 +1302,12 @@
   ATTACK:  30
   DEFENSE: 20
   LIFE:    50
-  ABILITY: Attack crests raises attack by 10 max. 3 times/turn. (on attack) [A X ?]
+  ABILITY:
+    NAME: RAISE
+    ATTR: ATTACK
+    COSTTYPE: ATTACK
+    COST: 1
+    MAX: 3
   CRESTS:  SMA2DGT3
 
 114:
@@ -1271,75 +1317,96 @@
   ATTACK:  20
   DEFENSE: 20
   LIFE:    30
-  ABILITY: Raises attack by 10.
+  ABILITY:
+    NAME: ORGOTH
+    ATTR: ATTACK
+    AMOUNT: 10
   CRESTS:  SSMM3A2D
 
 115:
   NAME:    Medical Aid Kit
   TYPE:    ITEM
   LEVEL:   2
-  ABILITY: Restores 2 hearts to a monster.
+  ABILITY:
+    NAME: ITEMCURE
+    AMOUNT: 2
   CRESTS:  SSSM5AT
 
 116:
   NAME:    Exploding Disk
   TYPE:    ITEM
   LEVEL:   3
-  ABILITY: Removes 2 hearts from a monster.
+  ABILITY:
+    NAME: ITEMDAMAGE
+    AMOUNT: 2
   CRESTS:  SSM2M3D2G2
 
 117:
   NAME:    Time Machine
   TYPE:    ITEM
   LEVEL:   1
-  ABILITY: Returns monster to its last location.
+  ABILITY:
+    NAME: TIMEMACHINE
   CRESTS:  SSSSDT
 
 118:
   NAME:    Energy Disk
   TYPE:    ITEM
   LEVEL:   1
-  ABILITY: Raises a monsters attack by 20.
+  ABILITY:
+    NAME: ITEMBUFF
+    ATTR: ATTACK
+    AMOUNT: 20
   CRESTS:  SSSSM3M4
 
 119:
   NAME:    Trap Bandit
   TYPE:    ITEM
   LEVEL:   1
-  ABILITY: Destroys 1 trap crest in own crest pool.
+  ABILITY:
+    NAME: CRESTKILL
+    CREST: TRAP
+    AMOUNT: 1
   CRESTS:  SSSSMT
 
 120:
   NAME:    Declaration of Despair
   TYPE:    ITEM
   LEVEL:   1
-  ABILITY: Destroys 1 magic crest in own crest pool.
+  ABILITY:
+    NAME: CRESTKILL
+    CREST: MAGIC
+    AMOUNT: 1
   CRESTS:  SSSSM2G
 
 121:
   NAME:    Gluminizer
   TYPE:    ITEM
   LEVEL:   2
-  ABILITY: Doubles movement cost for all. (Dimension)
+  ABILITY:
+    NAME: GLUMINIZER
   CRESTS:  SSSM2AD2
 
 122:
   NAME:    Resurrection Scroll
   TYPE:    ITEM
   LEVEL:   2
-  ABILITY: Resurrects 1 destroyed ally.
+  ABILITY:
+    NAME: MONSTERREBORT
   CRESTS:  SSSM2G2T
 
 123:
   NAME:    Warp Vortex
   TYPE:    ITEM
   LEVEL:   3
-  ABILITY: Moves Monster to another Vortex. (Dimension)
+  ABILITY:
+    NAME: WARPVORTEX
   CRESTS:  SSMADT
 
 124:
   NAME:    Crater Creator
   TYPE:    ITEM
   LEVEL:   4
-  ABILITY: Destroys all monsters in the dungeon.
+  ABILITY:
+    NAME: BLACKHOLE
   CRESTS:  SM4AA2DG4
