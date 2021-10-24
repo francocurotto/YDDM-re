@@ -21,6 +21,14 @@ Cost: COST x COSTCTREST
 Dimension
 Cures AMOUNT hearts to all player monsters.
 
+## DIMKILLWEAKEST
+Dimension
+Destroys the monster with the least attack. If multiple options, choose one
+
+## EXODIA
+Dimension
+Wins the game if "R Leg of Forbidden", "L Leg of Forbidden", "L Arm of Forbidden" and "R Arm of Forbidden" are in dungeon and you control them.
+
 # Continuous Abilities
 ## STOPFLY
 Continuous
@@ -30,6 +38,16 @@ Stop all FLY abilities.
 Continuous
 Stop all TUNNELING abilities.
 
+## BUFFTYPE (TYPE, ATTR, AMOUNT)
+Continuous
+Raise ATTR of all TYPE monsters in dungeon by AMOUNT.
+
 # Battle Abilities
 ## RAISEDAMAGE (COSTCREST, DAMAGEINC, MAX)
+Battle
 Raise damage during attack by (payed COSTCREST)xDAMAGEINC (maximum MAX crest are allowed to pay)
+
+# Standing Abilities
+## BUFFSELF (ATTR, COSTCREST, COST, AMOUNT)
+Once per turn, increase ATTR by AMOUNT
+Cost: COST x COSTCREST
