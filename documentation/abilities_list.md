@@ -38,14 +38,22 @@ Stop all FLY abilities.
 Continuous
 Stop all TUNNELING abilities.
 
+## TURNSLOWTYPE
+Continuous
+Make monsters of type TYPE move only once every two turns.
+
 ## BUFFTYPE (TYPE, ATTR, AMOUNT)
 Continuous
 Raise ATTR of all TYPE monsters in dungeon by AMOUNT.
 
 # Battle Abilities
-## RAISEDAMAGE (COSTCREST, DAMAGEINC, MAX)
+## RAISEATTACK (COSTCREST, DAMAGEINC, MAX)
 Battle
-Raise damage during attack by (payed COSTCREST)xDAMAGEINC (maximum MAX crest are allowed to pay)
+Raise attack during battle by (payed COSTCREST)xDAMAGEINC (maximum MAX crest are allowed to pay)
+
+## REDUCEDAMAGE (COSTCREST, DAMAGERED, MAX)
+Battle
+Reduce damage dealt during attack (after guard) by (payed COSTCREST)xDAMAGEINC (maximum MAX crest are allowed to pay)
 
 # Standing Abilities
 ## BUFFSELF (ATTR, COSTCREST, COST, AMOUNT)
