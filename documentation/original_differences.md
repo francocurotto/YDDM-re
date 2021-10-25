@@ -1,2 +1,0 @@
-- Blocks only block the their individual location, no the four neighbours positions
-- Mystic horseman ability is activated during attack instead that manually during DUNGEON phase (saves the implementation of another ability)

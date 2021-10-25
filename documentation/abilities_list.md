@@ -3,7 +3,7 @@
 Can move through other monsters, but not items.
 
 ## FLY
-Can move through other monsters, but not items. They can only be attacked by monster with the ability FLY or ARCHER. Movement cost is 2 crest per square.
+Can move through other monsters, but not items. Cannot be in the same position as other monster. Other monsters can move through them. They can only be attacked by monster with the ability FLY or ARCHER. Movement cost is 2 crests per square.
 
 ## ARCHER
 Can attack monster with the ability FLY.
