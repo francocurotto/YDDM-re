@@ -55,6 +55,9 @@ Raise ATTR of all TYPE monsters in dungeon by AMOUNT.
 ## FROZEN
 Monster cannot move.
 
+## MOVELIMIT (LIMIT)
+Monster can move a maximum of LIMIT tiles per turn.
+
 # Battle Abilities
 ## RAISEATTACK (MAX)
 Attack and raise attack during battle by 10x the number of extra payed crests, to a maximum of MAX.
@@ -62,6 +65,14 @@ Cost: (2..MAX) x ATTACK
 
 ## REDUCEDAMAGE (COSTCREST, COST, AMOUNT)
 Guard and reduce damage dealt during attack (after guard) by AMOUNT.
+Cost: COST x COSTCREST
+
+## SHIFTDAMAGE (COSTCREST, COST)
+Shift damage dealt by an attack to another monster completely, as if the attacker were attaking the selected monster without guarding.
+Cost: COST x COSTCREST
+
+## NEGATEATTACK (COSTCREST, COST) 
+Negate attack amied to self.
 Cost: COST x COSTCREST
 
 # Standing Abilities
