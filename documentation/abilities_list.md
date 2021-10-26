@@ -13,49 +13,62 @@ No type advantages or disadvantages.
 
 # Dimension Abilities
 ## DIMCURE (AMOUNT, NMONSTERS, COSTCREST, COST)
-Dimension
 Cures AMOUNT hearts to NMONSTERS number of player monsters.
 Cost: COST x COSTCTREST
 
 ## DIMCUREALL (AMOUNT) 
-Dimension
 Cures AMOUNT hearts to all player monsters.
 
 ## DIMKILLWEAKEST
-Dimension
 Destroys the monster with the least attack. If multiple options, choose one
 
+## DIMKILLTUNNEL (COSTCREST, COST)
+Destroys one tunnel monster in dungeon.
+Cost: COST x COSTCREST
+
+## DIMKILLTUNNELALL (COSTCREST, COST)
+Destroys all tunnel monster in dungeon.
+Cost: COST x COSTCREST
+
+## DIMADDCREST (CREST, AMOUNT)
+Add AMOUNT CREST crests to player crest pool.
+
+## DIMTRADECREST (COST)
+Trade COST number of same crests for one crest of any type.
+
 ## EXODIA
-Dimension
 Wins the game if "R Leg of Forbidden", "L Leg of Forbidden", "L Arm of Forbidden" and "R Arm of Forbidden" are in dungeon and you control them.
 
 # Continuous Abilities
 ## STOPFLY
-Continuous
 Stop all FLY abilities.
 
 ## STOPTUNNEL
-Continuous
 Stop all TUNNELING abilities.
 
-## TURNSLOWTYPE
-Continuous
-Make monsters of type TYPE move only once every two turns.
+## TURNSLOWTYPE (TYPE)
+Make all monsters of type TYPE move only once every two turns. The turn for all monsters is universal, starting from the opponent turn after the dimension of the monster with the ability. Two or more of instances of this ability can be stacked to cancel movement completely.
 
 ## BUFFTYPE (TYPE, ATTR, AMOUNT)
-Continuous
 Raise ATTR of all TYPE monsters in dungeon by AMOUNT.
 
-# Battle Abilities
-## RAISEATTACK (COSTCREST, DAMAGEINC, MAX)
-Battle
-Raise attack during battle by (payed COSTCREST)xDAMAGEINC (maximum MAX crest are allowed to pay)
+## FROZEN
+Monster cannot move.
 
-## REDUCEDAMAGE (COSTCREST, DAMAGERED, MAX)
-Battle
-Reduce damage dealt during attack (after guard) by (payed COSTCREST)xDAMAGEINC (maximum MAX crest are allowed to pay)
+# Battle Abilities
+## RAISEATTACK (MAX)
+Attack and raise attack during battle by 10x the number of extra payed crests, to a maximum of MAX.
+Cost: (2..MAX) x ATTACK
+
+## REDUCEDAMAGE (COSTCREST, COST, AMOUNT)
+Guard and reduce damage dealt during attack (after guard) by AMOUNT.
+Cost: COST x COSTCREST
 
 # Standing Abilities
 ## BUFFSELF (ATTR, COSTCREST, COST, AMOUNT)
-Once per turn, increase ATTR by AMOUNT
+Once per turn, increase ATTR by AMOUNT.
+Cost: COST x COSTCREST
+
+## TRADEHEARTS (AMOUNT, COSTCREST, COST)
+Removes AMOUNT number of hearts from self and opponent monster. If no opponent monster available, ability cannot be used.
 Cost: COST x COSTCREST
