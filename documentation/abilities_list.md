@@ -39,6 +39,9 @@ Trade COST number of same crests for one crest of any type.
 ## EXODIA
 Wins the game if "R Leg of Forbidden", "L Leg of Forbidden", "L Arm of Forbidden" and "R Arm of Forbidden" are in dungeon and you control them.
 
+## DIMBUFFDEADTYPE (TYPE)
+For each dead monster of type TYPE add the attack and defense (original attack/deffense) of the dead monster to the summoned monster.
+
 # Continuous Abilities
 ## STOPFLY
 Stop all FLY abilities.
@@ -52,6 +55,9 @@ Make all monsters of type TYPE move only once every two turns. The turn for all 
 ## BUFFTYPE (TYPE, ATTR, AMOUNT)
 Raise ATTR of all TYPE monsters in dungeon by AMOUNT.
 
+## PROTECTTYPE (TYPE)
+Reduce all damage done to monster of type TYPE in dungeon to 0.
+
 ## FROZEN
 Monster cannot move.
 
@@ -60,11 +66,11 @@ Monster can move a maximum of LIMIT tiles per turn.
 
 # Battle Abilities
 ## RAISEATTACK (MAX)
-Attack and raise attack during battle by 10x the number of extra payed crests, to a maximum of MAX.
+Attack and raise attack during battle by 10x the number of extra attack crests. The maxumum payed crests is MAX
 Cost: (2..MAX) x ATTACK
 
 ## REDUCEDAMAGE (COSTCREST, COST, AMOUNT)
-Guard and reduce damage dealt during attack (after guard) by AMOUNT.
+Reduce damage dealt during attack (without guarding) by AMOUNT.
 Cost: COST x COSTCREST
 
 ## SHIFTDAMAGE (COSTCREST, COST)
@@ -76,6 +82,10 @@ Negate attack amied to self.
 Cost: COST x COSTCREST
 
 # Standing Abilities
+## DUNGRAISEATTACK (COSTCREST, COST, AMOUNT)
+Once per turn, raise attack during next battle by AMOUNT.
+Cost: COST x COSTCREST
+
 ## BUFFSELF (ATTR, COSTCREST, COST, AMOUNT)
 Once per turn, increase ATTR by AMOUNT.
 Cost: COST x COSTCREST
