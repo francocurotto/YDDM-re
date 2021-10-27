@@ -83,3 +83,11 @@ Cost: COST x COSTCREST
 ## TRADEHEARTS (AMOUNT, COSTCREST, COST)
 Removes AMOUNT number of hearts from self and opponent monster. If no opponent monster available, ability cannot be used.
 Cost: COST x COSTCREST
+
+## STEALMONSTER (COSTCREST, COST)
+Destroy monster. Select an opponent monster and gain control of the monster indefinitely. Move the controlled monster to the original position of monster.
+Cost: COST x COSTCREST
+
+## MINDCONTROL (COSTCREST, COST)
+Gain control of one opponent monster till the end of the turn.
+Cost: COST x COSTCREST
