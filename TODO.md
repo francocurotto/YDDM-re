@@ -1,10 +1,12 @@
 ### TODO
 - abilities!!
-    - time machine, last position or the one at the start of the turn?
-    - test crest destroyers
-    - test gluminizer, combination with RAISESPEED, stacks?
+    - test gluminizer, combination with RAISESPEED?
+        - strike ninja(x3): 1,2,2,3,4,4...
     - test resurrection scroll, own monsters or all?
-    - test vortex, move by command?
+        - if cannot used is lost
+        - where it is placed??
+        - does it even work???
+    - can negate ability negate monster target abilities?
 
 ### IMPROVEMENTS
 

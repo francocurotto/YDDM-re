@@ -2,7 +2,7 @@
 
 - Normal monsters cannot move through items, but can step into them to activate them.
 
-- Warp vortex is a special item that summons a vortex when dimensioned, and other monsters can move through the vortex.
+- Warp vortex is a special item that summons a vortex when dimensioned, and other monsters can move through the vortex. One monster can move thorugh any vortex freely on command
 
 - Monsters can attack only once per turn.
 

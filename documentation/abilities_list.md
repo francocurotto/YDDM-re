@@ -128,3 +128,32 @@ Cost: COST x COSTCREST
 ## DISTANCEATTACK (MAX, COSTCREST, COST)
 Invoclke an attack (without paying attack crests) at a distance of max MAX.
 Cost: COST x COSTCREST
+ 
+# Item Abilities
+## ITEMCURE (AMOUNT)
+Cures landing monster AMOUNT number of hearts
+
+## ITEMDAMAGE (AMOUNT)
+Deals AMOUNT damage to landing monster
+
+## TIMEMACHINE
+Return monster to its previous location (location after last move command)
+
+## ITEMBUFF (ATTR, AMOUNT)
+Raise landing monster ATTR in AMOUNT
+
+## ITEMCRESKILL (CREST, AMOUNT)
+Remove AMOUNT number of crests from player of landing monster
+
+## GLUMINIZER
+Inmediate activation. Doubles the movement cost of monsters. Does not stack with othe gluminizers
+
+## MONSTERREBORN
+TODO
+
+## WARPVORTEX
+Inmeddiate activation. Summons a warp vortex in location
+
+## BLACKHOLE
+Destroys everything in dungeon (except vorteces)
+
