@@ -64,21 +64,32 @@ Monster cannot move.
 ## MOVELIMIT (LIMIT)
 Monster can move a maximum of LIMIT tiles per turn.
 
+## RAISESPEED (AMOUNT)
+Monster can move up to AMOUNT tiles per movement crest.
+
 # Battle Abilities
 ## RAISEATTACK (MAX)
-Attack and raise attack during battle by 10x the number of extra attack crests. The maxumum payed crests is MAX
+Attack and raise attack during battle by 10x the number of extra attack crests. The maxumim payed crests is MAX
 Cost: (2..MAX) x ATTACK
 
 ## REDUCEDAMAGE (COSTCREST, COST, AMOUNT)
 Reduce damage dealt during attack (without guarding) by AMOUNT.
 Cost: COST x COSTCREST
 
+## REDUCEDAMAGEINF
+Reduce damage dealt buring attack (without guarding) by 10x the number of payed defense crests, with no limit.
+Cost: (1..99) x DEFENSE
+
 ## SHIFTDAMAGE (COSTCREST, COST)
 Shift damage dealt by an attack to another monster completely, as if the attacker were attaking the selected monster without guarding.
 Cost: COST x COSTCREST
 
-## NEGATEATTACK (COSTCREST, COST) 
+## PROTECTSELF (COSTCREST, COST) 
 Negate attack amied to self.
+Cost: COST x COSTCREST
+
+## ADDFOEDEFENSE (COSTCREST, COST)
+Add attacking monster defense to monster defense (but acutally do not guard and receive the full damage).
 Cost: COST x COSTCREST
 
 # Standing Abilities
@@ -99,5 +110,21 @@ Destroy monster. Select an opponent monster and gain control of the monster inde
 Cost: COST x COSTCREST
 
 ## MINDCONTROL (COSTCREST, COST)
-Gain control of one opponent monster till the end of the turn.
+Once a turn, gain control of one opponent monster till the end of the turn.
+Cost: COST x COSTCREST
+
+## ROLLLEVELKILL (COSTCREST, COST)
+Once per turn, choose a direction (south, north, east, west) and an amount of extra crest (0..3). Move the monster in that direction until it hits a monster/item or an empty tile. If it hits a monster/item that satisfies: level <= (extra crests+1) in that direction, kill that monster/item. If it hits a monster/item that do not satisfies that condition or an empty tile, stop the movement.
+Cost: COST[+0..3] x COSTCREST
+
+## RANGELEVELKILL (RANGE, COSTCREST, COST)
+Once per turn, choose an opponent monster/item at range RANGE (distance without considering dungeon tiles). Destroy that monster/item.
+COST: [COST+(foe level)-1] x COSTCREST
+
+## RANGEKILLALL (RANGE, COSTCREST, COST)
+Once per turn, kill all other monsters and items at a range of RANGE
+Cost: COST x COSTCREST
+
+## DISTANCEATTACK (MAX, COSTCREST, COST)
+Invoclke an attack (without paying attack crests) at a distance of max MAX.
 Cost: COST x COSTCREST
