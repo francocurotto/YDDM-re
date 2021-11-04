@@ -156,4 +156,3 @@ Inmeddiate activation. Summons a warp vortex in location
 
 ## BLACKHOLE
 Destroys everything in dungeon (except vorteces)
-

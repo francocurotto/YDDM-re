@@ -15,3 +15,4 @@ Here I document the mistakes and oddities that I found while analysing the origi
 
 # Bugs
 - When the attack or defense of a monster goes over 120 though abilities, the stat goes immediately down to 0 for some reason. Still unsure how that affect actual attacks and guards.
+- Resurrection Scroll doesn't work for me, at all. When I activate it by steping into the item, I'm prompt into the graveyard menu where I can select the monster to revive, but then, after selecting and hiting revive, nothing happens and I return to the dungeon in the same state as if there were no item.
