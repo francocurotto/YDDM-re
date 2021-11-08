@@ -6,6 +6,10 @@ Here I document the mistakes and oddities that I found while analysing the origi
 - The "reduce damage" abilities from Saggi the Dark Clown, Castle of D. Magic and Pumpking the King of Ghosts make no sense in their implementation. It is basically a worst "guard": it costs more defense crests, and it does not deals retaliation damage. It would only make sense if the ability reduced more damage than the monster defense (in all the cases the defense is equal to the reduced damage). Nevertheless this behavior is kept in this implementation.
 - Maybe due to a bad implementation (see typo section), but Dark-eyes Illusionist ability is the same as the one from Strike Ninja, yet, the first one is a higher level dice, a worst monster, and the ability cost more crests. This makes Dark-eyes Illusionist significantly worst with no apparent reason.
 - For Magician Dragon first ability, it adds attaking monster defense to its own defense permanently, but it can not be used in the current attack to guard, so you must survive the attack for the ability to be useful.
+- When Gluminizer ability is combined with a monster with RAISESPEED ability, the combination goes as follows: 1. the cost of movement is computed with the RAISESPEED ability by dividing the cost (in float), 2. the Gluminizer ability is computed by multiplying the float cost, 3. the cost is rounded to the highet int (ceil). Example:
+    - GLUMINIZER+RAISESPEED(3) costs per tile: 1,2,2,3,4,4,5,6,6...
+It make more sense to compute the cost by only using ints to get:
+    - GLUMINIZER+RAISESPEED(3) costs per tile: 2,2,2,4,4,4,6,6,6...
 - Resurrection Scroll returns a dice from the graveryard to the dice pool. Since the number of dimension is counted using the number is used dice in dice pool, the Resurrection Scroll effect essentially gives the player an extra dimension in the dungeon.
 
 # Typos
