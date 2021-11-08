@@ -40,7 +40,7 @@ Trade COST number of same crests for one crest of any type.
 Wins the game if "R Leg of Forbidden", "L Leg of Forbidden", "L Arm of Forbidden" and "R Arm of Forbidden" are in dungeon and you control them.
 
 ## DIMBUFFDEADTYPE (TYPE)
-For each dead monster of type TYPE add the attack and defense (original attack/deffense) of the dead monster to the summoned monster.
+For each dead monster of type TYPE add the attack and defense (original attack/defense) of the dead monster to the summoned monster.
 
 # Continuous Abilities
 ## STOPFLY
@@ -69,7 +69,7 @@ Monster can move up to AMOUNT tiles per movement crest.
 
 # Battle Abilities
 ## RAISEATTACK (MAX)
-Attack and raise attack during battle by 10x the number of extra attack crests. The maxumim payed crests is MAX
+Attack and raise attack during battle by 10x the number of extra attack crests. The maximum payed crests is MAX
 Cost: (2..MAX) x ATTACK
 
 ## REDUCEDAMAGE (COSTCREST, COST, AMOUNT)
@@ -77,11 +77,11 @@ Reduce damage dealt during attack (without guarding) by AMOUNT.
 Cost: COST x COSTCREST
 
 ## REDUCEDAMAGEINF
-Reduce damage dealt buring attack (without guarding) by 10x the number of payed defense crests, with no limit.
+Reduce damage dealt during attack (without guarding) by 10x the number of payed defense crests, with no limit.
 Cost: (1..99) x DEFENSE
 
 ## SHIFTDAMAGE (COSTCREST, COST)
-Shift damage dealt by an attack to another monster completely, as if the attacker were attaking the selected monster without guarding.
+Shift damage dealt by an attack to another monster completely, as if the attacker were attacking the selected monster without guarding.
 Cost: COST x COSTCREST
 
 ## PROTECTSELF (COSTCREST, COST) 
@@ -126,7 +126,7 @@ Once per turn, kill all other monsters and items at a range of RANGE
 Cost: COST x COSTCREST
 
 ## DISTANCEATTACK (MAX, COSTCREST, COST)
-Invoclke an attack (without paying attack crests) at a distance of max MAX.
+Invoke an attack (without paying attack crests) at a distance of max MAX.
 Cost: COST x COSTCREST
  
 # Item Abilities
@@ -146,13 +146,13 @@ Raise landing monster ATTR in AMOUNT
 Remove AMOUNT number of crests from player of landing monster
 
 ## GLUMINIZER
-Inmediate activation. Doubles the movement cost of monsters. Does not stack with othe gluminizers
+Immediate activation. Doubles the movement cost of monsters. Does not stack with other gluminizers
 
 ## MONSTERREBORN
-TODO
+Select a dice from player graveyard. Remove that dice from graveyard and add it to player dice pool.
 
 ## WARPVORTEX
-Inmeddiate activation. Summons a warp vortex in location
+Immediate activation. Summons a warp vortex in location
 
 ## BLACKHOLE
-Destroys everything in dungeon (except vorteces)
+Destroys everything in dungeon (except vortices)
