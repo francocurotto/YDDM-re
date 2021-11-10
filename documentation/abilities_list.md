@@ -9,8 +9,8 @@
 ## NEUTRAL
 
 # Dimension Abilities
-## DIMCURE (AMOUNT, NMONSTERS, COST, CREST)
-Restore AMOUNT LIFE to NMONSTERS player monster(s).
+## DIMCURE (AMOUNT, NUMBER, COST, CREST)
+Restore AMOUNT LIFE to NUMBER player monster(s).
 Cost: COST x CREST
 
 ## DIMCUREALL (AMOUNT) 
@@ -31,7 +31,7 @@ Cost: COST x CREST
 Add AMOUNT CREST crest(s) to player crest pool.
 
 ## DIMTRADECREST (COST)
-Trade COST crest(s) of any type for one crest of any type in player crest pool.
+Pay COST crest(s) of one type. Add for one crest of any type in player crest pool.
 
 ## EXODIA
 Win the game if player controls "R Leg of Forbidden", "L Leg of Forbidden", "L Arm of Forbidden" and "R Arm of Forbidden".
@@ -50,7 +50,7 @@ Stop all TUNNELING abilities.
 TYPE monsters can only move once every two turns, starting forbiding movement in each player next turn and reenabling it in the turn after the next. NOTE: Two or more of instances of this ability can be stacked to cancel movement completely.
 
 ## BUFFTYPE (TYPE, ATTR, AMOUNT)
-Raise ATTR of all TYPE monsters in dungeon by AMOUNT.
+Raise ATTR of all TYPE monsters by AMOUNT.
 
 ## PROTECTTYPE (TYPE)
 Reduce (attack or ability) damage done to all TYPE monsters to 0.
@@ -100,27 +100,27 @@ Increase ATTR by AMOUNT.
 Cost: COST x CREST
 
 ## TRADEHEARTS (AMOUNT, COST, CREST)
-Removes AMOUNT number of hearts from monster and opponent monster. NOTE: If no opponent monster available, ability cannot be used.
+Removes AMOUNT number of hearts from monster and opponent monster.
 Cost: COST x CREST
 
 ## STEALMONSTER (COST, CREST)
-Destroy monster. Select an opponent monster and gain control of the monster indefinitely. Move the controlled monster to the original position of monster.
+Destroy monster. Select an opponent monster and gain control of that monster for the rest of the duel. Move the controlled monster to the last position of monster.
 Cost: COST x CREST
 
 ## MINDCONTROL (COST, CREST)
-Once a turn, gain control of one opponent monster till the end of the turn.
+Gain control of one opponent monster till the end of the turn.
 Cost: COST x CREST
 
 ## ROLLLEVELKILL (COST, CREST)
-Once per turn, choose a direction (south, north, east, west) and an amount of extra crest (0..3). Move the monster in that direction until it hits a monster/item or an empty tile. If it hits a monster/item that satisfies: level <= (extra crests+1) in that direction, kill that monster/item. If it hits a monster/item that do not satisfies that condition or an empty tile, stop the movement.
-Cost: COST[+0..3] x CREST
+Choose a level (1 to 4). The ability cost is increased by CREST crest x the level selected. Choose a direction (left, right, up, down). Move the monster in the chosen direction. If it hits a monster/item whose level is lower or equal to the selected level, destroy that monster/item and continue movement. If it hits a monster/item whose level is higher that the selected level, or an empty tile, stop movement.
+Cost: COST+[1..4] x CREST
 
 ## RANGELEVELKILL (RANGE, COST, CREST)
-Once per turn, choose an opponent monster/item at range RANGE (distance without considering dungeon tiles). Destroy that monster/item.
-COST: [COST+(foe level)-1] x CREST
+Choose an opponent monster/item at range RANGE. The ability cost is increased by CREST crest x the level of the monster/item selected. Destroy the selected monster/item.
+Cost: COST+[1..4] x CREST
 
 ## RANGEKILLALL (RANGE, COST, CREST)
-Once per turn, kill all other monsters and items at a range of RANGE
+Destroy all other monsters and items at a range of RANGE.
 Cost: COST x CREST
 
 ## DISTANCEATTACK (MAX, COST, CREST)
@@ -150,7 +150,7 @@ Immediate activation. Doubles the movement cost of monsters. Does not stack with
 Select a dice from player graveyard. Remove that dice from graveyard and add it to player dice pool.
 
 ## WARPVORTEX
-Immediate activation. Summons a warp vortex dimension in location
+Immediate activation. Summons a warp vortex dimension in location.
 
 ## BLACKHOLE
-Destroys everything in dungeon (except vortices)
+Destroy all monsters and items.

@@ -30,3 +30,4 @@ Monsters can move through or be in the same location of a warp vortex. One monst
 - Unless otherwise stated, dimension, attack, reply and standing abilities of monsters can be skipped.
 - Unless otherwise stated, continuous abilities of monsters cannot be suppresed.
 - Unless stated otherwise, item and item dimension abilities cannot be skipped. 
+- If an ability requires that to select a monster, and not valid monster area available, the ability cannot take action.
