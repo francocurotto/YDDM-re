@@ -112,11 +112,11 @@ Gain control of one opponent monster till the end of the turn.
 Cost: COST x CREST
 
 ## ROLLLEVELKILL (COST, CREST)
-Choose a level (1 to 4). The ability cost is increased by CREST crest x the level selected. Choose a direction (left, right, up, down). Move the monster in the chosen direction. If it hits a monster/item whose level is lower or equal to the selected level, destroy that monster/item and continue movement. If it hits a monster/item whose level is higher that the selected level, or an empty tile, stop movement.
+Choose a level (1 to 4). The ability cost is increased by the level selected x CREST crest. Choose a direction (left, right, up, down). Move the monster in the chosen direction. If it hits a monster/item whose level is lower or equal to the selected level, destroy that monster/item and continue movement. If it hits a monster/item whose level is higher that the selected level, or an empty tile, stop movement.
 Cost: COST+[1..4] x CREST
 
 ## RANGELEVELKILL (RANGE, COST, CREST)
-Choose an opponent monster/item at range RANGE. The ability cost is increased by CREST crest x the level of the monster/item selected. Destroy the selected monster/item.
+Choose an opponent monster/item at range RANGE. The ability cost is increased by the level of the monster/item selected x CREST crest. Destroy the selected monster/item.
 Cost: COST+[1..4] x CREST
 
 ## RANGEKILLALL (RANGE, COST, CREST)
@@ -127,30 +127,31 @@ Cost: COST x CREST
 Invoke an attack (without paying attack crests) at a distance of max MAX.
 Cost: COST x CREST
  
-# Item Abilities
+# Manual Item Abilities
 ## ITEMCURE (AMOUNT)
-Cures landing monster AMOUNT number of hearts
+Restore monster AMOUNT life.
 
 ## ITEMDAMAGE (AMOUNT)
-Deals AMOUNT damage to landing monster
+Deals AMOUNT damage to monster.
 
 ## TIMEMACHINE
-Return monster to its previous location (location after last move command)
+Return monster to its previous location (location before its last movement).
 
 ## ITEMBUFF (ATTR, AMOUNT)
-Raise landing monster ATTR in AMOUNT
+Raise monster ATTR in AMOUNT.
 
 ## ITEMCRESKILL (CREST, AMOUNT)
-Remove AMOUNT number of crests from player of landing monster
-
-## GLUMINIZER
-Immediate activation. Doubles the movement cost of monsters. Does not stack with other gluminizers
+Remove AMOUNT CREST crest(s) from player.
 
 ## MONSTERREBORN
 Select a dice from player graveyard. Remove that dice from graveyard and add it to player dice pool.
 
-## WARPVORTEX
-Immediate activation. Summons a warp vortex dimension in location.
-
 ## BLACKHOLE
 Destroy all monsters and items.
+
+# Dimension Item Ability
+## GLUMINIZER
+Doubles the movement cost of monsters. Only one Gluminizer ability can be activated per duel.
+
+## WARPVORTEX
+Summons a warp vortex in dimension in location.
