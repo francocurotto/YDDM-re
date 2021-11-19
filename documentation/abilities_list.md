@@ -17,14 +17,14 @@ Cost: COST x CREST
 Restores AMOUNT LIFE to all player monsters.
 
 ## DIMKILLWEAKEST
-Destroy the monster with the least ATTACK (after abilities effect).
+Destroy the opponent monster with the least ATTACK (after abilities effect computation).
 
 ## DIMKILLTUNNEL (COST, CREST)
-Destroy one monster with the ability TUNNELING.
+Destroy one monster with the (active) ability TUNNELING.
 Cost: COST x CREST
 
 ## DIMKILLTUNNELALL (COST, CREST)
-Destroy all monsters with the ability TUNNELING.
+Destroy all monsters with the (active) ability TUNNELING.
 Cost: COST x CREST
 
 ## DIMADDCREST (CREST, AMOUNT)
@@ -41,10 +41,10 @@ For each dead monster of type TYPE, add the (original) attack and defense of the
 
 # Continuous Abilities
 ## STOPFLY
-Stop all FLY abilities.
+Negates all FLY abilities.
 
 ## STOPTUNNEL
-Stop all TUNNELING abilities.
+Negates all TUNNELING abilities.
 
 ## TURNSLOWTYPE (TYPE)
 TYPE monsters can only move once every two turns, starting forbiding movement in each player next turn and reenabling it in the turn after the next. NOTE: Two or more of instances of this ability can be stacked to cancel movement completely.
@@ -124,7 +124,7 @@ Destroy all other monsters and items at a range of RANGE.
 Cost: COST x CREST
 
 ## DISTANCEATTACK (MAX, COST, CREST)
-Invoke an attack (without paying attack crests) at a distance of max MAX.
+The moster cannot attack and use this ability in the same turn (in any order). Attack an opponent target (without paying attack crests) at a distance of max. MAX.
 Cost: COST x CREST
  
 # Manual Item Abilities
