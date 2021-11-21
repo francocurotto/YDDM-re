@@ -1,6 +1,6 @@
 ### TODO
 - abilities!!
-    - RANGELEVELKILL: affects flying monsters?
+    - dim abilities, which cannot be skipped
 
 ### IMPROVEMENTS
 

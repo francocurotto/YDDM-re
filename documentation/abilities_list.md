@@ -14,7 +14,7 @@ Restore AMOUNT LIFE to NUMBER player monster(s).
 Cost: COST x CREST
 
 ## DIMCUREALL (AMOUNT) 
-Restores AMOUNT LIFE to all player monsters.
+Restores AMOUNT LIFE to all player monsters. This ability cannot be skipped.
 
 ## DIMKILLWEAKEST
 Destroy the opponent monster with the least ATTACK (after abilities effect computation).
