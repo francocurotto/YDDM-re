@@ -39,3 +39,5 @@ Monsters can move through or be in the same location of a warp vortex. One monst
 - Distance: minimum number of tiles to move from one position to another, considering only paths through dungeon tiles.
 - Negate: a monster with an ability negated cannot use that ability, and the ability effect is left with no effect
 - Active: an active ability is an ability that has not been negated
+- Flying: quality of having the active FLY ability
+- Non-flying: the opposite of flying

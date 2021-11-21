@@ -112,7 +112,7 @@ Gain control of one opponent monster till the end of the turn.
 Cost: COST x CREST
 
 ## ROLLLEVELKILL (COST, CREST)
-Choose a level (1 to 4). The ability cost is increased by the level selected x CREST crest. Choose a direction (left, right, up, down). Move the monster in the chosen direction. If it hits a monster/item whose level is lower or equal to the selected level, destroy that monster/item and continue movement. If it hits a monster/item whose level is higher that the selected level, or an empty tile, stop movement.
+Choose a level (1 to 4). The ability cost is increased by the level selected x CREST crest. Choose a direction (left, right, up, down). Move the monster in the chosen direction. If it hits a flying-monster, continue movement without affecting the hit monster. If it hits a non-flying-monster/item whose level is lower or equal to the selected level, destroy that monster/item and continue movement. If it hits a non-flying-monster/item whose level is higher that the selected level, or an empty tile, stop movement and locate the monster in the last visited empty tile.
 Cost: COST+[1..4] x CREST
 
 ## RANGELEVELKILL (RANGE, COST, CREST)
