@@ -10,7 +10,7 @@
 
 # Dimension Abilities
 ## DIMCURE (AMOUNT, NUMBER, COST, CREST)
-Restore AMOUNT LIFE to NUMBER player monster(s).
+Restore AMOUNT LIFE to NUMBER (different) player monster(s).
 Cost: COST x CREST
 
 ## DIMCUREALL (AMOUNT) 
@@ -28,16 +28,16 @@ Destroy all monsters with the (active) ability TUNNELING.
 Cost: COST x CREST
 
 ## DIMADDCREST (CREST, AMOUNT)
-Add AMOUNT CREST crest(s) to player crest pool.
+Add AMOUNT CREST crest(s) to player crest pool. This ability cannot be skipped.
 
 ## DIMTRADECREST (COST)
 Pay COST crest(s) of one type. Add for one crest of any type in player crest pool.
 
 ## EXODIA
-Win the game if player controls "R Leg of Forbidden", "L Leg of Forbidden", "L Arm of Forbidden" and "R Arm of Forbidden".
+Win the game if player controls "R Leg of Forbidden", "L Leg of Forbidden", "L Arm of Forbidden" and "R Arm of Forbidden". This ability cannot be skipped.
 
 ## DIMBUFFDEADTYPE (TYPE)
-For each dead monster of type TYPE, add the (original) attack and defense of the dead monster to monster.
+For each dead monster of type TYPE, add the (original) attack and defense of the dead monster to monster. This ability cannot be skipped.
 
 # Continuous Abilities
 ## STOPFLY
@@ -91,6 +91,10 @@ Add attacking monster DEFENSE to monster DEFENSE.
 Cost: COST x CREST
 
 # Standing Abilities
+## KILLBLOCK (COST, CREST)
+Remove a block tile.
+Cost: COST x CREST
+
 ## DUNGRAISEATTACK (COST, CREST, AMOUNT)
 Raise attack during next battle by AMOUNT.
 Cost: COST x CREST

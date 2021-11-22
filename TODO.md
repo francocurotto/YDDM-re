@@ -1,6 +1,6 @@
 ### TODO
 - abilities!!
-    - dim abilities, which cannot be skipped
+    - Should unskippable dim abilities be in their own category?
 
 ### IMPROVEMENTS
 
