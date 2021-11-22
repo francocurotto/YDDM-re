@@ -29,7 +29,7 @@ Monsters can move through or be in the same location of a warp vortex. One monst
 - Unless otherwise stated, if there is an ambiguity of multiply options (e.g. DIMCURE, DIMKILLWEAKEST), the casting player must choose.
 - Unless otherwise stated, dimension, attack, reply and standing abilities of monsters can be skipped.
 - Unless otherwise stated, continuous abilities of monsters cannot be suppresed.
-- Unless stated otherwise, item and item dimension abilities cannot be skipped. 
+- Unless otherwise stated, item and item dimension abilities cannot be skipped. 
 - If an ability requires that to select a monster, and not valid monster area available, the ability cannot take action.
 - In monster ability descriptions, "monster" and "player" refers to the monster casting the ability, and the player that owns the monster respectively.
 - In manual item ability descriptions, "monster" and "item" refers to the monster activating the ability, and the player that owns the monster respectively.
