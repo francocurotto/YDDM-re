@@ -105,7 +105,7 @@
   LIFE:    20
   ABILITY:
     NAME: RAISEATTACK
-    MAX: 2
+    MAX: 1
   CRESTS:  SSSM2A2T
 
 11:
@@ -610,7 +610,7 @@
   LIFE:    40
   ABILITY:
     NAME: RAISEATTACK
-    MAX: 3
+    MAX: 2
   CRESTS:  SSM2A2DG
 
 55:
@@ -1231,7 +1231,7 @@
     - NAME: RAISESPEED
       AMOUNT: 2
     - NAME: RAISEATTACK
-      MAX: 4
+      MAX: 3
   CRESTS:  SSSMAD
 
 109:
@@ -1300,7 +1300,7 @@
   LIFE:    50
   ABILITY:
     NAME: RAISEATTACK
-    MAX: 4
+    MAX: 3
   CRESTS:  SMA2DGT3
 
 114:

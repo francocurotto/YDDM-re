@@ -66,8 +66,8 @@ Monster can move up to AMOUNT tiles per movement crest.
 
 # Attack Abilities
 ## RAISEATTACK (MAX)
-Raise attack power by 10x the number of extra ATTACK crest, up to a maximum of MAX total payed crests.
-Cost: (2..MAX) x ATTACK
+Raise attack power by 10x the number of payed ATTACK crest (additional to the crest for attacking), up to a maximum of MAX.
+Cost: (1..MAX) x ATTACK
 
 # Reply Abilities
 ## REDUCEDAMAGE (COST, CREST, AMOUNT)

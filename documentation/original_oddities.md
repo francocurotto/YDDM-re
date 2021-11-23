@@ -19,4 +19,4 @@ It make more sense to compute the cost by only using ints to get:
 - For Magician Dragon second ability, it says that it destroys everything a within a 3x3 grid, but instead, it destroys everything at range 3.
 
 # Bugs
-- When the attack or defense of a monster goes over 120 through abilities, the stat goes immediately down to 0 for some reason. Still unsure how that affect actual attacks and guards.
+- When the attack or defense of a monster goes over 120 by many BUFFTYPE abilities, the stat goes immediately down to 0 for some reason. Still unsure how that affect actual attacks and guards.
