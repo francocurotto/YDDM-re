@@ -103,8 +103,8 @@ Cost: COST x CREST
 Increase ATTR by AMOUNT.
 Cost: COST x CREST
 
-## TRADEHEARTS (AMOUNT, COST, CREST)
-Removes AMOUNT number of hearts from monster and opponent monster.
+## TRADELIFE (AMOUNT, COST, CREST)
+Deals AMOUNT damage to monster and opponent monster.
 Cost: COST x CREST
 
 ## STEALMONSTER (COST, CREST)
@@ -133,7 +133,7 @@ Cost: COST x CREST
  
 # Manual Item Abilities
 ## ITEMCURE (AMOUNT)
-Restore monster AMOUNT life.
+Restore monster AMOUNT LIFE.
 
 ## ITEMDAMAGE (AMOUNT)
 Deals AMOUNT damage to monster.
@@ -144,7 +144,7 @@ Return monster to its previous location (location before its last movement).
 ## ITEMBUFF (ATTR, AMOUNT)
 Raise monster ATTR in AMOUNT.
 
-## ITEMCRESKILL (CREST, AMOUNT)
+## ITEMCRESTKILL (CREST, AMOUNT)
 Remove AMOUNT CREST crest(s) from player.
 
 ## MONSTERREBORN
